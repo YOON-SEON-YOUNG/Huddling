@@ -39,7 +39,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main() {
 		
-		return "redirect:/board/shop_main"; //   메인페이지로 리다이렉트
+		return "board/shop_main"; //   메인페이지로 리다이렉트
 	}
 	
 }
