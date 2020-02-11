@@ -1,4 +1,4 @@
-package com.kh.portfolio_Huddling;
+package com.kh.Portfolio_Huddling;
 
 import java.text.DateFormat;
 import java.util.Date;
