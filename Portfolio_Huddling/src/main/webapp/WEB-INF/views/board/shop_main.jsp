@@ -1,169 +1,311 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Huddling_Main_Page</title>
 </head>
 <body>
+
+<!-- 로고, 검색, 로그인 -->
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<h3>
-				h3. Lorem ipsum dolor sit amet.
-			</h3> 
-			<button type="button" class="btn btn-success">
-				Button
-			</button> 
-			<button type="button" class="btn btn-success">
-				Button
-			</button>
-			<div class="carousel slide" id="carousel-237848">
-				<ol class="carousel-indicators">
-					<li data-slide-to="0" data-target="#carousel-237848" class="active">
-					</li>
-					<li data-slide-to="1" data-target="#carousel-237848">
-					</li>
-					<li data-slide-to="2" data-target="#carousel-237848">
-					</li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img class="d-block w-100" alt="Carousel Bootstrap First" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								First Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								Second Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								Third Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-				</div> <a class="carousel-control-prev" href="#carousel-237848" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-237848" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+		<div class="col-md-4">
+			<a href="board-list.board">
+				<img src="images/logo.jpg" style="width:120px; height: 125px; ">
+			</a>
 			</div>
-			<ul class="nav nav-pills">
-				<li class="nav-item">
-					 <a class="nav-link btn btn-primary" href="#">Home <span class="badge badge-light">42</span></a>
-				</li>
-				<li class="nav-item">
-					 <a class="nav-link" href="#">More <span class="badge badge-secondary">16</span></a>
-				</li>
-			</ul>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							#
-						</th>
-						<th>
-							Product
-						</th>
-						<th>
-							Payment Taken
-						</th>
-						<th>
-							Status
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
-					<tr class="table-active">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="table-success">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="table-warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-					<tr class="table-danger">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			
+			<div class="col-md-4">
+			<button type="button" class="btn btn-success">
+				검색
+			</button> 
+			</div>
+			
+			<div class="col-md-4">
+			<button type="button" class="btn btn-outline-warning">
+				회원 로그인
+			</button>
+			<button type="button" class="btn btn-outline-primary">
+				관리자 페이지
+			</button>
+			
 		</div>
 	</div>
-</div>
+	<!-- 		슬라이드 이미지 -->
+	<div class="row">
+		<div class="col-md-12">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+				<ol class="carousel-indicators">
+		      		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      		<li data-target="#myCarousel" data-slide-to="1"></li>
+		      		<li data-target="#myCarousel" data-slide-to="2"></li>
+		   		</ol>
+			    <!-- Wrapper for slides -->
+				<div class="carousel-inner">
+				  	<div class="item active">
+				    	<img class="d-block w-743 h-743 " src="images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
+							<div class="carousel-caption">
+								<h4 style="font-weight: bold;">
+									이미지1
+								</h4>
+							</div>
+				  	</div>
+				   	<div class="item">
+				      	<img class="d-block w-1004 h-743" src="images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
+							<div class="carousel-caption">
+								<h4 style="font-weight: bold;">
+										이미지2
+									</h4>
+							</div>
+					</div>
+					<div class="item">
+						<img class="d-block w-830 h-743" src="images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
+							<div class="carousel-caption">
+								<h4 style="font-weight: bold;">
+									이미지3
+								</h4>
+							</div>
+					</div>
+					
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+					  	<span class="glyphicon glyphicon-chevron-left""></span>
+					  	<span class="sr-only">Previous</span>				
+					</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						  <span class="glyphicon glyphicon-chevron-right"></span>
+						  <span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div><!-- /슬라이드 -->		
+
+	<!-- 카테고리 -->
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+			<div class="btn-group" role="group">
+				 
+			 	<button class="btn btn-secondary" type="button">
+					전체 테마
+				</button>
+				<button class="btn btn-secondary" type="button">
+					테크/가전
+				</button> 
+				<button class="btn btn-secondary" type="button">
+					패션/뷰티
+				</button> 
+				<button class="btn btn-secondary" type="button">
+					푸드
+				</button> 
+				<button class="btn btn-secondary" type="button">
+					문화
+				</button>
+				<button class="btn btn-secondary" type="button">
+					기부/후원
+				</button>
+				
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+
+	<!-- /카테고리 -->
+	
+	
+	<!-- 리스트 -->
+	<div class="row">
+		<div class="col-md-12">
+		    <div class="page-header">
+		        <h3>Bootstrap 3.3.0</h3>
+		        <p>Responsive Moving Box Carousel Demo</p>
+		    </div>
+		        
+		    <div class="carousel slide" id="myCarousel">
+		        <div class="carousel-inner">
+		            <div class="item active">
+		                    <ul class="thumbnails">
+		                        <li class="col-sm-3">
+		    						<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                    </ul>
+		              </div><!-- /Slide1 --> 
+		            <div class="item">
+		                    <ul class="thumbnails">
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                    </ul>
+		              </div><!-- /Slide2 --> 
+		            <div class="item">
+		                    <ul class="thumbnails">
+		                        <li class="col-sm-3">	
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                        <li class="col-sm-3">
+									<div class="fff">
+										<div class="thumbnail">
+											<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+										</div>
+										<div class="caption">
+											<h4>Praesent commodo</h4>
+											<p>Nullam Condimentum Nibh Etiam Sem</p>
+											<a class="btn btn-mini" href="#">» Read More</a>
+										</div>
+		                            </div>
+		                        </li>
+		                    </ul>
+		              </div><!-- /Slide3 --> 
+		        </div>
+		        
+		       
+			   <nav>
+					<ul class="control-box pager">
+						<li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+						<li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+					</ul>
+				</nav>
+			   <!-- /.control-box -->   
+		                              
+		    </div><!-- /#myCarousel -->
+		</div><!-- /.row -->          
+	</div><!-- /.col-xs-12 -->   
+    <!-- /리스트 -->
+    
+</div><!-- /.container -->
 </body>
 </html>
