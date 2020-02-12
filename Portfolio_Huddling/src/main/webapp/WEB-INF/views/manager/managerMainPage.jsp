@@ -62,7 +62,7 @@ $(document).ready(function() {
 <!-- 			타이틀 -->
 
 				<div class="col-md-12">
-					<h1 style="text-align: center;">관리자페이지</h1>		
+					<h1 style="text-align: center;">관리자페이지</h1><a href="/">홈으로</a>		
 					<hr>		
 				</div>
 				
