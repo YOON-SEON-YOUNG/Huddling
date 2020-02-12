@@ -74,14 +74,36 @@ label{
 			<a class="navbar-brand" href="#" style="margin-right:1500px ">마이페이지</a>
 			
 			<ul class="nav nav-pills">
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-					role="button" aria-haspopup="true" aria-expanded="false"><img
-						class="rounded-circle"></img></a>
-					<div class="dropdown-menu" style="margin-left: -120px">
+				<li class="nav-item dropdown">
+				
+					 <!-- 이미지드롭다운 -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="/resources/dist/img/user2-60x60.jpg" class="user-image" alt="User Image"/>
+                  <span class="hidden-xs">${memberVo.userid} (${memberVo.username})</span>
+                  <span class="badge">${memberVo.member_point}</span>
+                </a>
+                <!-- //이미지드롭다운 -->
+                <ul class="dropdown-menu">
+                  <!-- 드롭다운되면보여줄 image -->
+                  <li class="user-header">
+                    <img src="/resources/dist/img/user2-60x60.jpg" class="img-circle" alt="User Image" />
+                    <p>
+                      0000님 반갑습니다
+                    </p>
+                  </li>
+                  <!-- Menu Body -->
+                  <li class="user-body">
+                    <div>
+                      <a href="#">로그아웃</a>
+                    </div>
+                    
+                    <div>
+                      <a href="#">기타등등</a>
+                    </div>
+                  </li>
 					
-						<a class="dropdown-item" href="#" >로그아웃</a>
-					</div></li>
+					</li>
 			</ul>
 		</nav>
 		<a href="/">홈으로</a>
