@@ -7,6 +7,7 @@
 <title>Huddling_Main_Page</title>
 </head>
 <body>
+<a href="manager/mainPage">관리자페이지</a>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
