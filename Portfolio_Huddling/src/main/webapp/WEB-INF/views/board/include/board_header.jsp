@@ -15,7 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-<!-- 로고, 검색, 로그인 -->
+<!-- 로고, 검색, 로그인, 카테고리 -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4" align="center">
@@ -53,8 +53,56 @@
 				펀딩오픈 신청하기
 			</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="manager/mainPage">관리자페이지</a>
+			<a href="/manager/mainPage">관리자페이지</a>
 		</div>
 	</div>
+	
+	<br/>
+	<br/>
+	
+	<!-- 카테고리 -->
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8" align="center">
+			<a href="/">
+				<button class="btn btn-success" type="button">
+					전체 테마
+				</button>
+			</a>
+			<a href="/board/categoryTech">
+				<button class="btn btn-secondary" type="button">
+					테크/가전
+				</button> 
+			</a>
+			<a href="/board/categoryBeauty">
+				<button class="btn btn-secondary" type="button">
+					패션/뷰티
+				</button> 
+			</a>
+			<a href="/board/categoryFood">
+				<button class="btn btn-secondary" type="button">
+					푸드
+				</button> 
+			</a>
+			<a href="/board/categoryCulture">
+				<button class="btn btn-secondary" type="button">
+					문화
+				</button>
+			</a>
+			<a href="/board/categoryDonate">
+				<button class="btn btn-secondary" type="button">
+					기부/후원
+				</button>
+			</a>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div><!-- /.row 카테고리 -->
+	
+	<br/>
+	<br/>
+	<br/>
+	
 </div>
 

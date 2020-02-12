@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<!-- 로고, 검색, 로그인 -->
+<!-- include 로고, 검색, 로그인, 카테고리 -->
 <%@ include file="include/board_header.jsp"%>
 </head>
 <body>
@@ -62,47 +62,12 @@
 	<br/>
 	<br/>
 	
-	<!-- 카테고리 -->
-	<div class="row">
-		<div class="col-md-2">
-			<!-- 여백 -->
-		</div>
-		<div class="col-md-8" align="center">
-			<div class="btn-group" role="group">
-			 	<button class="btn btn-success" type="button">
-					전체 테마
-				</button>
-				<button class="btn btn-secondary" type="button">
-					테크/가전
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					패션/뷰티
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					푸드
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					문화
-				</button>
-				<button class="btn btn-secondary" type="button">
-					기부/후원
-				</button>
-			</div><!-- /.btn-group -->
-		</div>
-		<div class="col-md-2">
-			<!-- 여백 -->
-		</div>
-	</div><!-- /.row 카테고리 -->
-	
-	<br/>
-	<br/>
-	<br/>
 	
 	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-3">
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-3">
 			<h3>인기 추천 프로젝트</h3>
 		 
 <!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
@@ -116,7 +81,19 @@
 <!--             </div>/.controls pull-right hidden-xs -->
             
         </div>
-        <div class="col-md-2" >
+        <div class="col-md-3" >
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Action
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item disabled" href="#">Action</a> 
+					 <a class="dropdown-item" href="#">Another action</a> 
+					 <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</div>
+        </div>
+        <div class="col-md-3" >
         </div>
 	</div><!-- /.row -->
 	
