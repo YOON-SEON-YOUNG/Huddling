@@ -12,15 +12,45 @@
 	
 	#menu {
 		text-align: center;
-	}
-	
-	#page {
-		text-align: center;
 		border-style: solid;
 		border-color: #F2F2F2;
 	}
 	
+	#page {
+		border-style: solid;
+		border-color: #F2F2F2;
+		
+	}
+	
 </style>
+<script>
+$(document).ready(function() {
+	
+	$("#page").load("userControl");
+	
+	$("#userControl").click(function(e) {
+		e.preventDefault();
+		$("#page").empty();
+		$("#page").load("userControl");
+	});
+	$("#projectAcceptanceControl").click(function(e) {
+		e.preventDefault();
+		$("#page").empty();
+		$("#page").load("projectAcceptanceControl");
+	});
+	$("#projectUnacceptedControl").click(function(e) {
+		e.preventDefault();
+		$("#page").empty();
+		$("#page").load("projectUnacceptedControl");
+	});
+	$("#questionsControl").click(function(e) {
+		e.preventDefault();
+		$("#page").empty();
+		$("#page").load("questionsControl");
+	});
+	
+});
+</script>
 <title>관리자페이지</title>
 </head>
 <body>
@@ -45,21 +75,23 @@
 
 				<div id="menu" class="col-md-3">
 					<hr>
-					<a src="">회원관리</a><br><hr><br>				
-					<a src="">프로젝트 관리</a><br><hr><br>					
-					<a src="">문의사항</a>
+					<a id="userControl" src="">회원관리</a><br><hr><br>				
+					<a id="projectAcceptanceControl" src="">프로젝트 관리(승인)</a><br><hr><br>					
+					<a id="projectUnacceptedControl" src="">프로젝트 관리(미승인)</a><br><hr><br>					
+					<a id="questionsControl" src="">문의사항</a>
 					<hr>						
 				</div>
 				
 <!-- 			// 메뉴 -->
 <!-- 			페이지 -->
 
-				<div id="page" class="col-md-9">
-					<h1>인크루드 부분</h1>
-<%-- 					<%@ include file="" %> --%>
+				<div id="page" class="col-md-7">
 				</div>
 				
 <!-- 			// 페이지 -->
+
+				<div class="col-md-1">
+				</div>
 
 			</div>
 		</div>
