@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<a href="board-list.board">
-				<img src="images/logo.jpg" style="width:120px; height: 125px; ">
+				<img src="resources/images/hudling_logo.jpg" style="width:120px; height: 125px; ">
 			</a>
 			</div>
 			
@@ -49,7 +49,7 @@
 			    <!-- Wrapper for slides -->
 				<div class="carousel-inner">
 				  	<div class="item active">
-				    	<img class="d-block w-743 h-743 " src="images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
+				    	<img class="d-block w-743 h-743 " src="resources/images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 									이미지1
@@ -57,7 +57,7 @@
 							</div>
 				  	</div>
 				   	<div class="item">
-				      	<img class="d-block w-1004 h-743" src="images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
+				      	<img class="d-block w-1004 h-743" src="resources/images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 										이미지2
@@ -65,7 +65,7 @@
 							</div>
 					</div>
 					<div class="item">
-						<img class="d-block w-830 h-743" src="images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
+						<img class="d-block w-830 h-743" src="resources/images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 									이미지3
