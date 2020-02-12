@@ -79,6 +79,7 @@ label{
 					role="button" aria-haspopup="true" aria-expanded="false"><img
 						class="rounded-circle"></img></a>
 					<div class="dropdown-menu" style="margin-left: -120px">
+					
 						<a class="dropdown-item" href="#" >로그아웃</a>
 					</div></li>
 			</ul>
