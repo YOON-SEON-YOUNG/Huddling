@@ -9,6 +9,28 @@
 <div class="container-fluid">
 	<!-- 슬라이드 이미지 -->
 	<div class="row">
+		<div class="col-md-4">
+			<a href="board-list.board">
+				<img src="resources/images/hudling_logo.jpg" style="width:120px; height: 125px; ">
+			</a>
+			</div>
+			
+			<div class="col-md-4">
+			<button type="button" class="btn btn-success">
+				검색
+			</button> 
+			</div>
+			
+			<div class="col-md-4">
+			<button type="button" class="btn btn-outline-warning">
+				회원 로그인
+			</button>
+			<a href="manager/mainPage">관리자페이지</a>
+			<a href="member/mypageMain">마이페이지</a>
+		</div>
+	</div>
+	<!-- 		슬라이드 이미지 -->
+	<div class="row">
 		<div class="col-md-12">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
