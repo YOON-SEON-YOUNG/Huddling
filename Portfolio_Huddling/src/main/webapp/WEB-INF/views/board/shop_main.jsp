@@ -33,7 +33,7 @@
 				회원 로그인
 			</button>
 			<a href="manager/mainPage">관리자페이지</a>
-			
+			<a href="member/mypageMain">마이페이지</a>
 		</div>
 	</div>
 	<!-- 		슬라이드 이미지 -->
