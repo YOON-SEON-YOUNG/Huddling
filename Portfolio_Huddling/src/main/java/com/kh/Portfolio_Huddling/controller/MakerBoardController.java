@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.Portfolio_Huddling.domain.MakerDto;
+import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
 
 @Controller
 @RequestMapping("/maker/*")
@@ -47,7 +47,7 @@ public class MakerBoardController {
 	
 	@RequestMapping(value="/data", method =RequestMethod.GET)
 	@ResponseBody
-	public MakerDto data(MakerDto mkrDto) {
+	public TempMakerRequirDto data(TempMakerRequirDto mkrDto) {
 		System.out.println(mkrDto);
 		return mkrDto;
 	}

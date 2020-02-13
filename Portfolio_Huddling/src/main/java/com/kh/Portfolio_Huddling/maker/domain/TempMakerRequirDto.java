@@ -1,6 +1,6 @@
-package com.kh.Portfolio_Huddling.domain;
+package com.kh.Portfolio_Huddling.maker.domain;
 
-public class MakerDto {
+public class TempMakerRequirDto {
 	
 	private String q1;
 	private String q2;
