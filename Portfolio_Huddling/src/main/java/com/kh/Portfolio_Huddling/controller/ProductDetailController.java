@@ -9,15 +9,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductDetailController {
 	
 	@RequestMapping(value="/detailMain", method=RequestMethod.GET)
-	public String productdetail() {
-		return "detail/product_detail";
+	public String page() {
+		System.out.println("detailMain 실행중");
+		return "detail/productDetail";
 	}
 	
-	@RequestMapping(value="/option")
-	public String productoption() {
-		System.out.println("option 실행중...");
-		return "detail/order_option";
+	@RequestMapping(value= "/tapInfo", method = RequestMethod.GET)
+	public String tapInfo() {
+		System.out.println("tapInfo 실행중");
+		return "detail/include/tapInfo";
+		
 	}
+	@RequestMapping(value= "/tapComment", method = RequestMethod.GET)
+	public String tapComment() {
+		System.out.println("tapComment 실행중");
+		return "detail/include/tapComment";
+		
+	}
+	
+	@RequestMapping(value= "/tapReview", method = RequestMethod.GET)
+	public String tapReview() {
+		System.out.println("tapReview 실행중");
+		return "detail/include/tapReview";
+	}
+	
+	@RequestMapping(value= "/orderOption")
+	public String orderOption() {
+		return "detail/orderOption";
+		
+	}
+	
 	
 
 }
