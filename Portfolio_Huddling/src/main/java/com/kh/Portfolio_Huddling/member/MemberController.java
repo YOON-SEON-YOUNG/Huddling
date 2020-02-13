@@ -1,4 +1,6 @@
-package com.kh.Portfolio_Huddling.controller;
+package com.kh.Portfolio_Huddling.member;
+
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,7 +8,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/member/*")
-public class MemberMyPageController {
+public class MemberController {
+	
+	@Inject
+	private MemberService service;
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String getRegister() throws Exception {
+		
+		return "member/memberRegister";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String postRegister(MemberVo memberVo) throws Exception {
+		
+		service.register(memberVo);
+		
+		return "board/shop_main";
+	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page() {

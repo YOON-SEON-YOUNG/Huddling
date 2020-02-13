@@ -5,22 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Free Board</title>
+<title>Huddling</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <!-- Bootstrap 3.3.4 -->
-<link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+<body>
 <!-- 로고, 검색, 로그인, 카테고리 -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4" align="center">
-			<a href="#">
-				<img src="resources/images/hudling_logo.jpg" style="width:250px; height: 125px; ">
+			<a href="/">
+				<img src="/resources/images/hudling_logo.jpg" style="width:250px; height: 125px; ">
 			</a>
 		</div>
 			
@@ -46,8 +46,8 @@
 			<br/>
 			<br/>
 <!-- 				<a href="manager/mainPage">회원 로그인</a> -->
-			<button type="button" class="btn btn-warning" onClick="#">
-				로그인/회원가입
+			<button type="button" class="btn btn-warning" onClick="location.href='/member/register'">
+				회원가입
 			</button>
 			<button type="button" class="btn btn-primary" onClick="location.href='maker/home'">
 				펀딩오픈 신청하기

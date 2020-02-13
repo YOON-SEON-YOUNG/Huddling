@@ -1,5 +1,7 @@
 package com.kh.Portfolio_Huddling.maker.service;
 
-public interface TempMakerBoardService {
+import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
 
+public interface TempMakerBoardService {
+	public void tempInsert(TempMakerRequirDto requirDto) throws Exception;
 }
