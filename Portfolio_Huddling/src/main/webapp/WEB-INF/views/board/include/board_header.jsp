@@ -9,18 +9,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <!-- Bootstrap 3.3.4 -->
-<link href="/resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+<body>
 <!-- 로고, 검색, 로그인, 카테고리 -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4" align="center">
-			<a href="#">
-				<img src="resources/images/hudling_logo.jpg" style="width:250px; height: 125px; ">
+			<a href="/">
+				<img src="/resources/images/hudling_logo.jpg" style="width:250px; height: 125px; ">
 			</a>
 		</div>
 			
