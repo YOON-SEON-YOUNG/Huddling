@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductDetailController {
 	
 	@RequestMapping(value="/detailMain", method=RequestMethod.GET)
-	public String page() {
+	public String productdetail() {
 		
 		return "detail/product_detail";
 	}
+	
 
 }
