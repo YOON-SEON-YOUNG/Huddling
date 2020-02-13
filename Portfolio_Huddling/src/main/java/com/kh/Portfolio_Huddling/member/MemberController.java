@@ -1,4 +1,4 @@
-package com.kh.Portfolio_Huddling.controller;
+package com.kh.Portfolio_Huddling.member;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,7 +6,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/member/*")
-public class MemberMyPageController {
+public class MemberController {
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register() {
+		
+		return "member/register";
+	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page() {
