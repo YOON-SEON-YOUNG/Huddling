@@ -1,1 +1,6 @@
-내용없음
+create table tbl_temp_requir(
+ temp_requir_q1 varchar2(5),
+ temp_requir_q2 varchar2(200),
+ temp_requir_q3 varchar2(200),
+ temp_requir_q4 varchar2(5)
+);

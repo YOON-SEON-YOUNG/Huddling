@@ -19,7 +19,6 @@
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-body">
-			<h4>메이커 정보</h4>
 			<div class="form-group">
 				<label for="makerName"><strong>메이커 이름</strong></label> <input
 					type="text" class="form-control" id="makerName" />
