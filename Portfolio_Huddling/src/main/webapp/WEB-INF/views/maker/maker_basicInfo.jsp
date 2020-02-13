@@ -53,8 +53,8 @@
 		</div>
 		<div class="card-body">
 			<div class="form-group">
-				<label for="endDate">프로젝트 종료일</label> <input type="text"
-					class="form-control" id="endDate" />
+				<label for="datepicker">프로젝트 종료일</label>
+				<jsp:include page="include/datepicker.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class=card-body>
