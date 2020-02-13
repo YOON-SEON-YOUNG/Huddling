@@ -20,7 +20,7 @@
 			    <!-- Wrapper for slides -->
 				<div class="carousel-inner">
 				  	<div class="item active">
-				    	<img class="d-block w-743 h-743 " src="resources/images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
+				    	<img class="d-block w-743 h-743 " src="/resources/images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 									이미지1
@@ -28,7 +28,7 @@
 							</div>
 				  	</div>
 				   	<div class="item">
-				      	<img class="d-block w-1004 h-743" src="resources/images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
+				      	<img class="d-block w-1004 h-743" src="/resources/images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 										이미지2
@@ -36,7 +36,7 @@
 							</div>
 					</div>
 					<div class="item">
-						<img class="d-block w-830 h-743" src="resources/images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
+						<img class="d-block w-830 h-743" src="/resources/images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
 							<div class="carousel-caption">
 								<h4 style="font-weight: bold;">
 									이미지3
@@ -105,7 +105,7 @@
 				<!-- 상품1 -->
 				<div class="col-md-4">
 					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="resources/images/thumbnail_01.jpg" />
+						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_01.jpg" />
 						<div class="card-block">
 							<h5 class="card-title">
 								모빌리티산업 투자ㅣ대한민국 캠핑 카라반이 세계로 진출합니다.
@@ -126,7 +126,7 @@
 				<!-- 상품2 -->
 				<div class="col-md-4" >
 					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="resources/images/thumbnail_02.jpg" />
+						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_02.jpg" />
 						<div class="card-block">
 							<h5 class="card-title">
 								강집사 초대형 고양이 화장실 + 멀티박스!! 냥이와 집사를 위한 선택
@@ -147,7 +147,7 @@
 				<!-- 상품3 -->
 				<div class="col-md-4">
 					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="resources/images/thumbnail_03.jpg" />
+						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_03.jpg" />
 						<div class="card-block">
 							<h5 class="card-title">
 								스트릿 패션 완성! 환경을 생각한 가벼운 메신져백, [비트백]
