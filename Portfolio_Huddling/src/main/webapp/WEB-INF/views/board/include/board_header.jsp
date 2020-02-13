@@ -53,7 +53,7 @@
 				펀딩오픈 신청하기
 			</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="/manager/mainPage">관리자페이지</a>
+			<a href="manager/mainPage">관리자페이지</a>
 		</div>
 	</div>
 	
