@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Free Board</title>
+<title>Huddling</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  <!-- Bootstrap 3.3.4 -->
@@ -46,8 +46,8 @@
 			<br/>
 			<br/>
 <!-- 				<a href="manager/mainPage">회원 로그인</a> -->
-			<button type="button" class="btn btn-warning" onClick="#">
-				로그인/회원가입
+			<button type="button" class="btn btn-warning" onClick="location.href='/member/register'">
+				회원가입
 			</button>
 			<button type="button" class="btn btn-primary" onClick="location.href='maker/home'">
 				펀딩오픈 신청하기
