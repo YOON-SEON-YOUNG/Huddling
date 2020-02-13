@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
-<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet"> 
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -16,6 +16,14 @@
 
 </head>
 
+<script>
+/* $(document).ready(function() {
+	$(".btn").click(function() {
+		location.href="detail/option"
+	});
+}); */
+
+</script>
 
 
 <div class="card card-body h-100">
@@ -26,7 +34,6 @@
 				<div class="col-md-8">
 
 					<div class="page-header">
-
 						<!-- 카테고리 -->
 						<h4 class="reviews">카테고리</h4>
 						<!--  타이틀 -->
@@ -43,12 +50,12 @@
 									<h4 class="reviews text-capitalize">프로젝트 소개</h4>
 							</a></li>
 
-							<!-- tab2. 프로젝트 소개 -->
+							<!-- tab2. 참여 내역 -->
 							<li><a href="#add-comment" role="tab" data-toggle="tab">
 									<h4 class="reviews text-capitalize">참여내역</h4>
 							</a></li>
 
-							<!-- tab3. 프로젝트 소개 -->
+							<!-- tab3. 후기 -->
 							<li><a href="#account-settings" role="tab" data-toggle="tab">
 									<h4 class="reviews text-capitalize">후기</h4>
 							</a></li>
@@ -120,11 +127,11 @@
 
 
 						<!-- 펀딩 참여하기로 이동 -->
-						<a href="detail/option">
+						<a href="../detail/option">	
 							<button type="button" class="btn btn-md active btn-primary"
 								id="btnAttend">펀딩 참여하기</button>
-						</a>
-
+						</a>			
+											
 
 					</div>
 
