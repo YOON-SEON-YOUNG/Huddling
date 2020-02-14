@@ -5,7 +5,7 @@ create table tbl_member (
     member_nickname varchar2(50) not null,
     member_email varchar2(50),
     member_address varchar2(100),
-    member_call number,
+    member_call varchar2(50),
     member_rating number default 0,
     member_point number default 0
 );

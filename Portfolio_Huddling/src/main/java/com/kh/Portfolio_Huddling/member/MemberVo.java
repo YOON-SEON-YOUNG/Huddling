@@ -8,7 +8,7 @@ public class MemberVo {
 	private String member_nickname;
 	private String member_email;
 	private String member_address;
-	private int member_call;
+	private String member_call;
 	private int member_rating;
 	private int member_point;
 
@@ -18,7 +18,7 @@ public class MemberVo {
 	}
 
 	public MemberVo(String member_id, String member_pw, String member_name, String member_nickname, String member_email,
-			String member_address, int member_call, int member_rating, int member_point) {
+			String member_address, String member_call, int member_rating, int member_point) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -79,11 +79,11 @@ public class MemberVo {
 		this.member_address = member_address;
 	}
 
-	public int getMember_call() {
+	public String getMember_call() {
 		return member_call;
 	}
 
-	public void setMember_call(int member_call) {
+	public void setMember_call(String member_call) {
 		this.member_call = member_call;
 	}
 

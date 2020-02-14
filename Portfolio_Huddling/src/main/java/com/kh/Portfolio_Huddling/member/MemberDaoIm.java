@@ -32,4 +32,9 @@ public class MemberDaoIm implements MemberDao {
 		return sqlsession.selectOne(NAMESPACE + ".selectMemberPw", memberVo);
 	}
 
+	@Override
+	public MemberVo loginInfo(MemberVo memberVo) throws Exception {
+		return sqlsession.selectOne(NAMESPACE + ".selectMemberInfo", memberVo);
+	}
+
 }

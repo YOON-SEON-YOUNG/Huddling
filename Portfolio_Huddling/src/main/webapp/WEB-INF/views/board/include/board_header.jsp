@@ -46,12 +46,21 @@
 			<br/>
 			<br/>
 <!-- 				<a href="manager/mainPage">회원 로그인</a> -->
-			<button type="button" class="btn btn-warning" onClick="location.href='/member/register'">
-				회원가입
-			</button>
-			<button type="button" class="btn btn-warning" onClick="location.href='/member/login'">
-				로그인
-			</button>
+			<c:choose>
+				<c:when test="${not empty memberVo}">
+					<span>${memberVo.member_nickname}님 반가워요.</span>
+					<input type="button" id="logout" value="로그아웃" onclick="location.href='/member/logout'">
+				</c:when>
+				<c:otherwise>
+					<button type="button" class="btn btn-warning" onClick="location.href='/member/register'">
+						회원가입
+					</button>
+					<button type="button" class="btn btn-warning" onClick="location.href='/member/login'">
+						로그인
+					</button>
+				</c:otherwise>
+			</c:choose>
+			
 			<button type="button" class="btn btn-primary" onClick="location.href='maker/home'">
 				펀딩오픈 신청하기
 			</button>
