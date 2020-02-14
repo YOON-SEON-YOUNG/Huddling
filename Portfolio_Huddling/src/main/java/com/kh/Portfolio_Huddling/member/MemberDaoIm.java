@@ -19,4 +19,17 @@ public class MemberDaoIm implements MemberDao {
 		sqlsession.insert(NAMESPACE + ".insertMember", memberVo);
 	}
 
+	@Override
+	public int loginId(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return (int)sqlsession.selectOne(NAMESPACE + ".selectMemberId", memberVo);
+	}
+
+	@Override
+	public int loginPw(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(NAMESPACE + ".selectMemberPw", memberVo);
+	}
+
 }

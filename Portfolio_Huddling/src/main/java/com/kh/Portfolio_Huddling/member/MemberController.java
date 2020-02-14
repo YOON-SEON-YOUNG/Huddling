@@ -1,10 +1,14 @@
 package com.kh.Portfolio_Huddling.member;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/member/*")
@@ -25,6 +29,33 @@ public class MemberController {
 		service.register(memberVo);
 		
 		return "board/shop_main";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getLogin() throws Exception {
+		
+		return "member/memberLogin";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String PostLogin(HttpServletRequest request, MemberVo memberVo) throws Exception {
+		String member_id = memberVo.getMember_id();
+		request.getSession().setAttribute("member_id", member_id);
+		return "board/shop_main";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/loginIdCheck", method = RequestMethod.POST)
+	public int postLoginId(MemberVo memberVo) throws Exception {
+		System.out.println("로그인아이디체크 실행");
+		return service.loginId(memberVo);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/loginPwCheck", method = RequestMethod.POST)
+	public int postLoginPW(MemberVo memberVo) throws Exception {
+		System.out.println("로그인비밀번호체크 실행");
+		return service.loginPw(memberVo);
 	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)

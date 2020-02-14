@@ -15,4 +15,14 @@ public class MemberServiceIm implements MemberService {
 		dao.register(memberVo);
 	}
 
+	@Override
+	public int loginId(MemberVo memberVo) throws Exception {
+		return dao.loginId(memberVo);
+	}
+
+	@Override
+	public int loginPw(MemberVo memberVo) throws Exception {
+		return dao.loginPw(memberVo);
+	}
+
 }
