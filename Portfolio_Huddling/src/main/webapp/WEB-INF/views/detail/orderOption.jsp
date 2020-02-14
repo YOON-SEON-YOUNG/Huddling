@@ -13,7 +13,40 @@
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/option_style.css"/>" rel="stylesheet">
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
+
+<script>
+$(document).on('click', '.number-spinner button', function () {    
+	var btn = $(this),
+		oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+		newVal = 0;
+	
+	if (btn.attr('data-dir') == 'up') {
+		newVal = parseInt(oldValue) + 1;
+	} else {
+		if (oldValue > 1) {
+			newVal = parseInt(oldValue) - 1;
+		} else {
+			newVal = 1;
+		}
+	}
+	btn.closest('.number-spinner').find('input').val(newVal);
+});
+
+//새 창 띄우기
+
+function funding_click() {
+	var url ="../detail/orderPage";
+	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500 height=600")
+};
+
+</script>
 
 
 <body>
@@ -41,10 +74,24 @@
 										<label for="question1">50,000원이상</label>
 										<p class="plan-text">리워드 내역 : 마인도어 보드게임 1세트 | 예상일 : 2020.02.12 
 										<br> 76명 참여 | 선착순 남은 수량 15개</p>
-										<div class="plan-price2">
-								<!-- 옵션 수량 -->			
-											<input type="number" id="qty_input"
-												class="form-control form-control-sm" value="1" min="1">
+										<!-- 옵션 수량 -->	
+										<div class="plan-price2" style="width:300px">
+										
+											<div class="col-xs-3 col-xs-offset-3">
+												<div class="input-group number-spinner">
+													<span class="input-group-btn">
+														<button class="btn btn-default" data-dir="dwn">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+													</span> 
+													<input type="text" class="form-control text-center "value="1" style="width:100px"> 
+													<span class="input-group-btn">
+														<button class="btn btn-default" data-dir="up">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+													</span>
+												</div>
+											</div>
 										</div>
 								<!-- 옵션에 따른 펀딩 금액 -->			
 										<span class="plan-price">50,000원</span>
@@ -97,7 +144,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="#" class="btn btn-primary btn-lg mb30">펀딩 참여하기</a>
+							<a href="#" class="btn btn-primary btn-lg mb30" onclick="funding_click()">펀딩 참여하기</a>
 						</div>
 					</div>
 				</div>
