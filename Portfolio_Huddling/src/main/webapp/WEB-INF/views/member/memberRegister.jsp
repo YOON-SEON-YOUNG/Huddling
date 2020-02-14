@@ -80,7 +80,7 @@ function memberAddress() {
 		
 	<!--                                         작업시작                         -->
 		<div class="col-md-6">
-		<form action="/member/insert" method="post">
+		<form action="/member/register" method="post">
 	<!--                                 아이디                                   -->
   <div class="form-group">
     <label for="exampleInputEmail1">아아디</label>
