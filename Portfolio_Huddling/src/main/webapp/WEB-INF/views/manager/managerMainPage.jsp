@@ -33,16 +33,19 @@ $(document).ready(function() {
 		$("#page").empty();
 		$("#page").load("userControl");
 	});
+	
 	$("#projectAcceptanceControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
 		$("#page").load("projectAcceptanceControl");
 	});
+	
 	$("#projectUnacceptedControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
 		$("#page").load("projectUnacceptedControl");
 	});
+	
 	$("#questionsControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();

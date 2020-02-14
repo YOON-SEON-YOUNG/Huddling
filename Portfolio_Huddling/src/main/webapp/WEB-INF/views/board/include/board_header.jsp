@@ -49,6 +49,9 @@
 			<button type="button" class="btn btn-warning" onClick="location.href='/member/register'">
 				회원가입
 			</button>
+			<button type="button" class="btn btn-warning" onClick="location.href='/member/login'">
+				로그인
+			</button>
 			<button type="button" class="btn btn-primary" onClick="location.href='maker/home'">
 				펀딩오픈 신청하기
 			</button>

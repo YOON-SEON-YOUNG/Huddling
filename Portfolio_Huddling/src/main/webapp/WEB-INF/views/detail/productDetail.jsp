@@ -17,11 +17,30 @@
 </head>
 
 <script>
-/* $(document).ready(function() {
-	$(".btn").click(function() {
-		location.href="detail/option"
+$(document).ready(function() {
+	
+	$("#page").load("tapInfo");
+	
+	
+	$("#tapInfo").click(function(e) {
+		console.log("tapInfo 클릭됨");
+ 		e.preventDefault();
+		$("#page").empty(); 
+		$("#page").load("tapInfo");
 	});
-}); */
+	$("#tapComment").click(function(e) {
+		console.log("tapComment 클릭됨");
+ 		e.preventDefault();
+		$("#page").empty(); 
+		$("#page").load("tapComment");
+	});
+	$("#tapReview").click(function(e) {
+		console.log("tapReview 클릭됨")
+ 		e.preventDefault();
+		$("#page").empty(); 
+		$("#page").load("tapReview")
+	});
+});
 
 </script>
 
@@ -39,67 +58,37 @@
 						<!--  타이틀 -->
 						<h2 class="reviews">'어른친구' 만드는 세대공감 보드게임</h2>
 					</div>
+					
 
-					<!-- 상세보기 탭 -->
-					<div class="comment-tabs">
+					<!-- 탭 메뉴 -->
+					<div id="menu" class="comment-tabs">
 						<ul class="nav nav-tabs" role="tablist">
 
 							<!-- tab1. 프로젝트 소개 -->
-							<li class="active"><a href="#comments-logout" role="tab"
-								data-toggle="tab">
+							<li class="active">
+								<a id="tapInfo" role="tab" data-toggle="tab">
 									<h4 class="reviews text-capitalize">프로젝트 소개</h4>
-							</a></li>
+								</a>
+							</li>
 
 							<!-- tab2. 참여 내역 -->
-							<li><a href="#add-comment" role="tab" data-toggle="tab">
+							<li>
+								<a id="tapComment" role="tab" data-toggle="tab">
 									<h4 class="reviews text-capitalize">참여내역</h4>
-							</a></li>
+								</a>
+							</li>
 
 							<!-- tab3. 후기 -->
-							<li><a href="#account-settings" role="tab" data-toggle="tab">
+							<li><a id="tapReview" role="tab" data-toggle="tab">
 									<h4 class="reviews text-capitalize">후기</h4>
-							</a></li>
+								</a>
+							</li>
 						</ul>
-
-						<!-- tap 내용 -->
-						<div class="tab-content">
-
-							<!-- 프로젝트 소개 -->
-							<div class="tab-pane active" id="comments-logout">
-
-
-								<!-- 프로젝트 내용 인클루드 -->
-								<jsp:include page="/WEB-INF/views/detail/include/info.jsp" />
-
-
-							</div>
-
-							<!-- 참여 내역 -->
-							<div class="tab-pane" id="add-comment">
-
-								<div class="row">
-									<div class="col-md-12">
-
-										<!-- 참여댓글 내용 인클루드 -->
-										<jsp:include page="/WEB-INF/views/detail/include/comment.jsp" />
-									</div>
-								</div>
-							</div>
-
-
-							<!-- 후기 탭 -->
-
-
-							<div class="tab-pane" id="account-settings">
-								<div class="reviews">
-
-									<!-- 후기 내용 인클루드 -->
-									<jsp:include page="/WEB-INF/views/detail/include/review.jsp" />
-
-								</div>
-							</div>
-						</div>
 					</div>
+						<!-- tap 내용 -->
+							<div id="page" class="col-md-12">
+							</div>						
+						<!-- // tap 내용 끝 -->
 				</div>
 				<div class="col-md-4">
 
@@ -127,7 +116,7 @@
 
 
 						<!-- 펀딩 참여하기로 이동 -->
-						<a href="../detail/option">	
+						<a href="../detail/orderOption">	
 							<button type="button" class="btn btn-md active btn-primary"
 								id="btnAttend">펀딩 참여하기</button>
 						</a>			
