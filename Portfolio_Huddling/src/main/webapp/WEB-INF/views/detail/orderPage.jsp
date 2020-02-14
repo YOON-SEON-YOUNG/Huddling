@@ -21,8 +21,9 @@
 00월 00일에 배송 예정입니다
 <br>
 <br>
-<button type="button" class="btn btn-primary">결제하기</button> 
-<br>
+
+<button type="button" class="btn btn-primary" onClick="location.href='../member/include/myPageReadListControl'">내가 후원한 펀딩 보기</button>
+
 <br>
 <button type="button" class="btn btn-primary" onClick="window.open('','_self').close();">닫기</button>
 
