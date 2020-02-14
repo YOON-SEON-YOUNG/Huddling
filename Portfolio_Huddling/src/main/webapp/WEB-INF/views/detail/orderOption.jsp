@@ -42,7 +42,7 @@ $(document).on('click', '.number-spinner button', function () {
 	btn.closest('.number-spinner').find('input').val(newVal);
 });
 
-//새 창 띄우기
+//결제완료 창 띄우기
 
 function funding_click() {
 	var url ="../detail/orderPage";

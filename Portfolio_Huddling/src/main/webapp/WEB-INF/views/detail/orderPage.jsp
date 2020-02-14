@@ -22,8 +22,8 @@
 <br>
 <br>
 
-<button type="button" class="btn btn-primary" onClick="location.href='../member/include/myPageReadListControl'">내가 후원한 펀딩 보기</button>
-
+<button type="button" class="btn btn-primary" onClick="location.href=''">내가 후원한 펀딩 보기</button>
+<br>
 <br>
 <button type="button" class="btn btn-primary" onClick="window.open('','_self').close();">닫기</button>
 

@@ -105,7 +105,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="detail/detailMain">펀딩하러가기</a> 
+								<a class="btn btn-primary" href="/detail/detailMain">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
