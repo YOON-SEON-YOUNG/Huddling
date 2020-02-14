@@ -1,12 +1,23 @@
-package com.kh.Portfolio_Huddling.controller;
+package com.kh.Portfolio_Huddling.manager;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.kh.Portfolio_Huddling.member.MemberService;
+import com.kh.Portfolio_Huddling.member.MemberVo;
 
 @Controller
 @RequestMapping("/manager/*")
 public class ManagerController {
+	
+	@Inject
+	private MemberService service;
 	
 	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
 	public String page() {
@@ -15,8 +26,9 @@ public class ManagerController {
 	}
 	
 	@RequestMapping(value = "/userControl", method = RequestMethod.GET)
-	public String userControl() {
-		
+	public String userControl(Model model, MemberVo memberVo) throws Exception {
+		List<MemberVo> list = service.memberList(memberVo);
+		model.addAttribute("memberList", list);
 		return "manager/include/userControl";
 	}
 	
@@ -37,4 +49,6 @@ public class ManagerController {
 		
 		return "manager/include/questionsControl";
 	}
+	
+	
 }

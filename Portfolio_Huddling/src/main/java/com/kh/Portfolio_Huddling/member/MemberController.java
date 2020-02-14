@@ -1,10 +1,13 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -98,5 +101,5 @@ public class MemberController {
 		return "member/include/myPagePointControl";
 	}
 	
-	
+
 }

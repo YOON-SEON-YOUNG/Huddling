@@ -52,6 +52,7 @@ $(document).ready(function() {
 		$("#page").load("questionsControl");
 	});
 	
+	
 });
 </script>
 <title>관리자페이지</title>
