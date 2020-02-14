@@ -14,6 +14,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <body>
 <!-- 로고, 검색, 로그인, 카테고리 -->
 <div class="container-fluid">
@@ -28,11 +34,12 @@
 		<div class="col-md-4" align="right">
 			<br/>
 			<br/>
-	        <form class="navbar-form" role="search" action="#" id="searchForm" >
+	        <form class="custom-search-input" role="search" action="#" id="searchForm" >
 		        <div class="input-group">
-		            <input type="text" name="keyword"  value=""  class="form-control" 
-		            		placeholder="어떤 프로젝트를 찾고 계신가요?"
-		            		style="width: 300px;"/>
+		            <input type="text" class="form-control input-md" 
+		            		name="keyword"  value=""  class="form-control" 
+		            		style="size: 300px;"
+		            		placeholder="어떤 프로젝트를 찾고 계신가요?"/>
 		            <div class="input-group-btn">
 		                <button class="btn btn-default" type="submit">
 		                	<i class="glyphicon glyphicon-search"></i>
@@ -48,7 +55,7 @@
 <!-- 				<a href="manager/mainPage">회원 로그인</a> -->
 			<c:choose>
 				<c:when test="${not empty memberVo}">
-					<span>${memberVo.member_nickname}님 반가워요.</span>
+					<span>${memberVo.member_nickname}님 반가습니다.</span>
 					<input type="button" id="logout" value="로그아웃" onclick="location.href='/member/logout'">
 				</c:when>
 				<c:otherwise>
@@ -70,6 +77,7 @@
 	</div>
 	
 	<br/>
+	<hr/>
 	<br/>
 	
 	<!-- 카테고리 -->
@@ -78,32 +86,32 @@
 		</div>
 		<div class="col-md-8" align="center">
 			<a href="/">
-				<button class="btn btn-success" type="button">
+				<button class="btn btn btn-primary  btn-lg mb50" type="button">
 					전체 테마
 				</button>
 			</a>
 			<a href="/board/categoryTech">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
 					테크/가전
 				</button> 
 			</a>
 			<a href="/board/categoryBeauty">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
 					패션/뷰티
 				</button> 
 			</a>
 			<a href="/board/categoryFood">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
 					푸드
 				</button> 
 			</a>
 			<a href="/board/categoryCulture">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
 					문화
 				</button>
 			</a>
 			<a href="/board/categoryDonate">
-				<button class="btn btn-secondary" type="button">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
 					기부/후원
 				</button>
 			</a>
@@ -112,8 +120,6 @@
 		</div>
 	</div><!-- /.row 카테고리 -->
 	
-	<br/>
-	<br/>
 	<br/>
 	
 </div>
