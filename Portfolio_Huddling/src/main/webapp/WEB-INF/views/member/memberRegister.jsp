@@ -1,46 +1,121 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Huddling</title>
+<title>Home</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+
+<style>
+#btnIdCheck{
+	right:200px;
+}
+</style>
+<script>
+	
+</script>
 </head>
+<header>
+<div class="container-fluid">
+	<div class="row">
+	<!-- 아무것두없음 -->
+		<div class="col-md-3">
+		</div>
+		<!-- 작업시작 -->
+		<div class="col-md-6">
+		<a><img src="resources/image/hudling_logo.jpg"></img></a>
+		</div>
+		<!-- 아무것도업음 -->
+		<div class="col-md-3">
+		</div>
+	</div>
+</div>
+</header>
 <body>
-	<h1>회원가입</h1>
-	<form action="/member/register" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="member_id" id="member_id" required/></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="member_pw" id="member_pw" required/></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="member_name" id="member_name" required/></td>
-			</tr>
-			<tr>
-				<td>닉네임</td>
-				<td><input type="text" name="member_nickname" id="member_nickname" required/></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><input type="email" name="member_email" id="member_email" /></td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td><input type="text" name="member_address" id="member_address"/></td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td><input type="text" name="member_call" id="member_call"/></td>
-			</tr>
-		</table>
-		<hr>
-		<input type="submit" value="회원가입"/>
-	</form>
+<div class="container-fluid">
+	<div class="row">
+	<!-- 아무것두없음 -->
+		<div class="col-md-3">
+		</div>
+		
+	<!--                                         작업시작                         -->
+		<div class="col-md-6">
+		<form action="/member/register" method="post">
+	<!--                                 아이디                                   -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">아아디</label>
+    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
+    <small id="textHelp" class="form-text text-muted">같은 아이디불가</small>
+  </div>
+  
+   <!--                                   이름                                     -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">이름</label>
+    <input type="text" class="form-control" id="member_name" aria-describedby="emailHelp" name="member_name">
+  </div>
+  
+  <!-- 비밀번호 -->
+  <div class="form-group">
+    <label for="exampleInputPassword1">비밀번호</label>
+    <input type="password" class="form-control" id="member_pw" name="member_pw">
+  </div>
+  
+  <!-- 닉네임 -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">닉네임</label>
+    <input type="text" class="form-control" id="member_nickname" aria-describedby="emailHelp" name="member_nickname">
+  </div>
+  <!-- 이메일 -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">이메일</label>
+    <input type="email" class="form-control" id="member_email" aria-describedby="emailHelp" name="member_email">
+  </div>
+  <!-- 주소 -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">주소</label>
+    <input type="text" class="form-control" id="member_address" aria-describedby="emailHelp" name="member_address">
+  </div>
+  <!-- 전화번호 -->
+  <div class="form-group">
+    <label for="exampleInputEmail1">전화번호</label>
+    <input type="tel" class="form-control" id="member_call" aria-describedby="emailHelp" name="member_call">
+  </div>
+  
+  <!-- 이용약관 -->
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="terms">
+    
+    <!-- 이용약관 모달이 들어감 -->
+    <label class="form-check-label" for="exampleCheck1">이용약관(필수)</label>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">회원가입</button>
+</form>
+
+		</div>
+		<!-- 아무것도업음 -->
+		<div class="col-md-3">
+		<span><button id="btnIdCheck">아이디중복체크</button></span>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

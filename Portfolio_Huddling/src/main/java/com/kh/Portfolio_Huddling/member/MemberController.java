@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +25,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVo memberVo) throws Exception {
+	public String postRegister(MemberVo memberVo,Model model) throws Exception {
 		
 		service.register(memberVo);
-		
-		return "board/shop_main";
+		model.addAttribute("memberVo",memberVo);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
