@@ -22,15 +22,35 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
-
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 #btnIdCheck{
 	right:200px;
 }
+#member_address{
+	cursor: pointer;
+}
 </style>
 <script>
-	
+function memberAddress() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = data.address; // 최종 주소 변수
+            console.log(addr);
+			console.log(data);
+            // 주소 정보를 해당 필드에 넣는다.
+            document.getElementById("member_address").value = addr;
+			console.log("member_address" + member_address);
+         	
+           
+        }
+    }).open();
+}
+        
+        
+        
 </script>
+
 </head>
 <header>
 <div class="container-fluid">
@@ -48,6 +68,9 @@
 	</div>
 </div>
 </header>
+<!-- 모달창가져옴 -->
+<%-- <%@ include file="include/memberAddress.jsp" %> --%>
+<!-- //모달창가져옴 -->
 <body>
 <div class="container-fluid">
 	<div class="row">
@@ -57,7 +80,7 @@
 		
 	<!--                                         작업시작                         -->
 		<div class="col-md-6">
-		<form action="/member/register" method="post">
+		<form action="/member/insert" method="post">
 	<!--                                 아이디                                   -->
   <div class="form-group">
     <label for="exampleInputEmail1">아아디</label>
@@ -89,9 +112,27 @@
   </div>
   <!-- 주소 -->
   <div class="form-group">
+  
+<!--  <label>Zip Code</label>  -->
+
+        
+<!-- <input type="text" name="zipNum" id="sample6_postcode" placeholder="우편번호"> -->
+<!-- <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
+        
+<!--  <label>Address</label>  -->
+
+
+<!--  <input type="text" name="addr1" id="sample6_address" placeholder="주소"><br> -->
+<!-- <input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소"> -->
+<!--   </div> -->
+  
+  
     <label for="exampleInputEmail1">주소</label>
-    <input type="text" class="form-control" id="member_address" aria-describedby="emailHelp" name="member_address">
+    <input type="text" id="member_address"  name ="member_address"placeholder="주소">
+<input type="button" onclick="memberAddress()" value="주소 검색"><br>
   </div>
+  
+ 
   <!-- 전화번호 -->
   <div class="form-group">
     <label for="exampleInputEmail1">전화번호</label>
@@ -103,7 +144,7 @@
     <input type="checkbox" class="form-check-input" id="terms">
     
     <!-- 이용약관 모달이 들어감 -->
-    <label class="form-check-label" for="exampleCheck1">이용약관(필수)</label>
+    <label class="form-check-label" for="exampleCheck1" id="">이용약관(필수)</label>
   </div>
   
   <button type="submit" class="btn btn-primary">회원가입</button>
@@ -112,7 +153,7 @@
 		</div>
 		<!-- 아무것도업음 -->
 		<div class="col-md-3">
-		<span><button id="btnIdCheck">아이디중복체크</button></span>
+		<span><button id="btnIdCheck" onclick="idOnclick">아이디중복체크</button></span>
 		</div>
 	</div>
 </div>
