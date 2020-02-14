@@ -1,5 +1,7 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -29,6 +31,12 @@ public class MemberServiceIm implements MemberService {
 	public MemberVo loginInfo(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.loginInfo(memberVo);
+	}
+
+	@Override
+	public List<MemberVo> memberList(MemberVo memberVo) throws Exception {
+		
+		return dao.memberList(memberVo);
 	}
 
 }

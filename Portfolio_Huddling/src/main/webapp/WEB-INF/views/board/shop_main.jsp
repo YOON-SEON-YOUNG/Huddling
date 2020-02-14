@@ -68,7 +68,7 @@
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
-			<h3>인기 추천 프로젝트</h3>
+			<p style="font-weight: bold; font-size: large;">인기 추천 프로젝트</p>
 		 
 <!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
 <!--             <div class="controls pull-right hidden-xs" align="right"> -->
@@ -105,7 +105,9 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="/detail/detailMain">펀딩하러가기</a> 
+
+								<a class="btn btn-primary  btn-lg mb30" href="detail/detailMain">펀딩하러가기</a> 
+
 							</p>
 						</div>
 					</div>
@@ -126,7 +128,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -147,7 +149,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -175,7 +177,7 @@
 			<!-- 여백 -->
 		</div>
 		<div class="col-md-8">
-			<h3>신규 프로젝트</h3>
+			<p style="font-weight: bold; font-size: large;">신규 프로젝트</p>
 		 
 <!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
 <!--             <div class="controls pull-right hidden-xs" align="right"> -->
@@ -213,7 +215,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -234,7 +236,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -255,7 +257,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
