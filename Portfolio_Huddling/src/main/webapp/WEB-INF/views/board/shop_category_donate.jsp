@@ -7,68 +7,13 @@
 <body>
 
 <div class="container-fluid">
-	<!-- 슬라이드 이미지 -->
-	<div class="row">
-		<div class="col-md-12">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		    <!-- Indicators -->
-				<ol class="carousel-indicators">
-		      		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		      		<li data-target="#myCarousel" data-slide-to="1"></li>
-		      		<li data-target="#myCarousel" data-slide-to="2"></li>
-		   		</ol>
-			    <!-- Wrapper for slides -->
-				<div class="carousel-inner">
-				  	<div class="item active">
-				    	<img class="d-block w-743 h-743 " src="/resources/images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-									이미지1
-								</h4>
-							</div>
-				  	</div>
-				   	<div class="item">
-				      	<img class="d-block w-1004 h-743" src="/resources/images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-										이미지2
-									</h4>
-							</div>
-					</div>
-					<div class="item">
-						<img class="d-block w-830 h-743" src="/resources/images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-									이미지3
-								</h4>
-							</div>
-					</div>
-					
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					  	<span class="glyphicon glyphicon-chevron-left""></span>
-					  	<span class="sr-only">Previous</span>				
-					</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-						  <span class="glyphicon glyphicon-chevron-right"></span>
-						  <span class="sr-only">Next</span>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div><!-- /.row 슬라이드 -->		
-
 	<br/>
-	<br/>
-	<br/>
-	
-	
 	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 		</div>
-		<div class="col-md-3">
-			<h3>인기 추천 프로젝트</h3>
+		<div class="col-md-4" align="left">
+			<p style="font-weight: bold; font-size: large;">기부/후원</p>
 		 
 <!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
 <!--             <div class="controls pull-right hidden-xs" align="right"> -->
@@ -81,21 +26,22 @@
 <!--             </div>/.controls pull-right hidden-xs -->
             
         </div>
-        <div class="col-md-3" >
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-					Action
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					 <a class="dropdown-item disabled" href="#">Action</a> 
-					 <a class="dropdown-item" href="#">Another action</a> 
-					 <a class="dropdown-item" href="#">Something else here</a>
+        <div class="col-md-4" align="right">
+<!-- 			<div class="dropdown"> -->
+				<div class="wrap-drop">
+					<select class="drop" style="width: 100px; font-size: 15px;">
+				      <option>인기 순위</option>
+				      <option>최신 등록 순위</option>
+				      <option>마감 임박 순위</option>
+				    </select>
 				</div>
 			</div>
         </div>
-        <div class="col-md-3" >
+        <div class="col-md-2" >
         </div>
 	</div><!-- /.row -->
+	
+	<br/>
 	
 	<div class="row">
 		<div class="col-md-2">
@@ -117,7 +63,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -138,7 +84,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>
@@ -159,7 +105,7 @@
 								</div>
 							</div><!-- /.프로그레스 -->
 							<p>
-								<a class="btn btn-primary" href="#">펀딩하러가기</a> 
+								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
 							</p>
 						</div>
 					</div>

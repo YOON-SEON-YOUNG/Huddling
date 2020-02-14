@@ -1,7 +1,10 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +35,12 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String postLogout(HttpSession session) throws Exception {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
 		
@@ -39,10 +48,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String PostLogin(HttpServletRequest request, MemberVo memberVo) throws Exception {
-		String member_id = memberVo.getMember_id();
-		request.getSession().setAttribute("member_id", member_id);
-		return "board/shop_main";
+	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
+		MemberVo selectMemberVo = service.loginInfo(memberVo);
+		session.setAttribute("memberVo", selectMemberVo);
+		return "redirect:/";
 	}
 	
 	@ResponseBody
@@ -92,5 +101,5 @@ public class MemberController {
 		return "member/include/myPagePointControl";
 	}
 	
-	
+
 }

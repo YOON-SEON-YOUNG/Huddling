@@ -23,6 +23,15 @@
 		where member_id = #{member_id} and member_pw = #{member_pw}
 	</select>
 
+	<select id="selectMemberInfo" resultType="MemberVo">
+		select * from tbl_member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="selectMemberList" resultType="MemberVo">
+		select * from tbl_member
+	</select>
+
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->
 <!-- 	</select> -->

@@ -1,5 +1,7 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,6 +32,16 @@ public class MemberDaoIm implements MemberDao {
 	public int loginPw(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlsession.selectOne(NAMESPACE + ".selectMemberPw", memberVo);
+	}
+
+	@Override
+	public MemberVo loginInfo(MemberVo memberVo) throws Exception {
+		return sqlsession.selectOne(NAMESPACE + ".selectMemberInfo", memberVo);
+	}
+
+	@Override
+	public List<MemberVo> memberList(MemberVo memberVo) throws Exception {
+		return sqlsession.selectList(NAMESPACE + ".selectMemberList", memberVo);
 	}
 
 }

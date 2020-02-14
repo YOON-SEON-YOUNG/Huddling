@@ -27,7 +27,6 @@ $(document).ready(function() {
 				}, function(rData) {
 					if (rData == "1") {
 						// 로그인 성공
-						alert("로그인성공");
 						$("#form").submit();
 					} else {
 						alert("비밀번호가 틀렸습니다.");

@@ -11,7 +11,7 @@
 <!-- 					alias="MemberVo"/> -->
 					
 		<!-- 패키지 단위 -->
-		<package name="com.kh.portfolio_Huddling"/>
+		<package name="com.kh.Portfolio_Huddling"/>
 		
 		
 	</typeAliases>
