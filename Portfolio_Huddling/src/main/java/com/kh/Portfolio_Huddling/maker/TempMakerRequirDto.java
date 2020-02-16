@@ -1,4 +1,4 @@
-package com.kh.Portfolio_Huddling.maker.domain;
+package com.kh.Portfolio_Huddling.maker;
 
 public class TempMakerRequirDto {
 	

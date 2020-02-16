@@ -15,6 +15,13 @@
 	$(function() {
 		$("#bread").text("info");
 		$('input[name=tags]').tagify();
+		
+		// 임시 저장된 기본 정보 가져오기
+		
+		// 입력한 데이터 임시 저장
+		
+		// 
+		
 	});
 </script>
 <div class="container-fluid">

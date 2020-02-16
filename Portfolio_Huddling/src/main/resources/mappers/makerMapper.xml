@@ -5,8 +5,6 @@
 
 <mapper namespace="com.kh.maker">
 	<insert id="tempInsertRequir">
-		insert into tbl_temp_requir(q1,q2,q3,q4)
-		values(#{q1},#{q2},#{Q3},#{Q4})
 	</insert>
 
 

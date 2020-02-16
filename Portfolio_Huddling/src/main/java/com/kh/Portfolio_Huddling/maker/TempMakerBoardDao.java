@@ -1,6 +1,6 @@
-package com.kh.Portfolio_Huddling.maker.persistence;
+package com.kh.Portfolio_Huddling.maker;
 
-import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 
 public interface TempMakerBoardDao {
 	
