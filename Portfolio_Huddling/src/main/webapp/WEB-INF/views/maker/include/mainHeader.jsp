@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>메이커 스튜디오</title>
+  <title>maker</title>
 
   <!-- Bootstrap core CSS -->
   <!-- Custom styles for this template -->
@@ -25,14 +25,14 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="sidebar-heading">Start Maker Project </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="/maker/requir" class="list-group-item list-group-item-action bg-light">Requir</a>
+        <a href="/maker/info" class="list-group-item list-group-item-action bg-light">BasicInfo</a>
+        <a href="/maker/story" class="list-group-item list-group-item-action bg-light">ProductStory</a>
+        <a href="/maker/reword" class="list-group-item list-group-item-action bg-light">Reword</a>
+        <a href="/maker/policy" class="list-group-item list-group-item-action bg-light">Policy</a>
+        <a href="/maker/makerInfo" class="list-group-item list-group-item-action bg-light">MakerInfo</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -50,22 +50,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">뒤로가기<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
+<!--             <li class="nav-item"> -->
+<!--               <a class="nav-link" href="#">Link</a> -->
+<!--             </li> -->
+<!--             <li class="nav-item dropdown"> -->
+<!--               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!--                 Dropdown -->
+<!--               </a> -->
+<!--               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> -->
+<!--                 <a class="dropdown-item" href="#">Action</a> -->
+<!--                 <a class="dropdown-item" href="#">Another action</a> -->
+<!--                 <div class="dropdown-divider"></div> -->
+<!--                 <a class="dropdown-item" href="#">Something else here</a> -->
+<!--               </div> -->
+<!--             </li> -->
           </ul>
         </div>
       </nav>
