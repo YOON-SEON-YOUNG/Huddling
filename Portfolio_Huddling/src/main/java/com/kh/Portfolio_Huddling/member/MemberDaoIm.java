@@ -44,4 +44,12 @@ public class MemberDaoIm implements MemberDao {
 		return sqlsession.selectList(NAMESPACE + ".selectMemberList", memberVo);
 	}
 
+	@Override
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
+		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profileVo);
+		
+	}
+	
+
+
 }

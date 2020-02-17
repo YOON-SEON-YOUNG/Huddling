@@ -9,4 +9,5 @@ public interface MemberDao {
 	public int loginPw(MemberVo memberVo) throws Exception;
 	public MemberVo loginInfo(MemberVo memberVo) throws Exception;
 	public List<MemberVo> memberList(MemberVo memberVo) throws Exception;
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 }

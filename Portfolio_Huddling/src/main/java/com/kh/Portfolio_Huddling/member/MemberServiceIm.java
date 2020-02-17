@@ -12,6 +12,7 @@ public class MemberServiceIm implements MemberService {
 	@Inject
 	private MemberDao dao;
 	
+	
 	@Override
 	public void register(MemberVo memberVo) throws Exception {
 		dao.register(memberVo);
@@ -37,6 +38,12 @@ public class MemberServiceIm implements MemberService {
 	public List<MemberVo> memberList(MemberVo memberVo) throws Exception {
 		
 		return dao.memberList(memberVo);
+	}
+
+	@Override
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
+		dao.Profile_Register(profileVo);
+		
 	}
 
 }
