@@ -10,7 +10,7 @@ import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 @Repository
 public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	
-	private final static String NAMESPACE = "com.kh.maker";
+	private final static String NAMESPACE = "com.kh.mappers.maker";
 	
 	@Inject
 	private SqlSession sqlSession;
@@ -18,7 +18,26 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 
 	@Override
 	public void tempSaveRequir(TempMakerRequirDto makerDto) throws Exception {
-		sqlSession.insert(NAMESPACE + ".tempInsertRequir",makerDto);
+		sqlSession.update(NAMESPACE + ".tempUpdateRequir", makerDto);
+	}
+
+
+	@Override
+	public TempMakerRequirDto tempLoadRequir(int tempRequirNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".tempSelectRequir",tempRequirNum);
+	}
+
+
+	@Override
+	public TempMakerBasicDto temLoadBasic(int tempBasicNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".tempSelectBasic",tempBasicNum);
+	}
+
+
+	@Override
+	public void tempSaveBasic(TempMakerBasicDto basicDto) throws Exception {
+		sqlSession.update(NAMESPACE + ".tempUpdateBasic",basicDto);
+		
 	}
 
 }

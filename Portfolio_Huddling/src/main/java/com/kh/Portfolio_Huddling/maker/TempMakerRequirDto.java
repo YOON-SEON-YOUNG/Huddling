@@ -1,38 +1,44 @@
 package com.kh.Portfolio_Huddling.maker;
 
 public class TempMakerRequirDto {
-	
-	private String q1;
-	private String q2;
-	private String q3;
-	private String q4;
-	
-	public String getQ1() {
-		return q1;
+	private int temp_requir_num;
+	private String requir_q1;
+	private String requir_q2;
+	private String requir_q3;
+	private String requir_q4;
+	public int getTemp_requir_num() {
+		return temp_requir_num;
 	}
-	public void setQ1(String q1) {
-		this.q1 = q1;
+	public void setTemp_requir_num(int temp_requir_num) {
+		this.temp_requir_num = temp_requir_num;
 	}
-	public String getQ2() {
-		return q2;
+	public String getRequir_q1() {
+		return requir_q1;
 	}
-	public void setQ2(String q2) {
-		this.q2 = q2;
+	public void setRequir_q1(String requir_q1) {
+		this.requir_q1 = requir_q1;
 	}
-	public String getQ3() {
-		return q3;
+	public String getRequir_q2() {
+		return requir_q2;
 	}
-	public void setQ3(String q3) {
-		this.q3 = q3;
+	public void setRequir_q2(String requir_q2) {
+		this.requir_q2 = requir_q2;
 	}
-	public String getQ4() {
-		return q4;
+	public String getRequir_q3() {
+		return requir_q3;
 	}
-	public void setQ4(String q4) {
-		this.q4 = q4;
+	public void setRequir_q3(String requir_q3) {
+		this.requir_q3 = requir_q3;
+	}
+	public String getRequir_q4() {
+		return requir_q4;
+	}
+	public void setRequir_q4(String requir_q4) {
+		this.requir_q4 = requir_q4;
 	}
 	@Override
 	public String toString() {
-		return "MakerDto [q1=" + q1 + ", q2=" + q2 + ", q3=" + q3 + ", q4=" + q4 + "]";
+		return "TempMakerRequirDto [temp_requir_num=" + temp_requir_num + ", requir_q1=" + requir_q1 + ", requir_q2="
+				+ requir_q2 + ", requir_q3=" + requir_q3 + ", requir_q4=" + requir_q4 + "]";
 	}
 }
