@@ -31,6 +31,17 @@
 	<select id="selectMemberList" resultType="MemberVo">
 		select * from tbl_member
 	</select>
+	
+	<select id="selectMemberSearch" resultType="MemberVo">
+		select * from tbl_member
+		where member_id like '%' || #{search} || '%'
+	</select>
+	
+	<update id="updateMemberRating">
+		update tbl_member set
+		member_rating = #{member_rating}
+		where member_id = #{member_id}
+	</update>
 
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->

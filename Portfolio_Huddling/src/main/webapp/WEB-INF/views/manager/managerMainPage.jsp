@@ -26,7 +26,7 @@
 <script>
 $(document).ready(function() {
 	
-	$("#page").load("userControl");
+	$("#page").load("userControl?search=");
 	
 	$("#userControl").click(function(e) {
 		e.preventDefault();
