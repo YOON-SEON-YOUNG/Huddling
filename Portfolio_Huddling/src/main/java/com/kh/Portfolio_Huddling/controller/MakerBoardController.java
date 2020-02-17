@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 
 @Controller
 @RequestMapping("/maker/*")
@@ -50,6 +50,11 @@ public class MakerBoardController {
 	public TempMakerRequirDto data(TempMakerRequirDto mkrDto) {
 		System.out.println(mkrDto);
 		return mkrDto;
+	}
+	
+	@RequestMapping(value="/include",method =RequestMethod.GET)
+	public String include() {
+		return "maker/include/mainHeader";
 	}
 	
 }

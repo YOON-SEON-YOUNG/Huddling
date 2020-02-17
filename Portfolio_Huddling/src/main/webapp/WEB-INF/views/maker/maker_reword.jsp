@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:include page="include/mainHeader.jsp"></jsp:include>
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script>
 	$(document).ready(function() {
 		$("#bread").text("reword");
 		$("#projectTitle").text("리워드 설계");
 		$("#projectDesc").text("서포터에게 제공할 리워드 내용을 입력하세요.")
+		
+		// 임시 저장된 리워드 내역 가져오기
+		
+		// 리워드 등록
+		
+		// 리워드 리스트 가져오기
+		
+		
+		
+		
 	});
 </script>
 <div class="container-fluid">

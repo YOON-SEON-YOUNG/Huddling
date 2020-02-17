@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:include page="include/mainHeader.jsp"></jsp:include>
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#bread").remove();
 		$("#projectTitle").text("펀딩 준비");
 		$("#projectDesc").text("본격적으로 펀딩을 오픈하기 위해 프로젝트에 대한 아래의 필수항목을 작성하세요.")
-		
+
 		$("#btnBasicInfo").click(function() {
 			console.log("click");
 		});
@@ -14,7 +15,7 @@
 			var btnId = $(this).attr("id");
 			switch (btnId) {
 			case "btnBasicrequir":
-				location.href="/maker/requir"
+				location.href = "/maker/requir"
 				break;
 			// 기본 정보
 			case "btnBasicInfo":
@@ -85,7 +86,7 @@
 					id="btnStory">작성</button>
 			</div>
 		</div>
-		
+
 		<!-- 리워드 설계 -->
 		<div class="row">
 			<div class="col-md-10">
@@ -114,7 +115,7 @@
 					id="btnPolicy">작성</button>
 			</div>
 		</div>
-		
+
 		<!-- 메이커 정보 -->
 		<div class="row">
 			<div class="col-md-10">
@@ -129,7 +130,7 @@
 					id="btnMakerInfo">작성</button>
 			</div>
 		</div>
-		
+
 		<!-- 제출 버튼 -->
 		<div class="row">
 			<div class="col-md=12">

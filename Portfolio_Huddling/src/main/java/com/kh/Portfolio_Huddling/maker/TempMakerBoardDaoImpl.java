@@ -1,11 +1,11 @@
-package com.kh.Portfolio_Huddling.maker.persistence;
+package com.kh.Portfolio_Huddling.maker;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 
 @Repository
 public class TempMakerBoardDaoImpl implements TempMakerBoardDao {

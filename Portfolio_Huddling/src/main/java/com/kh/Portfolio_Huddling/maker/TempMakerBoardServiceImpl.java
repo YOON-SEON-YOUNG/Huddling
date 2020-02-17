@@ -1,11 +1,8 @@
-package com.kh.Portfolio_Huddling.maker.service;
+package com.kh.Portfolio_Huddling.maker;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-
-import com.kh.Portfolio_Huddling.maker.domain.TempMakerRequirDto;
-import com.kh.Portfolio_Huddling.maker.persistence.TempMakerBoardDao;
 
 @Service
 public class TempMakerBoardServiceImpl implements TempMakerBoardService {

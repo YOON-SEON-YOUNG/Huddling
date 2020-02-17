@@ -3,10 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kh.maker">
+<mapper namespace="com.kh.mappers.maker">
 	<insert id="tempInsertRequir">
-		insert into tbl_temp_requir(q1,q2,q3,q4)
-		values(#{q1},#{q2},#{Q3},#{Q4})
 	</insert>
 
 

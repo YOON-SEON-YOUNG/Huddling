@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:include page="include/mainHeader.jsp"></jsp:include>
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <style>
 .tag-item, .tagUl {
@@ -15,6 +16,13 @@
 	$(function() {
 		$("#bread").text("info");
 		$('input[name=tags]').tagify();
+		
+		// 임시 저장된 기본 정보 가져오기
+		
+		// 입력한 데이터 임시 저장
+		
+		// 
+		
 	});
 </script>
 <div class="container-fluid">
@@ -69,5 +77,4 @@
 			<button class="btn btn-primary" id="btnSave">저장</button>
 		</div>
 	</div>
-</div>
 </div>
