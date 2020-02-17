@@ -12,6 +12,7 @@ public class MemberServiceIm implements MemberService {
 	@Inject
 	private MemberDao dao;
 	
+	
 	@Override
 	public void register(MemberVo memberVo) throws Exception {
 		dao.register(memberVo);
@@ -39,7 +40,8 @@ public class MemberServiceIm implements MemberService {
 		return dao.memberList(memberVo);
 	}
 
-	@Override
+	
+
 	public void memberRating(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.memberRating(memberVo);
@@ -50,6 +52,13 @@ public class MemberServiceIm implements MemberService {
 		// TODO Auto-generated method stub
 		
 		return dao.memberSearch(search);
+
+	}
+
+	@Override
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
+		
+		
 	}
 
 }

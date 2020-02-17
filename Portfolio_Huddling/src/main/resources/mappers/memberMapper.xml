@@ -41,8 +41,17 @@
 		update tbl_member set
 		member_rating = #{member_rating}
 		where member_id = #{member_id}
-	</update>
-
+	</update>	
+	
+	<insert id="insertMemberProfile">
+		insert into tbl_profile
+			(profile_num, profile_id, profile_pic, profile_intro, profile_ThumbImg)
+		values
+			(#{profile_num}, #{profile_id}, #{profile_pic}, #{profile_intro}, #{profile_ThumbImg})
+	</insert>
+	
+	
+	
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->
 <!-- 	</select> -->

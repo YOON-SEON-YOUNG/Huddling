@@ -1,7 +1,9 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kh.Portfolio_Huddling.util.UploadFileUtils;
 
 @Controller
 @RequestMapping("/member/*")
@@ -20,6 +25,9 @@ public class MemberController {
 	
 	@Inject
 	private MemberService service;
+	
+	@Resource(name="uploadPath")
+	private String UploadPath;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String getRegister() throws Exception {
@@ -101,5 +109,35 @@ public class MemberController {
 		return "member/include/myPagePointControl";
 	}
 	
+	// 프로필 등록폼
+	@RequestMapping(value = "/profileRegister", method = RequestMethod.GET)
+	public String myPageProfileControl() {
+		System.out.println("profile");
+		return "member/include/myPageProfileControl";
+	}
+	
+	// 프로필 등록처리
+	@RequestMapping(value = "/profileRegister", method = RequestMethod.POST)
+	public String postProfileRegister(MemberProfileVo profileVo, MultipartFile file) throws Exception {
+		
+		String imgUploadPath = UploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+			 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+			} else {
+			 fileName = UploadPath + File.separator + "images" + File.separator + "none.png";
+			}
+		
+		profileVo.setProfile_pic(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		profileVo.setProfile_ThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		service.Profile_Register(profileVo);
+		/*model.addAttribute("profileVo",profileVo);*/
+		return "redirect:/";
+	}
+	
+
 
 }

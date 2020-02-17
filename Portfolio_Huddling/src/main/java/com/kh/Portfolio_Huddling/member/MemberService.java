@@ -8,6 +8,8 @@ public interface MemberService {
 	public int loginPw(MemberVo memberVo) throws Exception;
 	public MemberVo loginInfo(MemberVo memberVo) throws Exception;
 	public List<MemberVo> memberList(MemberVo memberVo) throws Exception;
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	public List<MemberVo> memberSearch(String search) throws Exception;
 	public void memberRating(MemberVo memberVo) throws Exception;
+
 }

@@ -45,6 +45,12 @@ public class MemberDaoIm implements MemberDao {
 	}
 
 	@Override
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
+		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profileVo);
+		
+	}
+	
+
 	public void memberRating(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		sqlsession.update(NAMESPACE + ".updateMemberRating", memberVo);
@@ -55,6 +61,8 @@ public class MemberDaoIm implements MemberDao {
 		// TODO Auto-generated method stub
 		
 		return sqlsession.selectList(NAMESPACE + ".selectMemberSearch", search);
-	}
+	
 
+}
+	
 }
