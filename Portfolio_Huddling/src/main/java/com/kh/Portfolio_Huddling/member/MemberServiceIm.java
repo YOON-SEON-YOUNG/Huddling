@@ -40,9 +40,24 @@ public class MemberServiceIm implements MemberService {
 		return dao.memberList(memberVo);
 	}
 
+	
+
+	public void memberRating(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.memberRating(memberVo);
+	}
+
+	@Override
+	public List<MemberVo> memberSearch(String search) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return dao.memberSearch(search);
+
+	}
+
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
-		dao.Profile_Register(profileVo);
+		
 		
 	}
 

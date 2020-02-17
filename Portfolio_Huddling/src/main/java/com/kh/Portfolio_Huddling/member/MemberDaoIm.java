@@ -51,5 +51,18 @@ public class MemberDaoIm implements MemberDao {
 	}
 	
 
+	public void memberRating(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlsession.update(NAMESPACE + ".updateMemberRating", memberVo);
+	}
 
+	@Override
+	public List<MemberVo> memberSearch(String search) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlsession.selectList(NAMESPACE + ".selectMemberSearch", search);
+	
+
+}
+	
 }
