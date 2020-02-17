@@ -5,9 +5,49 @@
 <%@ include file="include/board_header.jsp"%>
 </head>
 <body>
-
 <div class="container-fluid">
 	<br/>
+		<!-- 카테고리 -->
+ 	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8" align="center">
+			<a href="/">
+				<button class="btn btn btn-secondary  btn-lg mb50" type="button">
+					전체 테마
+				</button>
+			</a>
+			<a href="/board/categoryTech">
+				<button class="btn btn-primary  btn-lg mb50" type="button">
+					테크/가전
+				</button> 
+			</a>
+			<a href="/board/categoryBeauty">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					패션/뷰티
+				</button> 
+			</a>
+			<a href="/board/categoryFood">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					푸드
+				</button> 
+			</a>
+			<a href="/board/categoryCulture">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					문화
+				</button>
+			</a>
+			<a href="/board/categoryDonate">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					기부/후원
+				</button>
+			</a>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	<br>
+	<!-- /.row 카테고리 -->
 	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
 		<div class="col-md-2">
@@ -26,6 +66,7 @@
 <!--             </div>/.controls pull-right hidden-xs -->
             
         </div>
+        
         <div class="col-md-4" align="right">
 <!-- 			<div class="dropdown"> -->
 				<div class="wrap-drop">

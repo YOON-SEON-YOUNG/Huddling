@@ -7,7 +7,6 @@
 			<small class="pull-right">45 comments</small> 참여댓글
 		</h1>
 	</div>
-
 	<div class="comments-list">
 		<div class="media">
 			
@@ -23,4 +22,20 @@
 			</div>
 		</div>
 	</div>
+
+
+<br>
+<!-- Textarea -->
+<div class="form-group">
+  <div class="col-md-12">                     
+    <textarea class="form-control" id="textarea" name="textarea" cols="30" rows="5" placeholder="default text"></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-info">reply</button>
+  </div>
+</div>
 

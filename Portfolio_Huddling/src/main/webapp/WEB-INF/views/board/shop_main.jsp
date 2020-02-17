@@ -3,65 +3,128 @@
     
 <!-- include 로고, 검색, 로그인, 카테고리 -->
 <%@ include file="include/board_header.jsp"%>
-</head>
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/font-awesome.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,500,500i,700" rel="stylesheet">
+</head>
 <body>
+<!-- <nav class="navbar navbar-default" style="height:55px">
+					<div class="search">
+						<div class="cd-main-header">
+							<ul class="cd-header-buttons">
+								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+							</ul>
+							cd-header-buttons
+						</div>
+						<div id="cd-search" class="cd-search">
+							<form action="#" method="post">
+								<input name="Search" type="search" placeholder="Click enter after typing...">
+							</form>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					</nav> -->
 
 <div class="container-fluid">
-	<!-- 		슬라이드 이미지 -->
-	<div class="row">
-		<div class="col-md-12">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		    <!-- Indicators -->
-				<ol class="carousel-indicators">
-		      		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		      		<li data-target="#myCarousel" data-slide-to="1"></li>
-		      		<li data-target="#myCarousel" data-slide-to="2"></li>
-		   		</ol>
-			    <!-- Wrapper for slides -->
-				<div class="carousel-inner">
-				  	<div class="item active">
-				    	<img class="d-block w-743 h-743 " src="/resources/images/slide_01.jpg" alt="이미지_01"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-									이미지1
-								</h4>
+		<!-- banner-text -->
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides callbacks callbacks1" id="slider4">
+					<li>
+						<div class="banner-top">
+							<div class="banner-info_agileits_w3ls">
+								<h3>무슨 색 도자기를<br>만들고 싶으세요?</h3>
+								<p>- 도예인을 위한 '색소지 컬러칩'</p>
+								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>
 							</div>
-				  	</div>
-				   	<div class="item">
-				      	<img class="d-block w-1004 h-743" src="/resources/images/slide_02.jpg" alt="이미지_02"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-										이미지2
-									</h4>
+
+						</div>
+					</li>
+					<li>
+						<div class="banner-top1">
+							<div class="banner-info_agileits_w3ls">
+								<h3>길을 잃으면<br>반려견 체체가 나타나요</h3>
+								<p>- 동물들과 마음 치유하는 게임[힐링 애니멀]</p>
+								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>							
 							</div>
-					</div>
-					<div class="item">
-						<img class="d-block w-830 h-743" src="/resources/images/slide_03.jpg" alt="이미지_03"  style="width:100%;">
-							<div class="carousel-caption">
-								<h4 style="font-weight: bold;">
-									이미지3
-								</h4>
+
+						</div>
+					</li>
+					<li>
+						<div class="banner-top2">
+							<div class="banner-info_agileits_w3ls">
+								<h3>책과 다이어리에<br>착 붙은 자석 책갈피</h3>
+								<p>- 무엇이든 잃어버리지 않게, 가죽 책갈피 겸 펜꽂이</p>
+								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>
 							</div>
-					</div>
-					
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					  	<span class="glyphicon glyphicon-chevron-left""></span>
-					  	<span class="sr-only">Previous</span>				
-					</a>
-					<a class="right carousel-control" href="#myCarousel" data-slide="next">
-						  <span class="glyphicon glyphicon-chevron-right"></span>
-						  <span class="sr-only">Next</span>
-					</a>
-				</div>
+
+						</div>
+					</li>
+					<li>
+						<div class="banner-top3">
+							<div class="banner-info_agileits_w3ls">
+								<h3>영화의 언어를 탐색하는 일<br>계속해보겠습니다.</h3>
+								<p>- 2020 시작하는[FILO]13호, 21세기 베스트 특별판</p>
+							    <a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>								
+							</div>
+
+						</div>
+					</li>
+				</ul>
 			</div>
+			<div class="clearfix"> </div>
 		</div>
-	</div><!-- /.row 슬라이드 -->		
+		<!--//Slider-->
 
 	<br/>
 	<br/>
 	<br/>
+		<!-- 카테고리 -->
+ 	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8" align="center">
+			<a href="/">
+				<button class="btn btn btn-primary  btn-lg mb50" type="button">
+					전체 테마
+				</button>
+			</a>
+			<a href="/board/categoryTech">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					테크/가전
+				</button> 
+			</a>
+			<a href="/board/categoryBeauty">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					패션/뷰티
+				</button> 
+			</a>
+			<a href="/board/categoryFood">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					푸드
+				</button> 
+			</a>
+			<a href="/board/categoryCulture">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					문화
+				</button>
+			</a>
+			<a href="/board/categoryDonate">
+				<button class="btn btn-secondary  btn-lg mb50" type="button">
+					기부/후원
+				</button>
+			</a>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	<!-- /.row 카테고리 -->
 	
 	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
@@ -269,5 +332,97 @@
 		</div>
 	</div> <!-- /.리스트02 : 신규 프로젝트 슬라이드 묶음 -->
 </div><!-- /.container -->
+
+	
+		<!-- js -->
+	<script type="text/javascript" src="/resources/main/js/jquery-2.2.3.min.js"></script>
+	<!-- //js -->
+	
+	<!-- stats -->
+	<script src="/resources/main/js/jquery.waypoints.min.js"></script>
+	<script src="/resources/main/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+
+
+	<script src="/resources/main/js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<!-- script for responsive tabs -->
+	<script src="/resources/main/js/easy-responsive-tabs.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion           
+				width: 'auto', //auto or any width like 600px
+				fit: true, // 100% fit in a container
+				closed: 'accordion', // Start closed if in accordion view
+				activate: function (event) { // Callback function if tab is switched
+					var $tab = $(this);
+					var $info = $('#tabInfo');
+					var $name = $('span', $info);
+					$name.text($tab.text());
+					$info.show();
+				}
+			});
+			$('#verticalTab').easyResponsiveTabs({
+				type: 'vertical',
+				width: 'auto',
+				fit: true
+			});
+		});
+	</script>
+	<!--// script for responsive tabs -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="/resources/main/js/move-top.js"></script>
+	<script type="text/javascript" src="/resources/main/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+									var defaults = {
+							  			containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear' 
+							 		};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<script type="text/javascript" src="/resources/main/js/bootstrap-3.1.1.min.js"></script>
 
 <%@ include file="include/board_footer.jsp" %>
