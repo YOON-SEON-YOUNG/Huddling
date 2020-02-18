@@ -12,13 +12,17 @@ public class MemberVo {
 	private int member_rating;
 	private int member_point;
 
+
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public MemberVo(String member_id, String member_pw, String member_name, String member_nickname, String member_email,
-			String member_address, String member_call, int member_rating, int member_point) {
+			String member_address, String member_call, int member_rating, int member_point, String member_pic,
+			String member_thumbimg) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -30,6 +34,8 @@ public class MemberVo {
 		this.member_rating = member_rating;
 		this.member_point = member_point;
 	}
+
+
 
 	public String getMember_id() {
 		return member_id;
@@ -103,6 +109,8 @@ public class MemberVo {
 		this.member_point = member_point;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "MemberVo [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
@@ -110,5 +118,10 @@ public class MemberVo {
 				+ member_address + ", member_call=" + member_call + ", member_rating=" + member_rating
 				+ ", member_point=" + member_point + "]";
 	}
+
+	
+
+
+	
 
 }

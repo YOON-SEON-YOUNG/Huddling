@@ -44,13 +44,24 @@
 	</update>	
 	
 	<insert id="insertMemberProfile">
+	
 		insert into tbl_profile
-			(profile_num, profile_id, profile_pic, profile_intro, profile_ThumbImg)
+			(profile_id, profile_intro)
 		values
-			(#{profile_num}, #{profile_id}, #{profile_pic}, #{profile_intro}, #{profile_ThumbImg})
+			(#{profile_id}, #{profile_intro, jdbcType=VARCHAR})
 	</insert>
 	
+	<update id="updateMemberProfile">
+		update tbl_profile set
+			profile_intro = #{profile_intro, jdbcType=VARCHAR},
+			profile_pic = #{profile_pic}
+		where profile_id = #{profile_id}
+	</update>
 	
+	<select id="selectMemberProfile" resultType="MemberProfileVo">
+		select * from tbl_profile
+		where profile_id = #{member_id}
+	</select>
 	
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->

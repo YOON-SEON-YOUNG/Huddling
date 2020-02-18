@@ -11,5 +11,6 @@ public interface MemberService {
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	public List<MemberVo> memberSearch(String search) throws Exception;
 	public void memberRating(MemberVo memberVo) throws Exception;
+	public MemberProfileVo selectMemberById(String member_id) throws Exception;
 
 }

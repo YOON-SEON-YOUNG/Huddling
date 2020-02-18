@@ -1,6 +1,7 @@
 package com.kh.Portfolio_Huddling.member;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,12 +9,14 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,7 +30,7 @@ public class MemberController {
 	private MemberService service;
 	
 	@Resource(name="uploadPath")
-	private String UploadPath;
+	private String uploadPath;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String getRegister() throws Exception {
@@ -59,6 +62,9 @@ public class MemberController {
 	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
 		MemberVo selectMemberVo = service.loginInfo(memberVo);
 		session.setAttribute("memberVo", selectMemberVo);
+		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
+		session.setAttribute("memberVo", selectMemberVo);
+		session.setAttribute("profileVo", profileVo);
 		return "redirect:/";
 	}
 	
@@ -77,8 +83,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
-	public String page() {
-		
+	public String page(HttpSession session, Model model) throws Exception {
+		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+		String member_id = memberVo.getMember_id();
+		MemberProfileVo profileVo = service.selectMemberById(member_id);
+		model.addAttribute("profileVo", profileVo);
 		return "member/memberMyPageMain";
 	}
 	
@@ -109,35 +118,57 @@ public class MemberController {
 		return "member/include/myPagePointControl";
 	}
 	
+
+	
 	// 프로필 등록폼
+
 	@RequestMapping(value = "/profileRegister", method = RequestMethod.GET)
 	public String myPageProfileControl() {
 		System.out.println("profile");
+//		service.selectMemberProfileread(profile_num)
 		return "member/include/myPageProfileControl";
 	}
-	
-	// 프로필 등록처리
+
+	// 프로필 등록
 	@RequestMapping(value = "/profileRegister", method = RequestMethod.POST)
-	public String postProfileRegister(MemberProfileVo profileVo, MultipartFile file) throws Exception {
-		
-		String imgUploadPath = UploadPath + File.separator + "imgUpload";
+	public String postProfileRegister(MemberProfileVo profileVo, MultipartFile file, Model model) throws Exception {
+
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
-		if(file != null) {
-			 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-			} else {
-			 fileName = UploadPath + File.separator + "images" + File.separator + "none.png";
-			}
+		System.out.println("profileVo:" + profileVo);
 		
-		profileVo.setProfile_pic(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		profileVo.setProfile_ThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		if (file != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		String name = File.separator + "imgUpload" + ymdPath + File.separator + fileName;
+		String fName = name.replace("\\", "/");
 		
+		profileVo.setProfile_pic(fName);
+//		profileVo.setProfile_thumbimg(
+//				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+
 		service.Profile_Register(profileVo);
-		/*model.addAttribute("profileVo",profileVo);*/
+		 model.addAttribute("profileVo",profileVo); 
 		return "redirect:/";
 	}
+
 	
+	
+	 @RequestMapping(value = "/displayFile", method =  RequestMethod.GET)
+		@ResponseBody
+		public byte[] displayFile(@RequestParam("fileName") String fileName) throws Exception {
+			String realPath = uploadPath + File.separator + fileName.replace("/", "\\");
+			System.out.println("realPath:"+ realPath);
+			FileInputStream is = new FileInputStream(realPath);
+			byte[] bytes = IOUtils.toByteArray(is);
+			is.close();
+			return bytes;
+		}
 
 
 }
