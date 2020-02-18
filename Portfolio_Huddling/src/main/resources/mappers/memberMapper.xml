@@ -52,6 +52,32 @@
 			member_call =#{member_call}
 			where member_id =#{member_id}
 	</update>
+	<select id="selectMemberSearch" resultType="MemberVo">
+		select * from tbl_member
+		where member_id like '%' || #{search} || '%'
+	</select>
+	
+	<update id="updateMemberRating">
+		update tbl_member set
+		member_rating = #{member_rating}
+		where member_id = #{member_id}
+	</update>	
+	
+	<insert id="insertMemberProfile">
+	<selectKey keyProperty="profile_num" resultType="int" order="BEFORE">
+    select SEQ_profile_num.nextval FROM DUAL
+  	</selectKey>
+		insert into tbl_profile
+			(profile_num, profile_id, profile_pic, profile_intro, profile_thumbimg)
+		values
+			(#{profile_num}, #{profile_id}, #{profile_pic}, #{profile_intro}, #{profile_thumbimg})
+	</insert>
+	
+	<select id="selectMemberProfile" resultType="MemberProfileVo">
+		select * from tbl_profile
+		where profile_num = #{profile_num}
+	</select>
+	
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->
 <!-- 	</select> -->

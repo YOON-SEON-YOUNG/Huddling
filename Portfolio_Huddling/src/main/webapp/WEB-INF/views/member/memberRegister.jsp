@@ -25,6 +25,8 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 <style>
 #btnIdCheck{
 	right:200px;
@@ -181,6 +183,8 @@ function memberAddress() {
     <label for="exampleInputEmail1">전화번호</label>
     <input type="tel" class="form-control" id="member_call" aria-describedby="emailHelp" name="member_call">
   </div>
+  
+ 
   
   <!-- 이용약관 -->
   <div class="form-group form-check">

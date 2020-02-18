@@ -12,6 +12,7 @@ public class MemberServiceIm implements MemberService {
 	@Inject
 	private MemberDao dao;
 	
+	
 	@Override
 	public void register(MemberVo memberVo) throws Exception {
 		dao.register(memberVo);
@@ -52,6 +53,33 @@ public class MemberServiceIm implements MemberService {
 	@Override
 	public void memberPrivacyUpdate(MemberVo memberVo) throws Exception {
 		dao.memberPrivacyUpdate(memberVo);
+	
+	}
+	public void memberRating(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.memberRating(memberVo);
+	}
+
+	@Override
+	public List<MemberVo> memberSearch(String search) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return dao.memberSearch(search);
+
+	}
+
+	@Override
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
+		
+		dao.Profile_Register(profileVo);
+		
+	}
+
+	@Override
+	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+		
+		dao.selectMemberProfileread(profile_num);
+		return dao.selectMemberProfileread(profile_num);
 	}
 
 }

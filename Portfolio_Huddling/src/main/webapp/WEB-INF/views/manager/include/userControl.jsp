@@ -4,10 +4,33 @@
 <script>
 $(document).ready(function() {
 	$(".memberBan").click(function() {
-		console.log("클릭됨")
+		var input = $("#searchData").val();
+		var member_id = $(this).attr("data-memberId");
+		var that = $(this);
+		$.post("/manager/memberBan", {
+			"member_rating" : 1,
+			"member_id" : member_id
+		}, function(rData) {
+			console.log(rData);
+			$("#page").load("userControl?search="+input+"");
+		});
 	});
-	$("#memberBan").click(function() {
-		console.log("클릭됨")
+	$(".memberUnban").click(function() {
+		var input = $("#searchData").val();
+		var member_id = $(this).attr("data-memberId");
+		var that = $(this);
+		$.post("/manager/memberBan", {
+			"member_rating" : 0,
+			"member_id" : member_id
+		}, function(rData) {
+			console.log(rData);
+			$("#page").load("userControl?search="+input+"");
+		});
+	});
+	
+	$("#btnSearch").click(function() {
+		var input = $("#searchData").val();
+		$("#page").load("userControl?search="+input+"");
 	});
 });
 </script>
@@ -15,7 +38,7 @@ $(document).ready(function() {
 <hr>
 <table class="table" border="1" style="border-color: #F2F2F2">
 	<tr>
-		<th colspan="3">회원 검색 : <input type="text"/><input type="button" value="검색"/></th>
+		<th colspan="3">회원 검색 : <input id="searchData" type="text" value="${search}"/><input id="btnSearch" type="button" value="검색"/></th>
 	</tr>
 	<tr>
 		<th>ID</th>
@@ -28,11 +51,11 @@ $(document).ready(function() {
 			<td>${list.member_id}</td>
 			<c:choose>
 				<c:when test="${list.member_rating == 0}">
-					<td><input name="memberBan" type="button" value="차단"/></td>
+					<td><input class="memberBan" type="button" value="차단" data-memberId="${list.member_id}"/></td>
 					<td></td>	
 				</c:when>
 				<c:otherwise>
-					<td><input name="memberUnban" type="button" value="차단해제"/></td>
+					<td><input class="memberUnban" type="button" value="차단해제" data-memberId="${list.member_id}"/></td>
 					<td>차단된 멤버</td>
 				</c:otherwise>
 			</c:choose>

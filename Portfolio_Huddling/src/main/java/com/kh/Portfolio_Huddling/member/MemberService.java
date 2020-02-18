@@ -11,4 +11,9 @@ public interface MemberService {
 	public int registerCheckId(MemberVo memberVo) throws Exception;
 	public int registerCheckNick(MemberVo memberVo)throws Exception;
 	public void memberPrivacyUpdate(MemberVo memberVo)throws Exception;
+	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
+	public List<MemberVo> memberSearch(String search) throws Exception;
+	public void memberRating(MemberVo memberVo) throws Exception;
+	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception;
+
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+${profileVo.profile_pic}
 	<!-- 내가후원한 프로젝트 시작  -->
 							<span id="list-item-1">
 								<h4>내가후원한 프로젝트</h4> 
