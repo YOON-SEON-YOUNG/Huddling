@@ -44,4 +44,21 @@ public class MemberDaoIm implements MemberDao {
 		return sqlsession.selectList(NAMESPACE + ".selectMemberList", memberVo);
 	}
 
+	@Override
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+			
+		return (int)sqlsession.selectOne(NAMESPACE  + ".registerCheckId",memberVo);
+	}
+
+	@Override
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		
+		return (int)sqlsession.selectOne(NAMESPACE + ".registerCheckNick",memberVo);
+	}
+
+	@Override
+	public void memberPrivacyUpdate(MemberVo memberVo) throws Exception {
+			sqlsession.update(NAMESPACE + ".privacyUpdate",memberVo);
+	}
+
 }

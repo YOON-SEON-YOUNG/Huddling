@@ -28,18 +28,37 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVo memberVo,Model model) throws Exception {
+	public String postRegister(MemberVo memberVo,Model model,HttpSession session) throws Exception {
+		
 		
 		service.register(memberVo);
-		model.addAttribute("memberVo",memberVo);
+		model.addAttribute("memberVo", memberVo);
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/registerCheckId", method = RequestMethod.POST)
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+		System.out.println("memberVoCheckId" + memberVo);
+		return service.registerCheckId(memberVo);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/registerCheckNick", method = RequestMethod.POST)
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		System.out.println("memberVoCheckNick" + memberVo);
+		return service.registerCheckNick(memberVo);
+	}
+	
+	
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String postLogout(HttpSession session) throws Exception {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
@@ -58,6 +77,7 @@ public class MemberController {
 	@RequestMapping(value = "/loginIdCheck", method = RequestMethod.POST)
 	public int postLoginId(MemberVo memberVo) throws Exception {
 		System.out.println("로그인아이디체크 실행");
+		
 		return service.loginId(memberVo);
 	}
 	
@@ -100,6 +120,27 @@ public class MemberController {
 		
 		return "member/include/myPagePointControl";
 	}
+	@RequestMapping(value = "/memberPrivacyUpdate", method = RequestMethod.GET)
+	public String memberPrivacyUpdate() {
+		
+		return "member/memberPrivacyUpdate";
+	}
+	
+	
+	@RequestMapping(value = "/privacyUpdate", method = RequestMethod.POST)
+	public String privacyUpdate(MemberVo memberVo,HttpSession session) {
+		
+		
+		try {
+			service.memberPrivacyUpdate(memberVo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("memberVo", memberVo);
+		return "redirect:/";
+	}
+	
 	
 
 }

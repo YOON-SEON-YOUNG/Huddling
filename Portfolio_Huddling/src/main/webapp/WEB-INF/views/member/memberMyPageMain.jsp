@@ -99,7 +99,7 @@ label{
                     </div>
                     
                     <div>
-                      <a href="#">기타등등</a>
+                      <a href="/member/memberPrivacyUpdate">개인정보수정</a>
                     </div>
                   </li>
 					
@@ -134,6 +134,7 @@ label{
 								 <a
 								class="list-group-item list-group-item-action"
 								id="item5">포인트내역</a>
+						
 						</div>
 					</div>
 					<!-- //왼쪽 -->

@@ -23,6 +23,8 @@
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 #btnIdCheck{
 	right:200px;
@@ -32,6 +34,49 @@
 }
 </style>
 <script>
+  
+$(document).ready(function(){
+	$("#member_id").keyup(function(e){
+		console.log("키를누름");
+		var member_id =$("#member_id").val();
+		console.log(member_id);
+		var overLap =$("#overLap").val();
+		var url ="/member/registerCheckId";
+		var sData ={"member_id" : member_id};
+		console.log(sData);
+		$.post(url,sData,function(rData){
+			console.log(rData);
+			if(rData =="0"){
+				$('#textHelp1').text("사용가능아이디입니다");
+			}else if(rData =="1"){
+				$('#textHelp1').text("이미 사용중이거나 탈퇴한 아이디입니다.");
+			}
+		});
+		
+	});
+	
+	$("#member_nickname").keyup(function(e){
+		console.log("키를누름");
+		var member_nickname =$("#member_nickname").val();
+		console.log(member_nickname);
+		var overLap =$("#overLap").val();
+		sData = {
+				"member_nickname":member_nickname
+// 				'member_nickname':member_nickname
+		}
+		$.post("/member/registerCheckNick",sData,function(rData){
+			if(rData =="0"){
+				$('#textHelp2').text("사용가능닉네임입니다.");
+			}else if(rData =="1"){
+				$('#textHelp2').text("이미 사용중인 닉네임입니다.");
+			}
+		});
+			
+		
+	});
+});
+        
+//지도 api
 function memberAddress() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -40,14 +85,11 @@ function memberAddress() {
 			console.log(data);
             // 주소 정보를 해당 필드에 넣는다.
             document.getElementById("member_address").value = addr;
-			console.log("member_address" + member_address);
          	
            
         }
     }).open();
 }
-        
-        
         
 </script>
 
@@ -85,7 +127,7 @@ function memberAddress() {
   <div class="form-group">
     <label for="exampleInputEmail1">아아디</label>
     <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
-    <small id="textHelp" class="form-text text-muted">같은 아이디불가</small>
+    <small id="textHelp1" class="form-text text-muted" id="overLap">중복확인</small>
   </div>
   
    <!--                                   이름                                     -->
@@ -104,6 +146,7 @@ function memberAddress() {
   <div class="form-group">
     <label for="exampleInputEmail1">닉네임</label>
     <input type="text" class="form-control" id="member_nickname" aria-describedby="emailHelp" name="member_nickname">
+  	<small id="textHelp2" class="form-text text-muted" id="overLap">중복확인</small>
   </div>
   <!-- 이메일 -->
   <div class="form-group">
@@ -144,7 +187,7 @@ function memberAddress() {
     <input type="checkbox" class="form-check-input" id="terms">
     
     <!-- 이용약관 모달이 들어감 -->
-    <label class="form-check-label" for="exampleCheck1" id="">이용약관(필수)</label>
+    <label class="form-check-label" for="exampleCheck1" id="dd">이용약관(필수)</label>
   </div>
   
   <button type="submit" class="btn btn-primary">회원가입</button>

@@ -39,4 +39,19 @@ public class MemberServiceIm implements MemberService {
 		return dao.memberList(memberVo);
 	}
 
+	@Override
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+		return dao.registerCheckId(memberVo);
+	}
+
+	@Override
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		return dao.registerCheckNick(memberVo);
+	}
+
+	@Override
+	public void memberPrivacyUpdate(MemberVo memberVo) throws Exception {
+		dao.memberPrivacyUpdate(memberVo);
+	}
+
 }

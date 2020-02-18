@@ -31,7 +31,27 @@
 	<select id="selectMemberList" resultType="MemberVo">
 		select * from tbl_member
 	</select>
-
+	
+	<select id="registerCheckId" resultType="int">
+	select count(*) from tbl_member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="registerCheckNick" resultType="int">
+	select count(*) from tbl_member
+	where member_nickname =#{member_nickname}
+	</select>
+	
+	<update id="privacyUpdate">
+		update tbl_member set
+			member_pw =#{member_pw}
+			member_name =#{member_name},
+			member_nickname =#{member_nickname},
+			member_email =#{member_email},
+			member_address =#{member_address},
+			member_call =#{member_call}
+			where member_id =#{member_id}
+	</update>
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->
 <!-- 	</select> -->
