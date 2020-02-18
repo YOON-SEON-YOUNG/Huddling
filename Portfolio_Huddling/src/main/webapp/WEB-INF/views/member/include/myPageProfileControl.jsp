@@ -32,7 +32,8 @@ $("#profile_pic").change(function(){
 </style>
 <body>
 <span id="list-item-6" >
-memberVo: ${memberVo}
+memberVo: ${memberVo}<br>
+profileVo: ${profileVo}<br>
     <div class="container">
 			<div class="Back">
 				<i class="fa fa-arrow-left" onclick="Back()"></i>
@@ -57,7 +58,7 @@ memberVo: ${memberVo}
 				<div class="form-group">
 					<label>소개:</label> 
 					<textarea class="form-control" id="profile_intro" name="profile_intro" cols="30" rows="5" 
-					placeholder="default text"></textarea>
+					placeholder="default text">${profileVo.profile_intro}</textarea>
 					 <span class="Error"></span>
 				</div>
 				

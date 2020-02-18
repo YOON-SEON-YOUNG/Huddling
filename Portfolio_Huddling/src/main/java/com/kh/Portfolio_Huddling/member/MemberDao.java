@@ -14,5 +14,5 @@ public interface MemberDao {
 	public List<MemberVo> memberSearch(String search) throws Exception;
 	public void memberRating(MemberVo memberVo) throws Exception;
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
-	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception;
+	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception;
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class MemberDaoIm implements MemberDao {
@@ -15,10 +16,13 @@ public class MemberDaoIm implements MemberDao {
 	@Inject
 	SqlSession sqlsession;
 	
+	@Transactional
 	@Override
 	public void register(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		sqlsession.insert(NAMESPACE + ".insertMember", memberVo);
+		String profile_id = memberVo.getMember_id();
+		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profile_id);
 	}
 
 	@Override
@@ -60,15 +64,15 @@ public class MemberDaoIm implements MemberDao {
 	
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
-		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profileVo);
+		sqlsession.update(NAMESPACE + ".updateMemberProfile", profileVo);
 		
 	}
 
 	// 프로필 조회 
 	@Override
-	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception {
 		// TODO Auto-generated method stub
-		MemberProfileVo profileVo = sqlsession.selectOne(NAMESPACE + ".selectMemberProfile", profile_num);
+		MemberProfileVo profileVo = sqlsession.selectOne(NAMESPACE + ".selectMemberProfile", member_id);
 		return profileVo;
 	}
 	

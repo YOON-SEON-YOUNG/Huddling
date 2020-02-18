@@ -46,10 +46,7 @@ $(document).ready(function(){
 	$("#item6").click(function(){
 		$("#page").load("profileRegister");
 	});
-	$("#item7").click(function(){
-		$("#page").load("myPageProfileView");
-	});
-	
+
 });
 </script>	
 <style>
@@ -95,6 +92,7 @@ label{
 <title>MyPage</title>
 </head>
 <body>
+profileVo : ${profileVo}
 <!-- 맨위쪽(header) -->
 	<header>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light"
@@ -117,7 +115,7 @@ label{
                             <li class="user-header">
 		        <div class="profile-header-container">   
 		    		<div class="profile-header-img">
-		                <img class="img-circle" src="${profileVo.profile_ThumbImg}" />
+		                <img class="img-circle" src="/member/displayFile?fileName=${profileVo.profile_pic}" />
 		                <!-- badge -->
 		                <div class="rank-label-container">
 		                    <span class="label label-default rank-label">${profileVo.profile_id}</span>
@@ -175,9 +173,7 @@ label{
 								<a
 								class="list-group-item list-group-item-action"
 								id="item6">프로필 설정</a>
-								<a
-								class="list-group-item list-group-item-action"
-								id="item7">현재 프로필</a>
+		
 						</div>
 					</div>
 					<!-- //왼쪽 -->
