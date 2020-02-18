@@ -87,5 +87,33 @@ public class MemberDaoIm implements MemberDao {
 		MemberProfileVo profileVo = sqlsession.selectOne(NAMESPACE + ".selectMemberProfile", profile_num);
 		return profileVo;
 	}
+
+	@Override
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateAddress",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateCall",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateEmail",memberVo);
+	}
+
+	@Override
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdatePw",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateName",memberVo);
+	}
 	
 }

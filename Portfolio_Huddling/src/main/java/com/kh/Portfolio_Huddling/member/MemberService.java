@@ -15,5 +15,10 @@ public interface MemberService {
 	public List<MemberVo> memberSearch(String search) throws Exception;
 	public void memberRating(MemberVo memberVo) throws Exception;
 	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception;
+	public int privacyUpdateAddress(MemberVo memberVo)throws Exception;
+	public int privacyUpdateCall(MemberVo memberVo)throws Exception;
+	public int privacyUpdateEmail(MemberVo memberVo)throws Exception;
+	public int privacyUpdatePw(MemberVo memberVo)throws Exception;
+	public int privacyUpdateName(MemberVo memberVo)throws Exception;
 
 }

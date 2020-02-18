@@ -89,19 +89,59 @@ public class MemberController {
 		
 		return service.loginId(memberVo);
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/loginPwCheck", method = RequestMethod.POST)
-	public int postLoginPW(MemberVo memberVo) throws Exception {
-		System.out.println("로그인비밀번호체크 실행");
+	public int postLoginPw(MemberVo memberVo) throws Exception {
+		System.out.println("로그인아이디체크 실행");
+		
 		return service.loginPw(memberVo);
 	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateName", method = RequestMethod.POST)
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdateName(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdatePw", method = RequestMethod.POST)
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdatePw(memberVo);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateAddress", method = RequestMethod.POST)
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdateAddress(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateCall", method = RequestMethod.POST)
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		return service.privacyUpdateCall(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateEmail", method = RequestMethod.POST)
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		return service.privacyUpdateEmail(memberVo);
+	}
+	
+	
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page() {
 		
 		return "member/memberMyPageMain";
 	}
+	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
+	public String memberList(MemberVo memberVo,Model model) throws Exception {
+		List<MemberVo> list = service.memberList(memberVo);
+		model.addAttribute("list",list);
+		System.out.println("list" + list);
+		return "member/listAll";
+	}
+	
 	
 	@RequestMapping(value = "/myPageSupportControl", method = RequestMethod.GET)
 	public String myPageSupportControl() {
@@ -137,15 +177,10 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/privacyUpdate", method = RequestMethod.POST)
-	public String privacyUpdate(MemberVo memberVo,HttpSession session) {
+	public String privacyUpdate(MemberVo memberVo,HttpSession session) throws Exception {
 		
 		
-		try {
-			service.memberPrivacyUpdate(memberVo);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		service.memberPrivacyUpdate(memberVo);
 		session.setAttribute("memberVo", memberVo);
 		return "redirect:/";
 	}

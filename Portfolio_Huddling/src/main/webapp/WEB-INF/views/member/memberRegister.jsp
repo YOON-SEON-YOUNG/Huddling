@@ -128,8 +128,7 @@ function memberAddress() {
 	<!--                                 아이디                                   -->
   <div class="form-group">
     <label for="exampleInputEmail1">아아디</label>
-    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id">
-    <small id="textHelp1" class="form-text text-muted" id="overLap">중복확인</small>
+    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" readonly >
   </div>
   
    <!--                                   이름                                     -->

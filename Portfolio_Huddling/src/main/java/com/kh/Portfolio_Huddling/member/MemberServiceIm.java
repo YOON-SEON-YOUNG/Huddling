@@ -82,4 +82,29 @@ public class MemberServiceIm implements MemberService {
 		return dao.selectMemberProfileread(profile_num);
 	}
 
+	@Override
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateAddress(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateCall(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateEmail(memberVo);
+	}
+
+	@Override
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdatePw(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateName(memberVo);
+	}
+
 }
