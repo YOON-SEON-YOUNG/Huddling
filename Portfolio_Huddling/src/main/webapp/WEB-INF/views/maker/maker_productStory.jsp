@@ -13,6 +13,7 @@
 		});
 		$('#btnintroImg').click(function(e){
 			e.preventDefault();
+			
 		});
 	});
 </script>
