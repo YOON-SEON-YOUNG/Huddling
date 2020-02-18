@@ -43,9 +43,8 @@ profileVo: ${profileVo}<br>
 			
 			<!-- 이미지 -->
 				<div class="preview text-center">
-				 
-			<img class='img-thumbnail' src='/upload/displayFile?fileName=" + thumbnailName + "'/>
-			<img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
+	
+			<img class="preview-img" src="/member/displayFile?fileName=${profileVo.profile_pic}" alt="Preview Image" width="200" height="200"/>
                 
                 </div>
 				

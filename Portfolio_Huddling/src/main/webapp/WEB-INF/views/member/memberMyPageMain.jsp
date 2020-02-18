@@ -105,8 +105,8 @@ profileVo : ${profileVo}
 					 <!-- 이미지드롭다운 -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="${profileVo.profile_pic}" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_name})</span>
+                  <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
+                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
                   <span class="badge">${memberVo.member_point}</span>
                 </a>
                 <!-- //이미지드롭다운 -->
