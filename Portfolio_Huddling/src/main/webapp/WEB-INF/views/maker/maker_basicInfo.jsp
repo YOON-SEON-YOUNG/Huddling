@@ -16,9 +16,9 @@
 
 <script>
 	$(function() {
-		$("#bread").text("info");
 // 		$('input[name=tags]').tagify();
-		
+		$("#projectTitle").text("기본 정보");
+		$('#projectDesc').text('기본 정보를 입력하는 곳입니다.')
 		// 입력한 데이터 임시 저장
 		$("#btnSave").click(function(e){
 		e.preventDefault();
@@ -59,7 +59,8 @@
 				<label for="representImg">프로젝트 대표 이미지</label>
 				<input type="hidden" name="basic_representImg" value="${basicDto.basic_representImg }">
 				<div class="form-group">
-					<button class="btn btn-primary">등록하기</button>
+				<input type="file" name='imgFile'/>
+<!-- 					<button class="btn btn-primary">등록하기</button> -->
 				</div>
 			</div>
 		</div>

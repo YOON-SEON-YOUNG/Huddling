@@ -6,43 +6,68 @@
 <mapper namespace="com.kh.mappers.maker">
 
 	<select id="tempSelectRequir" resultType="TempMakerRequirDto">
-	select * from tbl_temp_requir
-	where temp_requir_num = #{temp_requir_num}
+		select * from
+		tbl_temp_requir
+		where temp_requir_num = #{temp_requir_num}
 	</select>
-	
+
 	<insert id="tempInsertRequir">
-	insert into tbl_temp_requir(temp_requir_num)
-    values(#{temp_requir_num})
+		insert into tbl_temp_requir(temp_requir_num)
+		values(#{temp_requir_num})
 	</insert>
-	
+
 	<update id="tempUpdateRequir">
-	update tbl_temp_requir set
-	requir_q1 = #{requir_q1},
-	requir_q2 = #{requir_q2},
-	requir_q3 = #{requir_q3},
-	requir_q4 = #{requir_q4}
-	where temp_requir_num = #{temp_requir_num}
+		update tbl_temp_requir set
+		requir_q1 = #{requir_q1},
+		requir_q2 = #{requir_q2},
+		requir_q3 = #{requir_q3},
+		requir_q4 =
+		#{requir_q4}
+		where temp_requir_num = #{temp_requir_num}
 	</update>
-	
+
 	<select id="tempSelectBasic" resultType="TempMakerBasicDto">
-	select * from tbl_temp_basic
-	where temp_basic_num = #{temp_basic_num}
-	
+		select * from
+		tbl_temp_basic
+		where temp_basic_num = #{temp_basic_num}
+
 	</select>
 	<insert id="tempInsertBasic">
-	insert into tbl_temp_basic(temp_basic_num)
-	values(#{temp_basic_num})
+		insert into tbl_temp_basic(temp_basic_num)
+		values(#{temp_basic_num})
 	</insert>
-	
+
 	<update id="tempUpdateBasic">
-	update tbl_temp_basic set
-	basic_projectName = #{basic_projectName},
-	basic_amount = #{basic_amount},
-	basic_representImg = #{basic_representImg},
-	basic_category = #{basic_category},
-	basic_endDate  = #{basic_endDate},
-	basic_searchTag = #{basic_searchTag}
-	where temp_basic_num = #{temp_basic_num}
+		update tbl_temp_basic set
+		basic_projectName =
+		#{basic_projectName},
+		basic_amount = #{basic_amount},
+		basic_representImg = #{basic_representImg},
+		basic_category =
+		#{basic_category},
+		basic_endDate = #{basic_endDate},
+		basic_searchTag =
+		#{basic_searchTag}
+		where temp_basic_num = #{temp_basic_num}
+	</update>
+
+	<insert id="tempInsertStory">
+		insert into tbl_temp_story(temp_story_num)
+		values(#{temp_story_num});
+	</insert>
+
+	<select id="tempSelectStory" resultType="TempMakerStoryDto">
+		select * from tbl_temp_story
+		where temp_story_num = #{temp_story_num}
+
+	</select>
+	<update id="tempUpdateStory">
+		update tbl_temp_story set
+		story_introimg = #{story_introImg},
+		story_summary = #{story_summary},
+		story_storyboard = #{story_storyBoard}
+		where temp_story_num = #{temp_story_num}
+
 	</update>
 
 </mapper>

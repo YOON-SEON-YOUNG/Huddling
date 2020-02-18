@@ -5,7 +5,6 @@
 <script>
 	$(document).ready(
 			function() {
-				$("#bread").text("policy");
 				$("#projectTitle").text("정책");
 				$("#projectDesc").text(
 						"서포터에게 하는 약속인 만큼, 프로젝트 오픈 후에는 수정이 불가하니 신중하게 작성하세요.");

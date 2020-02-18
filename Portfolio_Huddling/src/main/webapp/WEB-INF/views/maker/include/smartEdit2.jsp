@@ -31,12 +31,13 @@ nhn.husky.EZCreator.createInIFrame({
 function submitContents(elClickedObj) {
     // 에디터의 내용이 textarea에 적용된다.
     oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", [ ]);
- 
     // 에디터의 내용에 대한 값 검증은 이곳에서
     // document.getElementById("textAreaContent").value를 이용해서 처리한다.
   
     try {
-        elClickedObj.form.submit();
+    $('#frm').submit();
+	formsave("tempDataStory");
+		console.log('success');
     } catch(e) {
      
     }
@@ -44,12 +45,16 @@ function submitContents(elClickedObj) {
  
 // textArea에 이미지 첨부
 function pasteHTML(filepath){
-	var sHTML = '<img src="<%=request.getContextPath()%>'+filepath+'">';
+	console.log("filepath:" + filepath);
+	var path = "/resources/upload/" + filepath;
+	var sHTML = "<img src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
 }
  
 </script>
-
-	
-<textarea style="width: 100%" rows="10" name="content" id="textAreaContent" cols="80">
+<form id="frm">
+<textarea style="width: 100%" rows="10" name="story_storyBoard" id="textAreaContent" cols="80">
+${storyDto.story_storyBoard }
 </textarea>
+</form>
+

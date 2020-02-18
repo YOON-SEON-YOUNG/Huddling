@@ -1,7 +1,9 @@
 package com.kh.Portfolio_Huddling.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.Portfolio_Huddling.maker.TempMakerBasicDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardService;
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
 
 
 @Controller
@@ -46,8 +49,11 @@ public class MakerBoardController {
 		System.out.println("info 실행중...");
 		return "maker/maker_basicInfo";
 	}
-	@RequestMapping(value="/story")
-	public String story() {
+	@RequestMapping(value="/story", method = RequestMethod.GET)
+	public String story(Model model) throws Exception {
+		int tempStoryNum = 1;
+		TempMakerStoryDto storyDto = tempService.tempStoryLoad(tempStoryNum);
+		model.addAttribute("storyDto",storyDto);
 		System.out.println("story 실행중...");
 		return "maker/maker_productStory";
 	}
@@ -85,6 +91,25 @@ public class MakerBoardController {
 	public TempMakerBasicDto data(TempMakerBasicDto basicDto) throws Exception {
 		tempService.tempBasicUpdate(basicDto);
 		return basicDto;
+	}
+	
+	@RequestMapping(value="/preview", method= RequestMethod.GET)
+	public String preview(TempMakerStoryDto storyDto,
+			Model model) throws Exception {
+		int tempStoryNum = 1;	
+		storyDto = tempService.tempStoryLoad(tempStoryNum);
+		model.addAttribute("storyDto",storyDto);
+		return "maker/preview";
+	}
+	
+	@RequestMapping(value="/tempDataStory", method = RequestMethod.POST)
+	@ResponseBody
+	public TempMakerStoryDto data(HttpServletRequest request,
+			TempMakerStoryDto storyDto) throws Exception {
+		String content = request.getParameter("story_storyBoard");
+		storyDto.setStory_storyBoard(content);
+		tempService.tempStoryUpdate(storyDto);
+		return storyDto;
 	}
 	
 }
