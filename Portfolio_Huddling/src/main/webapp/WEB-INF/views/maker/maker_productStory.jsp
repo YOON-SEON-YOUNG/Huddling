@@ -7,11 +7,12 @@
 		$("#bread").text("story");
 		$("#projectTitle").text("스토리 작성");
 		$("#projectDesc").text("메이커님의 프로젝트를 소개 해보세요.");
-		var url = '';
+		var url = 'tempDataStory';
 		formsave(url);
 	});
 </script>
-<form id="formTempData" name="formTempData">
+<!-- <form id="formTempData" name="formTempData"> -->
+<!-- </form> -->
 	<div class="container-fluid">
 		<div class="card">
 			<div class="card-body">
@@ -37,11 +38,10 @@
 				</div>
 				<div class="form-group">
 					<Label for="storyBoard"> </Label>
-					<jsp:include page="include/smartEdit.jsp"></jsp:include>
+					<jsp:include page="include/smartEdit2.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
-</form>
 <div class="card-body">
 	<div class="form-gorup">
 		<button class="btn btn-primary" id="btnSave">저장</button>
