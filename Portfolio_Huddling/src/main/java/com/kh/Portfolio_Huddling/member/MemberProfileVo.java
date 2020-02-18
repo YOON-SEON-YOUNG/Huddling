@@ -5,13 +5,25 @@ public class MemberProfileVo {
 	private String profile_id;
 	private String profile_pic;
 	private String profile_intro;
-	private String profile_ThumbImg;
+	private String profile_thumbimg;
 	
 	
 	
 	public MemberProfileVo() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public MemberProfileVo(int profile_num, String profile_id, String profile_pic, String profile_intro,
+			String profile_thumbimg) {
+		super();
+		this.profile_num = profile_num;
+		this.profile_id = profile_id;
+		this.profile_pic = profile_pic;
+		this.profile_intro = profile_intro;
+		this.profile_thumbimg = profile_thumbimg;
 	}
 
 
@@ -64,14 +76,14 @@ public class MemberProfileVo {
 
 
 
-	public String getProfile_ThumbImg() {
-		return profile_ThumbImg;
+	public String getProfile_thumbimg() {
+		return profile_thumbimg;
 	}
 
 
 
-	public void setProfile_ThumbImg(String profile_ThumbImg) {
-		this.profile_ThumbImg = profile_ThumbImg;
+	public void setProfile_thumbimg(String profile_thumbimg) {
+		this.profile_thumbimg = profile_thumbimg;
 	}
 
 
@@ -79,12 +91,13 @@ public class MemberProfileVo {
 	@Override
 	public String toString() {
 		return "MemberProfileVo [profile_num=" + profile_num + ", profile_id=" + profile_id + ", profile_pic="
-				+ profile_pic + ", profile_intro=" + profile_intro + ", profile_ThumbImg=" + profile_ThumbImg + "]";
+				+ profile_pic + ", profile_intro=" + profile_intro + ", profile_thumbimg=" + profile_thumbimg + "]";
 	}
+
+
+
 	
 	
-
-
-
-
+	
+	
 }

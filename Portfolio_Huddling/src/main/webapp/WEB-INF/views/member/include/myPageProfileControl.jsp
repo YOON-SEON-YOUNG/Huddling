@@ -16,14 +16,14 @@ function Back()
 
 
 $("#profile_pic").change(function(){
- if(this.files && this.files[0]) {
-  var reader = new FileReader;
-  reader.onload = function(data) {
-   $(".select_img img").attr("src", data.target.result).width(500);        
-  }
-  reader.readAsDataURL(this.files[0]);
- }
-});
+	 if(this.files && this.files[0]) {
+		  var reader = new FileReader;
+		  reader.onload = function(data) {
+		   $(".select_img img").attr("src", data.target.result).width(500);        
+		  }
+		  reader.readAsDataURL(this.files[0]);
+		 }
+		});
 </script>
 
 <style>
@@ -37,6 +37,15 @@ $("#profile_pic").change(function(){
 			</div>
 			<p class="h2 text-center">Form</p>
 			<form action="/member/profileRegister" method="post" enctype="multipart/form-data">
+			
+			<!-- 이미지 -->
+				<div class="preview text-center">
+                <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
+                <div class="browse-button">
+                    <i class="fa fa-pencil-alt"></i>
+                    <input class="browse-input" type="file" required name="UploadedFile" id="UploadedFile"/>
+                </div>
+                </div>
 				
 				<div class="form-group">
 					<label>아이디:</label> <input class="form-control" type="text"
@@ -66,6 +75,8 @@ $("#profile_pic").change(function(){
 					<input class="btn btn-primary btn-block" type="submit"
 						value="Submit" />
 				</div>
+				
+				
 			</form>
 		</div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

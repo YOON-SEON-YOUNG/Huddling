@@ -58,7 +58,15 @@ public class MemberServiceIm implements MemberService {
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
 		
+		dao.Profile_Register(profileVo);
 		
+	}
+
+	@Override
+	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+		
+		dao.selectMemberProfileread(profile_num);
+		return dao.selectMemberProfileread(profile_num);
 	}
 
 }

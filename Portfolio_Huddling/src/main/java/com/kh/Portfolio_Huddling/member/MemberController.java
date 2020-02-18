@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -110,33 +111,51 @@ public class MemberController {
 	}
 	
 	// 프로필 등록폼
+
 	@RequestMapping(value = "/profileRegister", method = RequestMethod.GET)
 	public String myPageProfileControl() {
 		System.out.println("profile");
 		return "member/include/myPageProfileControl";
 	}
-	
-	// 프로필 등록처리
+
+	// 프로필 등록
 	@RequestMapping(value = "/profileRegister", method = RequestMethod.POST)
 	public String postProfileRegister(MemberProfileVo profileVo, MultipartFile file) throws Exception {
-		
+
 		String imgUploadPath = UploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
-		if(file != null) {
-			 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-			} else {
-			 fileName = UploadPath + File.separator + "images" + File.separator + "none.png";
-			}
-		
+		if (file != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		} else {
+			fileName = UploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
 		profileVo.setProfile_pic(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		profileVo.setProfile_ThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		
+		profileVo.setProfile_thumbimg(
+				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+
 		service.Profile_Register(profileVo);
-		/*model.addAttribute("profileVo",profileVo);*/
+		/* model.addAttribute("profileVo",profileVo); */
 		return "redirect:/";
 	}
+
+	// 프로필 조회 
+	 @RequestMapping(value = "/profileRead", method = RequestMethod.GET) public
+	 String profileRead(@RequestParam("profile_num") int profile_num, Model model)
+					throws Exception {
+		/*
+		 * // -> int bno = Integer.parseInt(request.getParameter("bno");
+		 */ 
+		 MemberProfileVo profileVo =
+	 service.selectMemberProfileread(profile_num); model.addAttribute("profileVo",
+	 profileVo); 
+	 
+	 return "member/include/myPageProfileRead";
+	 
+	 }
+	
 	
 
 
