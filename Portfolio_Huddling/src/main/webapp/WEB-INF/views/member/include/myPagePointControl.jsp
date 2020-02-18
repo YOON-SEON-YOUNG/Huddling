@@ -50,6 +50,7 @@
   		<label>충전수단</label>
   		<input type="text"class="form-control">
   		
+  		
       <!-- 모달 버튼창 -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
