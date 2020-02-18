@@ -1,12 +1,21 @@
-function formsave(url){
+//임시 저장 데이터 
+function breadChange() {
+	var thisfilefullname = document.URL.substring(
+			document.URL.lastIndexOf("/") + 1, document.URL.length);
+	console.log(thisfilefullname);
+	$("#bread").text(thisfilefullname);
+}
+
+function formsave(url) {
 	var params = $('#formTampData').serializeArray();
-		$.ajax({
-			'url' : url,
-			'type' : 'POST',
-			'data' : params,
-			'dataType':'html',
-			'success': function(result){
-			console.log("임시 저장",result);
-			}
-		});
-	}
+	console.log(params);
+	$.ajax({
+		'url' : url,
+		'type' : 'POST',
+		'data' : params,
+		'dataType' : 'html',
+		'success' : function(result) {
+			console.log("임시 저장", result);
+		}
+	});
+}

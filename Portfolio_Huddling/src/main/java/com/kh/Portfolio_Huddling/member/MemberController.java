@@ -186,8 +186,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/privacyUpdate", method = RequestMethod.POST)
 	public String privacyUpdate(MemberVo memberVo,HttpSession session) throws Exception {
-		
-		
 		service.memberPrivacyUpdate(memberVo);
 		session.setAttribute("memberVo", memberVo);
 		return "redirect:/";

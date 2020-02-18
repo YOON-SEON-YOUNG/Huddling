@@ -5,7 +5,6 @@
 <script>
 	$(document).ready(
 			function() {
-				$("#bread").text("makerInfo");
 				$("#projectTitle").text("메이커 정보");
 				var makerBagicInfo = "<span>";
 				makerBagicInfo += "<h4>";

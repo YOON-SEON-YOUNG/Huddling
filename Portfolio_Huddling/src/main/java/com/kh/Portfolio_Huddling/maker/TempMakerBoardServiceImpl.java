@@ -32,4 +32,15 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 		
 	}
 
+	@Override
+	public TempMakerStoryDto tempStoryLoad(int tempStoryNum) throws Exception {
+		return boardDao.tempLoadStory(tempStoryNum);
+	}
+
+	@Override
+	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
+		boardDao.tempSaveStory(storyDto);
+		
+	}
+
 }

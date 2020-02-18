@@ -40,4 +40,18 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		
 	}
 
+
+	@Override
+	public TempMakerStoryDto tempLoadStory(int tempStoryNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".tempSelectStory",tempStoryNum);
+	}
+
+
+	@Override
+	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception {
+		System.out.println("dao/ : " + storyDto);
+		sqlSession.update(NAMESPACE + ".tempUpdateStory",storyDto);
+		
+	}
+
 }

@@ -32,7 +32,7 @@ $(document).ready(function(){
 	$("#btnSubmit").click(function() {
 		if ($("#member_pw").val().trim() == "") {
 			alert("비밀번호를 입력해 주세요");
-			$("#member_pw").focus();
+// 			$("#member_pw").focus();
 			return false;
 		}
 		
@@ -56,8 +56,9 @@ $(document).ready(function(){
 			alert("별명을 입력해 주세요");
 			return false;
 		}
-		
+		else{
 		$("#form").submit();
+		}
 	});
 	
 
@@ -89,12 +90,10 @@ $(document).ready(function(){
 		var overLap =$("#text_nickname").val();
 		sData = {
 				"member_email": member_email
-// 				'member_nickname':member_nickname
 		}
 		$.post("/member/privacyUpdateEmail",sData,function(rData){
 			if(rData =="0"){
 				$('#text_email').text("사용가능이메일입니다.");
-				$("#form").submit();
 			}else if(rData =="1"){
 				$('#text_email').text("이미 사용중인 이메일입니다.");
 			}
@@ -126,8 +125,7 @@ $(document).ready(function(){
 		var member_pw =$("#member_pw").val();
 		console.log(member_pw);
 		sData = {
-				"member_pw": member_pw,
-				
+				"member_pw": member_pw
 		}
 		$.post("/member/privacyUpdatePw",sData,function(rData){
 		
@@ -182,7 +180,6 @@ $(document).ready(function(){
 		$.post("/member/privacyUpdateName",sData,function(rData){
 			if(rData =="0"){
 				$('#text_name').text("사용가능닉네임입니다.");
-				$("#form").submit();
 			}else if(rData =="1"){
 				$('#text_name').text("이미 사용중인 닉네임입니다.");
 				
