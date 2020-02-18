@@ -46,6 +46,9 @@ $(document).ready(function(){
 	$("#item6").click(function(){
 		$("#page").load("profileRegister");
 	});
+	$("#item7").click(function(){
+		$("#page").load("myPageProfileView");
+	});
 	
 });
 </script>	
@@ -172,6 +175,9 @@ label{
 								<a
 								class="list-group-item list-group-item-action"
 								id="item6">프로필 설정</a>
+								<a
+								class="list-group-item list-group-item-action"
+								id="item7">현재 프로필</a>
 						</div>
 					</div>
 					<!-- //왼쪽 -->

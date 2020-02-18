@@ -1,11 +1,9 @@
 package com.kh.Portfolio_Huddling.member;
 
 public class MemberProfileVo {
-	private int profile_num;
 	private String profile_id;
 	private String profile_pic;
 	private String profile_intro;
-	private String profile_thumbimg;
 	
 	
 	
@@ -16,26 +14,11 @@ public class MemberProfileVo {
 
 
 
-	public MemberProfileVo(int profile_num, String profile_id, String profile_pic, String profile_intro,
-			String profile_thumbimg) {
+	public MemberProfileVo(String profile_id, String profile_pic, String profile_intro) {
 		super();
-		this.profile_num = profile_num;
 		this.profile_id = profile_id;
 		this.profile_pic = profile_pic;
 		this.profile_intro = profile_intro;
-		this.profile_thumbimg = profile_thumbimg;
-	}
-
-
-
-	public int getProfile_num() {
-		return profile_num;
-	}
-
-
-
-	public void setProfile_num(int profile_num) {
-		this.profile_num = profile_num;
 	}
 
 
@@ -76,27 +59,14 @@ public class MemberProfileVo {
 
 
 
-	public String getProfile_thumbimg() {
-		return profile_thumbimg;
-	}
-
-
-
-	public void setProfile_thumbimg(String profile_thumbimg) {
-		this.profile_thumbimg = profile_thumbimg;
-	}
-
-
-
 	@Override
 	public String toString() {
-		return "MemberProfileVo [profile_num=" + profile_num + ", profile_id=" + profile_id + ", profile_pic="
-				+ profile_pic + ", profile_intro=" + profile_intro + ", profile_thumbimg=" + profile_thumbimg + "]";
+		return "MemberProfileVo [profile_id=" + profile_id + ", profile_pic=" + profile_pic + ", profile_intro="
+				+ profile_intro + "]";
 	}
 
-
-
 	
+
 	
 	
 	

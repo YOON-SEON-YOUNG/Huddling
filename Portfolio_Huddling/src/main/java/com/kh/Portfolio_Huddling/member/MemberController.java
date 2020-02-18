@@ -110,11 +110,14 @@ public class MemberController {
 		return "member/include/myPagePointControl";
 	}
 	
+
+	
 	// 프로필 등록폼
 
 	@RequestMapping(value = "/profileRegister", method = RequestMethod.GET)
 	public String myPageProfileControl() {
 		System.out.println("profile");
+//		service.selectMemberProfileread(profile_num)
 		return "member/include/myPageProfileControl";
 	}
 
@@ -133,8 +136,8 @@ public class MemberController {
 		}
 
 		profileVo.setProfile_pic(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		profileVo.setProfile_thumbimg(
-				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+//		profileVo.setProfile_thumbimg(
+//				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 
 		service.Profile_Register(profileVo);
 		/* model.addAttribute("profileVo",profileVo); */
@@ -152,7 +155,7 @@ public class MemberController {
 	 service.selectMemberProfileread(profile_num); model.addAttribute("profileVo",
 	 profileVo); 
 	 
-	 return "member/include/myPageProfileRead";
+	 return "member/include/myPageProfileView";
 	 
 	 }
 	

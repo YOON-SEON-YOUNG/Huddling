@@ -55,7 +55,7 @@
 	
 	<select id="selectMemberProfile" resultType="MemberProfileVo">
 		select * from tbl_profile
-		where profile_num = #{profile_num}
+		where profile_id = #{profile_id}
 	</select>
 	
 <!-- 	<select id="getTime" resultType="string"> -->

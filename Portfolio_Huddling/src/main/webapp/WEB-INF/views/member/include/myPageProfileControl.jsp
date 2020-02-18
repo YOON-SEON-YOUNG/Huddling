@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,7 @@ $("#profile_pic").change(function(){
 </style>
 <body>
 <span id="list-item-6" >
+memberVo: ${memberVo}
     <div class="container">
 			<div class="Back">
 				<i class="fa fa-arrow-left" onclick="Back()"></i>
@@ -40,11 +42,10 @@ $("#profile_pic").change(function(){
 			
 			<!-- 이미지 -->
 				<div class="preview text-center">
-                <img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
-                <div class="browse-button">
-                    <i class="fa fa-pencil-alt"></i>
-                    <input class="browse-input" type="file" required name="UploadedFile" id="UploadedFile"/>
-                </div>
+				 
+			<img class='img-thumbnail' src='/upload/displayFile?fileName=" + thumbnailName + "'/>
+			<img class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image" width="200" height="200"/>
+                
                 </div>
 				
 				<div class="form-group">
