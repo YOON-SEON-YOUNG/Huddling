@@ -5,8 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 	$(document).ready(function() {
-		//bread 변경
-		$("#bread").text("requir");
 		$("#projectTitle").text("기본 요건");
 		$("#projectDesc")
 				.text(
@@ -85,8 +83,8 @@
 				</div>
 			</div>	
 		</div>
+</form>
 		<div class="card-body">
 			<button class="btn btn-primary" id="btnSave">저장</button>
 		</div>
 	</div>
-</form>
