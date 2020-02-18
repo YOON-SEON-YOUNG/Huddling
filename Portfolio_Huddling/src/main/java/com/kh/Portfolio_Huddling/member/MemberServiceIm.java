@@ -76,10 +76,10 @@ public class MemberServiceIm implements MemberService {
 	}
 
 	@Override
-	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+	public MemberProfileVo selectMemberById(String member_id) throws Exception {
 		
-		dao.selectMemberProfileread(profile_num);
-		return dao.selectMemberProfileread(profile_num);
+		dao.selectMemberProfileread(member_id);
+		return dao.selectMemberProfileread(member_id);
 	}
 
 	@Override
@@ -105,6 +105,12 @@ public class MemberServiceIm implements MemberService {
 	@Override
 	public int privacyUpdateName(MemberVo memberVo) throws Exception {
 		return dao.privacyUpdateName(memberVo);
+	}
+
+	@Override
+	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

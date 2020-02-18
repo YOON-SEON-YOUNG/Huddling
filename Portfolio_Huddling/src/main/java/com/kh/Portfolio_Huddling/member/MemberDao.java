@@ -23,4 +23,5 @@ public interface MemberDao {
 	public int privacyUpdateEmail(MemberVo memberVo)throws Exception;
 	public int privacyUpdatePw(MemberVo memberVo)throws Exception;
 	public int privacyUpdateName(MemberVo memberVo)throws Exception;
+	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception;
 }

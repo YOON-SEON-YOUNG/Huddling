@@ -20,5 +20,6 @@ public interface MemberService {
 	public int privacyUpdateEmail(MemberVo memberVo)throws Exception;
 	public int privacyUpdatePw(MemberVo memberVo)throws Exception;
 	public int privacyUpdateName(MemberVo memberVo)throws Exception;
+	public MemberProfileVo selectMemberById(String member_id) throws Exception;
 
 }

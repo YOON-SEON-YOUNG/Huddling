@@ -60,7 +60,8 @@
 					<ul class="top-right-info_w3ls">
 					<c:choose>
 				<c:when test="${not empty memberVo}">
-					<span>${memberVo.member_nickname}님 반가습니다.</span>
+				     <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
+					<span>${memberVo.member_nickname}님 반갑습니다.</span>
 					<input type="button" id="logout" value="로그아웃" onclick="location.href='/member/logout'">
 				</c:when>
 				<c:otherwise>

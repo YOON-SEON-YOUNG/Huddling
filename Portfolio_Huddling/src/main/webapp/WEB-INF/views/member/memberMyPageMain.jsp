@@ -46,7 +46,7 @@ $(document).ready(function(){
 	$("#item6").click(function(){
 		$("#page").load("profileRegister");
 	});
-	
+
 });
 </script>	
 <style>
@@ -92,6 +92,7 @@ label{
 <title>MyPage</title>
 </head>
 <body>
+profileVo : ${profileVo}
 <!-- 맨위쪽(header) -->
 	<header>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light"
@@ -104,8 +105,8 @@ label{
 					 <!-- 이미지드롭다운 -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="${profileVo.profile_pic}" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_name})</span>
+                  <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
+                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
                   <span class="badge">${memberVo.member_point}</span>
                 </a>
                 <!-- //이미지드롭다운 -->
@@ -114,7 +115,7 @@ label{
                             <li class="user-header">
 		        <div class="profile-header-container">   
 		    		<div class="profile-header-img">
-		                <img class="img-circle" src="${profileVo.profile_ThumbImg}" />
+		                <img class="img-circle" src="/member/displayFile?fileName=${profileVo.profile_pic}" />
 		                <!-- badge -->
 		                <div class="rank-label-container">
 		                    <span class="label label-default rank-label">${profileVo.profile_id}</span>
@@ -172,6 +173,7 @@ label{
 								<a
 								class="list-group-item list-group-item-action"
 								id="item6">프로필 설정</a>
+		
 						</div>
 					</div>
 					<!-- //왼쪽 -->
