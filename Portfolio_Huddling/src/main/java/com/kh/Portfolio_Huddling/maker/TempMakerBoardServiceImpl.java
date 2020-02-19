@@ -1,8 +1,11 @@
 package com.kh.Portfolio_Huddling.maker;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TempMakerBoardServiceImpl implements TempMakerBoardService {
@@ -33,13 +36,30 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	}
 
 	@Override
+	@Transactional
 	public TempMakerStoryDto tempStoryLoad(int tempStoryNum) throws Exception {
+		//이미지 개수 
+		int count = boardDao.tempImgNum(tempStoryNum);
+		System.out.println("count : " + count);
 		return boardDao.tempLoadStory(tempStoryNum);
 	}
 
 	@Override
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
 		boardDao.tempSaveStory(storyDto);
+		
+	}
+
+	@Override
+	public List<TempMakerBoardImgDto> imgNameList(int tempStoryNum) throws Exception {
+				List<TempMakerBoardImgDto> list = boardDao.tempImgName(tempStoryNum);
+				System.out.println("list : " + list);
+		return list;
+	}
+
+	@Override
+	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception {
+		boardDao.tempInputImgName(imgDto);
 		
 	}
 

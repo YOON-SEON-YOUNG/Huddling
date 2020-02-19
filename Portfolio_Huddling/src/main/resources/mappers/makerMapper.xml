@@ -67,7 +67,21 @@
 		story_summary = #{story_summary},
 		story_storyboard = #{story_storyBoard}
 		where temp_story_num = #{temp_story_num}
-
 	</update>
+	
+	<insert id="imgInput">
+	insert into tbl_temp_imglist
+	values(#{temp_imglist_num},seq_imglist_num.nextval,#{imglist_name})
+	</insert>
+	
+	<select id="imgList" resultType="TempMakerBoardImgDto">
+	select imglist_name from tbl_temp_imglist
+	where temp_imglist_num = #{temp_imglist_num}
+	</select>
+	
+	<select id="imgListCnt" resultType="int">
+	select count(*) from tbl_temp_imglist
+	where temp_imglist_num = #{temp_imglist_num}
+	</select>
 
 </mapper>

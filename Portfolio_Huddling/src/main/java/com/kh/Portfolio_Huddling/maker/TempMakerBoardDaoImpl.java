@@ -1,5 +1,7 @@
 package com.kh.Portfolio_Huddling.maker;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -51,7 +53,25 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception {
 		System.out.println("dao/ : " + storyDto);
 		sqlSession.update(NAMESPACE + ".tempUpdateStory",storyDto);
-		
 	}
+
+	@Override
+	public int tempImgNum(int tempListNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE +".imgListCnt",tempListNum);
+	}
+
+
+	@Override
+	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception {
+		return sqlSession.selectList(NAMESPACE +".imgList",tempListNum);
+	}
+
+
+	@Override
+	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception {
+		sqlSession.insert(NAMESPACE + ".imgInput",imgDto);
+	}
+
+
 
 }

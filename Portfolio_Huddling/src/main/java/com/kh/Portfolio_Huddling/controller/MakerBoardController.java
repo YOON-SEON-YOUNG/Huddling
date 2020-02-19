@@ -1,21 +1,32 @@
 package com.kh.Portfolio_Huddling.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpRequest;
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerBasicDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerBoardImgDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardService;
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
+import com.kh.Portfolio_Huddling.util.FileUploadUtil;
 
 
 @Controller
@@ -51,10 +62,10 @@ public class MakerBoardController {
 	}
 	@RequestMapping(value="/story", method = RequestMethod.GET)
 	public String story(Model model) throws Exception {
+		System.out.println("story 실행중...");
 		int tempStoryNum = 1;
 		TempMakerStoryDto storyDto = tempService.tempStoryLoad(tempStoryNum);
 		model.addAttribute("storyDto",storyDto);
-		System.out.println("story 실행중...");
 		return "maker/maker_productStory";
 	}
 	@RequestMapping(value="/reword")
@@ -111,5 +122,77 @@ public class MakerBoardController {
 		tempService.tempStoryUpdate(storyDto);
 		return storyDto;
 	}
-	
+	//로컬 이미지 서버 저장
+	@RequestMapping(value="/imgCopy/{num}", method = RequestMethod.GET)
+	public String inputImg(HttpServletRequest request,
+			@PathVariable("num") int num) throws Exception{
+		HttpSession session = request.getSession();
+		String imgName = (String)session.getAttribute("filename");
+		String orgFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\" + imgName; //경로명
+		String filePath = "//192.168.0.34/upload/team4/";
+		String fileDir = FileUploadUtil.calcPath(filePath);
+		String copyFilePath = filePath + "makerUpload/" + fileDir +"/"+ imgName;
+		System.out.println("copyFilePath : " + copyFilePath);
+		
+		TempMakerBoardImgDto imgDto = new TempMakerBoardImgDto();
+		imgDto.setTemp_imglist_num(num);
+		imgDto.setImglist_name(imgName);
+		tempService.tempInputImgName(imgDto);
+		try{
+			//입력용
+			FileInputStream fileInputStream = new FileInputStream(orgFilePath);
+			//출력용
+			FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
+			BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+			BufferedOutputStream bufferedOutputStream  = new BufferedOutputStream(fileOutputStream);
+			
+			int data = 0;
+			while((data=bufferedInputStream.read()) != -1) {
+				bufferedOutputStream.write(data);
+			}
+			bufferedInputStream.close();
+			bufferedOutputStream.close();
+			System.out.println("완료");
+			session.removeAttribute("filename");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("이미지 로컬 저장...");
+		return "maker/data";
+	}
+	//서버 이미지 로컬 저장
+	@RequestMapping(value="/imgLoad/{num}", method = RequestMethod.GET)
+	public String outputImg(HttpServletRequest request,@PathVariable("num") int num
+			) throws Exception{
+		System.out.println("서버에서 이미지 가져오는중...");
+		List<TempMakerBoardImgDto> list = tempService.imgNameList(num);
+		int count = 0;
+		while(count < list.size()) {
+		String fileName = list.get(count).getImglist_name();
+		System.out.println("fileName : " + count +"/"+ fileName);
+		
+		//서버 파일 경로
+		String filePath = "//192.168.0.34/upload/team4/";
+		String fileDir = FileUploadUtil.calcPath(filePath);
+		String orgFilePath = filePath + "makerUpload/" + fileDir +"/"+ list.get(count).getImglist_name();
+		
+		//로컬 파일 경로
+		String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\" + list.get(count).getImglist_name();
+		
+		//파일 가져오기
+		FileInputStream fileInputStream= new FileInputStream(orgFilePath);
+		FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
+		BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+		BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+		int data = 0;
+		while((data=bufferedInputStream.read()) != -1) {
+			bufferedOutputStream.write(data);
+		}
+		bufferedInputStream.close();
+		bufferedOutputStream.close();
+		count += 1;
+		}
+		System.out.println("완료");
+		return "maker/data";
+	}
 }
