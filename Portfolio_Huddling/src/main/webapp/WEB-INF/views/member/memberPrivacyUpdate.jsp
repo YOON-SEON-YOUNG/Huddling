@@ -32,7 +32,7 @@ $(document).ready(function(){
 	$("#btnSubmit").click(function() {
 		if ($("#member_pw").val().trim() == "") {
 			alert("비밀번호를 입력해 주세요");
-// 			$("#member_pw").focus();
+			$("#member_pw").focus();
 			return false;
 		}
 		
@@ -45,15 +45,15 @@ $(document).ready(function(){
 			return false;
 		}
 		if ($("#member_email").val().trim() == "") {
-			alert("별명을 입력해 주세요");
+			alert("이메일을  입력해 주세요");
 			return false;
 		}
 		if ($("#member_address").val().trim() == "") {
-			alert("별명을 입력해 주세요");
+			alert("주소를 입력해 주세요");
 			return false;
 		}
 		if ($("#member_call").val().trim() == "") {
-			alert("별명을 입력해 주세요");
+			alert("전화번호를 입력해 주세요");
 			return false;
 		}
 		else{
@@ -69,8 +69,7 @@ $(document).ready(function(){
 		var member_address =$("#member_address").val();
 		console.log(member_address);
 		sData = {
-				"member_address":member_address
-// 				'member_nickname':member_nickname
+				"member_address": member_address
 		}
 		$.post("/member/privacyUpdateAddress",sData,function(rData){
 			if(rData =="0"){
@@ -110,7 +109,6 @@ $(document).ready(function(){
 		$.post("/member/privacyUpdateCall",sData,function(rData){
 			if(rData =="0"){
 				$('#text_call').text("사용가능 전화번호 입니다.");
-				$("#form").submit();
 			}else if(rData =="1"){
 				$('#text_call').text("이미 사용중인 전화번호 입니다.");
 			}
@@ -131,7 +129,6 @@ $(document).ready(function(){
 		
 			if(rData =="0"){
 				$('#text_pw1').text("사용가능한 비밀번호입니다");
-				$("#form").submit();
 			}else if(rData =="1"){
 				$('#text_pw1').text("기존비밀번호와 동일합니다.");
 				
@@ -155,7 +152,6 @@ $(document).ready(function(){
 		$.post("/member/registerCheckNick",sData,function(rData){
 			if(rData =="0"){
 				$('#text_nickname').text("사용가능닉네임입니다.");
-				$("#form").submit();
 			}else if(rData =="1"){
 				$('#text_nickname').text("이미 사용중인 닉네임입니다.");
 				
@@ -172,10 +168,8 @@ $(document).ready(function(){
 		console.log("키를누름");
 		var member_name =$("#member_name").val();
 		console.log(member_name);
-		var overLap =$("#text_name").val();
 		sData = {
-				"member_name":member_name
-// 				'member_nickname':member_nickname
+				"member_name": member_name
 		}
 		$.post("/member/privacyUpdateName",sData,function(rData){
 			if(rData =="0"){
@@ -187,7 +181,7 @@ $(document).ready(function(){
 		});
 			
 });
-	
+		
 });
 </script>
 </head>

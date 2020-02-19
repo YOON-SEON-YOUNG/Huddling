@@ -32,8 +32,8 @@ $("#profile_pic").change(function(){
 </style>
 <body>
 <span id="list-item-6" >
-memberVo: ${memberVo}<br>
-profileVo: ${profileVo}<br>
+<%-- memberVo: ${memberVo}<br>
+profileVo: ${profileVo}<br> --%>
     <div class="container">
 			<div class="Back">
 				<i class="fa fa-arrow-left" onclick="Back()"></i>

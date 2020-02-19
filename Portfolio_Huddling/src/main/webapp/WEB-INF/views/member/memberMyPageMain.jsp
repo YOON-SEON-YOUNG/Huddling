@@ -92,7 +92,7 @@ label{
 <title>MyPage</title>
 </head>
 <body>
-profileVo : ${profileVo}
+<%-- profileVo : ${profileVo} --%>
 <!-- 맨위쪽(header) -->
 	<header>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light"
@@ -131,7 +131,7 @@ profileVo : ${profileVo}
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div>
-                      <a href="#">로그아웃</a>
+                      <a href="/member/logout">로그아웃</a>
                     </div>
                     
                     <div>

@@ -68,13 +68,15 @@ public class MemberServiceIm implements MemberService {
 
 	}
 
+	// 프로필 등록
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
 		
 		dao.Profile_Register(profileVo);
 		
 	}
-
+	
+	// 프로필 조회
 	@Override
 	public MemberProfileVo selectMemberById(String member_id) throws Exception {
 		
@@ -107,10 +109,25 @@ public class MemberServiceIm implements MemberService {
 		return dao.privacyUpdateName(memberVo);
 	}
 
+	// 포인트 구매
 	@Override
-	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void pointBuy(PointVo pointVo) throws Exception {
+		dao.pointBuy(pointVo);
+		
 	}
+
+	// 포인트 조회
+	@Override
+	public PointVo selectPoint(String member_id) throws Exception {
+		// TODO Auto-generated method stub
+		dao.selectPoint(member_id);
+		return dao.selectPoint(member_id);
+	}
+	
+
+
+
+
+
 
 }
