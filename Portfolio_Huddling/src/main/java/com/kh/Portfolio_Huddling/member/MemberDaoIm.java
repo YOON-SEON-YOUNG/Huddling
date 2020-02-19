@@ -23,6 +23,8 @@ public class MemberDaoIm implements MemberDao {
 		sqlsession.insert(NAMESPACE + ".insertMember", memberVo);
 		String profile_id = memberVo.getMember_id();
 		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profile_id);
+		String member_id = memberVo.getMember_id();
+		sqlsession.insert(NAMESPACE + ".insertPoint", member_id); 
 	}
 
 	@Override
@@ -78,6 +80,7 @@ public class MemberDaoIm implements MemberDao {
 
 }
 	
+	// 프로필 등록 
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
 		sqlsession.update(NAMESPACE + ".updateMemberProfile", profileVo);
@@ -120,10 +123,20 @@ public class MemberDaoIm implements MemberDao {
 		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateName",memberVo);
 	}
 
+	// 포인트 구매
 	@Override
-	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void pointBuy(PointVo pointVo) throws Exception {
+		sqlsession.update(NAMESPACE + ".updatePoint", pointVo);		
 	}
+	
+	// 포인트 조회 
+
+	@Override
+	public PointVo selectPoint(String member_id) throws Exception {
+		PointVo pointVo = sqlsession.selectOne(NAMESPACE + ".selectPoint", member_id);
+		return pointVo;
+	}
+
+	
 	
 }

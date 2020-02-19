@@ -92,7 +92,7 @@ label{
 <title>MyPage</title>
 </head>
 <body>
-profileVo : ${profileVo}
+<%-- profileVo : ${profileVo} --%>
 <!-- 맨위쪽(header) -->
 	<header>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light"

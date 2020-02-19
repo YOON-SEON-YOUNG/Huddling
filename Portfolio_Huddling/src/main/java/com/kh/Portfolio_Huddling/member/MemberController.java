@@ -83,7 +83,10 @@ public class MemberController {
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
 		session.setAttribute("memberVo", selectMemberVo);
+		PointVo pointVo = service.selectPoint(memberVo.getMember_id());
 		session.setAttribute("profileVo", profileVo);
+		session.setAttribute("pointVo", pointVo);
+		
 		return "redirect:/";
 	}
 	
@@ -133,7 +136,6 @@ public class MemberController {
 	}
 	
 	
-	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page(HttpSession session, Model model) throws Exception {
 		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
@@ -142,6 +144,7 @@ public class MemberController {
 		model.addAttribute("profileVo", profileVo);
 		return "member/memberMyPageMain";
 	}
+	
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
 	public String memberList(MemberVo memberVo,Model model) throws Exception {
 		List<MemberVo> list = service.memberList(memberVo);
@@ -172,11 +175,24 @@ public class MemberController {
 		
 		return "member/include/myPageChaetingControl";
 	}
+	
+	// 포인트 페이지
 	@RequestMapping(value = "/myPagePointControl", method = RequestMethod.GET)
 	public String myPagePointControl() {
 		
 		return "member/include/myPagePointControl";
 	}
+	
+	// 포인트 충전하기 페이지
+	@RequestMapping(value ="/pointChargePage", method = RequestMethod.GET)
+	public String pointChargePage() {
+		
+		return "member/include/pointChargePage";
+		
+	}
+	
+		
+
 	@RequestMapping(value = "/memberPrivacyUpdate", method = RequestMethod.GET)
 	public String memberPrivacyUpdate() {
 		
@@ -243,6 +259,9 @@ public class MemberController {
 			is.close();
 			return bytes;
 		}
+	 
+	 
+	
 
 
 }
