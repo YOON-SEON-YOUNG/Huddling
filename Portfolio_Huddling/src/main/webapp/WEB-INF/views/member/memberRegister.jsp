@@ -104,7 +104,7 @@ function memberAddress() {
 		</div>
 		<!-- 작업시작 -->
 		<div class="col-md-6">
-		<a><img src="resources/image/hudling_logo.jpg"></img></a>
+		<a><img src="/resources/images/hudling_logo.jpg"></img></a>
 		</div>
 		<!-- 아무것도업음 -->
 		<div class="col-md-3">
@@ -128,7 +128,8 @@ function memberAddress() {
 	<!--                                 아이디                                   -->
   <div class="form-group">
     <label for="exampleInputEmail1">아아디</label>
-    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" readonly >
+    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" >
+ 	<small id="textHelp1" class="form-text text-muted" >중복확인</small>
   </div>
   
    <!--                                   이름                                     -->
@@ -156,23 +157,8 @@ function memberAddress() {
   </div>
   <!-- 주소 -->
   <div class="form-group">
-  
-<!--  <label>Zip Code</label>  -->
-
-        
-<!-- <input type="text" name="zipNum" id="sample6_postcode" placeholder="우편번호"> -->
-<!-- <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> -->
-        
-<!--  <label>Address</label>  -->
-
-
-<!--  <input type="text" name="addr1" id="sample6_address" placeholder="주소"><br> -->
-<!-- <input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소"> -->
-<!--   </div> -->
-  
-  
     <label for="exampleInputEmail1">주소</label>
-    <input type="text" id="member_address"  name ="member_address"placeholder="주소">
+    <input type="text" id="member_address"  name ="member_address"class="form-control" id="member_email" aria-describedby="emailHelp"placeholder="주소">
 <input type="button" onclick="memberAddress()" value="주소 검색"><br>
   </div>
   
@@ -199,7 +185,6 @@ function memberAddress() {
 		</div>
 		<!-- 아무것도업음 -->
 		<div class="col-md-3">
-		<span><button id="btnIdCheck" onclick="idOnclick">아이디중복체크</button></span>
 		</div>
 	</div>
 </div>
