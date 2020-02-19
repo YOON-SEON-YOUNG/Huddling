@@ -131,7 +131,7 @@ profileVo : ${profileVo}
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div>
-                      <a href="#">로그아웃</a>
+                      <a href="/member/logout">로그아웃</a>
                     </div>
                     
                     <div>

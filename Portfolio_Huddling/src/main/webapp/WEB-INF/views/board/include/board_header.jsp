@@ -37,17 +37,25 @@
 		}, function () {
 			$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 		});
+		
+			
 	</script>
 
 
 
-
+	
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<script type="text/javascript" src="/resources/main/js/bootstrap-3.1.1.min.js"></script>
 	
+	<%
+	String manager =request.getParameter("manager");
+	%>
+	<%=manager %>
 <body>
 	<!--Header-->
 	<div class="header" id="home">
+	<div id="member_id" style="display:none;" >${memberVo.member_id}</div>
+	<div id="manager" name="manager" style="display:none;" ></div>
 		<!--top-bar-w3-agile-->
 		<div class="top-bar_w3agileits">
 			<div class="top-logo_info_w3layouts">
@@ -62,8 +70,10 @@
 				<c:when test="${not empty memberVo}">
 				     <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
 					<span>${memberVo.member_nickname}님 반갑습니다.</span>
+					
 					<input type="button" id="logout" value="로그아웃" onclick="location.href='/member/logout'">
 				</c:when>
+				
 				<c:otherwise>
 					<li><i class="fa fa-login" aria-hidden="true" onClick="location.href='/member/login'">로그인</i></li>
 					<li><i class="fa fa-join" aria-hidden="true" onClick="location.href='/member/register'">회원가입</i></li>
@@ -96,8 +106,18 @@
 											<li class="divider"></li>			
 										</ul>
 									</li>
-									<li><a href="/member/mypageMain">마이페이지</a></li>
-									<li><a href="/manager/mainPage">관리자페이지</a></li>
+<!-- 									href="/member/mypageMain" -->
+									<c:choose>
+										<c:when test="${not empty memberVo && memberVo.member_id != 'manager'}">
+											<li><a  href="/member/mypageMain"id="mypage">마이페이지</a></li>
+										</c:when>
+										
+										<c:when test="${not empty memberVo && memberVo.member_id == 'manager' }">
+											<li><a href="/manager/mainPage" id="managerPage">관리자페이지</a></li>
+										</c:when>
+										
+									</c:choose>
+									
 								</ul>
 							</nav>
 						</div>
