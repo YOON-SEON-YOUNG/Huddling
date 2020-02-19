@@ -40,8 +40,21 @@ public class MemberServiceIm implements MemberService {
 		return dao.memberList(memberVo);
 	}
 
-	
+	@Override
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+		return dao.registerCheckId(memberVo);
+	}
 
+	@Override
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		return dao.registerCheckNick(memberVo);
+	}
+
+	@Override
+	public void memberPrivacyUpdate(MemberVo memberVo) throws Exception {
+		dao.memberPrivacyUpdate(memberVo);
+	
+	}
 	public void memberRating(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.memberRating(memberVo);
@@ -67,6 +80,37 @@ public class MemberServiceIm implements MemberService {
 		
 		dao.selectMemberProfileread(member_id);
 		return dao.selectMemberProfileread(member_id);
+	}
+
+	@Override
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateAddress(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateCall(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateEmail(memberVo);
+	}
+
+	@Override
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdatePw(memberVo);
+	}
+
+	@Override
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		return dao.privacyUpdateName(memberVo);
+	}
+
+	@Override
+	public MemberProfileVo selectMemberProfileread(Integer profile_num) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

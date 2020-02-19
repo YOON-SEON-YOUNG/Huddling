@@ -135,7 +135,7 @@ profileVo : ${profileVo}
                     </div>
                     
                     <div>
-                      <a href="#">기타등등</a>
+                      <a href="/member/memberPrivacyUpdate">개인정보수정</a>
                     </div>
                   </li>
 					
