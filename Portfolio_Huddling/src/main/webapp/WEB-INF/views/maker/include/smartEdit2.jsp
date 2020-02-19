@@ -47,7 +47,7 @@ function submitContents(elClickedObj) {
 function pasteHTML(filepath){
 	console.log("filepath:" + filepath);
 	var path = "/resources/upload/" + filepath;
-	var sHTML = "<img src='" + path + "'/>";
+	var sHTML = "<img class='pathImg1' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
 }
  
@@ -58,3 +58,9 @@ ${storyDto.story_storyBoard }
 </textarea>
 </form>
 
+<script>
+$(function(){
+	var pathImg = $('.pathImg').attr('data-test');
+	console.log('pathImg',pathImg);
+});
+</script>
