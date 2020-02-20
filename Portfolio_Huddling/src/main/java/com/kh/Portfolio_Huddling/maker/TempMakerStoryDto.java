@@ -1,7 +1,5 @@
 package com.kh.Portfolio_Huddling.maker;
 
-import java.sql.Clob;
-
 public class TempMakerStoryDto {
 	private int temp_story_num;
 	private String story_introImg;

@@ -13,9 +13,6 @@
 		
 		// 리워드 리스트 가져오기
 		
-		
-		
-		
 	});
 </script>
 <div class="container-fluid">

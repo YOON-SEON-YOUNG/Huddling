@@ -24,6 +24,26 @@
 			console.log(member_id);
 		});
 	});
+	
+	$(".memberUnban").click(function() {
+		var input = $("#searchData").val();
+		var member_id = $(this).attr("data-memberId");
+		var that = $(this);
+		$.post("/manager/memberBan", {
+			"member_rating" : 0,
+			"member_id" : member_id
+		}, function(rData) {
+			console.log(rData);
+			$("#page").load("userControl?search="+input+"");
+		});
+	});
+	
+	$("#btnSearch").click(function() {
+		var input = $("#searchData").val();
+		
+		$("#page").load("userControl?search="+input+"");
+	});
+});
 </script>
 <h2>회원관리</h2>
 <hr>
