@@ -109,21 +109,13 @@ public class MemberServiceIm implements MemberService {
 		return dao.privacyUpdateName(memberVo);
 	}
 
-	// 포인트 구매
 	@Override
-	public void pointBuy(PointVo pointVo) throws Exception {
-		dao.pointBuy(pointVo);
+	public void addPoint(String member_id, int point) throws Exception {
+		dao.addPoint(member_id, point);
 		
 	}
 
-	// 포인트 조회
-	@Override
-	public PointVo selectPoint(String member_id) throws Exception {
-		// TODO Auto-generated method stub
-		dao.selectPoint(member_id);
-		return dao.selectPoint(member_id);
-	}
-	
+
 
 
 

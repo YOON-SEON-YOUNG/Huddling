@@ -1,6 +1,8 @@
 package com.kh.Portfolio_Huddling.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -123,20 +125,20 @@ public class MemberDaoIm implements MemberDao {
 		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateName",memberVo);
 	}
 
-	// 포인트 구매
-	@Override
-	public void pointBuy(PointVo pointVo) throws Exception {
-		sqlsession.update(NAMESPACE + ".updatePoint", pointVo);		
-	}
 	
-	// 포인트 조회 
+	// 포인트
 
 	@Override
-	public PointVo selectPoint(String member_id) throws Exception {
-		PointVo pointVo = sqlsession.selectOne(NAMESPACE + ".selectPoint", member_id);
-		return pointVo;
+	public void addPoint(String member_id, int point) throws Exception {
+		Map<String,Object>map = new HashMap<String, Object>();
+		map.put("member_id", member_id);
+		map.put("point", point);
+		sqlsession.insert(NAMESPACE+".addPoint",map);
+		
 	}
 
+
 	
+
 	
 }

@@ -47,6 +47,11 @@ $(document).ready(function(){
 		$("#page").load("profileRegister");
 	});
 
+	function buyPoint_click() {
+		var url ="/point/buyPoint";
+		window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500 height=600")
+	};
+
 });
 </script>	
 <style>
@@ -127,6 +132,7 @@ label{
                       ${memberVo.member_name}님 반갑습니다
                     </p>
                     <input type="button" value="프로필 수정" onClick="location.href='/member/profileRegister'">
+                    <input type="button" value="포인트 충전" onClick="location.href='/point/buy'">
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
