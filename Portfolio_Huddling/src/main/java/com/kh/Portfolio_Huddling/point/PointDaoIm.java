@@ -21,13 +21,11 @@ public class PointDaoIm implements PointDao {
 	}
 
 	@Override
-	public int getNextVal() throws Exception {
-		return sqlsession.selectOne(NAMESPACE+ ".getNextVal");
+	public PointVo read(Integer point_num) throws Exception {
+		PointVo pointVo = sqlsession.selectOne(NAMESPACE + ".read", point_num);
+		return pointVo;
 	}
 
-	@Override
-	public String getTime() {
-		String time = sqlsession.selectOne(NAMESPACE + ".getTime");
-		return time;
-	}
+	
+
 }

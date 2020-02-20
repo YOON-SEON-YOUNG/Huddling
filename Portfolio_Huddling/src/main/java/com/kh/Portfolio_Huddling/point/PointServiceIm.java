@@ -12,10 +12,14 @@ public class PointServiceIm implements PointService {
 
 	@Override
 	public void buy(PointVo pointVo) throws Exception {
-		int point_num = pointDao.getNextVal();	
-		pointVo.setPoint_num(point_num);
 		pointDao.buy(pointVo);
 		
+	}
+
+	@Override
+	public PointVo read(Integer point_num) throws Exception {
+		pointDao.read(point_num);
+		return null;
 	}
 
 }

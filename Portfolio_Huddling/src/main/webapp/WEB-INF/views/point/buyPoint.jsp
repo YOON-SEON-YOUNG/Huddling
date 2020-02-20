@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>포인트 충전</h1>
-
+${pointVo}
 
 								<div class="row">
 									<div class="col-md-3">
@@ -25,7 +25,7 @@
 												<tr>
 													<th scope="row" style="width: 120px" id="chargeRead">
 														
-														현재포인트&nbsp; <span>금액</span>
+														현재포인트<span>금액</span>
 														<span style="font-size: 30px">원</span>&nbsp;
 														
 														<!-- Button trigger modal -->
@@ -54,6 +54,7 @@
   		<input type="text"class="form-control" id="member_id" name="member_id">
   		<label>충전금액</label>
   		<input type="text"class="form-control" id="member_point" name="member_point">
+  	
 <!--   		<label>충전수단</label>
   		<input type="text"class="form-control"> -->
   		

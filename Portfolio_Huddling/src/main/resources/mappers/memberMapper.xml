@@ -108,7 +108,7 @@
 	</select>
 	
 	<update id="addPoint" parameterType="map">
-			update member set
+			update tbl_member set
 				meber_point= member_point + #{member_point} 
 				where member_id = #{member_id}			        
 	</update>
