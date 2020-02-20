@@ -1,0 +1,9 @@
+create table tbl_message (
+    message_num number primary key,
+    message_content varchar2(2000),
+    message_date timestamp default systimestamp,
+    message_sender varchar2(50) not null,
+    message_receiver varchar2(50) not null,
+    message_read timestamp default null,
+    project_num number default 0
+);

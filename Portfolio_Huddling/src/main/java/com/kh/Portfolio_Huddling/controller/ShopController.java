@@ -47,4 +47,5 @@ public class ShopController {
 		return "board/shop_category_donate";
 	}
 	
+	
 }
