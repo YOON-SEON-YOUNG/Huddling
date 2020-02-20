@@ -117,7 +117,7 @@
 										</c:when>
 										
 									</c:choose>
-									
+										<li><a href="/manager/inquiry">관리자에게문의</a></li>
 								</ul>
 							</nav>
 						</div>

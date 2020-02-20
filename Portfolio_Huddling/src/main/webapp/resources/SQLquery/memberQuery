@@ -9,3 +9,4 @@ create table tbl_member (
     member_rating number default 0,
     member_point number default 0
 );
+
