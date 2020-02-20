@@ -17,7 +17,7 @@ public interface MemberDao {
 	//검색
 	public List<MemberVo> memberSearch(String search) throws Exception;
 	//검색 결과
-	public void memberRating(MemberVo memberVo) throws Exception;
+	public int memberRating(MemberVo memberVo) throws Exception;
 	public int privacyUpdateAddress(MemberVo memberVo)throws Exception;
 	public int privacyUpdateCall(MemberVo memberVo)throws Exception;
 	public int privacyUpdateEmail(MemberVo memberVo)throws Exception;

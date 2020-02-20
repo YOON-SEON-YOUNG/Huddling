@@ -83,14 +83,22 @@ public class ManagerController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/memberBan", method = RequestMethod.GET)
-	public int userRating(String member_id) throws Exception {
+	public int userRating(@Param("member_id")String member_id) throws Exception {
 		int banState = menagerService.memberRating(member_id);
+		System.out.println("memberBan입니다:" + banState);
 		if (banState == 1) {
 			return 1;
 		} else {
 		return 0;
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateMemberRating", method = RequestMethod.POST)
+	public int userRating(MemberVo memberVo) throws Exception {
+		return memberService.memberRating(memberVo);
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/projectApp", method = RequestMethod.POST)

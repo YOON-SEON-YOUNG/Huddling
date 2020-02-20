@@ -23,7 +23,7 @@
 			$("#page").load("memberShip?member_id=" + member_id);
 			console.log(member_id);
 		});
-	});
+	
 	
 	$(".memberUnban").click(function() {
 		var input = $("#searchData").val();

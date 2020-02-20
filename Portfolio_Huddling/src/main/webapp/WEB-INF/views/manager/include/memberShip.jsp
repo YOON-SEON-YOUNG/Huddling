@@ -31,43 +31,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 	$(document).ready(function(){
-// 		$("#btnblock").click(function(e){
-// 			console.log("클릭됨");
-// 			var member_id = $(this).attr("data-member_id");
-// 			console.log(member_id);
-// 		});
 		
 		$("#btnblock").click(function(e){
-			$("#page").load("userControl");
 			console.log("클릭됨");
+			$("#page").load("userControl");
 			var member_id = $(this).attr("data-member_id");
 			console.log(member_id);
-			var sData = {"member_rating": 1,"member_id" :member_id};
-			console.log(sData);
-			$.post("/manager/memberBan",sData,function(rData){
-				console.log(sData);
-				console.log(rData);
-				if(member_id == member_id){
-					alert("차단되엇습니다.");
+			var url ="/manager/updateMemberRating";
+			var sData = {"member_id" :member_id,
+						"member_rating" :'1'	
+				};
+			$.ajax({
+				'type':'post',
+				'url':'updateMemberRating',
+				'data': sData,
+				'success':function(){
+					alert('차단이되었습니다.');
 				}
 			});
+
 			
 		});
 		
 		$("#btnUnblock").click(function(e){
-			$("#page").load("userControl");
 			console.log("클릭됨");
+			$("#page").load("userControl");
 			var member_id = $(this).attr("data-member_id");
 			console.log(member_id);
-			var sData = {"member_rating": 0,"member_id" :member_id};
-			console.log(sData);
-			$.post("/manager/memberBan",sData,function(rData){
-				console.log(sData);
-				console.log(rData);
-				if(member_id == member_id){
-					alert("차단해제되었습니다.");
+			var url ="/manager/updateMemberRating";
+			var sData = {"member_id" :member_id,
+						"member_rating" :'0'	
+				};
+			$.ajax({
+				'type':'post',
+				'url':'updateMemberRating',
+				'data': sData,
+				'success':function(){
+					alert('차단해제되었습니다.');
 				}
 			});
+			
 			
 		});
 	});
