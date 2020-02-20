@@ -97,6 +97,7 @@
 									</li>
 									<li><a href="/member/mypageMain">마이페이지</a></li>
 									<li><a href="/manager/mainPage">관리자페이지</a></li>
+									<li><a href="/manager/inquiry">관리자에게문의</a></li>
 								</ul>
 							</nav>
 						</div>

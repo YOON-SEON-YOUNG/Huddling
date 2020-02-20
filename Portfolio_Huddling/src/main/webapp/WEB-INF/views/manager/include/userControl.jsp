@@ -30,6 +30,7 @@ $(document).ready(function() {
 	
 	$("#btnSearch").click(function() {
 		var input = $("#searchData").val();
+		
 		$("#page").load("userControl?search="+input+"");
 	});
 });

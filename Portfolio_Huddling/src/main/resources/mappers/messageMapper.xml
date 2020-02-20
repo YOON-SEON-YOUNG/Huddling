@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kh.mappers.messageMapper">
+
+	<insert id="insertMessage">
+		insert into tbl_message 
+			(message_num, message_content, message_sender, message_receiver, project_num)
+		values
+			(seq_message_num.nextval, #{message_content}, #{message_sender}, #{message_receiver}, #{project_num})
+	</insert>
+
+	<update id="updateMessage">
+		update tbl_message set
+		message_read = sysdate
+		where message_receiver = #{message_receiver}
+	</update>
+
+	<select id="selectMessage" resultType="MessageVo">
+		select * from tbl_message
+		where message_sender = #{message_sender} and message_receiver = #{message_receiver}
+		or message_sender = #{message_receiver} and message_receiver = #{message_sender}
+		order by message_num
+	</select>
+	
+	<select id="selectMessageList" resultType="MessageVo">
+		select * from tbl_message
+		where message_receiver = #{message_receiver} or message_sender = #{message_receiver}
+		order by message_num desc
+	</select>
+
+</mapper>  

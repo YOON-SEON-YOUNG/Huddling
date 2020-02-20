@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.Portfolio_Huddling.member.MemberService;
 import com.kh.Portfolio_Huddling.member.MemberVo;
+import com.kh.Portfolio_Huddling.message.MessageService;
+import com.kh.Portfolio_Huddling.message.MessageVo;
 import com.kh.Portfolio_Huddling.project.ProjectService;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 
@@ -26,10 +28,26 @@ public class ManagerController {
 	@Inject
 	private ProjectService projectService;
 	
+	@Inject
+	private MessageService messageService;
+	
 	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
 	public String page() {
 		
 		return "manager/managerMainPage";
+	}
+	
+	@RequestMapping(value = "/inquiry", method = RequestMethod.GET)
+	public String getInquiry() {
+		
+		return "manager/managerInquiry";
+	}
+	
+	@RequestMapping(value = "/questionsControlInquiry", method = RequestMethod.GET)
+	public String questionsControlInquiry(MessageVo messageVo, Model model) {
+		model.addAttribute("message_sender", messageVo.getMessage_sender());
+		model.addAttribute("message_receiver", messageVo.getMessage_receiver());
+		return "manager/include/questionsControlMessage";
 	}
 	
 	@RequestMapping(value = "/userControl", method = RequestMethod.GET)
