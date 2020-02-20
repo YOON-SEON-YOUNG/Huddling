@@ -2,6 +2,9 @@ package com.kh.Portfolio_Huddling.member;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface MemberService {
 	public void register(MemberVo memberVo) throws Exception;
 	public int loginId(MemberVo memberVo) throws Exception;
@@ -22,9 +25,6 @@ public interface MemberService {
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	// 프로필 조회
 	public MemberProfileVo selectMemberById(String member_id) throws Exception;
-	// 포인트 구매 
-	public void pointBuy(PointVo pointVo) throws Exception;
-	// 포인트 조회
-	public PointVo selectPoint(String member_id) throws Exception;
+	public void addPoint(String member_id, int point) throws Exception;
 
 }
