@@ -1,18 +1,23 @@
 package com.kh.Portfolio_Huddling.manager;
 
+import java.lang.annotation.Repeatable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.Portfolio_Huddling.member.MemberProfileVo;
 import com.kh.Portfolio_Huddling.member.MemberService;
 import com.kh.Portfolio_Huddling.member.MemberVo;
 import com.kh.Portfolio_Huddling.project.ProjectService;
@@ -24,16 +29,19 @@ public class ManagerController {
 	
 	@Inject
 	private MemberService memberService;
+
+	@Inject
+	private ManagerService menagerService;
 	
 	@Inject
 	private ProjectService projectService;
-	
 	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
 	public String page() {
 		
 		return "manager/managerMainPage";
 	}
 	
+	@Transactional
 	@RequestMapping(value = "/userControl", method = RequestMethod.GET)
 	public String userControl(Model model, MemberVo memberVo, String search) throws Exception {
 		if (search == null || search.equals("")) {
@@ -48,21 +56,20 @@ public class ManagerController {
 			System.out.println(list);
 			return "manager/include/userControl";
 		}
+		
 		return "manager/include/userControl";
 	}
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/memberBan", method = RequestMethod.POST)
-	public String userRating(MemberVo memberVo) throws Exception {
-		if (memberVo.getMember_rating() == 1) {
-			memberService.memberRating(memberVo);
-			return "Ban";
-		} else if (memberVo.getMember_rating() == 0) {
-			memberService.memberRating(memberVo);
-			return "Unban";
+	@RequestMapping(value = "/memberBan", method = RequestMethod.GET)
+	public int userRating(String member_id) throws Exception {
+		int banState = menagerService.memberRating(member_id);
+		if (banState == 1) {
+			return 1;
+		} else {
+		return 0;
 		}
-		return "0";
 	}
 	
 	@ResponseBody
@@ -96,6 +103,16 @@ public class ManagerController {
 	public String questionsControl() {
 		
 		return "manager/include/questionsControl";
+	}
+	
+	
+	@RequestMapping(value = "/memberShip", method = RequestMethod.GET)
+	public String memberShip(Model model, @Param("member_id") String member_id)throws Exception {
+		System.out.println("member_id:" + member_id);
+		MemberVo mVo = menagerService.memberShip(member_id);
+		System.out.println("mVo:" + mVo);
+		model.addAttribute("mVo", mVo);
+		return "manager/include/memberShip";
 	}
 	
 	

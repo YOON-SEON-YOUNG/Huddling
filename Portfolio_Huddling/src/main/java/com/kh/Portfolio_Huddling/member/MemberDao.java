@@ -14,7 +14,9 @@ public interface MemberDao {
 	public int registerCheckId(MemberVo memberVo)throws Exception;
 	public int registerCheckNick(MemberVo memberVo)throws Exception;
 	public void memberPrivacyUpdate(MemberVo memberVo)throws Exception;
+	//검색
 	public List<MemberVo> memberSearch(String search) throws Exception;
+	//검색 결과
 	public void memberRating(MemberVo memberVo) throws Exception;
 	public int privacyUpdateAddress(MemberVo memberVo)throws Exception;
 	public int privacyUpdateCall(MemberVo memberVo)throws Exception;
@@ -30,5 +32,6 @@ public interface MemberDao {
 	public void pointBuy(PointVo pointVo) throws Exception;
 	// 포인트 조회
 	public PointVo selectPoint(String member_id) throws Exception;
-
+	
+	
 }
