@@ -53,9 +53,8 @@ public class MemberDaoIm implements MemberDao {
 	}
 	
 
-	public void memberRating(MemberVo memberVo) throws Exception {
-		// TODO Auto-generated method stub
-		sqlsession.update(NAMESPACE + ".updateMemberRating", memberVo);
+	public int memberRating(MemberVo memberVo) throws Exception {
+		return sqlsession.update(NAMESPACE + ".updateMemberRating", memberVo);
 	}
 
 	@Override

@@ -1,4 +1,3 @@
-//임시 저장 데이터 
 function breadChange() {
 	var thisfilefullname = document.URL.substring(
 			document.URL.lastIndexOf("/") + 1, document.URL.length);
@@ -6,6 +5,7 @@ function breadChange() {
 	$("#bread").text(thisfilefullname);
 }
 
+//임시 저장 데이터 
 function formsave(url) {
 	var params = $('#formTampData').serializeArray();
 	console.log(params);

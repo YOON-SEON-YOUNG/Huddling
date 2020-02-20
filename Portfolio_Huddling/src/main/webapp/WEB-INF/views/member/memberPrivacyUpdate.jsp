@@ -147,7 +147,6 @@ $(document).ready(function(){
 		var overLap =$("#text_nickname").val();
 		sData = {
 				"member_nickname":member_nickname
-// 				'member_nickname':member_nickname
 		}
 		$.post("/member/registerCheckNick",sData,function(rData){
 			if(rData =="0"){

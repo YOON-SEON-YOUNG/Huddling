@@ -12,5 +12,7 @@ public interface TempMakerBoardDao {
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception;
 	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception;
 	public int tempImgChk(String imgName) throws Exception;
+	public List<TempMakerRewordDto> tempRewordList(int tempRewordNum);
+	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception;
 
 }

@@ -249,9 +249,4 @@ public class MemberController {
 			is.close();
 			return bytes;
 		}
-	 
-	 
-	
-
-
 }

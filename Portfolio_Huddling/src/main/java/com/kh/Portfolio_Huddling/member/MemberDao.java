@@ -2,9 +2,6 @@ package com.kh.Portfolio_Huddling.member;
 
 import java.util.List;
 
-
-
-
 public interface MemberDao {
 	public void register(MemberVo memberVo) throws Exception;
 	public int loginId(MemberVo memberVo) throws Exception;
@@ -14,8 +11,10 @@ public interface MemberDao {
 	public int registerCheckId(MemberVo memberVo)throws Exception;
 	public int registerCheckNick(MemberVo memberVo)throws Exception;
 	public void memberPrivacyUpdate(MemberVo memberVo)throws Exception;
+	//검색
 	public List<MemberVo> memberSearch(String search) throws Exception;
-	public void memberRating(MemberVo memberVo) throws Exception;
+	//검색 결과
+	public int memberRating(MemberVo memberVo) throws Exception;
 	public int privacyUpdateAddress(MemberVo memberVo)throws Exception;
 	public int privacyUpdateCall(MemberVo memberVo)throws Exception;
 	public int privacyUpdateEmail(MemberVo memberVo)throws Exception;
@@ -28,6 +27,7 @@ public interface MemberDao {
 	// 포인트 
 	public void addPoint(String member_id, int point) throws Exception;
 	
+
 	
 
 }

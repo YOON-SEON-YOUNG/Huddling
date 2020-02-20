@@ -55,9 +55,9 @@ public class MemberServiceIm implements MemberService {
 		dao.memberPrivacyUpdate(memberVo);
 	
 	}
-	public void memberRating(MemberVo memberVo) throws Exception {
+	public int memberRating(MemberVo memberVo) throws Exception {
 		// TODO Auto-generated method stub
-		dao.memberRating(memberVo);
+		return dao.memberRating(memberVo);
 	}
 
 	@Override
