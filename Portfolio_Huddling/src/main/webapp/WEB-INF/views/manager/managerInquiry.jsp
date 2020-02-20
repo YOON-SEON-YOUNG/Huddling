@@ -16,7 +16,7 @@ $(document).ready(function() {
 	setInterval(function() {
 		var d = new Date();
 		var url = "/message/inquiryRead";
-		var member_id = ${memberVo.member_id};
+		var member_id = '${memberVo.member_id}';
 		var sData = {
 			"message_receiver" : member_id,
 			"message_sender" : "admin"
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	function sendMessage() {
 		var userText = $("#inputText").val();
 		var url = "/message/inquirySend";
-		var member_id = ${memberVo.member_id};
+		var member_id = '${memberVo.member_id}';
 		var sData = {
 			"message_sender" :  member_id,
 			"message_receiver" : "admin",
