@@ -39,18 +39,37 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String postRegister(MemberVo memberVo,Model model) throws Exception {
+	public String postRegister(MemberVo memberVo,Model model,HttpSession session) throws Exception {
+		
 		
 		service.register(memberVo);
-		model.addAttribute("memberVo",memberVo);
+		model.addAttribute("memberVo", memberVo);
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/registerCheckId", method = RequestMethod.POST)
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+		System.out.println("memberVoCheckId" + memberVo);
+		return service.registerCheckId(memberVo);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/registerCheckNick", method = RequestMethod.POST)
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		System.out.println("memberVoCheckNick" + memberVo);
+		return service.registerCheckNick(memberVo);
+	}
+	
+	
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String postLogout(HttpSession session) throws Exception {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
@@ -64,7 +83,10 @@ public class MemberController {
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
 		session.setAttribute("memberVo", selectMemberVo);
+		PointVo pointVo = service.selectPoint(memberVo.getMember_id());
 		session.setAttribute("profileVo", profileVo);
+		session.setAttribute("pointVo", pointVo);
+		
 		return "redirect:/";
 	}
 	
@@ -72,15 +94,47 @@ public class MemberController {
 	@RequestMapping(value = "/loginIdCheck", method = RequestMethod.POST)
 	public int postLoginId(MemberVo memberVo) throws Exception {
 		System.out.println("로그인아이디체크 실행");
+		
 		return service.loginId(memberVo);
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/loginPwCheck", method = RequestMethod.POST)
-	public int postLoginPW(MemberVo memberVo) throws Exception {
-		System.out.println("로그인비밀번호체크 실행");
+	public int postLoginPw(MemberVo memberVo) throws Exception {
+		System.out.println("로그인아이디체크 실행");
+		
 		return service.loginPw(memberVo);
 	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateName", method = RequestMethod.POST)
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdateName(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdatePw", method = RequestMethod.POST)
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdatePw(memberVo);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateAddress", method = RequestMethod.POST)
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		
+		return service.privacyUpdateAddress(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateCall", method = RequestMethod.POST)
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		return service.privacyUpdateCall(memberVo);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/privacyUpdateEmail", method = RequestMethod.POST)
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		return service.privacyUpdateEmail(memberVo);
+	}
+	
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page(HttpSession session, Model model) throws Exception {
@@ -90,6 +144,15 @@ public class MemberController {
 		model.addAttribute("profileVo", profileVo);
 		return "member/memberMyPageMain";
 	}
+	
+	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
+	public String memberList(MemberVo memberVo,Model model) throws Exception {
+		List<MemberVo> list = service.memberList(memberVo);
+		model.addAttribute("list",list);
+		System.out.println("list" + list);
+		return "member/listAll";
+	}
+	
 	
 	@RequestMapping(value = "/myPageSupportControl", method = RequestMethod.GET)
 	public String myPageSupportControl() {
@@ -112,11 +175,38 @@ public class MemberController {
 		
 		return "member/include/myPageChaetingControl";
 	}
+	
+	// 포인트 페이지
 	@RequestMapping(value = "/myPagePointControl", method = RequestMethod.GET)
 	public String myPagePointControl() {
 		
 		return "member/include/myPagePointControl";
 	}
+	
+	// 포인트 충전하기 페이지
+	@RequestMapping(value ="/pointChargePage", method = RequestMethod.GET)
+	public String pointChargePage() {
+		
+		return "member/include/pointChargePage";
+		
+	}
+	
+		
+
+	@RequestMapping(value = "/memberPrivacyUpdate", method = RequestMethod.GET)
+	public String memberPrivacyUpdate() {
+		
+		return "member/memberPrivacyUpdate";
+	}
+	
+	
+	@RequestMapping(value = "/privacyUpdate", method = RequestMethod.POST)
+	public String privacyUpdate(MemberVo memberVo,HttpSession session) throws Exception {
+		service.memberPrivacyUpdate(memberVo);
+		session.setAttribute("memberVo", memberVo);
+		return "redirect:/";
+	}
+	
 	
 
 	
@@ -169,6 +259,9 @@ public class MemberController {
 			is.close();
 			return bytes;
 		}
+	 
+	 
+	
 
 
 }

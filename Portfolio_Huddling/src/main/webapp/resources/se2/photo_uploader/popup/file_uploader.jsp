@@ -7,16 +7,19 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
+
 //날짜에 해당하는 폴더 계산 -> 2020/1/20
 // String u = "/resources/upload/"; // 이미지가 저장될 주소
-String uploadPath = "D:\\upload";
-// System.out.println("uploadPath:" + uploadPath);
+String uploadPath = application.getRealPath("/") + "resources\\upload";
+String calcPath = FileUploadUtil.calcPath(uploadPath);
+File f1 = new File(uploadPath);
+if (!f1.exists()) {
+	f1.mkdir();
+}
+
+// System.out.println("uploadPath:" + f1.getAbsolutePath());
 String filename = "";
-// String path = FileUploadUtil.calcPath(uploadPath);
-// String paths = path.replace("\\", "/");
-// String uploadPaths = uploadPath.replace("\\","/");
-// String filePath = uploadPaths + paths;
-// System.out.println("paths : " + filePath);
+
 if(request.getContentLength() > 10*1024*1024 ){
 %>
 <script>
@@ -25,22 +28,9 @@ if(request.getContentLength() > 10*1024*1024 ){
 </script>
 <%
 	return;
-
 } else {
-
 	try {
-		File f1 = new File(uploadPath);
-// 		if (f1.exists()) {
-// 			System.out.println("존재함");
-// 			String p = application.getRealPath(uploadPath);
-// 			System.out.println(p);
-			
-// 		} else {
-// 			System.out.println("존재인함");
-// 		}
-		
 		MultipartRequest multi=new MultipartRequest(request, uploadPath, 15*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
-	
 		java.text.SimpleDateFormat formatter2 = new java.text.SimpleDateFormat ("yyyy_MM_dd_HHmmss", java.util.Locale.KOREA);
 		int cnt = 1;
 		String upfile = (multi.getFilesystemName("Filedata"));
@@ -51,12 +41,12 @@ if(request.getContentLength() > 10*1024*1024 ){
 			File sourceFile = new File(uploadPath + File.separator + upfile);
 			File targetFile = new File(uploadPath + File.separator + moveFileName);
 			sourceFile.renameTo(targetFile);
-// 			filename = moveFileName;
+			filename = moveFileName;
 			System.out.println("upfile : " + upfile); // 업로드 원본 이름
 			System.out.println("targetFile : " + targetFile); // 업로드 원본의 저장될 위치 + 저장 날짜 + 변환 이름
 			System.out.println("moveFileName : " + moveFileName); // 저장 날짜 + 변환 이름
-// 			System.out.println("filename : " + filename);
-			
+			System.out.println("filename : " + filename);
+			session.setAttribute("filename", filename);
 			sourceFile.delete();
 			
 			%>
@@ -65,6 +55,7 @@ if(request.getContentLength() > 10*1024*1024 ){
 	<input type="hidden" name="path" value="<%=uploadPath%>">
 	<input	type="hidden" name="fcode" value="<%=uploadPath%>">
 </form>
+
 <%
 		}
 	} catch (Exception e) {
@@ -90,4 +81,10 @@ if(request.getContentLength() > 10*1024*1024 ){
 	}
 	fileAttach();
 	this.window.close();
+</script>
+<script>
+$(function(){
+	var filename = $('input[name=filename]]').val();
+	console.log("filename:",filename);
+});
 </script>

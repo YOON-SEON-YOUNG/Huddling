@@ -16,7 +16,7 @@
 											<div class="col-md-3">
 												<select>
 													<option selected>펀딩완료</option>
-													<option selected>진행중</option>
+													<option selected>작성중</option>
 												</select>
 											</div>
 										</div>

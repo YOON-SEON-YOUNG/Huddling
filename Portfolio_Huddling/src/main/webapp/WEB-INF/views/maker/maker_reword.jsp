@@ -4,7 +4,6 @@
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script>
 	$(document).ready(function() {
-		$("#bread").text("reword");
 		$("#projectTitle").text("리워드 설계");
 		$("#projectDesc").text("서포터에게 제공할 리워드 내용을 입력하세요.")
 		
@@ -13,9 +12,6 @@
 		// 리워드 등록
 		
 		// 리워드 리스트 가져오기
-		
-		
-		
 		
 	});
 </script>

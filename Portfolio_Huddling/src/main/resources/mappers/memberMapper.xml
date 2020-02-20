@@ -32,6 +32,50 @@
 		select * from tbl_member
 	</select>
 	
+	<select id="registerCheckId" resultType="int">
+	select count(*) from tbl_member
+		where member_id = #{member_id}
+	</select>
+	
+	<select id="registerCheckNick" resultType="int">
+	select count(*) from tbl_member
+	where member_nickname =#{member_nickname}
+	</select>
+	
+	<select id="privacyUpdateName" resultType="int">
+	select count(*) from tbl_member
+		where member_name = #{member_name}
+	</select>
+	
+	<select id="privacyUpdatePw" resultType="int">
+	select count(*) from tbl_member
+		where member_pw = #{member_pw}
+	</select>
+	<select id="privacyUpdateAddress" resultType="int">
+	select count(*) from tbl_member
+		where member_address = #{member_address}
+	</select>
+	
+	<select id="privacyUpdateCall" resultType="int">
+	select count(*) from tbl_member
+		where member_call = #{member_call}
+	</select>
+	
+	<select id="privacyUpdateEmail" resultType="int">
+	select count(*) from tbl_member
+		where member_email = #{member_email}
+	</select>
+	
+	<update id="privacyUpdate">
+		update tbl_member set
+			member_pw =#{member_pw},
+			member_name =#{member_name},
+			member_nickname =#{member_nickname},
+			member_email =#{member_email},
+			member_address =#{member_address},
+			member_call =#{member_call}
+			where member_id =#{member_id}
+	</update>
 	<select id="selectMemberSearch" resultType="MemberVo">
 		select * from tbl_member
 		where member_id like '%' || #{search} || '%'
@@ -62,6 +106,28 @@
 		select * from tbl_profile
 		where profile_id = #{member_id}
 	</select>
+	
+	<insert id="insertPoint">
+		insert into tbl_point
+			(pointcode, member_id, buy_date, charge_money)
+		values
+			(#{pointcode}, #{member_id}, #{buy_date}, #{charge_money})
+	</insert>
+	
+		<update id="updatePoint">
+		update tbl_point set
+			pointcode = #{pointcode},
+			buy_date = #{buy_date, jdbcType=VARCHAR},
+			charge_money = #{charge_money}
+		where member_id = #{member_id}
+	</update>
+	
+		<select id="selectPoint" resultType="PointVo">
+		select * from tbl_point
+		where member_id = #{member_id}
+	</select>
+	
+	
 	
 <!-- 	<select id="getTime" resultType="string"> -->
 <!-- 		select sysdate from dual -->

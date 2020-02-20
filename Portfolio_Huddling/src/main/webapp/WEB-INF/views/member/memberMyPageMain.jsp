@@ -92,7 +92,7 @@ label{
 <title>MyPage</title>
 </head>
 <body>
-profileVo : ${profileVo}
+<%-- profileVo : ${profileVo} --%>
 <!-- 맨위쪽(header) -->
 	<header>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light"
@@ -105,8 +105,8 @@ profileVo : ${profileVo}
 					 <!-- 이미지드롭다운 -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="${profileVo.profile_pic}" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_name})</span>
+                  <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
+                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
                   <span class="badge">${memberVo.member_point}</span>
                 </a>
                 <!-- //이미지드롭다운 -->
@@ -131,11 +131,11 @@ profileVo : ${profileVo}
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div>
-                      <a href="#">로그아웃</a>
+                      <a href="/member/logout">로그아웃</a>
                     </div>
                     
                     <div>
-                      <a href="#">기타등등</a>
+                      <a href="/member/memberPrivacyUpdate">개인정보수정</a>
                     </div>
                   </li>
 					

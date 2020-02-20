@@ -23,6 +23,8 @@ public class MemberDaoIm implements MemberDao {
 		sqlsession.insert(NAMESPACE + ".insertMember", memberVo);
 		String profile_id = memberVo.getMember_id();
 		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profile_id);
+		String member_id = memberVo.getMember_id();
+		sqlsession.insert(NAMESPACE + ".insertPoint", member_id); 
 	}
 
 	@Override
@@ -55,6 +57,22 @@ public class MemberDaoIm implements MemberDao {
 	}
 
 	@Override
+	public int registerCheckId(MemberVo memberVo) throws Exception {
+			
+		return (int)sqlsession.selectOne(NAMESPACE  + ".registerCheckId",memberVo);
+	}
+
+	@Override
+	public int registerCheckNick(MemberVo memberVo) throws Exception {
+		
+		return (int)sqlsession.selectOne(NAMESPACE + ".registerCheckNick",memberVo);
+	}
+
+	@Override
+	public void memberPrivacyUpdate(MemberVo memberVo) throws Exception {
+			sqlsession.update(NAMESPACE + ".privacyUpdate",memberVo);
+	}
+
 	public List<MemberVo> memberSearch(String search) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -62,6 +80,7 @@ public class MemberDaoIm implements MemberDao {
 
 }
 	
+	// 프로필 등록 
 	@Override
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception {
 		sqlsession.update(NAMESPACE + ".updateMemberProfile", profileVo);
@@ -75,5 +94,49 @@ public class MemberDaoIm implements MemberDao {
 		MemberProfileVo profileVo = sqlsession.selectOne(NAMESPACE + ".selectMemberProfile", member_id);
 		return profileVo;
 	}
+
+	@Override
+	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
+		
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateAddress",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateCall(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateCall",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateEmail(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateEmail",memberVo);
+	}
+
+	@Override
+	public int privacyUpdatePw(MemberVo memberVo) throws Exception {
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdatePw",memberVo);
+	}
+
+	@Override
+	public int privacyUpdateName(MemberVo memberVo) throws Exception {
+		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateName",memberVo);
+	}
+
+	// 포인트 구매
+	@Override
+	public void pointBuy(PointVo pointVo) throws Exception {
+		sqlsession.update(NAMESPACE + ".updatePoint", pointVo);		
+	}
+	
+	// 포인트 조회 
+
+	@Override
+	public PointVo selectPoint(String member_id) throws Exception {
+		PointVo pointVo = sqlsession.selectOne(NAMESPACE + ".selectPoint", member_id);
+		return pointVo;
+	}
+
+	
 	
 }
