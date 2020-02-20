@@ -27,7 +27,7 @@ public class PointController {
 		System.out.println("butPOST() 실행됨");
 		System.out.println("pointVo:" + pointVo);
 		pointService.buy(pointVo);
-		return "point/buyPoint";
+		return "redirect:/";
 	
 		
 	}

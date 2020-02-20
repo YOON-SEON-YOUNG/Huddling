@@ -21,7 +21,7 @@
 	<insert id="buy">
 		insert into tbl_point
 			 (point_num, member_id, member_point, point_date, point_receipt)
-		values (${point_num}, #{member_id}, #{member_point}, ${point_date}, #{point_receipt})
+		values (seq_point_num.nextval, #{member_id}, #{member_point}, ${point_date}, #{point_receipt})
 	</insert>
 
 
