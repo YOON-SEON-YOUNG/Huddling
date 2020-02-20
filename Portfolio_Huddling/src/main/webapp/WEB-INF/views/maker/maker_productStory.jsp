@@ -15,10 +15,9 @@
 		
 		$("#projectTitle").text("스토리 작성");
 		$("#projectDesc").text("메이커님의 프로젝트를 소개 해보세요.");
-
 		$('#btnSave').click(function(e) {
 			e.preventDefault();
-			$.get('/maker/imgCopy/1', function(){
+			$.get('/maker/imgCopy/1', function(data){
 				console.log('이미지 저장하는 중...');
 				});
 			submitContents(this);
@@ -41,8 +40,8 @@
 				<div class="form-group">
 					<label for="introImg">소개 이미지 등록</label>
 					<div>
-						<input type="hidden" name="story_introImg" value="${storyDto.story_summary}" /> <img
-							src="#" />
+						<input type="hidden" name="story_introImg" value="${storyDto.story_summary}"/>
+						<img src="#"/>
 					</div>
 					<button class="btn btn-secondary" id="btnintroImg">등록 하기</button>
 				</div>
@@ -52,8 +51,7 @@
 					<label for="summary">프로젝트 요약</label>
 					<div>
 						<textarea class="form-control" rows="3" name="story_summary"
-							id="summary">${storyDto.story_summary}
-							</textarea>
+							id="summary">${storyDto.story_summary}</textarea>
 					</div>
 				</div>
 			</div>

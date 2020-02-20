@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TempMakerBoardServiceImpl implements TempMakerBoardService {
-	
+
 	@Inject
 	private TempMakerBoardDao boardDao;
 
@@ -32,35 +32,39 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	@Override
 	public void tempBasicUpdate(TempMakerBasicDto basicDto) throws Exception {
 		boardDao.tempSaveBasic(basicDto);
-		
+
 	}
 
 	@Override
-	@Transactional
 	public TempMakerStoryDto tempStoryLoad(int tempStoryNum) throws Exception {
-		//이미지 개수 
-		int count = boardDao.tempImgNum(tempStoryNum);
-		System.out.println("count : " + count);
 		return boardDao.tempLoadStory(tempStoryNum);
 	}
 
 	@Override
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
 		boardDao.tempSaveStory(storyDto);
-		
+
 	}
 
 	@Override
 	public List<TempMakerBoardImgDto> imgNameList(int tempStoryNum) throws Exception {
-				List<TempMakerBoardImgDto> list = boardDao.tempImgName(tempStoryNum);
-				System.out.println("list : " + list);
+		List<TempMakerBoardImgDto> list = boardDao.tempImgName(tempStoryNum);
 		return list;
 	}
 
 	@Override
+	@Transactional
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception {
-		boardDao.tempInputImgName(imgDto);
-		
+		String imgName = imgDto.getImglist_name();
+		System.out.println("이미지 이름 가져옴...");
+		if (imgName != null) {
+			System.out.println("저장된 이미지 있는지 확인...");
+			int count = boardDao.tempImgChk(imgName);
+			if (count < 1) {
+				System.out.println("저장된 이미지 없음...");
+				boardDao.tempInputImgName(imgDto);
+			}
+		}
 	}
 
 }

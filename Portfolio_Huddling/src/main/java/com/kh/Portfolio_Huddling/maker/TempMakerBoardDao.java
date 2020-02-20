@@ -9,8 +9,8 @@ public interface TempMakerBoardDao {
 	public void tempSaveBasic(TempMakerBasicDto basicDto) throws Exception;
 	public TempMakerStoryDto tempLoadStory(int tempStoryNum) throws Exception;
 	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception;
-	public int tempImgNum(int tempListNum) throws Exception;
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception;
 	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception;
+	public int tempImgChk(String imgName) throws Exception;
 
 }

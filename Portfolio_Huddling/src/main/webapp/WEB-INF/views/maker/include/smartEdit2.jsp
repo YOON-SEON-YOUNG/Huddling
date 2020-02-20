@@ -42,7 +42,7 @@ function submitContents(elClickedObj) {
 function pasteHTML(filepath){
 	console.log("filepath:" + filepath);
 	var path = "/resources/upload/" + filepath;
-	var sHTML = "<img class='pathImg1' src='" + path + "'/>";
+	var sHTML = "<img data-imgName='"+filepath+"' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
 
 // 	$.ajax({
@@ -59,8 +59,6 @@ function pasteHTML(filepath){
 </script>
 <form id="frm">
 	<textarea style="width: 100%" rows="10" name="story_storyBoard"
-		id="textAreaContent" cols="80">
-${storyDto.story_storyBoard }
-</textarea>
+		id="textAreaContent" cols="80">${storyDto.story_storyBoard }</textarea>
 </form>
 

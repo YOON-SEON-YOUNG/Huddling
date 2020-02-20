@@ -1,21 +1,10 @@
 package com.kh.Portfolio_Huddling.util;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-
-import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
 public class FileUploadUtil {
@@ -36,9 +25,6 @@ public class FileUploadUtil {
 		System.out.println("formatName:" + formatName);
 		boolean isImage = isImage(formatName);
 		System.out.println("isImage:" + isImage);
-		if (isImage == true) {
-			makeThumbnail(uploadPath, datePath, uuidName);
-		}
 		// 2020/1/20/<uuid>_filename
 		return datePath + File.separator + uuidName;
 	}
@@ -77,32 +63,6 @@ public class FileUploadUtil {
 		return false;
 	}
 	
-	// 썸네일 이미지 생성
-	public static void makeThumbnail(String uploadPath, String dirPath, 
-								String uuidName) throws Exception {
-		String uploadedPath = uploadPath + File.separator 
-							+ dirPath + File.separator
-							+ uuidName; // D:/upload/2020/1/20/<uuid>_파일명
-		// 업로드 된 원본 이미지를 메모리에 로딩
-		BufferedImage sourceImg = ImageIO.read(new File(uploadedPath));
-		// pom.xml - imgscalr-lib
-		BufferedImage destImg = Scalr.resize(sourceImg, 
-					 						 Scalr.Method.AUTOMATIC,
-					 						 Scalr.Mode.FIT_TO_HEIGHT,
-					 						 100);
-		String thumbnailName = uploadPath + File.separator 
-							 + dirPath + File.separator
-							 + "s_" + uuidName;
-		File target = new File(thumbnailName);
-		ImageIO.write(destImg, getFormatName(uuidName), target);
-	}
-	
-	public static void delete(String fileName, String uploadPath) throws Exception {
-		List<String> list = new ArrayList<>();
-		list.add(fileName);
-		delete(list, uploadPath);
-	}
-	
 	// 파일 삭제
 	public static void delete(List<String> fileNames, String uploadPath) throws Exception {
 		for (String fileName : fileNames) {
@@ -111,7 +71,6 @@ public class FileUploadUtil {
 			if (f.exists()) {
 				f.delete();
 			}
-			
 			String formatName = FileUploadUtil.getFormatName(fileName);
 			boolean isImage = FileUploadUtil.isImage(formatName);
 			System.out.println("isImage:" + isImage);

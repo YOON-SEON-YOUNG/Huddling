@@ -55,11 +55,6 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		sqlSession.update(NAMESPACE + ".tempUpdateStory",storyDto);
 	}
 
-	@Override
-	public int tempImgNum(int tempListNum) throws Exception {
-		return sqlSession.selectOne(NAMESPACE +".imgListCnt",tempListNum);
-	}
-
 
 	@Override
 	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception {
@@ -70,6 +65,12 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	@Override
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".imgInput",imgDto);
+	}
+
+
+	@Override
+	public int tempImgChk(String imgName) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".imgChk",imgName);
 	}
 
 

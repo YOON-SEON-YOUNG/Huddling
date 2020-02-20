@@ -79,9 +79,14 @@
 	where temp_imglist_num = #{temp_imglist_num}
 	</select>
 	
-	<select id="imgListCnt" resultType="int">
+	<select id="imgChk" resultType="int">
 	select count(*) from tbl_temp_imglist
-	where temp_imglist_num = #{temp_imglist_num}
+	where imglist_name = #{imglist_name}
 	</select>
+	
+	<delete id="imgDel">
+	delete tbl_temp_imglist
+	where imglist_name = #{imglist_name}
+	</delete>
 
 </mapper>
