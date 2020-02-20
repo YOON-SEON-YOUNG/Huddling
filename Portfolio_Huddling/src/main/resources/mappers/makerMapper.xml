@@ -88,5 +88,19 @@
 	delete tbl_temp_imglist
 	where imglist_name = #{imglist_name}
 	</delete>
+	
+	<select id='rewordList' resultType="TempMakerRewordDto">
+	select * from tbl_temp_reword
+	where temp_reword_num = #{temp_reword_num}
+	</select>
+	
+	<select id="rewordCnt" resultType="int">
+	select count(temp_reword_num) from tbl_temp_reword
+	where temp_reword_num = #{temp_reword_num}
+	</select>
+	<insert id="rewordInput">
+	insert into tbl_temp_reword
+	values(#{temp_project_num},seq_temp_reword_num.nextval,#{temp_reword_price},#{temp_reword_name},#{temp_reword_desc},#{temp_reword_option},#{temp_reword_trans},#{temp_reword_trans_price},#{temp_reword_count},#{temp_reword_trans_month},#{temp_reword_trans_days})
+	</insert>
 
 </mapper>

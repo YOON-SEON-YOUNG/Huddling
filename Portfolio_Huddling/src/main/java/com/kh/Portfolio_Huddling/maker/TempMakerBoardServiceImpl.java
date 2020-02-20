@@ -67,4 +67,19 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 		}
 	}
 
+	@Override
+	public List<TempMakerRewordDto> rewordList(int tempRewordNum) throws Exception {
+		List<TempMakerRewordDto> list = boardDao.tempRewordList(tempRewordNum);
+		System.out.println("리워드 가져옴...");
+		System.out.println("리워드 목록 가져오기 완료...");
+		return list;
+	}
+
+	@Override
+	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
+		System.out.println("data : " + rewordDto);
+		boardDao.tempInputReword(rewordDto);
+		
+	}
+
 }

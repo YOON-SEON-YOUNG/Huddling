@@ -23,6 +23,7 @@ import com.kh.Portfolio_Huddling.maker.TempMakerBasicDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardImgDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardService;
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
 import com.kh.Portfolio_Huddling.util.FileUploadUtil;
 
@@ -224,4 +225,18 @@ public class MakerBoardController {
 		System.out.println("로컬 저장 완료...");
 		return "maker/data";
 	}
+	
+	@RequestMapping(value="/rewordInput", method = RequestMethod.POST)
+	@ResponseBody
+	public TempMakerRewordDto data(TempMakerRewordDto rewordDto) throws Exception{
+	System.out.println("리워드 저장 중...");	
+	tempService.tempInputReword(rewordDto);
+	System.out.println("리워드 저장 완료...");
+	return rewordDto;
+	}
+	@RequestMapping(value="/rewordLoad", method = RequestMethod.GET)
+	public void data1(TempMakerRewordDto rewordDto) throws Exception{
+		
+	}
+
 }

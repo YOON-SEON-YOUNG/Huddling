@@ -11,4 +11,6 @@ public interface TempMakerBoardService {
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception;
 	public List<TempMakerBoardImgDto> imgNameList(int tempStoryNum) throws Exception;
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception;
+	public List<TempMakerRewordDto> rewordList(int tempRewordNum) throws Exception;
+	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception;
 }
