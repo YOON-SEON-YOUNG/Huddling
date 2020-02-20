@@ -41,7 +41,7 @@ $(document).ready(function() {
 				}
 			}
 		});
-	}, 250);
+	}, 500);
 	
 	// 클릭 메세지 전송
 	$("#send").click(function() {
