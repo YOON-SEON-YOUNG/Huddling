@@ -83,9 +83,8 @@ public class MemberController {
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
 		session.setAttribute("memberVo", selectMemberVo);
-		PointVo pointVo = service.selectPoint(memberVo.getMember_id());
 		session.setAttribute("profileVo", profileVo);
-		session.setAttribute("pointVo", pointVo);
+
 		
 		return "redirect:/";
 	}
@@ -176,22 +175,13 @@ public class MemberController {
 		return "member/include/myPageChaetingControl";
 	}
 	
-	// 포인트 페이지
+	// 포인트 충전 내역 
 	@RequestMapping(value = "/myPagePointControl", method = RequestMethod.GET)
-	public String myPagePointControl() {
+	public String getPoint() {
 		
 		return "member/include/myPagePointControl";
 	}
-	
-	// 포인트 충전하기 페이지
-	@RequestMapping(value ="/pointChargePage", method = RequestMethod.GET)
-	public String pointChargePage() {
-		
-		return "member/include/pointChargePage";
-		
-	}
-	
-		
+			
 
 	@RequestMapping(value = "/memberPrivacyUpdate", method = RequestMethod.GET)
 	public String memberPrivacyUpdate() {

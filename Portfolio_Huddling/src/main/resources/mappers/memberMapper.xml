@@ -107,25 +107,11 @@
 		where profile_id = #{member_id}
 	</select>
 	
-	<insert id="insertPoint">
-		insert into tbl_point
-			(pointcode, member_id, buy_date, charge_money)
-		values
-			(#{pointcode}, #{member_id}, #{buy_date}, #{charge_money})
-	</insert>
-	
-		<update id="updatePoint">
-		update tbl_point set
-			pointcode = #{pointcode},
-			buy_date = #{buy_date, jdbcType=VARCHAR},
-			charge_money = #{charge_money}
-		where member_id = #{member_id}
+	<update id="addPoint" parameterType="map">
+			update tbl_member set
+				meber_point= member_point + #{member_point} 
+				where member_id = #{member_id}			        
 	</update>
-	
-		<select id="selectPoint" resultType="PointVo">
-		select * from tbl_point
-		where member_id = #{member_id}
-	</select>
 	
 	
 	

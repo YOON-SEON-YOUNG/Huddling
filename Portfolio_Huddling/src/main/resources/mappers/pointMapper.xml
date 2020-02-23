@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.kh.mappers.pointMapper">
+
+
+
+	<!--  포인트 충전 값 얻기 -->
+	<insert id="buy">
+		insert into tbl_point
+			 (point_num, member_id, member_point)
+		values (seq_point_num.nextval, #{member_id}, #{member_point})
+	</insert>
+	
+	<!--  -->
+
+	<!-- 포인트 충전 값 불러 오기 -->
+	<select id="read" resultType="PointVo">
+		select * from tbl_point
+		where point_num = #{point_num}
+	</select>
+	
+	<!--  -->
+
+</mapper>
