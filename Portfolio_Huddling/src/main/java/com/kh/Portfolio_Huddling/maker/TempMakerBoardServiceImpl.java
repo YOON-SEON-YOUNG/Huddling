@@ -79,7 +79,5 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
 		System.out.println("data : " + rewordDto);
 		boardDao.tempInputReword(rewordDto);
-		
 	}
-
 }
