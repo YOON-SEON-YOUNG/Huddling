@@ -293,6 +293,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 									<c:choose>
 										<c:when test="${not empty memberVo && memberVo.member_id != 'manager'}">
 											<li><a  href="/member/mypageMain"id="mypage">마이페이지</a></li>
+										<li><a href="/manager/inquiry">관리자에게문의</a></li>
 										</c:when>
 										
 										<c:when test="${not empty memberVo && memberVo.member_id == 'manager' }">

@@ -12,23 +12,31 @@
 		//임시 저장
 		$('#btnSave').click(function(e){
 			e.preventDefault();
-			var url = 'tempDataRequir'
+			var url = '/maker/tempDataRequir'
 			formsave(url);
 		});
+		
+		//체크 버튼 활성화 
+		var q4 = $('input[name=requir_q4]');
+		q4.change(function(){
+		if(q4.is(':checked')){
+			q4.val('true');
+			} else {
+			q4.val('false');
+			}
+		console.log(q4.val());
+		});
+		if($('#requir_q4').val() ==  'true'){
+			q4.attr('checked',true);
+		} else if(q4.val() == 'false'){
+			q4.attr('checked',false);
+		}
 	});
 </script>
 
-<form name='formRequirHidden' id='formRequirHidden'>
-<input type='hidden' id='temp_requir_num' value='${requirDto.temp_requir_num }'/>
-<input type='hidden' id='q1' value='${requirDto.requir_q1}'/>
-<input type='hidden' id='q2' value='${requirDto.requir_q2}'/>
-<input type='hidden' id='q3' value='${requirDto.requir_q3}'/>
-<input type='hidden' id='q4' value='${requirDto.requir_q4}'/>
-</form>
-
+<div class="container-fluid" id="requirDiv">
 <form name="formTampData" id="formTampData">
 <input type='hidden' name='temp_requir_num' value='${requirDto.temp_requir_num }'/>
-	<div class="container-fluid" id="requirDiv">
 		<div class="card">
 			<div class="card-body">
 				Q1 리워드가 타 크라우드펀딩사 및 온라인 커머스, 자사 홈페이지 등 다른 판매처에서 유통된 적이 있거나 현재 유통
@@ -76,10 +84,10 @@
 							</ul>
 						</div>
 					</div>
-					<label><input type="radio" class="form-check-input"
+					<label><input type="checkbox" class="form-check-input"
 						name="requir_q4" value="true"
-						<c:if test='${requirDto.requir_q4 eq "true"}'>checked</c:if>
 						>수수료 정책을 확인하였습니다</label>	
+						<input type="hidden" value="${requirDto.requir_q4 }" id="requir_q4"/>
 				</div>
 			</div>	
 		</div>

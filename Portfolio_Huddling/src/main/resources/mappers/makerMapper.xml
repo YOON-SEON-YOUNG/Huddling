@@ -91,7 +91,7 @@
 	
 	<select id='rewordList' resultType="TempMakerRewordDto">
 	select * from tbl_temp_reword
-	where temp_reword_num = #{temp_reword_num}
+	where temp_project_num = #{temp_project_num}
 	</select>
 	
 	<select id="rewordCnt" resultType="int">
@@ -102,5 +102,46 @@
 	insert into tbl_temp_reword
 	values(#{temp_project_num},seq_temp_reword_num.nextval,#{temp_reword_price},#{temp_reword_name},#{temp_reword_desc},#{temp_reword_option},#{temp_reword_trans},#{temp_reword_trans_price},#{temp_reword_count},#{temp_reword_trans_month},#{temp_reword_trans_days})
 	</insert>
+	
+	<select id="rewordOutput" resultType="TempMakerRewordDto">
+	select * from tbl_temp_reword
+	where temp_reword_num = #{temp_reword_num}
+	</select>
+	
+	<update id="rewordUpdate">
+	update tbl_temp_reword set
+	temp_reword_price         = #{temp_reword_price},
+	temp_reword_name          = #{temp_reword_name},
+	temp_reword_desc          = #{temp_reword_desc},
+	temp_reword_option        = #{temp_reword_option},
+	temp_reword_trans         = #{temp_reword_trans},
+	temp_reword_trans_price   = #{temp_reword_trans_price},
+	temp_reword_count         = #{temp_reword_count},
+	temp_reword_trans_month   = #{temp_reword_trans_month},
+	temp_reword_trans_days    = #{temp_reword_trans_days}
+	where temp_reword_num = #{temp_reword_num}
+	</update>
+	
+	<delete id="rewordDelete">
+	delete tbl_temp_reword where temp_reword_num = #{temp_reword_num}
+	</delete>
+	
+	<update id="tempUpdateMakersInfo">
+	update tbl_temp_makerinfo set
+	temp_makerinfo_name      = #{temp_makerinfo_name},
+	temp_makerinfo_image     = #{temp_makerinfo_image},
+	temp_makerinfo_tel       = #{temp_makerinfo_tel},
+	temp_makerinfo_email     = #{temp_makerinfo_email},
+	temp_makerinfo_repr      = #{temp_makerinfo_repr},
+	temp_makerinfo_reprname  = #{temp_makerinfo_reprname},
+	temp_makerinfo_repremail = #{temp_makerinfo_repremail}
+	where temp_makerinfo_num = #{temp_makerinfo_num}
+	</update>
+	
+	<select id="tempSelectMakersInfo" resultType="TempMakerMakersDto">
+	select * from tbl_temp_makerinfo
+	where temp_makerinfo_num = #{temp_makerinfo_num}
+	</select>
+
 
 </mapper>

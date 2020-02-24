@@ -23,17 +23,15 @@
 <body>
 
   <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Maker Project </div>
       <div class="list-group list-group-flush">
-        <a href="/maker/requir" class="list-group-item list-group-item-action bg-light">Requir</a>
-        <a href="/maker/info" class="list-group-item list-group-item-action bg-light">BasicInfo</a>
-        <a href="/maker/story" class="list-group-item list-group-item-action bg-light">ProductStory</a>
-        <a href="/maker/reword" class="list-group-item list-group-item-action bg-light">Reword</a>
-        <a href="/maker/policy" class="list-group-item list-group-item-action bg-light">Policy</a>
-        <a href="/maker/makerInfo" class="list-group-item list-group-item-action bg-light">MakerInfo</a>
+        <a href="/maker/requir/1" class="list-group-item list-group-item-action bg-light">Requir</a>
+        <a href="/maker/info/1" class="list-group-item list-group-item-action bg-light">BasicInfo</a>
+        <a href="/maker/story/1" class="list-group-item list-group-item-action bg-light">ProductStory</a>
+        <a href="/maker/reword/1" class="list-group-item list-group-item-action bg-light">Reword</a>
+        <a href="/maker/makerInfo/1" class="list-group-item list-group-item-action bg-light">MakerInfo</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
