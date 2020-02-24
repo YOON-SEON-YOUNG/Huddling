@@ -6,7 +6,7 @@
 <script>
 	$(document).ready(function() {
 		$.ajax({
-			"url":"imgLoad/1",
+			"url":"/maker/imgLoad/1",
 			"type":"get",
 			"success":function(){
 				console.log('data load success');

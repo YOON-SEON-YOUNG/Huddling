@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kh.Portfolio_Huddling.maker.TempMakerBasicDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardImgDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerBoardService;
+import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
@@ -40,49 +42,45 @@ public class MakerBoardController {
 		return "maker/maker_home";
 	}
 
-	@RequestMapping(value = "/requir", method = RequestMethod.GET)
-	public String requir(Model model) throws Exception {
-		int TempRequirNum = 1;
-		TempMakerRequirDto requirDto = tempService.tempRequirLoad(TempRequirNum);
+	@RequestMapping(value = "/requir/{num}", method = RequestMethod.GET)
+	public String requir(Model model, @PathVariable("num")int requirNum) throws Exception {
+		TempMakerRequirDto requirDto = tempService.tempRequirLoad(requirNum);
 		model.addAttribute("requirDto", requirDto);
 		System.out.println("DTO :" + requirDto);
 		System.out.println("requir 실행중...");
 		return "maker/maker_requir";
 	}
 
-	@RequestMapping(value = "/info", method = RequestMethod.GET)
-	public String basicInfo(Model model) throws Exception {
-		int TempBasicNum = 1;
-		TempMakerBasicDto basicDto = tempService.tempBasicLoad(TempBasicNum);
+	@RequestMapping(value = "/info/{num}", method = RequestMethod.GET)
+	public String basicInfo(Model model, @PathVariable("num")int basicNum) throws Exception {
+		TempMakerBasicDto basicDto = tempService.tempBasicLoad(basicNum);
 		model.addAttribute("basicDto", basicDto);
 		System.out.println("info 실행중...");
 		return "maker/maker_basicInfo";
 	}
 
-	@RequestMapping(value = "/story", method = RequestMethod.GET)
-	public String story(Model model) throws Exception {
-		int tempStoryNum = 1;
-		TempMakerStoryDto storyDto = tempService.tempStoryLoad(tempStoryNum);
+	@RequestMapping(value = "/story/{num}", method = RequestMethod.GET)
+	public String story(Model model, @PathVariable("num")int storyNum) throws Exception {
+		TempMakerStoryDto storyDto = tempService.tempStoryLoad(storyNum);
 		model.addAttribute("storyDto", storyDto);
 		System.out.println("story 실행중...");
 		return "maker/maker_productStory";
 	}
 
-	@RequestMapping(value = "/reword")
-	public String reword() {
+	@RequestMapping(value = "/reword/{num}", method = RequestMethod.GET)
+	public String reword(Model model, @PathVariable("num")int projectNum) throws Exception {
 		System.out.println("reword 실행중...");
+		List<TempMakerRewordDto> list = tempService.rewordList(projectNum);
+		System.out.println("list : " + list);
+		model.addAttribute("list",list);
 		return "maker/maker_reword";
 	}
 
-	@RequestMapping(value = "/policy", method = RequestMethod.GET)
-	public String policy() {
-		System.out.println("policy 실행중...");
-		return "maker/maker_policy";
-	}
-
-	@RequestMapping(value = "/makerInfo")
-	public String makerInfo() {
+	@RequestMapping(value = "/makerInfo/{num}", method = RequestMethod.GET)
+	public String makerInfo(Model model, @PathVariable("num")int makerInfoNum) throws Exception{
+		TempMakerMakersDto makersDto = tempService.tempLoadMakersInfo(makerInfoNum);
 		System.out.println("makerInfo 실행중...");
+		model.addAttribute("makersDto",makersDto);
 		return "maker/maker_makerInfo";
 	}
 
@@ -225,18 +223,49 @@ public class MakerBoardController {
 		System.out.println("로컬 저장 완료...");
 		return "maker/data";
 	}
-	
 	@RequestMapping(value="/rewordInput", method = RequestMethod.POST)
 	@ResponseBody
 	public TempMakerRewordDto data(TempMakerRewordDto rewordDto) throws Exception{
+		System.out.println("rewordDto:" + rewordDto);
 	System.out.println("리워드 저장 중...");	
 	tempService.tempInputReword(rewordDto);
 	System.out.println("리워드 저장 완료...");
 	return rewordDto;
 	}
-	@RequestMapping(value="/rewordLoad", method = RequestMethod.GET)
-	public void data1(TempMakerRewordDto rewordDto) throws Exception{
-		
+	
+	@RequestMapping(value="/rewordOutput/{num}", method = RequestMethod.GET)
+	@ResponseBody
+	public TempMakerRewordDto data(@PathVariable("num") int rewordNum) throws Exception{
+		TempMakerRewordDto rewordDto = tempService.tempOutputReword(rewordNum);
+		System.out.println("reword/dto:" + rewordDto);
+		return rewordDto;
 	}
-
+	
+	@RequestMapping(value="/rewordUpdate/{num}",method = RequestMethod.POST)
+	public void rewordUpdate(TempMakerRewordDto rewordDto, @PathVariable("num")int rewordNum) throws Exception {
+		System.out.println("update : " + rewordDto);
+		rewordDto.setTemp_reword_num(rewordNum);
+		System.out.println("리워드 수정 중....");
+		tempService.tempRewordUpdate(rewordDto);
+		System.out.println("리워드 수정 완료...");
+	}
+	
+	@RequestMapping(value="/rewordDelete/{num}", method = RequestMethod.POST)
+	@ResponseBody
+	public void rewordDelete(@PathVariable("num")int rewordNum) throws Exception{
+		System.out.println("삭제 중...");
+		tempService.tempRewordDelete(rewordNum);
+		System.out.println("삭제 완료...");
+	}
+	
+	@RequestMapping(value="/tempDataMakersInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public TempMakerMakersDto data(TempMakerMakersDto makersDto) throws Exception{
+		System.out.println("메이커 정보 저장중...");
+		tempService.tempMakersInfoUpdate(makersDto);
+		System.out.println("메이커 정보 저장 완료...");
+		return makersDto;
+	}
+	
+	
 }

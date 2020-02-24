@@ -1,8 +1,8 @@
 package com.kh.Portfolio_Huddling.maker;
 
 public class TempMakerRewordDto {
-	private String temp_project_num;
-	private String temp_reword_num;
+	private int temp_project_num;
+	private int temp_reword_num;
 	private String temp_reword_price;
 	private String temp_reword_name;
 	private String temp_reword_desc;
@@ -12,16 +12,16 @@ public class TempMakerRewordDto {
 	private String temp_reword_count;
 	private String temp_reword_trans_month;
 	private String temp_reword_trans_days;
-	public String getTemp_project_num() {
+	public int getTemp_project_num() {
 		return temp_project_num;
 	}
-	public void setTemp_project_num(String temp_project_num) {
+	public void setTemp_project_num(int temp_project_num) {
 		this.temp_project_num = temp_project_num;
 	}
-	public String getTemp_reword_num() {
+	public int getTemp_reword_num() {
 		return temp_reword_num;
 	}
-	public void setTemp_reword_num(String temp_reword_num) {
+	public void setTemp_reword_num(int temp_reword_num) {
 		this.temp_reword_num = temp_reword_num;
 	}
 	public String getTemp_reword_price() {

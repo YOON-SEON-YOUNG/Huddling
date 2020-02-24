@@ -13,4 +13,9 @@ public interface TempMakerBoardService {
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception;
 	public List<TempMakerRewordDto> rewordList(int tempRewordNum) throws Exception;
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception;
+	public void tempMakersInfoUpdate(TempMakerMakersDto makersDto) throws Exception;
+	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception;
+	public TempMakerRewordDto tempOutputReword(int rewordNum) throws Exception;
+	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception;
+	public void tempRewordDelete(int rewordNum) throws Exception;
 }

@@ -22,7 +22,7 @@
 		// 입력한 데이터 임시 저장
 		$("#btnSave").click(function(e){
 		e.preventDefault();
-		var url='tempDataBasicInfo'
+		var url='/maker/tempDataBasicInfo'
 		formsave(url);
 		});
 		//카테고리 가져오기
