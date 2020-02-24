@@ -25,7 +25,8 @@ public interface MemberDao {
 	// 프로필 조회 
 	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception;
 	// 포인트 
-	public void addPoint(String member_id, int point) throws Exception;
+	public void addPoint(String member_id, int member_point) throws Exception;
+	
 	
 
 	

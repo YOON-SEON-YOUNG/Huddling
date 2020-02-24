@@ -87,6 +87,7 @@
 		where member_id = #{member_id}
 	</update>	
 	
+	<!-- 프로필 등록 -->
 	<insert id="insertMemberProfile">
 	
 		insert into tbl_profile
@@ -95,6 +96,7 @@
 			(#{profile_id}, #{profile_intro, jdbcType=VARCHAR})
 	</insert>
 	
+	<!-- 프로필 업데이트 -->
 	<update id="updateMemberProfile">
 		update tbl_profile set
 			profile_intro = #{profile_intro, jdbcType=VARCHAR},
@@ -102,16 +104,46 @@
 		where profile_id = #{profile_id}
 	</update>
 	
+	<!-- 프로필 보기 -->
 	<select id="selectMemberProfile" resultType="MemberProfileVo">
 		select * from tbl_profile
 		where profile_id = #{member_id}
 	</select>
 	
-	<update id="addPoint" parameterType="map">
-			update tbl_member set
-				meber_point= member_point + #{member_point} 
-				where member_id = #{member_id}			        
-	</update>
+	<!--  포인트 충전 값 얻기 -->
+	<insert id="buy">
+		insert into tbl_point_buy
+			 (point_num, member_id, member_point)
+		values (seq_point_num.nextval, #{member_id}, #{member_point})
+	</insert>
+	
+	<!-- 포인트 구매 내역 -->
+	<select id="pointById" resultType="PointVo">
+		select * from tbl_point_buy 		
+		where member_id = #{member_id} 
+	</select>
+	
+	<!-- 총 포인트 구매 액수 -->
+	<select id="sum_pointById" resultType="int">
+		select sum(member_point) from
+		tbl_point_buy
+		where member_id = #{member_id}
+	</select>
+	
+	<!-- 포인트 구매 횟수 -->
+	<select id="count_pointById" resultType="int">
+		select count (*) from 
+		tbl_point_buy
+		where member_id = #{member_id}
+	</select>
+	
+	
+	<!-- MAX 머니 구매 코드 구하기 -->
+	<select id="max_moneyCode" resultType="int">
+		select max(to_number(point_num)) from
+		tbl_point_buy
+	</select>
+	
 	
 	
 	

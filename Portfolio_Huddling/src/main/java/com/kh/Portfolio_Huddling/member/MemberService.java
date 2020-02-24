@@ -25,6 +25,6 @@ public interface MemberService {
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	// 프로필 조회
 	public MemberProfileVo selectMemberById(String member_id) throws Exception;
-	public void addPoint(String member_id, int point) throws Exception;
+	
 
 }

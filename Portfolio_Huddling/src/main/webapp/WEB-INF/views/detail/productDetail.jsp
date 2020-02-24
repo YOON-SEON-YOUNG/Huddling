@@ -7,8 +7,7 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 
-<!-- Bootstrap CSS -->
-<link href="<c:url value="/resources/main/css/bootstrap.min.css"/>" rel="stylesheet"> 
+s
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
