@@ -32,7 +32,7 @@ function submitContents(elClickedObj) {
   
     try {
     $('#frm').submit();
-	formsave("tempDataStory");
+	formsave("/maker/tempDataStory");
 		console.log('success');
     } catch(e) {
      

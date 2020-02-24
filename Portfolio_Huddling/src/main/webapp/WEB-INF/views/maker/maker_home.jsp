@@ -15,27 +15,23 @@
 			var btnId = $(this).attr("id");
 			switch (btnId) {
 			case "btnBasicrequir":
-				location.href = "/maker/requir"
+				location.href = "/maker/requir/1"
 				break;
 			// 기본 정보
 			case "btnBasicInfo":
-				location.href = "/maker/info"
+				location.href = "/maker/info/1"
 				break;
 			// 스토리 작성
 			case "btnStory":
-				location.href = "/maker/story"
+				location.href = "/maker/story/1"
 				break;
 			// 리워드 설계
 			case "btnReword":
-				location.href = "/maker/reword"
-				break;
-			// 정책
-			case "btnPolicy":
-				location.href = "/maker/policy"
+				location.href = "/maker/reword/1"
 				break;
 			// 메이커 정보
 			case "btnMakerInfo":
-				location.href = "/maker/makerInfo"
+				location.href = "/maker/makerInfo/1"
 				break;
 			}
 		});

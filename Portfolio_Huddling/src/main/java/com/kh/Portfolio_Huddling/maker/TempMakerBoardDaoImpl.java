@@ -75,7 +75,7 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 
 
 	@Override
-	public List<TempMakerRewordDto> tempRewordList(int tempRewordNum) {
+	public List<TempMakerRewordDto> tempRewordList(int tempRewordNum) throws Exception{
 		return sqlSession.selectList(NAMESPACE + ".rewordList",tempRewordNum);
 	}
 
@@ -84,6 +84,38 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".rewordInput",rewordDto);
 		
+	}
+
+
+	@Override
+	public void tempMakersInfo(TempMakerMakersDto makersDto) throws Exception {
+		sqlSession.insert(NAMESPACE +".tempUpdateMakersInfo",makersDto);
+		
+	}
+
+
+	@Override
+	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE + ".tempSelectMakersInfo",makerInfoNum);
+	}
+
+
+	@Override
+	public TempMakerRewordDto tempOutPutReword(int rewordNum) {
+		return sqlSession.selectOne(NAMESPACE + ".rewordOutput",rewordNum);
+	}
+
+
+	@Override
+	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception {
+		sqlSession.update(NAMESPACE +".rewordUpdate",rewordDto);
+	}
+
+
+	@Override
+	public void tempRewordDelete(int rewordNum) throws Exception {
+		sqlSession.delete(NAMESPACE + ".rewordDelete",rewordNum);
 	}
 
 

@@ -69,8 +69,8 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 
 	@Override
 	public List<TempMakerRewordDto> rewordList(int tempRewordNum) throws Exception {
-		List<TempMakerRewordDto> list = boardDao.tempRewordList(tempRewordNum);
 		System.out.println("리워드 가져옴...");
+		List<TempMakerRewordDto> list = boardDao.tempRewordList(tempRewordNum);
 		System.out.println("리워드 목록 가져오기 완료...");
 		return list;
 	}
@@ -79,7 +79,36 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
 		System.out.println("data : " + rewordDto);
 		boardDao.tempInputReword(rewordDto);
+	}
+
+	@Override
+	public void tempMakersInfoUpdate(TempMakerMakersDto makersDto) throws Exception {
+		System.out.println("data : " + makersDto);
+		boardDao.tempMakersInfo(makersDto);
+	}
+
+	@Override
+	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception {
+		TempMakerMakersDto makersDto = boardDao.tempLoadMakersInfo(makerInfoNum);
+		return makersDto;
+	}
+
+	@Override
+	public TempMakerRewordDto tempOutputReword(int rewordNum) throws Exception {
+		TempMakerRewordDto rewordDto = boardDao.tempOutPutReword(rewordNum);
+		return rewordDto;
 		
 	}
 
+	@Override
+	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception {
+		boardDao.tempRewordUpdate(rewordDto);
+		
+	}
+
+	@Override
+	public void tempRewordDelete(int rewordNum) throws Exception {
+		boardDao.tempRewordDelete(rewordNum);
+		
+	}
 }
