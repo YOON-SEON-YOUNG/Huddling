@@ -300,7 +300,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 											<li><a href="/manager/mainPage" id="managerPage">관리자페이지</a></li>
 										</c:when>										
 									</c:choose>
-										<li><a href="/manager/inquiry">관리자에게문의</a></li>
+										
 									
 					</ul>	
 								
