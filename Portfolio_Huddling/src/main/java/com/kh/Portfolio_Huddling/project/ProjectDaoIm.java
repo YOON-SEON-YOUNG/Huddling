@@ -26,6 +26,19 @@ public class ProjectDaoIm implements ProjectDao {
 		// TODO Auto-generated method stub
 		sqlSession.update(NAMESPACE + ".updateProjectApp", projectVo);
 	}
+	//신규 리스트 보이기
+	@Override
+	public List<ProjectVo> selectIntroList() throws Exception {
+		List<ProjectVo> list = sqlSession.selectList(NAMESPACE +".selectIntroList");
+		System.out.println("ProjectDaoIm, selectIntroList, list:" + list);
+		return list;
+	}
+
+	@Override
+	public List<ProjectVo> category(int temp_basic_num) throws Exception {
+		System.out.println("projectDao :"+ temp_basic_num);
+		return sqlSession.selectList(NAMESPACE + ".selectCategory",temp_basic_num);
+	}
 	
 
 }

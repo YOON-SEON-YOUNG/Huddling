@@ -93,22 +93,23 @@ label{
 .profile-header {
     margin-top: 43px;
 }
+
 </style>
 <title>MyPage</title>
 </head>
 <body>
 <%-- profileVo : ${profileVo} --%>
 <!-- 맨위쪽(header) -->
-	<header>
-		<nav id="navbar-example2" class="navbar navbar-light bg-light"
-			style="padding: 10px;">
-			<a class="navbar-brand" href="#" style="margin-right:1500px ">마이페이지</a>
+	<header style="padding:30px;">
+	<nav id="navbar-example2" class="navbar navbar-light bg-light"
+			style="background-color:fuchsia;">
+			<a class="navbar-brand" href="#" style="margin-right:1740px "><strong>마이페이지</a>
 			
 			<ul class="nav nav-pills">
 				<li class="nav-item dropdown">
 				
 					 <!-- 이미지드롭다운 -->
-              <li class="dropdown user user-menu">
+              <li class="dropdown user user-menu" style="left:1450px">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
                   <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
@@ -185,7 +186,7 @@ label{
 					<!-- //왼쪽 -->
 					
 					<!-- 오른쪽 -->
-					<div id="page" class="col-md-9 card card-body">
+					<div id="page" class="col-md-6">
 					<div data-target="#list-example" data-offset="0"
 							class="scrollspy-example">
 					

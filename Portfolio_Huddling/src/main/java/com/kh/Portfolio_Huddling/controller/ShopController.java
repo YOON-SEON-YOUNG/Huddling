@@ -1,13 +1,27 @@
 package com.kh.Portfolio_Huddling.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.annotations.Param;
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kh.Portfolio_Huddling.project.ProjectService;
+import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Controller
 @RequestMapping("/board/*")
 public class ShopController {
 	
+	@Inject
+	private ProjectService projectService;
 	
 	// 카테고리 테크/가전
 	@RequestMapping(value = "/categoryTech", method = RequestMethod.GET)
@@ -27,7 +41,8 @@ public class ShopController {
 	// 카테고리 푸드
 	@RequestMapping(value = "/categoryFood", method = RequestMethod.GET)
 	public String categoryFood() {
-		
+//		List<ProjectVo> category = projectService.category(temp_basic_num);
+//		System.out.println(category);
 		return "board/shop_category_food";
 	}
 	
@@ -43,8 +58,21 @@ public class ShopController {
 	// 카테고리 기부/후원
 	@RequestMapping(value = "/categoryDonate", method = RequestMethod.GET)
 	public String categoryDonate() {
-		
 		return "board/shop_category_donate";
+	}
+	@RequestMapping(value="/projectList", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ProjectVo> projectLists() throws Exception {
+		System.out.println("요청 들어옴");
+		List<ProjectVo> projectList = projectService.selectIntroList();
+		System.out.println("ShopController, projectLists, projectList:" + projectList);
+//		model.addAttribute("projectList" ,projectList);
+////		model.addAttribute("ProjectVo", projectVo);
+//		System.out.println("projectList입니다:" + projectList);
+//		System.out.println("왜안찍혀");
+		
+		return projectList;
+		
 	}
 	
 	

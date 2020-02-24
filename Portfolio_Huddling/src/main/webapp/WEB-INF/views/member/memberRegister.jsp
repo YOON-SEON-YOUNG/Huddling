@@ -89,7 +89,13 @@ function memberAddress() {
     }).open();
 }
 </script>
-
+<style>
+#image{
+	height:100px;
+	width:200px;
+	right:30px;
+}
+</style>
 </head>
 <header>
 <div class="container-fluid">
@@ -98,8 +104,7 @@ function memberAddress() {
 		<div class="col-md-3">
 		</div>
 		<!-- 작업시작 -->
-		<div class="col-md-6">
-		<a><img src="/resources/images/hudling_logo.jpg"></img></a>
+		<div class="col-md-6" >
 		</div>
 		<!-- 아무것도업음 -->
 		<div class="col-md-3">
@@ -114,14 +119,18 @@ function memberAddress() {
 <div class="container-fluid">
 	<div class="row">
 	<!-- 아무것두없음 -->
-		<div class="col-md-3">
+		<div class="col-md-6">
 		</div>
 		
 	<!--                                         작업시작                         -->
-		<div class="col-md-6">
+		<div class="col-md-3" style="left:-260px">
 		<form action="/member/register" method="post">
 	<!--                                 아이디                                   -->
   <div class="form-group">
+  <div style="text-align:center;">
+  	
+  	<a><img src="/resources/images/hudling_logo.jpg"id="image"></img></a><br>
+    </div>
     <label for="exampleInputEmail1">아아디</label>
     <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" >
  	<small id="textHelp1" class="form-text text-muted" >중복확인</small>
@@ -179,7 +188,7 @@ function memberAddress() {
 
 		</div>
 		<!-- 아무것도업음 -->
-		<div class="col-md-3">
+		<div class="col-md-6">
 		</div>
 	</div>
 </div>

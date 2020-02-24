@@ -116,7 +116,6 @@
 										<c:when test="${not empty memberVo && memberVo.member_id == 'manager' }">
 											<li><a href="/manager/mainPage" id="managerPage">관리자페이지</a></li>
 										</c:when>
-										
 									</c:choose>
 								</ul>
 							</nav>

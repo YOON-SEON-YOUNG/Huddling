@@ -36,7 +36,7 @@ $("#profile_pic").change(function(){
 profileVo: ${profileVo}<br> --%>
     <div class="container">
 			<div class="Back">
-				<i class="fa fa-arrow-left" onclick="Back()"></i>
+				<i class="fa fa-arrow-left card card-body" onclick="Back()"></i>
 			</div>
 			<p class="h2 text-center">Form</p>
 			<form action="/member/profileRegister" method="post" enctype="multipart/form-data">
