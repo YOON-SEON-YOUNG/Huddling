@@ -46,7 +46,41 @@
 			</div>
 		</div>
 
-
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  	<c:if test="${pagintDto.hasPrev == true}">
+    <li class="page-item">
+      <a class="page-link" data-page="${pagintDto.startPage - 1}" aria-label="Previous">
+        <span aria-hidden="true">«</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${pagintDto.startPage}"
+    		   end="${pagintDto.endPage}"
+    		   var="v">
+    <li 
+    	<c:choose>
+    		<c:when test="${pagingDto.page == v}">
+    			class="page=item active"
+    		</c:when>
+    		<c:otherwise>
+				class="page-item"
+			</c:otherwise>
+			</c:choose>
+			>
+				<a class="page-link" data-page="${v}">${v}</a>
+			</c:forEach>	   
+			<c:if test="${pagingDto.hasNext == true}">
+    			<li class="page-item">
+      <a class="page-link" data-page="${pagingDto.endPage +1}" href="#" aria-label="Next">
+        <span aria-hidden="true">»</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+    </c:if>
+  </ul>
+</nav>
 
 
 		

@@ -3,6 +3,51 @@
     
 <!-- include 로고, 검색, 로그인, 카테고리 -->
 <%@ include file="include/board_header.jsp"%>
+<script>
+$(document).ready(function(){
+	var sData ={"project_category" : "food"};
+	$.get("/board/categoryRead",sData, function(rData) {
+		console.log(rData);
+		var strList ="";
+		$.each(rData, function(index) {
+			var pVo = rData[index];
+			var project_num = pVo.project_num;
+			var project_category = pVo.project_category;
+			var project_image = pVo.project_image;
+			var project_story = pVo.project_story;
+			var project_name = pVo.project_name;
+			var project_app = pVo.project_app;
+			
+			console.log("project_num: " + project_num);
+			console.log("project_category: " + project_category);
+			console.log("project_image: " + project_image);
+			console.log("project_story: " + project_story);
+			console.log("project_name: " + project_name);
+			console.log("project_num: " + project_app);
+			strList +="<div class='com-md-4' style='float:left'>";
+			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg' />";
+			strList +="<div class='card-block'>";
+			strList +="<h5 class='card-title'>";
+			strList += project_story;
+			strList +="<br>";
+			strList +="</h5>";
+			strList +="<div class='progress'>";
+			strList +="<div class='progress-bar w-75'>";
+			strList +="</div>";
+			strList +="</div>";
+			strList +="<p>";
+			strList += "<a class='btn btn-primary  btn-lg mb30' href='#'>펀딩하러가기</a>";
+			strList +="</p>";
+			strList +="</div>";
+			strList +="</div>";
+			strList +="</div>";
+		});
+		$("#newList").append(strList);
+	});
+	
+
+});
+</script>
 <!-- 헤더 부트스트랩-->
 <link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
@@ -91,79 +136,17 @@
 	</div><!-- /.row -->
 	
 	<br/>
-	
-	<div class="row">
+		<div class="row">
+		<div class="col-md-12">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<!-- 상품1 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_01.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								모빌리티산업 투자ㅣ대한민국 캠핑 카라반이 세계로 진출합니다.
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-75">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 상품2 -->
-				<div class="col-md-4" >
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_02.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								강집사 초대형 고양이 화장실 + 멀티박스!! 냥이와 집사를 위한 선택
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-50">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 상품3 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_03.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								스트릿 패션 완성! 환경을 생각한 가벼운 메신져백, [비트백]
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-75">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
-							</p>
-						</div>
-					</div>
-				</div>
-				
+		
+		<div class="col-md-8" style="float: left;" id="newList">
 			</div>
 		</div>
 		<div class="col-md-2">
 		</div>
+	</div>
 	</div> <!-- /.리스트01 : 인기프로젝트 슬라이드 묶음 -->
 	
 </div><!-- /.container -->

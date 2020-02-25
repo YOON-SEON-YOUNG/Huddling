@@ -277,7 +277,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 								<ul class="nav navbar-nav">
 									<li><a href="/" class="active">Home</a></li>
 
-									<li><a href="/maker/home">프로젝트 등록</a></li>
+									<li><a href="/maker/intro">프로젝트 등록</a></li>
 									<li class="dropdown">
 										<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">카테고리 <b class="caret"></b></a>
 										<ul class="dropdown-menu">
@@ -298,12 +298,9 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 										
 										<c:when test="${not empty memberVo && memberVo.member_id == 'manager' }">
 											<li><a href="/manager/mainPage" id="managerPage">관리자페이지</a></li>
-										</c:when>										
+										</c:when>
 									</c:choose>
-										
-									
 					</ul>	
-								
 							</nav>
 						</div>
 					</nav>			

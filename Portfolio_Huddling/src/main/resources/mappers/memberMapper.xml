@@ -117,11 +117,20 @@
 		values (seq_point_num.nextval, #{member_id}, #{member_point})
 	</insert>
 	
+	
+	
 	<!-- 포인트 구매 내역 -->
 	<select id="pointById" resultType="PointVo">
 		select * from tbl_point_buy 		
 		where member_id = #{member_id} 
 	</select>
+	
+	<!-- 멤버 테이블에 포인트 업데이트 -->
+	<update id="updatePoint">
+		update tbl_member set
+		member_point = #{member_point}
+		where member_id = #{member_id}	
+	</update>
 	
 	<!-- 총 포인트 구매 액수 -->
 	<select id="sum_pointById" resultType="int">

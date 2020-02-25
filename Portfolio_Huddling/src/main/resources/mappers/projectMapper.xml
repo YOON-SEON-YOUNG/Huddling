@@ -16,5 +16,22 @@
 		project_app = #{project_app}
 		where project_num = #{project_num}
 	</update>
+	
+<select id="selectCategory" resultType="ProjectVo">
+	select * from tbl_project_intro 
+	where project_category = #{project_category}
+	order by project_num desc
+</select> 
+	
+	<!-- 프로젝트 신규순 -->
+	<select id="selectIntroList" resultType="ProjectVo">
+	select * from tbl_project_intro order by project_num desc
+	</select>
+	
+	<!-- 마감임박순 --> 
+	<select id="deadline">
+	select *from tbl_temp_basic where basic_enddate =#{basic_enddate}
+	</select>
+	
 
-</mapper>  
+</mapper> 

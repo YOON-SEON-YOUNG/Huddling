@@ -84,14 +84,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
-			
 		MemberVo selectMemberVo = service.loginInfo(memberVo);
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
+		session.setAttribute("member_id", memberVo.getMember_id());
 		session.setAttribute("profileVo", profileVo);
-	
-		
-		
 		return "redirect:/";
 	}
 	
@@ -278,6 +275,10 @@ public class MemberController {
 			return "member/pointList";
 			
 		}
+		
+		// 포인트 업데이트 
+		
+		
 		
 	 
 }

@@ -17,7 +17,6 @@ import com.kh.Portfolio_Huddling.member.MemberVo;
 import com.kh.Portfolio_Huddling.message.MessageService;
 import com.kh.Portfolio_Huddling.message.MessageVo;
 import com.kh.Portfolio_Huddling.project.ProjectService;
-import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Controller
 @RequestMapping("/message/*")

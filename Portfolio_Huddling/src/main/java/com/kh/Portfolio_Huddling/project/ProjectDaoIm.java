@@ -26,6 +26,24 @@ public class ProjectDaoIm implements ProjectDao {
 		// TODO Auto-generated method stub
 		sqlSession.update(NAMESPACE + ".updateProjectApp", projectVo);
 	}
+	//신규 리스트 보이기
+	@Override
+	public List<ProjectVo> selectIntroList() throws Exception {
+		List<ProjectVo> list = sqlSession.selectList(NAMESPACE +".selectIntroList");
+		return list;
+	}
+
+	@Override
+	public List<ProjectVo> category(ProjectVo projectVo) throws Exception {
+		List<ProjectVo> list = sqlSession.selectList(NAMESPACE + ".selectCategory",projectVo );
+		System.out.println("다오 리턴" + list);
+		return list;
+	}
+
+	@Override
+	public void deadline(String basic_enddate) throws Exception {
+		sqlSession.selectOne(NAMESPACE + ".deadline",basic_enddate);
+	}
 	
 
 }

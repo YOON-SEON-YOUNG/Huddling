@@ -26,8 +26,10 @@
 			e.preventDefault();
 		});
 		
-		
-	});
+		$("#imgInp").on('change', function(){
+            readURL(this);
+        });
+    });
 </script>
 <form id="formTampData" name="formTampData">
 	<input type="hidden" value="1" name="temp_story_num" />
@@ -38,12 +40,13 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="form-group">
-					<label for="introImg">소개 이미지 등록</label>
-					<div>
-						<input type="hidden" name="story_introImg" value="${storyDto.story_summary}"/>
-						<img src="#"/>
+				<label for="inputGroupFile01">소개 이미지 등록</label>
+				<div class="custom-file">
+			    <input type="file" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
+			    <label class="custom-file-label" for="inputGroupFile01">이미지 파일을 선택하세요</label>
+			  	</div>
+					<div class="form-group" id="intro_img">
 					</div>
-					<button class="btn btn-secondary" id="btnintroImg">등록 하기</button>
 				</div>
 			</div>
 			<div class="card-body">
@@ -56,9 +59,6 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div class="form-group">
-					<Label for="consentAd">광고 동의</Label> <a href="#">동의서 보기</a>
-				</div>
 				<div class="form-group">
 					<Label for="storyBoard"></Label>
 					<jsp:include page="include/smartEdit2.jsp"></jsp:include>
