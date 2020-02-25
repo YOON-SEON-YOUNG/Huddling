@@ -19,7 +19,19 @@
   <link href="/resources/css/simple-sidebar.css" rel="stylesheet">
 
 </head>
-
+<script>
+$(function(){
+	 var num = ${projectNum};
+	 console.log("프로젝트 번호 : header ? " + num);
+	 $('.a').click(function(e){
+	 var a = $(this).attr('href');
+		 var url = a + num;
+	 $(this).attr('href',url);
+		 console.log('click'); 
+// 		 e.preventDefault();
+	 });
+});
+</script>
 <body>
 
   <div class="d-flex" id="wrapper">
@@ -27,11 +39,11 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Maker Project </div>
       <div class="list-group list-group-flush">
-        <a href="/maker/requir/1" class="list-group-item list-group-item-action bg-light">Requir</a>
-        <a href="/maker/info/1" class="list-group-item list-group-item-action bg-light">BasicInfo</a>
-        <a href="/maker/story/1" class="list-group-item list-group-item-action bg-light">ProductStory</a>
-        <a href="/maker/reword/1" class="list-group-item list-group-item-action bg-light">Reword</a>
-        <a href="/maker/makerInfo/1" class="list-group-item list-group-item-action bg-light">MakerInfo</a>
+        <a href="/maker/requir/" class="list-group-item list-group-item-action bg-light a">Requir</a>
+        <a href="/maker/info/" class="list-group-item list-group-item-action bg-light a">BasicInfo</a>
+        <a href="/maker/story/" class="list-group-item list-group-item-action bg-light a">ProductStory</a>
+        <a href="/maker/reword/" class="list-group-item list-group-item-action bg-light a">Reword</a>
+        <a href="/maker/makerInfo/" class="list-group-item list-group-item-action bg-light a">MakerInfo</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -52,7 +64,7 @@
           <a class="nav-link" href="preview">미리보기<span class="sr-only">(current)</span></a>
           </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/">뒤로가기<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/maker/intro">뒤로가기<span class="sr-only">(current)</span></a>
             </li>
 <!--             <li class="nav-item"> -->
 <!--               <a class="nav-link" href="#">Link</a> -->

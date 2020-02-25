@@ -1,7 +1,5 @@
 package com.kh.Portfolio_Huddling.project;
 
-import java.util.Arrays;
-
 public class ProjectVo {
 	 private int    project_num;  
 	 private String project_category;

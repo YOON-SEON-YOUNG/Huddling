@@ -13,6 +13,18 @@ function formsave(url) {
 	});
 }
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+}
+
 function rewordAdded(url){
 	var params = $('#formTampData').serializeArray();
 	console.log("data 확인...",params);
