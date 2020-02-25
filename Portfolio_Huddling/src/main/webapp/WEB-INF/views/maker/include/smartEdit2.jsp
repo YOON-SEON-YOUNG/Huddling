@@ -45,20 +45,13 @@ function pasteHTML(filepath){
 	var sHTML = "<img data-imgName='"+filepath+"' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
 
-// 	$.ajax({
-// 		"url":'/maker/imgCopy/1',
-// 		'data':filepath,
-// 		'type':'post',
-// 		'success':function(data){
-// 			console.log('success');
-// 			console.log("data",data);
-// 			}
-// 		});
 }
  
 </script>
 <form id="frm">
-	<textarea style="width: 100%" rows="10" name="story_storyBoard"
-		id="textAreaContent" cols="80">${storyDto.story_storyBoard }</textarea>
+	<textarea style="width: 100%" rows="10" name="story_storyboard"	id="textAreaContent" cols="80">
+	
+	${storyDto.story_storyboard }
+	</textarea>
 </form>
 

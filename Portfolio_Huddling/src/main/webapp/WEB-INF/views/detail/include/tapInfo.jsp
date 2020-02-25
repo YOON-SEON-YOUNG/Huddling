@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</head>
 <script>
 //상단 선택버튼 클릭시 체크된 Row의 값을 가져온다.
 $("#selectBtn").click(function(){ 
@@ -46,13 +42,6 @@ $("#selectBtn").click(function(){
 	$("#ex3_Result2").html(tdArr);	
 });
 
-
-</script>
-<body>
-<script>
-
-
-
 var sell_price;
 var amount;
 
@@ -90,20 +79,18 @@ function change () {
 		}
 	sum.value = parseInt(hm.value) * sell_price;
 }  
-
 </script>
 
 <br><br>
+
 <form name="form" method="get">
 	<div class="row">
-	
-	
 		<button type="button" class="btn btn-outline btn-primary pull-right" id="selectBtn">선택</button>
 		<table id="example-table-3" width="100%" class="table table-bordered table-hover text-center">
 			<thead>
 				<tr>
 					<th>선택</th>
-					<th>No. </th>
+					<th>No.</th>
 					<th>제목</th>
 					<th>수량</th>
 					<th>총액</th>
@@ -147,12 +134,6 @@ function change () {
 	</div>
 </form>	
 	<br><br>
-</body>
-</html>
-
-
-
-
 <!-- 프로젝트 소개 -->
 <!-- 	<p>
 		<br>

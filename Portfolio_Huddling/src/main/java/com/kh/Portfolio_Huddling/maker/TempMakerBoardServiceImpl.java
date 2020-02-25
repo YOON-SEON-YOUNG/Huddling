@@ -45,7 +45,6 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	@Override
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
 		boardDao.tempSaveStory(storyDto);
-
 	}
 
 	@Override

@@ -2,21 +2,20 @@ package com.kh.Portfolio_Huddling.maker;
 
 public class TempMakerStoryDto {
 	private int temp_story_num;
-	private String story_introImg;
+	private String story_introimg;
 	private String story_summary;
-	private String story_storyBoard;
-	
+	private String story_storyboard;
 	public int getTemp_story_num() {
 		return temp_story_num;
 	}
 	public void setTemp_story_num(int temp_story_num) {
 		this.temp_story_num = temp_story_num;
 	}
-	public String getStory_introImg() {
-		return story_introImg;
+	public String getStory_introimg() {
+		return story_introimg;
 	}
-	public void setStory_introImg(String story_introImg) {
-		this.story_introImg = story_introImg;
+	public void setStory_introimg(String story_introimg) {
+		this.story_introimg = story_introimg;
 	}
 	public String getStory_summary() {
 		return story_summary;
@@ -24,15 +23,15 @@ public class TempMakerStoryDto {
 	public void setStory_summary(String story_summary) {
 		this.story_summary = story_summary;
 	}
-	public String getStory_storyBoard() {
-		return story_storyBoard;
+	public String getStory_storyboard() {
+		return story_storyboard;
 	}
-	public void setStory_storyBoard(String story_storyBoard) {
-		this.story_storyBoard = story_storyBoard;
+	public void setStory_storyboard(String story_storyboard) {
+		this.story_storyboard = story_storyboard;
 	}
 	@Override
 	public String toString() {
-		return "TempMakerStoryDto [temp_story_num=" + temp_story_num + ", story_introImg=" + story_introImg
-				+ ", story_summary=" + story_summary + ", story_storyBoard=" + story_storyBoard + "]";
+		return "TempMakerStoryDto [temp_story_num=" + temp_story_num + ", story_introimg=" + story_introimg
+				+ ", story_summary=" + story_summary + ", story_storyboard=" + story_storyboard + "]";
 	}
 }

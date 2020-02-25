@@ -50,14 +50,16 @@
 		select * from tbl_temp_story
 		where temp_story_num = #{temp_story_num}
 	</select>
+	
 	<!-- 스토리 작성 저장 -->
 	<update id="tempUpdateStory">
 		update tbl_temp_story set
-		story_introimg = #{story_introImg},
+		story_introimg = #{story_introimg},
 		story_summary = #{story_summary},
-		story_storyboard = #{story_storyBoard}
+		story_storyboard = #{story_storyboard}
 		where temp_story_num = #{temp_story_num}
 	</update>
+	
 	<!-- se 이미지 저장 -->
 	<insert id="imgInput">
 	insert into tbl_temp_imglist
@@ -153,9 +155,9 @@
 	into tbl_temp_basic(temp_basic_num) values(seq_project_num.currval)
 	into tbl_temp_makerinfo(temp_makerinfo_num) values(seq_project_num.currval)
 	into tbl_temp_requir(temp_requir_num) values(seq_project_num.currval)
-	into tbl_temp_reword(temp_project_num) values(seq_project_num.currval)
 	into tbl_temp_story(temp_story_num) values(seq_project_num.currval)
 	into tbl_temp_imglist(temp_imglist_num) values(seq_project_num.currval)
+	into tbl_project_intro(project_num) values(seq_project_num.currval)
 	select * from dual
 	</insert>
 	

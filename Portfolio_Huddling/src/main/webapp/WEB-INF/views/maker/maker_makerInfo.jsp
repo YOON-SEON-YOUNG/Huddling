@@ -18,11 +18,33 @@
 					var url= "/maker/tempDataMakersInfo";
 					formsave(url);
 				});
+				
+				$("#imgInp").on('change', function(){
+		            var img = readURL(this);
+		            var formData = new FormData();
+		    		formData.append("file", img);
+		            console.log("imgId : ", img);
+		            var url = "/upload/intro_img";
+		            $.ajax({
+		    			"type" : "post",
+		    			"url" : url,
+		    			"processData" : false,
+		    			"contentType" : false,
+		    			"data" : formData,
+		    			"success" : function(path){
+		    				console.log("path : " + path);
+		    				var index = path.lastIndexOf("/");
+		    				var sub = path.substring(index + 1);
+		    				console.log("substring : " + sub);
+		    				$("#introImg").val(path);
+		    				}
+		    			});
+		        });
 			});
 </script>
 <div class="container-fluid">
 	<form id="formTampData">
-	<input type="hidden" value="1" name="temp_makerinfo_num"/>
+	<input type="hidden" value="${projectNum }" name="temp_makerinfo_num"/>
 	<div class="card">
 		<div class="card-body">
 			<div class="form-group">
@@ -33,10 +55,16 @@
 		</div>
 		<div class="card-body">
 			<div class="form-group">
-				<label for="makerImage"><strong>메이커 사진</strong></label>
-				<img src='#'></img>
-				<input type="hidden" value="1" name="temp_makerinfo_image"/>
-			</div>
+				<label for="inputGroupFile01">소개 이미지 등록</label>
+				<div class="custom-file">
+			    <input type="file" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
+			    <label class="custom-file-label" for="inputGroupFile01">이미지 파일을 선택하세요</label>
+			  	</div>
+					<div class="form-group">
+					  <img id="blah" src="/upload/imgView?fileName=${makersDto.temp_makerinfo_image }"/>
+					  <input type="hidden" id = "introImg" value="1" name="temp_makerinfo_image"/>
+					</div>
+				</div>
 		</div>
 		<div class="card-body">
 			<div class="form-group">

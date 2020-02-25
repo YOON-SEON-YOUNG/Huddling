@@ -17,7 +17,6 @@ if (!f1.exists()) {
 	f1.mkdir();
 }
 
-// System.out.println("uploadPath:" + f1.getAbsolutePath());
 String filename = "";
 
 if(request.getContentLength() > 10*1024*1024 ){

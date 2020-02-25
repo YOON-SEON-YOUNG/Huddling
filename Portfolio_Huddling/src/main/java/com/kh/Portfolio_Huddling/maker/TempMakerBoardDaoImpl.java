@@ -149,7 +149,4 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	public int makerProjectNum() throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".getProjectNum");
 	}
-
-
-
 }

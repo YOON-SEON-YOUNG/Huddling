@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,7 +37,6 @@ public class MakerBoardController {
 
 	@Inject
 	private TempMakerBoardService makerService;
-	
 	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
 	public String intro(HttpServletRequest request,
@@ -94,7 +94,7 @@ public class MakerBoardController {
 		System.out.println("story 실행중...");
 		return "maker/maker_productStory";
 	}
-
+	
 	@RequestMapping(value = "/reword/{num}", method = RequestMethod.GET)
 	public String reword(Model model, @PathVariable("num")int projectNum) throws Exception {
 		System.out.println("reword 실행중...");
@@ -135,19 +135,17 @@ public class MakerBoardController {
 		return basicDto;
 	}
 
-	@RequestMapping(value = "/preview", method = RequestMethod.GET)
-	public String preview(TempMakerStoryDto storyDto, Model model) throws Exception {
-		int tempStoryNum = 1;
-		storyDto = makerService.tempStoryLoad(tempStoryNum);
+	@RequestMapping(value = "/preview/{num}", method = RequestMethod.GET)
+	public String preview(@PathVariable("num")int num, TempMakerStoryDto storyDto, Model model) throws Exception {
+		storyDto = makerService.tempStoryLoad(num);
 		model.addAttribute("storyDto", storyDto);
 		return "maker/preview";
 	}
 
 	@RequestMapping(value = "/tempDataStory", method = RequestMethod.POST)
 	@ResponseBody
-	public TempMakerStoryDto data(HttpServletRequest request, TempMakerStoryDto storyDto) throws Exception {
-		String story_storyBoard = request.getParameter("story_storyBoard");
-		storyDto.setStory_storyBoard(story_storyBoard);
+	public TempMakerStoryDto data(/*HttpServletRequest request, */TempMakerStoryDto storyDto) throws Exception {
+		System.out.println("storyDto:" + storyDto);
 		makerService.tempStoryUpdate(storyDto);
 		return storyDto;
 	}

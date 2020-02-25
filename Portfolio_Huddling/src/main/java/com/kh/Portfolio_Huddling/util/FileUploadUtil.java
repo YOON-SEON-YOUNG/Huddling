@@ -5,10 +5,15 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
+import javax.inject.Inject;
+
 import org.springframework.util.FileCopyUtils;
 
-public class FileUploadUtil {
+import com.kh.Portfolio_Huddling.maker.TempMakerBoardService;
+import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
 
+public class FileUploadUtil {
+	
 	public static String uploadFile(String uploadPath, String originalName, 
 									byte[] fileData) throws Exception {
 		UUID uuid = UUID.randomUUID(); // 겹치지 않는 고유한 값 생성

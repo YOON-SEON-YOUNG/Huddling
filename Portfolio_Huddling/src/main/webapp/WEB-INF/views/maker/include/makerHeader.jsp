@@ -24,12 +24,19 @@
 <script src="/resources/js/makerJs.js"></script>
 <script>
 	$(function() {
+		var num = ${projectNum};
 		breadChange();
+		 $('.a').click(function(e){
+			 var a = $(this).attr('href');
+				 var url = a + num;
+			 $(this).attr('href',url);
+				 console.log('click'); 
+		});
 	});
 </script>
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/maker/home">Home</a></li>
+		<li class="breadcrumb-item"><a href="/maker/home/" class="a">Home</a></li>
 		<li class="breadcrumb-item active" aria-current="page" id="bread"></li>
 	</ol>
 </nav>
