@@ -41,6 +41,15 @@ public class MakerBoardController {
 		System.out.println("home 실행중...");
 		return "maker/maker_home";
 	}
+	
+	@RequestMapping(value = "/home/{num}", method = RequestMethod.GET)
+	public String boardUpdate(@PathVariable("num")int projectNum,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("num", projectNum);
+		return "maker/maker_home";
+	}
+
 
 	@RequestMapping(value = "/requir/{num}", method = RequestMethod.GET)
 	public String requir(Model model, @PathVariable("num")int requirNum) throws Exception {
@@ -82,6 +91,11 @@ public class MakerBoardController {
 		System.out.println("makerInfo 실행중...");
 		model.addAttribute("makersDto",makersDto);
 		return "maker/maker_makerInfo";
+	}
+	
+	@RequestMapping(value = "/intro", method = RequestMethod.GET)
+	public String intro() throws Exception{
+		return "maker/maker_intro";
 	}
 
 	@RequestMapping(value = "/tempDataRequir", method = RequestMethod.POST)

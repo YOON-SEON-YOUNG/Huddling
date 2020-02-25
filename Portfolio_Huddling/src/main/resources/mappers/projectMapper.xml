@@ -27,4 +27,4 @@
 	<select id="selectIntroList" resultType="ProjectVo">
 	select * from tbl_project_intro order by project_num desc
 	</select>
-</mapper>  
+</mapper> 
