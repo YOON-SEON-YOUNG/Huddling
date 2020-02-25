@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +30,9 @@ public class MemberController {
 	
 	@Inject
 	private MemberService service;
+	
+	@Inject
+	private PointService pointService;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -79,12 +84,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
+			
 		MemberVo selectMemberVo = service.loginInfo(memberVo);
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
-		session.setAttribute("memberVo", selectMemberVo);
 		session.setAttribute("profileVo", profileVo);
-
+	
+		
 		
 		return "redirect:/";
 	}
@@ -138,6 +144,7 @@ public class MemberController {
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page(HttpSession session, Model model) throws Exception {
 		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+		System.out.println("memberVo :" + memberVo);
 		String member_id = memberVo.getMember_id();
 		MemberProfileVo profileVo = service.selectMemberById(member_id);
 		model.addAttribute("profileVo", profileVo);
@@ -175,14 +182,7 @@ public class MemberController {
 		return "member/include/myPageChaetingControl";
 	}
 	
-	// 포인트 충전 내역 
-	@RequestMapping(value = "/myPagePointControl", method = RequestMethod.GET)
-	public String getPoint() {
 		
-		return "member/include/myPagePointControl";
-	}
-			
-
 	@RequestMapping(value = "/memberPrivacyUpdate", method = RequestMethod.GET)
 	public String memberPrivacyUpdate() {
 		
@@ -196,7 +196,6 @@ public class MemberController {
 		session.setAttribute("memberVo", memberVo);
 		return "redirect:/";
 	}
-	
 	
 
 	
@@ -249,4 +248,36 @@ public class MemberController {
 			is.close();
 			return bytes;
 		}
+	 
+	 
+		// 포인트 충전폼 -> /member/include/buy -> GET 방식 요청 처리 
+		@RequestMapping(value="/buy", method = RequestMethod.GET)
+		public String buyGET() throws Exception {
+			System.out.println("buyGET() 실행됨");
+			return "member/include/myPagePointControl";
+			
+		}
+		
+		// 포인트 충전처리 -> /point/buy -> POST 방식 요청 처리
+		@RequestMapping(value="/buy", method = RequestMethod.POST)
+		public String buyPOST(PointVo pointVo) throws Exception {
+			System.out.println("butPOST() 실행됨");
+			System.out.println("pointVo:" + pointVo);
+			pointService.buy(pointVo);
+			return "redirect:/";
+				
+		}
+		
+		// 포인트 충전 내역 
+		@RequestMapping(value ="/pointListById", method = RequestMethod.GET)
+		public String pointListById(HttpSession session, Model model) throws Exception {
+			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+			List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
+			model.addAttribute("pointList", pointList);
+			System.out.println(pointList);
+			return "member/pointList";
+			
+		}
+		
+	 
 }

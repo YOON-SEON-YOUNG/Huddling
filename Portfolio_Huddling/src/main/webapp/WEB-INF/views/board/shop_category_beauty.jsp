@@ -4,6 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- include 로고, 검색, 로그인, 카테고리 -->
 <%@ include file="include/board_header.jsp"%>
+<!-- 헤더 부트스트랩-->
+<link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/font-awesome.css" rel="stylesheet">
+<!--  // 헤더 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <<script>

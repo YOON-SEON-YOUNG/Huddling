@@ -41,14 +41,17 @@ $(document).ready(function(){
 		$("#page").load("myPageChaetingControl");
 	});
 	$("#item5").click(function(){
-		$("#page").load("myPagePointControl");
+		$("#page").load("buy");
 	});
 	$("#item6").click(function(){
+		$("#page").load("pointListById");
+	});
+	$("#item7").click(function(){
 		$("#page").load("profileRegister");
 	});
 
 	function buyPoint_click() {
-		var url ="/point/buyPoint";
+		var url ="member/include/buy";
 		window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500 height=600")
 	};
 
@@ -113,7 +116,7 @@ label{
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
                   <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
-                  <span class="badge">${memberVo.member_point}</span>
+                  <span class="badge"></span>
                 </a>
                 <!-- //이미지드롭다운 -->
                 <ul class="dropdown-menu">
@@ -128,13 +131,14 @@ label{
 		                </div>
 		            </div>
 		        </div> 
-                    <img src="${profileVo.profile_pic}" class="img-circle" alt="User Image" />
+                    <img src=" ${profileVo.profile_pic}" class="img-circle" alt="User Image"/>
                     <p>
                       ${memberVo.member_name}님 반갑습니다
                     </p>
                     <input type="button" value="프로필 수정" onClick="location.href='/member/profileRegister'">
-                    <input type="button" value="포인트 충전" onClick="location.href='/point/buy'">
+                    <input type="button" value="포인트 충전" onClick="location.href='/member/buyPoint'">
                   </li>
+                  </ul>
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div>
@@ -147,6 +151,7 @@ label{
                   </li>
 					
 					</li>
+				
 			</ul>
 		</nav>
 		<a href="/">홈으로</a>
@@ -176,11 +181,13 @@ label{
 								 id="item4">받은문의내역</a> 
 								 <a
 								class="list-group-item list-group-item-action"
-								id="item5">포인트내역</a>
+								id="item5">포인트 충전</a>
 								<a
 								class="list-group-item list-group-item-action"
-								id="item6">프로필 설정</a>
-		
+								id="item6">포인트 내역</a> 
+								<a
+								class="list-group-item list-group-item-action"
+								id="item7">프로필 설정</a>
 						</div>
 					</div>
 					<!-- //왼쪽 -->

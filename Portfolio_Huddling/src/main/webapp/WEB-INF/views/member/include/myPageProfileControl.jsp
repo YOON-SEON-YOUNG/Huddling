@@ -38,7 +38,7 @@ profileVo: ${profileVo}<br> --%>
 			<div class="Back">
 				<i class="fa fa-arrow-left card card-body" onclick="Back()"></i>
 			</div>
-			<p class="h2 text-center">Form</p>
+			<p class="h2 text-center">프로필 설정</p>
 			<form action="/member/profileRegister" method="post" enctype="multipart/form-data">
 			
 			<!-- 이미지 -->
@@ -69,7 +69,6 @@ profileVo: ${profileVo}<br> --%>
 							<img src="" />
 						</div>
 					</div>
-					<%=request.getRealPath("/") %>
 					<span class="Error"></span>
 				</div>
 					<div class="form-group">

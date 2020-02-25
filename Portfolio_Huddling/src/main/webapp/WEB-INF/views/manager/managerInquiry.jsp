@@ -16,7 +16,7 @@ $(document).ready(function() {
 	setInterval(function() {
 		var d = new Date();
 		var url = "/message/inquiryRead";
-		var member_id = '${memberVo.member_id}';
+		var member_id = '${sessionScope.memberVo.member_id}';
 		var sData = {
 			"message_receiver" : member_id,
 			"message_sender" : "admin"

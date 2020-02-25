@@ -109,12 +109,7 @@ public class MemberServiceIm implements MemberService {
 		return dao.privacyUpdateName(memberVo);
 	}
 
-	// 포인트 업데이트
-	@Override
-	public void addPoint(String member_id, int point) throws Exception {
-		dao.addPoint(member_id, point);
-		
-	}
+	
 
 
 

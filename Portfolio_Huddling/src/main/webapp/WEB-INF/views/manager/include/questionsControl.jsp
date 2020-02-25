@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+
+</style>
 <script>
 $(document).ready(function() {
 	// 인터벌
@@ -9,6 +12,16 @@ $(document).ready(function() {
 	
 	// 처음 리스트를 불러옴
 	var prevList;
+	var mouseCheck = 0;
+	$("#chatList").mouseover(function() {
+		mouseCheck = 1;
+		setTimeout(function() {
+			mouseCheck = 0;
+		}, 1000);
+	});
+	$("#chatList").mouseout(function() {
+		mouseCheck = 0;
+	});
 	
 	readMessageList();
 	startInterval();
@@ -22,39 +35,54 @@ $(document).ready(function() {
 				var arrList = new Array();
 				if(rData[0] != null) {
 					var message_date = rData[0].message_date;
+					// 새로운 메세지가 왔을 때
 					if(message_date != prevList) {
-						$("#chatList").empty();
-						$(rData).each(function(i) {
-							if (this.message_sender == 'admin') {
-								// 배열에서 못찾을 경우 -1 값을 리턴한다
-								if ($.inArray(this.message_receiver, arrList) == -1) {
-									// 못찾음
-									arrList.push(this.message_receiver);
-									$("#chatList").append("<a class='btnChat "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"'>"+this.message_receiver+"</a><br>");
+					// 마우스가 없을 때
+// 						if (mouseCheck == 0) {
+							$("#chatList").empty();
+							$(rData).each(function(i) {
+								if (this.message_sender == 'admin') {
+									// 배열에서 못찾을 경우 -1 값을 리턴한다
+									if ($.inArray(this.message_receiver, arrList) == -1) {
+										// 못찾음
+										arrList.push(this.message_receiver);
+										$("#chatList").append("<a class='btnChat "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+										 + "<button style='width:100%; height:50px;'>"+this.message_receiver+"</button>"
+										 + "</a><br>");
+									}
+								} else {
+									if ($.inArray(this.message_sender, arrList) == -1) {
+										// 못찾음
+										arrList.push(this.message_sender);
+										if (this.message_read != null) {
+											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											+ "<div>"+this.message_sender+"</div>"
+											+ "</a><br>");
+										} else {
+											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											+ "<div>"+this.message_sender+" (!)</div>"
+											+ "</a><br>");
+										}
+										
+									}
 								}
-							} else {
-								if ($.inArray(this.message_sender, arrList) == -1) {
-									// 못찾음
-									arrList.push(this.message_sender);
-									$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"'>"+this.message_sender+"</a><br>");
-								}
-							}
-						}); 
-						console.log(arrList);
-						prevList = message_date;
+							}); 
+	// 						console.log(arrList);
+							prevList = message_date;
+// 						}
 					}
 				}
 			});
-			
-			
 		}, 500);
 	}
+	
+	
+
 	
 	// 채팅 선택
 	$("#chatList").on("click", ".btnChat",function() {
 		console.log("클릭"+$(this).attr("data-message_sender"));
 		sender = $(this).attr("data-message_sender");
-// 		$("#chatContent").load("/manager/questionsControlInquiry?message_sender="+sender+"&message_receiver=admin");
 	});
 	
 	// 채팅 내용 인터벌
@@ -76,9 +104,13 @@ $(document).ready(function() {
 						var strHtml = "";
 						$(rData).each(function() {
 							if (this.message_sender == admin) {
-								strHtml += "<span style='float : right;'>" + this.message_content +"</span><br>";
+								strHtml += "<div style='width: 100%; height: 50px;'>" + 
+									"<div style='float : right; background-color:yellow; border-radius:10px; padding:10px;'>" + this.message_content +"</div>" +
+									"</div>";
 							} else {
-								strHtml += "<span style='float : left;'>" + this.message_sender + " : " + this.message_content +"</span><br>";
+								strHtml += "<div style='width: 100%; height: 50px;'>" + 
+									"<div style='float : left; background-color:blue; border-radius:10px; padding:10px;'>" + this.message_sender + " : " + this.message_content +"</div><br>" +
+									"</div>";
 							}
 						});
 						$("#chat").empty();
@@ -121,9 +153,6 @@ $(document).ready(function() {
 		$("#inputText").val("");
 		$("#inputText").focus();
 	}
-	
-	
-	
 });
 </script>
 <h2>문의사항</h2>

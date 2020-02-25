@@ -46,6 +46,12 @@ $(document).ready(function(){
 
 });
 </script>
+<!-- 헤더 부트스트랩-->
+<link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/font-awesome.css" rel="stylesheet">
+<!--  // 헤더 -->
 </head>
 <body>
 <div class="container-fluid">.

@@ -32,6 +32,12 @@ public class MessageDaoIm implements MessageDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + ".selectMessageList", messageVo);
 	}
+
+	@Override
+	public void updateMessageRead(MessageVo messageVo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(NAMESPACE + ".updateMessageRead", messageVo);
+	}
 	
 	
 	

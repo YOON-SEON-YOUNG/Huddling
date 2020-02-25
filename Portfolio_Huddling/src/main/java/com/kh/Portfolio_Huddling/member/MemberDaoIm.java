@@ -125,16 +125,8 @@ public class MemberDaoIm implements MemberDao {
 	}
 
 	
-	// 포인트
+	
 
-	@Override
-	public void addPoint(String member_id, int point) throws Exception {
-		Map<String,Object>map = new HashMap<String, Object>();
-		map.put("member_id", member_id);
-		map.put("point", point);
-		sqlsession.insert(NAMESPACE+".addPoint",map);
-		
-	}
 
 
 	
