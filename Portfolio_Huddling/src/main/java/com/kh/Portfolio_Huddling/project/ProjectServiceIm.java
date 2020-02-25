@@ -24,4 +24,15 @@ public class ProjectServiceIm implements ProjectService {
 		projectDao.projectApproval(projectVo);
 	}
 
+	@Override
+	public List<ProjectVo> selectIntroList() throws Exception {
+		// TODO Auto-generated method stub
+		return projectDao.selectIntroList();
+	}
+
+	@Override
+	public List<ProjectVo> category(ProjectVo projectVo) throws Exception {
+		return projectDao.category(projectVo);
+	}
+
 }

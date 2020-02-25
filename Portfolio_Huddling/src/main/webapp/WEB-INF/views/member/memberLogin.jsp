@@ -39,23 +39,53 @@ $(document).ready(function() {
 	});
 });
 </script>
+<style>
+#image{
+	height:100px;
+	width:200px;
+	right:30px;
+}
+#login{
+	height:30px;
+	}
+</style>
 </head>
 <body>
-	<h1>로그인</h1>
-	<hr>
-	<form id="form" action="/member/login" method="post">
-		<table>
-			<tr>
+<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4" style="padding:120px;">
+				<a><img src="/resources/images/hudling_logo.jpg"id="image"></img></a><br>
+				<hr>
+				<form id="form" action="/member/login" method="post">
+				
+		<table  style="width:100%; ">
+		
+			<tr style="width:100%; ">
 				<td>아이디</td>
-				<td><input type="text" id="member_id" name="member_id" required/></td>
 			</tr>
 			<tr>
-				<td>비밀번호</td>
-				<td><input type="text" id="member_pw" name="member_pw" required/></td>
+				<td style="width:100%; "><input type="text" id="member_id" name="member_id" style="width:100%; "required/></td>
 			</tr>
-		</table>
+			<tr style="width:100%;">
+				<td>비밀번호</td>
+			</tr>
+			<tr>
+				<td><input type="text" id="member_pw" name="member_pw"  style="width:100%;"required/></td>
+			</tr>
+			<tr style="width:100%;">
+			<td>
 		<hr>
-		<input type="button" id="login" value="로그인"/>
-	</form>	
+		<input type="button" id="login" value="로그인" style="width:100%;" class="btn btn-primary" />
+		</td>
+		</tr>
+		</table>
+	</form>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+		</div>
 </body>
 </html>

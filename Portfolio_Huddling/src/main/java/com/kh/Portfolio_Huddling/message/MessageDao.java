@@ -8,4 +8,5 @@ public interface MessageDao {
 	public void insertMessage(MessageVo messageVo) throws Exception;
 	public List<MessageVo> selectMessage(MessageVo messageVo) throws Exception;
 	public List<MessageVo> selectMessageList(MessageVo messageVo) throws Exception;
+	public void updateMessageRead(MessageVo messageVo) throws Exception;
 }
