@@ -141,15 +141,11 @@ $(document).ready(function(){
 		<div class="col-md-8">
 			<div class="row">
 				<!-- 상품1 -->
-				<c:set var="i" value="0">
-				<c:set var="j" value="3">
 				<div class="col-md-4">
 					<div class="card" style="width: 400px; height: 200px;" id="newList">
 					
 					</div>
 				</div>
-				</c:set>
-				</c:set>
 				
 				
 				
