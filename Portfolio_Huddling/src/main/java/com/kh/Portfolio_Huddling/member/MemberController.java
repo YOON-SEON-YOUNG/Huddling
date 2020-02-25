@@ -138,7 +138,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/mypageMain", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
 	public String page(HttpSession session, Model model, MemberInquiryDto dto) throws Exception {
 		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
 		System.out.println("memberVo :" + memberVo);
