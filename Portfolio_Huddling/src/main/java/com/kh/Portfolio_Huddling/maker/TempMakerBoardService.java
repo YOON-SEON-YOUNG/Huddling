@@ -2,7 +2,13 @@ package com.kh.Portfolio_Huddling.maker;
 
 import java.util.List;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 public interface TempMakerBoardService {
+	
+	public List<ProjectVo> makerGetIntroList(String member_id) throws Exception;
+	public int makerCreateBoard(String member_id) throws Exception;
+	
 	public TempMakerRequirDto tempRequirLoad(int tempRequirNum) throws Exception;
 	public void tempRequirUpdate(TempMakerRequirDto requirDto) throws Exception;
 	public TempMakerBasicDto tempBasicLoad(int tempBasicNum) throws Exception;
