@@ -279,5 +279,9 @@ public class MemberController {
 			
 		}
 		
+		// 포인트 업데이트 
+		
+		
+		
 	 
 }

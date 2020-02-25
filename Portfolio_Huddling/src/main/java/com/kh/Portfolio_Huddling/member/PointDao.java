@@ -2,8 +2,6 @@ package com.kh.Portfolio_Huddling.member;
 
 
 
-
-
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
