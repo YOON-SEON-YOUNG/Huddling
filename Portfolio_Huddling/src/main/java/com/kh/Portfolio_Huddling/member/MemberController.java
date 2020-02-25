@@ -138,13 +138,14 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
-	public String page(HttpSession session, Model model) throws Exception {
+	@RequestMapping(value = "/mypageMain", method = RequestMethod.POST)
+	public String page(HttpSession session, Model model, MemberInquiryDto dto) throws Exception {
 		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
 		System.out.println("memberVo :" + memberVo);
 		String member_id = memberVo.getMember_id();
 		MemberProfileVo profileVo = service.selectMemberById(member_id);
 		model.addAttribute("profileVo", profileVo);
+		model.addAttribute("inquiry", dto);
 		return "member/memberMyPageMain";
 	}
 	

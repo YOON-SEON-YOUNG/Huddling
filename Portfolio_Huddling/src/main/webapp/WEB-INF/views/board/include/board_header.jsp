@@ -51,7 +51,13 @@
 	String manager = request.getParameter("manager");
 %>
 <%=manager%>
-
+<form action="" method="post">
+<input type="hidden" name="inquiry" id="inquiry" value="1">
+<input type="hidden" name="project_name" id="project_name" value="project_name">
+<input type="hidden" name="receiver" id="receiver" value="작성자">
+<button type="submit" class="btn btn-outline-secondary"
+								style="width: 392px;">창작자에게 문의하기</button>
+</form>
 <style>
 .top-logo_info_w3layouts {
 	margin: 10 auto;

@@ -7,12 +7,12 @@
 <mapper namespace="com.kh.mappers.projectMapper">
 
 	<select id="selectProjectList" resultType="ProjectVo">
-		select * from tbl_project
+		select * from tbl_project_intro
 		where project_app = #{project_app}
 	</select>
 
 	<update id="updateProjectApp">
-		update tbl_project set
+		update tbl_project_intro set
 		project_app = #{project_app}
 		where project_num = #{project_num}
 	</update>

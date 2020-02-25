@@ -28,7 +28,17 @@
 <script type="text/javascript" src="/resources/js/chat.js"></script>
 <script>
 $(document).ready(function(){
+	
 	$("#page").load("myPageSupportControl");
+	var inquiry = '${inquiry.inquiry}';
+	if (inquiry != null && inquiry != "") {
+		if (inquiry == 1) {
+			$("#page").load("myPageQuestionControl");
+		}
+	}
+	
+	
+	
 	$("#item1").click(function(){
 		stopInter();
 		$("#page").load("myPageSupportControl");
@@ -184,9 +194,9 @@ label{
 								 <a
 								class="list-group-item list-group-item-action"
 								 id="item3">문의내역</a> 
-								 <a
-								class="list-group-item list-group-item-action"
-								 id="item4">받은문의내역</a> 
+<!-- 								 <a -->
+<!-- 								class="list-group-item list-group-item-action" -->
+<!-- 								 id="item4">받은문의내역</a>  -->
 								 <a
 								class="list-group-item list-group-item-action"
 								id="item5">포인트 충전</a>
