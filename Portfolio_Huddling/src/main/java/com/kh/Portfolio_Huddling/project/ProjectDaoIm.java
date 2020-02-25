@@ -30,14 +30,14 @@ public class ProjectDaoIm implements ProjectDao {
 	@Override
 	public List<ProjectVo> selectIntroList() throws Exception {
 		List<ProjectVo> list = sqlSession.selectList(NAMESPACE +".selectIntroList");
-		System.out.println("ProjectDaoIm, selectIntroList, list:" + list);
 		return list;
 	}
 
 	@Override
-	public List<ProjectVo> category(int temp_basic_num) throws Exception {
-		System.out.println("projectDao :"+ temp_basic_num);
-		return sqlSession.selectList(NAMESPACE + ".selectCategory",temp_basic_num);
+	public List<ProjectVo> category(ProjectVo projectVo) throws Exception {
+		List<ProjectVo> list = sqlSession.selectList(NAMESPACE + ".selectCategory",projectVo );
+		System.out.println("다오 리턴" + list);
+		return list;
 	}
 	
 

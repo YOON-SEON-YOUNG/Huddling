@@ -40,9 +40,7 @@ public class ShopController {
 	
 	// 카테고리 푸드
 	@RequestMapping(value = "/categoryFood", method = RequestMethod.GET)
-	public String categoryFood() {
-//		List<ProjectVo> category = projectService.category(temp_basic_num);
-//		System.out.println(category);
+	public String categoryFood()throws Exception {
 		return "board/shop_category_food";
 	}
 	
@@ -60,19 +58,24 @@ public class ShopController {
 	public String categoryDonate() {
 		return "board/shop_category_donate";
 	}
+	
 	@RequestMapping(value="/projectList", method = RequestMethod.GET)
 	@ResponseBody
 	public List<ProjectVo> projectLists() throws Exception {
 		System.out.println("요청 들어옴");
 		List<ProjectVo> projectList = projectService.selectIntroList();
 		System.out.println("ShopController, projectLists, projectList:" + projectList);
-//		model.addAttribute("projectList" ,projectList);
-////		model.addAttribute("ProjectVo", projectVo);
-//		System.out.println("projectList입니다:" + projectList);
-//		System.out.println("왜안찍혀");
-		
 		return projectList;
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/categoryRead", method = RequestMethod.GET)
+	public List<ProjectVo> categoryFoodRead(ProjectVo projectVo)throws Exception {
+		System.out.println(projectVo.getProject_category());
+		List<ProjectVo> list = projectService.category(projectVo);
+		System.out.println(list);
+		return list;
 	}
 	
 	

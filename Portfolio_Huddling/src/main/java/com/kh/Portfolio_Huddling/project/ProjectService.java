@@ -10,5 +10,5 @@ public interface ProjectService {
 	//신규순 보기
 	public List<ProjectVo> selectIntroList()throws Exception;
 	//카테고리별보기 
-	public List<ProjectVo> category(int temp_basic_num)throws Exception;
+	public List<ProjectVo> category(ProjectVo projectVo)throws Exception;
 }

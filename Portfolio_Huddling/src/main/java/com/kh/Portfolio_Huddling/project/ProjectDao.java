@@ -8,5 +8,5 @@ public interface ProjectDao {
 	//신규보기
 	public List<ProjectVo> selectIntroList()throws Exception;
 	//푸드 보기
-	public List<ProjectVo> category(int temp_basic_num)throws Exception;
+	public List<ProjectVo> category(ProjectVo projectVo)throws Exception;
 }

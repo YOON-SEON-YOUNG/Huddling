@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ProjectVo {
 	 private int    project_num;  
-	 private String[] project_category= {"tech","fashion","food","culture","donate"};
+	 private String project_category;
 	 private String project_image; 
 	 private String project_story; 
 	 private String project_name; 
@@ -13,7 +13,7 @@ public class ProjectVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ProjectVo(int project_num, String[] project_category, String project_image, String project_story,
+	public ProjectVo(int project_num, String project_category, String project_image, String project_story,
 			String project_name, int project_app) {
 		super();
 		this.project_num = project_num;
@@ -29,10 +29,10 @@ public class ProjectVo {
 	public void setProject_num(int project_num) {
 		this.project_num = project_num;
 	}
-	public String[] getProject_category() {
+	public String getProject_category() {
 		return project_category;
 	}
-	public void setProject_category(String[] project_category) {
+	public void setProject_category(String project_category) {
 		this.project_category = project_category;
 	}
 	public String getProject_image() {
@@ -61,9 +61,11 @@ public class ProjectVo {
 	}
 	@Override
 	public String toString() {
-		return "ProjectVo [project_num=" + project_num + ", project_category=" + Arrays.toString(project_category)
-				+ ", project_image=" + project_image + ", project_story=" + project_story + ", project_name="
-				+ project_name + ", project_app=" + project_app + "]";
+		return "ProjectDto [project_num=" + project_num + ", project_category=" + project_category + ", project_image="
+				+ project_image + ", project_story=" + project_story + ", project_name=" + project_name
+				+ ", project_app=" + project_app + "]";
 	}
 	
-}
+	}
+
+	

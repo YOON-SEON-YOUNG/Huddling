@@ -32,30 +32,20 @@ $(document).ready(function(){
 			var project_story = pVo.project_story;
 			var project_name = pVo.project_name;
 			var project_app = pVo.project_app;
-			
-			console.log("project_num: " + project_num);
-			console.log("project_category: " + project_category);
-			console.log("project_image: " + project_image);
-			console.log("project_story: " + project_story);
-			console.log("project_name: " + project_name);
-			console.log("project_num: " + project_app);
-			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg' />";
-			strList +="<div class='card-block'>";
-			strList +="<h5 class='card-title'>";
-			strList += project_story;
-			strList +="<br>";
-			strList +="</h5>";
-			strList +="<div class='progress'>";
-			strList +="<div class='progress-bar w-75'>";
-			strList +="</div>";
-			strList +="</div>";
-			strList +="<p>";
-			strList += "<a class='btn btn-primary  btn-lg mb30' href='#'>펀딩하러가기</a>";
-			strList +="</p>";
-			strList +="</div>";
-			strList +="</div>";
-		});
+			var strList = "";
+			strList += '<div class="col-md-4">';
+			strList += '<div class="card" style="width: 400px; height: 200px;">';
+			strList += '<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_01.jpg" />';
+			strList += '<div class="card-block">';
+			strList += '<h5 class="card-title">'+project_name|project_story+'</h5>';
+			strList += '<div class="progress">';
+			strList += '<div class="progress-bar w-75">';
+			strList += '</div>';
+			strList += '</div>';
+			strList += '<p> <a class="btn btn-primary  btn-lg mb30" href="detail/detailMain">펀딩하러가기</a>';
+			strList += '</p> </div> </div> </div>';
 		$("#newList").append(strList);
+		});
 	});
 	
 
@@ -313,21 +303,7 @@ ${projectList}
 	<div class="row">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<!-- 상품1 -->
-				<div id="testDiv">
-					
-				</div>
-				<!-- 신규 프로젝트 시작 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;" id="newList">
-					
-					</div>
-				</div>
-				
-				
-				
+		<div class="col-md-8" style="float: left;" id="newList">
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -428,3 +404,32 @@ ${projectList}
 	<script type="text/javascript" src="/resources/main/js/bootstrap-3.1.1.min.js"></script>
 
 <%@ include file="include/board_footer.jsp" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+

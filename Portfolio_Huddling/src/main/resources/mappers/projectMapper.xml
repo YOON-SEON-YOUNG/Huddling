@@ -18,7 +18,9 @@
 	</update>
 	
 <select id="selectCategory" resultType="ProjectVo">
-	select basic_category from tbl_temp_basic where temp_basic_num = #{temp_basic_num}
+	select * from tbl_project_intro 
+	where project_category = #{project_category}
+	order by project_num desc
 </select> 
 	
 	<!-- 프로젝트 신규순 -->

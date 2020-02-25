@@ -31,9 +31,8 @@ public class ProjectServiceIm implements ProjectService {
 	}
 
 	@Override
-	public List<ProjectVo> category(int temp_basic_num) throws Exception {
-		System.out.println("ProejctService :" +temp_basic_num );
-		return projectDao.category(temp_basic_num);
+	public List<ProjectVo> category(ProjectVo projectVo) throws Exception {
+		return projectDao.category(projectVo);
 	}
 
 }
