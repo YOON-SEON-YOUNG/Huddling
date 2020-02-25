@@ -77,6 +77,12 @@ public class ShopController {
 		System.out.println(list);
 		return list;
 	}
-	
+	@ResponseBody
+	@RequestMapping(value ="/endData",method = RequestMethod.GET)
+	public String enddata(String basic_enddate)throws Exception{
+		projectService.deadline(basic_enddate);
+		System.out.println("endData:" +  basic_enddate);
+		return null;
+	}
 	
 }

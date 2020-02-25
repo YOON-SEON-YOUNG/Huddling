@@ -27,4 +27,11 @@
 	<select id="selectIntroList" resultType="ProjectVo">
 	select * from tbl_project_intro order by project_num desc
 	</select>
+	
+	<!-- 마감임박순 --> 
+	<select id="deadline">
+	select *from tbl_temp_basic where basic_enddate =#{basic_enddate}
+	</select>
+	
+
 </mapper>  

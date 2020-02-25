@@ -24,6 +24,7 @@ $(document).ready(function(){
 			console.log("project_story: " + project_story);
 			console.log("project_name: " + project_name);
 			console.log("project_num: " + project_app);
+			strList +="<div class='com-md-4' style='float:left'>";
 			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg' />";
 			strList +="<div class='card-block'>";
 			strList +="<h5 class='card-title'>";
@@ -37,6 +38,7 @@ $(document).ready(function(){
 			strList +="<p>";
 			strList += "<a class='btn btn-primary  btn-lg mb30' href='#'>펀딩하러가기</a>";
 			strList +="</p>";
+			strList +="</div>";
 			strList +="</div>";
 			strList +="</div>";
 		});
@@ -134,25 +136,17 @@ $(document).ready(function(){
 	</div><!-- /.row -->
 	
 	<br/>
-	
-	<div class="row">
+		<div class="row">
+		<div class="col-md-12">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<!-- 상품1 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;" id="newList">
-					
-					</div>
-				</div>
-				
-				
-				
+		
+		<div class="col-md-8" style="float: left;" id="newList">
 			</div>
 		</div>
 		<div class="col-md-2">
 		</div>
+	</div>
 	</div> <!-- /.리스트01 : 인기프로젝트 슬라이드 묶음 -->
 	
 </div><!-- /.container -->

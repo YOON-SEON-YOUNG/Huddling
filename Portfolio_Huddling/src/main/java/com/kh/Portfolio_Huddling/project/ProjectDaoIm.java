@@ -39,6 +39,11 @@ public class ProjectDaoIm implements ProjectDao {
 		System.out.println("다오 리턴" + list);
 		return list;
 	}
+
+	@Override
+	public void deadline(String basic_enddate) throws Exception {
+		sqlSession.selectOne(NAMESPACE + ".deadline",basic_enddate);
+	}
 	
 
 }

@@ -35,4 +35,9 @@ public class ProjectServiceIm implements ProjectService {
 		return projectDao.category(projectVo);
 	}
 
+	@Override
+	public void deadline(String basic_enddate) throws Exception {
+		projectDao.deadline(basic_enddate);
+	}
+
 }
