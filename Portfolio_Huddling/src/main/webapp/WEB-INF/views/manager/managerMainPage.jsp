@@ -23,32 +23,40 @@
 	}
 	
 </style>
+<script type="text/javascript" src="/resources/js/chat.js"></script>
 <script>
 $(document).ready(function() {
+	
+	
+	
 	
 	$("#page").load("userControl?search=");
 	
 	$("#userControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
+		stopInter();
 		$("#page").load("userControl");
 	});
 	
 	$("#projectAppControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
+		stopInter();
 		$("#page").load("projectApprovalControl?project_app=1");
 	});
 	
 	$("#projectUnAppControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
+		stopInter();
 		$("#page").load("projectUnApprovalControl?project_app=0");
 	});
 	
 	$("#questionsControl").click(function(e) {
 		e.preventDefault();
 		$("#page").empty();
+		stopInter();
 		$("#page").load("questionsControl");
 	});
 	

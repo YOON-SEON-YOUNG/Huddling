@@ -25,28 +25,46 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/js/chat.js"></script>
 <script>
 $(document).ready(function(){
+	
 	$("#page").load("myPageSupportControl");
+	var inquiry = '${inquiry.inquiry}';
+	if (inquiry != null && inquiry != "") {
+		if (inquiry == 1) {
+			$("#page").load("myPageQuestionControl");
+		}
+	}
+	
+	
+	
 	$("#item1").click(function(){
+		stopInter();
 		$("#page").load("myPageSupportControl");
 	});
 	$("#item2").click(function(){
+		stopInter();
 		$("#page").load("myPageReadListControl");
 	});
 	$("#item3").click(function(){
+		stopInter();
 		$("#page").load("myPageQuestionControl");
 	});
 	$("#item4").click(function(){
+		stopInter();
 		$("#page").load("myPageChaetingControl");
 	});
 	$("#item5").click(function(){
+		stopInter();
 		$("#page").load("buy");
 	});
 	$("#item6").click(function(){
+		stopInter();
 		$("#page").load("pointListById");
 	});
 	$("#item7").click(function(){
+		stopInter();
 		$("#page").load("profileRegister");
 	});
 
@@ -176,9 +194,9 @@ label{
 								 <a
 								class="list-group-item list-group-item-action"
 								 id="item3">문의내역</a> 
-								 <a
-								class="list-group-item list-group-item-action"
-								 id="item4">받은문의내역</a> 
+<!-- 								 <a -->
+<!-- 								class="list-group-item list-group-item-action" -->
+<!-- 								 id="item4">받은문의내역</a>  -->
 								 <a
 								class="list-group-item list-group-item-action"
 								id="item5">포인트 충전</a>

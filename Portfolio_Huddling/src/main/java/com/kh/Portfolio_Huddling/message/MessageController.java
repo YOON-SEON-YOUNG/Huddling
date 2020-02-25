@@ -30,6 +30,9 @@ public class MessageController {
 	@ResponseBody
 	@RequestMapping(value = "/inquirySend", method = RequestMethod.POST)
 	public String postInquirySend(MessageVo messageVo) throws Exception {
+		if (messageVo.getProject_name() == null) {
+			messageVo.setProject_name("x");
+		}
 		messageService.insertMessage(messageVo);
 		return "success";
 	}
