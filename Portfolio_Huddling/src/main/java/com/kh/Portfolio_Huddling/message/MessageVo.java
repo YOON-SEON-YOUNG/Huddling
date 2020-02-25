@@ -9,7 +9,7 @@ public class MessageVo {
 	private String message_sender;
 	private String message_receiver;
 	private Timestamp message_read;
-	private int project_num;
+	private String project_name;
 
 	public MessageVo() {
 		super();
@@ -17,7 +17,7 @@ public class MessageVo {
 	}
 
 	public MessageVo(int message_num, String message_content, Timestamp message_date, String message_sender,
-			String message_receiver, Timestamp message_read, int project_num) {
+			String message_receiver, Timestamp message_read, String project_name) {
 		super();
 		this.message_num = message_num;
 		this.message_content = message_content;
@@ -25,7 +25,7 @@ public class MessageVo {
 		this.message_sender = message_sender;
 		this.message_receiver = message_receiver;
 		this.message_read = message_read;
-		this.project_num = project_num;
+		this.project_name = project_name;
 	}
 
 	public int getMessage_num() {
@@ -76,19 +76,19 @@ public class MessageVo {
 		this.message_read = message_read;
 	}
 
-	public int getProject_num() {
-		return project_num;
+	public String getProject_name() {
+		return project_name;
 	}
 
-	public void setProject_num(int project_num) {
-		this.project_num = project_num;
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
 	}
 
 	@Override
 	public String toString() {
 		return "MessageVo [message_num=" + message_num + ", message_content=" + message_content + ", message_date="
 				+ message_date + ", message_sender=" + message_sender + ", message_receiver=" + message_receiver
-				+ ", message_read=" + message_read + ", project_num=" + project_num + "]";
+				+ ", message_read=" + message_read + ", project_name=" + project_name + "]";
 	}
 
 }

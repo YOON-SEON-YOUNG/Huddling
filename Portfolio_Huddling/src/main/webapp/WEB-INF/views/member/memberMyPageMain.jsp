@@ -25,28 +25,36 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/js/chat.js"></script>
 <script>
 $(document).ready(function(){
 	$("#page").load("myPageSupportControl");
 	$("#item1").click(function(){
+		stopInter();
 		$("#page").load("myPageSupportControl");
 	});
 	$("#item2").click(function(){
+		stopInter();
 		$("#page").load("myPageReadListControl");
 	});
 	$("#item3").click(function(){
+		stopInter();
 		$("#page").load("myPageQuestionControl");
 	});
 	$("#item4").click(function(){
+		stopInter();
 		$("#page").load("myPageChaetingControl");
 	});
 	$("#item5").click(function(){
+		stopInter();
 		$("#page").load("buy");
 	});
 	$("#item6").click(function(){
+		stopInter();
 		$("#page").load("pointListById");
 	});
 	$("#item7").click(function(){
+		stopInter();
 		$("#page").load("profileRegister");
 	});
 

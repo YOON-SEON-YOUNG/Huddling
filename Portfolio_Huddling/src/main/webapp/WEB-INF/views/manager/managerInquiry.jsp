@@ -19,7 +19,7 @@ $(document).ready(function() {
 		var member_id = '${sessionScope.memberVo.member_id}';
 		var sData = {
 			"message_receiver" : member_id,
-			"message_sender" : "admin"
+			"message_sender" : "관리자"
 		}
 		$.post(url, sData, function(rData) {
 			if(rData[0] != null) {
@@ -29,9 +29,14 @@ $(document).ready(function() {
 					var strHtml = "";
 					$(rData).each(function() {
 						if (this.message_sender == member_id) {
-							strHtml += "<span style='float : right;'>" + this.message_content +"</span><br>";
+							strHtml += "<div style='width: 100%; height: 50px;'>" + 
+							"<div style='float : right; background-color:#2E64FE; color:white; border-radius:10px; padding:10px;'>" + this.message_content +"</div>" +
+							"</div>";
 						} else {
-							strHtml += "<span style='float : left;'>" + this.message_sender + " : " + this.message_content +"</span><br>";
+							strHtml += "<div>"+this.message_sender+"</div>" +
+							"<div style='width: 100%; height: 50px;'>" + 
+							"<div style='float : left; background-color:#F2F2F2; border-radius:10px; padding:10px;'>" + this.message_content +"</div><br>" +
+							"</div>";
 						}
 					});
 					$("#chat").empty();
@@ -45,14 +50,18 @@ $(document).ready(function() {
 	
 	// 클릭 메세지 전송
 	$("#send").click(function() {
-		sendMessage();
+		if ( $("#inputText").val() != "") {
+			sendMessage();
+		}
 	});
 	
 	// 엔터 메세지 전송
 	$("#inputText").keydown(function(key) {
 		if ($("#inputText").val() != null) {
 			if (key.keyCode == 13) {
-				sendMessage();
+				if ( $("#inputText").val() != "") {
+					sendMessage();
+				}
 			}
 		}
 	});
@@ -64,7 +73,7 @@ $(document).ready(function() {
 		var member_id = '${memberVo.member_id}';
 		var sData = {
 			"message_sender" :  member_id,
-			"message_receiver" : "admin",
+			"message_receiver" : "관리자",
 			"message_content" : userText
 		};
 		$.post(url, sData, function(rData) {

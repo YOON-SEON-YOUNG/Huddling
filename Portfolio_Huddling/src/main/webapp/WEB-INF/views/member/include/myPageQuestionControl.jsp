@@ -5,10 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+	.chatListcss {
+		width:348px; 
+		height:50px; 
+		cursor:pointer;
+		display:table-cell; text-align:center; vertical-align:middle;
+	}
+</style>
 <script>
 $(document).ready(function() {
+
+	$("#chatList").on("mouseover", ".chatListcss", function() {
+		$(this).css('background-color', '#FAFAFA');
+	});
+	$("#chatList").on("mouseout", ".chatListcss", function() {
+		$(this).css('background-color', 'white');
+	});
+	
 	// 인터벌
-	var inter;
+// 	var inter;
+// 	var inter2;
+	
 	var sender = "";
 	
 	// 처음 리스트를 불러옴
@@ -27,46 +45,58 @@ $(document).ready(function() {
 	readMessageList();
 	startInterval();
 	function readMessageList() {
-		setInterval(function() {
+		inter2 = setInterval(function() {
 			var url = "/message/inquiryReadList";
-			var message_receiver = '${sessionScope.memberVo.member_id}';
 			var sData = {
-				"message_receiver" : message_receiver
+				"message_receiver" : "${sessionScope.memberVo.member_id}"	
 			};
 			$.post(url, sData, function(rData) {
 				var arrList = new Array();
 				if(rData[0] != null) {
 					var message_date = rData[0].message_date;
 					// 새로운 메세지가 왔을 때
-// 					if(message_date != prevList) {
+					if(message_date != prevList) {
 					// 마우스가 없을 때
-					if (mouseCheck == 0) {
-						$("#chatList").empty();
-						$(rData).each(function(i) {
-							if (this.message_sender == message_receiver) {
-								// 배열에서 못찾을 경우 -1 값을 리턴한다
-								if ($.inArray(this.message_receiver, arrList) == -1) {
-									// 못찾음
-									arrList.push(this.message_receiver);
-									$("#chatList").append("<a class='btnChat "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"'>"+this.message_receiver+"</a><br>");
-								}
-							} else {
-								if ($.inArray(this.message_sender, arrList) == -1) {
-									// 못찾음
-									arrList.push(this.message_sender);
-									if (this.message_read != null) {
-										$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"'>"+this.message_sender+"</a><br>");
-									} else {
-										$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"'>"+this.message_sender+" (!)</a><br>");
+// 						if (mouseCheck == 0) {
+							$("#chatList").empty();
+							$(rData).each(function(i) {
+								if (this.message_sender == '${sessionScope.memberVo.member_id}') {
+									// 배열에서 못찾을 경우 -1 값을 리턴한다
+									if ($.inArray(this.message_receiver, arrList) == -1) {
+										// 못찾음
+										
+										arrList.push(this.message_receiver);
+										$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+										 + this.message_receiver 
+										 + "</div><hr>");
 									}
-									
+								} else {
+									if ($.inArray(this.message_sender, arrList) == -1) {
+										// 못찾음
+										arrList.push(this.message_sender);
+										if (this.message_read != null) {
+// 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+// 											+ "<div>"+this.message_sender+"</div>"
+// 											+ "</a><br>");
+											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+													 + this.message_sender 
+													 + "</div><hr>");
+										} else {
+// 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+// 											+ "<div>"+this.message_sender+" (!)</div>"
+// 											+ "</a><br>");
+											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+													 + this.message_sender 
+													 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div><hr>");
+										}
+										
+									}
 								}
-							}
-						}); 
-// 						console.log(arrList);
-						prevList = message_date;
+							}); 
+	// 						console.log(arrList);
+							prevList = message_date;
+// 						}
 					}
-// 					}
 				}
 			});
 		}, 500);
@@ -79,6 +109,7 @@ $(document).ready(function() {
 	$("#chatList").on("click", ".btnChat",function() {
 		console.log("클릭"+$(this).attr("data-message_sender"));
 		sender = $(this).attr("data-message_sender");
+		setTimeout(reChatList, 500);
 	});
 	
 	// 채팅 내용 인터벌
@@ -87,9 +118,9 @@ $(document).ready(function() {
 		inter = setInterval(function() {
 			var d = new Date();
 			var url = "/message/inquiryRead";
-			var message_receiver = '${sessionScope.memberVo.member_id}';
+			var admin = "${sessionScope.memberVo.member_id}";
 			var sData = {
-				"message_receiver" : message_receiver,
+				"message_receiver" : "${sessionScope.memberVo.member_id}",
 				"message_sender" : sender
 			}
 			$.post(url, sData, function(rData) {
@@ -99,15 +130,23 @@ $(document).ready(function() {
 						console.log(message_date + " // " + prev);
 						var strHtml = "";
 						$(rData).each(function() {
-							if (this.message_sender == message_receiver) {
-								strHtml += "<div style='float : right;'>" + this.message_content +"</div><br>";
+							if (this.message_sender == admin) {
+								var day = new Date(this.message_date);
+								strHtml += "<div style='width: 100%; height: 50px;'>" + 
+									"<div style='float : right; background-color:#2E64FE; color:white; border-radius:10px; padding:10px;'>" + this.message_content +"</div>" +
+									"</div>";
 							} else {
-								strHtml += "<span style='float : left;'>" + this.message_sender + " : " + this.message_content +"</span><br>";
+								var day = new Date(this.message_date);
+								strHtml += "<div>"+this.message_sender+"</div>" +
+									"<div style='width: 100%; height: 50px;'>" + 
+									"<div style='float : left; background-color:#F2F2F2; border-radius:10px; padding:10px;'>" + this.message_content +"</div><br>" +
+									"</div>";
 							}
 						});
 						$("#chat").empty();
 						$("#chat").append(strHtml);
 						$("#chat").scrollTop($("#chat")[0].scrollHeight);
+						
 						prev = message_date;
 					}
 				}
@@ -117,14 +156,18 @@ $(document).ready(function() {
 	
 	// 클릭 메세지 전송
 	$("#send").click(function() {
-		sendMessage();
+		if ( $("#inputText").val() != "") {
+			sendMessage();
+		}
 	});
 	
 	// 엔터 메세지 전송
 	$("#inputText").keydown(function(key) {
 		if ($("#inputText").val() != null) {
 			if (key.keyCode == 13) {
-				sendMessage();
+				if ( $("#inputText").val() != "") {
+					sendMessage();
+				}
 			}
 		}
 	});
@@ -135,7 +178,7 @@ $(document).ready(function() {
 		var url = "/message/inquirySend";
 		var member_id = '${sessionScope.memberVo.member_id}';
 		var sData = {
-			"message_sender" :  member_id,
+			"message_sender" :  "${sessionScope.memberVo.member_id}",
 			"message_receiver" : sender,
 			"message_content" : userText
 		};
@@ -144,6 +187,60 @@ $(document).ready(function() {
 		});
 		$("#inputText").val("");
 		$("#inputText").focus();
+	}
+	
+	function reChatList() {
+		var url = "/message/inquiryReadList";
+		var sData = {
+			"message_receiver" : "${sessionScope.memberVo.member_id}"	
+		};
+		$.post(url, sData, function(rData) {
+			var arrList = new Array();
+			if(rData[0] != null) {
+				var message_date = rData[0].message_date;
+				// 새로운 메세지가 왔을 때
+				// 마우스가 없을 때
+//						if (mouseCheck == 0) {
+						$("#chatList").empty();
+						$(rData).each(function(i) {
+							if (this.message_sender == '${sessionScope.memberVo.member_id}') {
+								// 배열에서 못찾을 경우 -1 값을 리턴한다
+								if ($.inArray(this.message_receiver, arrList) == -1) {
+									// 못찾음
+									
+									arrList.push(this.message_receiver);
+									$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+									 + this.message_receiver 
+									 + "</div><hr>");
+								}
+							} else {
+								if ($.inArray(this.message_sender, arrList) == -1) {
+									// 못찾음
+									arrList.push(this.message_sender);
+									if (this.message_read != null) {
+//											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+//											+ "<div>"+this.message_sender+"</div>"
+//											+ "</a><br>");
+										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+												 + this.message_sender 
+												 + "</div><hr>");
+									} else {
+//											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+//											+ "<div>"+this.message_sender+" (!)</div>"
+//											+ "</a><br>");
+										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+												 + this.message_sender 
+												 + "<span class='badge badge-warring'>!</span></div><hr>");
+									}
+									
+								}
+							}
+						}); 
+//	 						console.log(arrList);
+						prevList = message_date;
+//						}
+			}
+		});
 	}
 });
 </script>
