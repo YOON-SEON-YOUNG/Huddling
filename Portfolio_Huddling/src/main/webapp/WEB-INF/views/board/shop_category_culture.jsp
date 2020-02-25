@@ -28,6 +28,7 @@ $(document).ready(function(){
 			console.log("project_story: " + project_story);
 			console.log("project_name: " + project_name);
 			console.log("project_num: " + project_app);
+			strList +="<div class='com-md-4' style='float:left'>";
 			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg' />";
 			strList +="<div class='card-block'>";
 			strList +="<h5 class='card-title'>";
