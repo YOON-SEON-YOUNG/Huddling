@@ -21,6 +21,7 @@ public class MessageServiceIm implements MessageService {
 	@Override
 	public List<MessageVo> selectMessage(MessageVo messageVo) throws Exception {
 		// TODO Auto-generated method stub
+		messageDao.updateMessageRead(messageVo);
 		return messageDao.selectMessage(messageVo);
 	}
 
