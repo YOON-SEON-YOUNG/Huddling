@@ -67,7 +67,7 @@ $(document).ready(function(){
 	});
 	$("#item7").click(function(){
 		stopInter();
-		$("#page").load("profileRegister");
+		$("#page").load("myPageReadListControl");
 	});
 
 	function buyPoint_click() {

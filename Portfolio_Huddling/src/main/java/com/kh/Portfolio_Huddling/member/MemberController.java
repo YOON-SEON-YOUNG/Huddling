@@ -172,13 +172,13 @@ public class MemberController {
 		System.out.println("support 실행중..");
 		return "member/include/myPageSupportControl";
 	}
-/*	
+	
 	@RequestMapping(value = "/myPageReadListControl", method = RequestMethod.GET)
 	public String myPageReadListControl() {
 		
 		
 		return "member/include/myPageReadListControl";
-	}*/
+	}
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
 	public String myPageQuestionControl(MemberInquiryDto dto, Model model,HttpSession session) {
 		session.removeAttribute("inquiry");
