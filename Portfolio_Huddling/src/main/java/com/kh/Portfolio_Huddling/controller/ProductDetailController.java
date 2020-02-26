@@ -97,9 +97,6 @@ public class ProductDetailController {
 	public int totalPayment(@PathVariable("num")int project_num) throws Exception{
 		int num = boardService.totalPayment(project_num);
 		System.out.println("num :" + num);
-		if(num == 0) {
-			return 0;
-		}
 		return num;
 	}
 	
@@ -117,9 +114,6 @@ public class ProductDetailController {
 	@ResponseBody
 	public int totalSponser(@PathVariable("num")int project_num) throws Exception{
 		int sponser = boardService.totalSponser(project_num);
-		if(sponser == 0) {
-			return 0;
-		}
 		return sponser;
 	}
 	
@@ -128,9 +122,6 @@ public class ProductDetailController {
 	@ResponseBody
 	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
 		int price = boardService.totalPrice(project_num);
-		if(price == 0) {
-			return 0;
-		}
 		return price;
 	}
 	
