@@ -24,19 +24,12 @@ public class PointServiceIm implements PointService {
 	}
 
 	@Override
-	public int sum_pointById(String member_id) throws Exception {
-		return pointDao.sum_pointById(member_id);
+	public void use(PaymentVo paymentVo) throws Exception {
+		pointDao.use(paymentVo);
+		
 	}
+	
 
-	@Override
-	public int count_pointById(String member_id) throws Exception {
-		return pointDao.count_pointById(member_id);
-	}
-
-	@Override
-	public int max_moneyCode() throws Exception {
-		return pointDao.max_moneyCode();
-	}
 
 
 }

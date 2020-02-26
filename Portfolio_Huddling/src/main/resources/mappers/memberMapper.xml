@@ -110,49 +110,60 @@
 		where profile_id = #{member_id}
 	</select>
 	
-	<!--  포인트 충전 값 얻기 -->
+	<!--  포인트 충전  -->
 	<insert id="buy">
 		insert into tbl_point_buy
 			 (point_num, member_id, member_point)
 		values (seq_point_num.nextval, #{member_id}, #{member_point})
 	</insert>
 	
-	
-	
+		
 	<!-- 포인트 구매 내역 -->
 	<select id="pointById" resultType="PointVo">
-		select * from tbl_point_buy 		
+		select * from tbl_point_buy 	
 		where member_id = #{member_id} 
 	</select>
 	
+		<!-- 포인트 구매 내역 -->
+	<select id="pointById2" resultType="PointVo">
+		select * from tbl_point_buy 
+		LIMIT #{startList}, #{listSize}		
+	</select>
+	<!-- 전체 게시글 수 -->
+	<select id="pointListCnt" resultType="int">
+		select
+			count(*) as listCnt
+		from
+			tbl_point_buy
+	</select>
+
+	
 	<!-- 멤버 테이블에 포인트 업데이트 -->
 	<update id="updatePoint">
-		update tbl_member set
-		member_point = #{member_point}
-		where member_id = #{member_id}	
+		update tbl_member a 
+		set member_point = 
+		(select sum(member_point) 
+		from tbl_point_buy b
+		where b.member_id = a.member_id		
+		)
 	</update>
 	
-	<!-- 총 포인트 구매 액수 -->
-	<select id="sum_pointById" resultType="int">
-		select sum(member_point) from
-		tbl_point_buy
-		where member_id = #{member_id}
+	<!-- 포인트 사용 -->
+	<insert id="use">
+		insert into tbl_payment
+			 (payment_num, project_num, reword_num, payment_point)
+		values (seq_payment_num.nextval, #{project_num}, #{reword_num}, #{payment_point})	
+	</insert>
+	
+	<!-- 내가 등록한 프로젝트 -->
+	<select id="registPost" resultType="MemberReadDto">
+		select tbl_project_intro.*,tbl_project.user_id
+		from tbl_project_intro inner join tbl_project
+		on tbl_project_intro.project_num = tbl_project.project_num
+		where user_id = #{user_id}
 	</select>
-	
-	<!-- 포인트 구매 횟수 -->
-	<select id="count_pointById" resultType="int">
-		select count (*) from 
-		tbl_point_buy
-		where member_id = #{member_id}
-	</select>
-	
-	
-	<!-- MAX 머니 구매 코드 구하기 -->
-	<select id="max_moneyCode" resultType="int">
-		select max(to_number(point_num)) from
-		tbl_point_buy
-	</select>
-	
+
+	 
 	
 	
 	

@@ -1,12 +1,22 @@
 package com.kh.Portfolio_Huddling.controller;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.Portfolio_Huddling.member.MemberVo;
+import com.kh.Portfolio_Huddling.member.PaymentVo;
+import com.kh.Portfolio_Huddling.member.PointService;
+
 @Controller
 @RequestMapping("/detail/*")
 public class ProductDetailController {
+	
+	@Inject
+	private PointService pointService;
+	
 	
 	// 펀딩 상세보기 페이지 
 	@RequestMapping(value="/detailMain", method=RequestMethod.GET)
@@ -45,10 +55,20 @@ public class ProductDetailController {
 		
 	}
 	
-	// 결제 페이지(새창)
-	@RequestMapping(value="/orderPage")
+	// 결제 페이지 포인트 사용(새창)
+	@RequestMapping(value="/orderPage", method = RequestMethod.GET)
 	public String orderPage() {
 		return "detail/orderPage";
+		
+	}
+	
+	// 결제 포인트 실행 
+	@RequestMapping(value="/use", method = RequestMethod.POST)
+	public String use(PaymentVo paymentVo) throws Exception {
+		System.out.println("use 실행됨");
+		pointService.use(paymentVo);
+		return "redirect:/";
+		
 		
 	}
 	

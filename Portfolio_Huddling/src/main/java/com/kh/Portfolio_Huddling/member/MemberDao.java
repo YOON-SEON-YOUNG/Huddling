@@ -2,6 +2,8 @@ package com.kh.Portfolio_Huddling.member;
 
 import java.util.List;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 public interface MemberDao {
 	public void register(MemberVo memberVo) throws Exception;
 	public int loginId(MemberVo memberVo) throws Exception;
@@ -24,8 +26,8 @@ public interface MemberDao {
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	// 프로필 조회 
 	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception;
-	
-	
+	// 멤버 포인트 업데이트
+	public void updatePoint(MemberVo memberVo) throws Exception;
 	
 
 	

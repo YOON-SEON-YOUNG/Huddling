@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 @Service
 public class MemberServiceIm implements MemberService {
 
@@ -84,6 +86,7 @@ public class MemberServiceIm implements MemberService {
 		return dao.selectMemberProfileread(member_id);
 	}
 
+	
 	@Override
 	public int privacyUpdateAddress(MemberVo memberVo) throws Exception {
 		return dao.privacyUpdateAddress(memberVo);
@@ -107,6 +110,12 @@ public class MemberServiceIm implements MemberService {
 	@Override
 	public int privacyUpdateName(MemberVo memberVo) throws Exception {
 		return dao.privacyUpdateName(memberVo);
+	}
+
+	@Override
+	public void updatePoint(MemberVo memberVo) throws Exception {
+		dao.updatePoint(memberVo);
+		
 	}
 
 	
