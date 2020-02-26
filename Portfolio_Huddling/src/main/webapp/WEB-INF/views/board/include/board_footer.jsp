@@ -3,18 +3,6 @@
 
 	<br/>
 	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 	
 <div class="container-fluid" style="background-color: black;" >
 	<div class="row">

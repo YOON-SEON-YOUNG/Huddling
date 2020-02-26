@@ -44,4 +44,16 @@ public class ProjectDaoIm implements ProjectDao {
 	public void deadline(String basic_enddate) throws Exception {
 		sqlSession.selectOne(NAMESPACE + ".deadline",basic_enddate);
 	}
+
+	@Override
+	public List<ProjectVo> selectIntroSearch(ProjectVo projectVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".selectIntroSearch", projectVo);
+	}
+
+	@Override
+	public List<ProjectVo> selectIntroSearchCategory(ProjectVo projectVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".selectIntroSearchCategory", projectVo);
+	}
 }

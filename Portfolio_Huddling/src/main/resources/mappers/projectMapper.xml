@@ -30,6 +30,21 @@
 	select * from tbl_project_intro order by project_num desc
 	</select>
 	
+	<!-- 전체검색 -->
+	<select id="selectIntroSearch" resultType="ProjectVo">
+		select * from tbl_project_intro
+        where project_name like '%' || #{project_name} || '%'
+        order by project_num desc
+	</select>
+	
+	<!-- 카테고리별 검색 -->
+	<select id="selectIntroSearchCategory" resultType="ProjectVo">
+		select * from tbl_project_intro
+        where project_name like '%' || #{project_name} || '%'
+        and project_category = #{project_category}
+        order by project_num desc
+	</select>
+	
 	<!-- 마감임박순 --> 
 	<select id="deadline">
 	select *from tbl_temp_basic where basic_enddate =#{basic_enddate}

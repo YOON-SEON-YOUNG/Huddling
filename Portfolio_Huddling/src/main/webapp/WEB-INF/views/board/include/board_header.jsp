@@ -46,18 +46,13 @@
 	id="toTopHover" style="opacity: 1;"> </span></a>
 <script type="text/javascript"
 	src="/resources/main/js/bootstrap-3.1.1.min.js"></script>
-
-<%
-	String manager = request.getParameter("manager");
-%>
-<%=manager%>
-<form action="/member/sendInquiry" method="get">
-<input type="hidden" name="inquiry" id="inquiry" value="1">
-<input type="hidden" name="project_name" id="project_name" value="project_name">
-<input type="hidden" name="receiver" id="receiver" value="작성자">
-<button type="submit" class="btn btn-outline-secondary"
-								style="width: 392px;">창작자에게 문의하기</button>
-</form>
+<!-- <form action="/member/sendInquiry" method="get"> -->
+<!-- <input type="hidden" name="inquiry" id="inquiry" value="1"> -->
+<!-- <input type="hidden" name="project_name" id="project_name" value="project_name"> -->
+<!-- <input type="hidden" name="receiver" id="receiver" value="작성자"> -->
+<!-- <button type="submit" class="btn btn-outline-secondary" -->
+<!-- 								style="width: 392px;">창작자에게 문의하기</button> -->
+<!-- </form> -->
 <style>
 .top-logo_info_w3layouts {
 	margin: 10 auto;
@@ -216,19 +211,14 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 				</div>
 
 		<!-- 검색 -->
-					<div class="col-xs-4 agileinfo_search">
-					<form action="#" method="post">
+				<div class="col-xs-4 agileinfo_search">
+<!-- 					<form id="projectSearch" action="#" method="post"> -->
 					<!-- 	<input type="image" value="submit" src="/resources/images/search.png" name="submit"> -->
-						<input type="submit" value=" ">
-						<input type="text" name="Search" placeholder="어떤 프로젝트를 찾고 계신가요?" required="">
-					</form>
+						<input id="project_search" type="submit" value=" ">
+						<input type="text"  id="project_search_input" name="Search" placeholder="어떤 프로젝트를 찾고 계신가요?" required>
+<!-- 					</form> -->
 				</div>	
-				
-
-			
 						<!-- 로그인, 회원가입 -->	
-						
-							
 					<ul class="top-right-info_w3ls">
 					<c:choose>
 				<c:when test="${not empty memberVo}">

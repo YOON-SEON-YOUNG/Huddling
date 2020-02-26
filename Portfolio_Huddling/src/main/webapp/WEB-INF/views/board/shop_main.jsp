@@ -17,12 +17,62 @@
 <link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
 <link href="/resources/main/css/font-awesome.css" rel="stylesheet">
 
-<link href="http://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,500,500i,700" rel="stylesheet">
 <script>
 $(document).ready(function(){
 	
+	$("#project_search").click(function() {
+		if ($("#project_search_input").val() != null && $("#project_search_input").val() != "") {
+			console.log("검색 test");
+			projectSearch($("#project_search_input").val());
+		}
+	});
+	
+	$("#project_search_input").keydown(function(key) {
+		if ($("#project_search_input").val() != null && $("#project_search_input").val() != "") {
+			if (key.keyCode == 13) {
+				console.log("검색 test");
+				projectSearch($("#project_search_input").val());
+			}
+		}
+	});
+	
+	function projectSearch(name) {
+		var sData = {
+			"project_name" : name
+		};
+		$.get("/board/projectSearch", sData, function(rData) {
+			$("#newList").empty();
+			var strList = "<br><br>";
+			$.each(rData, function(index) {
+				var pVo = rData[index];
+				var project_num = pVo.project_num;
+				var project_category = pVo.project_category;
+				var project_image = pVo.project_image;
+				var project_story = pVo.project_story;
+				var project_name = pVo.project_name;
+				var project_app = pVo.project_app;
+				strList +="<div class='col-md-4'>";
+				strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
+				strList += "style='max-width: 100%; height: auto;'/>";
+				strList +="<div class='card-block'>";
+				strList +="<h5 class='card-title'>";
+				strList += project_name +"|"+ project_story;
+				strList +="<br>";
+				strList +="</h5>";
+				strList +="<div class='progress' style='padding: 5px 0px 0px 0px; margin:5px;'>";
+				strList +="<div class='progress-bar w-75'>";
+				strList +="</div> </div> <p>";
+				strList += "<a class='btn btn-primary  btn-lg mb30' href='detail/detailMain/"+project_num+"'>펀딩하러가기</a>";
+				strList +="</p> </div> </div> </div>";
+			});
+			$("#newList").append(strList);
+		});
+	}
+	
+	
 	$.get("/board/projectList", function(rData) {
 		console.log(rData);
+		var strList = "";
 		$.each(rData, function(index) {
 			var pVo = rData[index];
 			var project_num = pVo.project_num;
@@ -31,7 +81,6 @@ $(document).ready(function(){
 			var project_story = pVo.project_story;
 			var project_name = pVo.project_name;
 			var project_app = pVo.project_app;
-			var strList = "";
 			strList +="<div class='col-md-4'>";
 			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
 			strList += "style='max-width: 100%; height: auto;'/>";
@@ -45,88 +94,16 @@ $(document).ready(function(){
 			strList +="</div> </div> <p>";
 			strList += "<a class='btn btn-primary  btn-lg mb30' href='detail/detailMain/"+project_num+"'>펀딩하러가기</a>";
 			strList +="</p> </div> </div> </div>";
-		$("#newList").append(strList);
 		});
+		$("#newList").append(strList);
 	});
 
 });
 </script>
 </head>
-
-${projectList}
 <body>
-<!-- <nav class="navbar navbar-default" style="height:55px">
-					<div class="search">
-						<div class="cd-main-header">
-							<ul class="cd-header-buttons">
-								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-							</ul>
-							cd-header-buttons
-						</div>
-						<div id="cd-search" class="cd-search">
-							<form action="#" method="post">
-								<input name="Search" type="search" placeholder="Click enter after typing...">
-							</form>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					</nav> -->
-
 <div class="container-fluid">
-		<!-- banner-text -->
-		<div class="slider">
-			<div class="callbacks_container">
-				<ul class="rslides callbacks callbacks1" id="slider4">
-					<li>
-						<div class="banner-top">
-							<div class="banner-info_agileits_w3ls">
-								<h3>무슨 색 도자기를<br>만들고 싶으세요?</h3>
-								<p>- 도예인을 위한 '색소지 컬러칩'</p>
-								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>
-							</div>
-
-						</div>
-					</li>
-					<li>
-						<div class="banner-top1">
-							<div class="banner-info_agileits_w3ls">
-								<h3>길을 잃으면<br>반려견 체체가 나타나요</h3>
-								<p>- 동물들과 마음 치유하는 게임[힐링 애니멀]</p>
-								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>							
-							</div>
-
-						</div>
-					</li>
-					<li>
-						<div class="banner-top2">
-							<div class="banner-info_agileits_w3ls">
-								<h3>책과 다이어리에<br>착 붙은 자석 책갈피</h3>
-								<p>- 무엇이든 잃어버리지 않게, 가죽 책갈피 겸 펜꽂이</p>
-								<a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>
-							</div>
-
-						</div>
-					</li>
-					<li>
-						<div class="banner-top3">
-							<div class="banner-info_agileits_w3ls">
-								<h3>영화의 언어를 탐색하는 일<br>계속해보겠습니다.</h3>
-								<p>- 2020 시작하는[FILO]13호, 21세기 베스트 특별판</p>
-							    <a href="single.html">Read More <i class="fa fa-caret-right" aria-hidden="true"></i></a>								
-							</div>
-
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-		<!--//Slider-->
-
-	<br/>
-	<br/>
-	<br/>
-		<!-- 카테고리 -->
+	<br>
  	<div class="row">
 		<div class="col-md-2">
 		</div>
@@ -165,155 +142,17 @@ ${projectList}
 		<div class="col-md-2">
 		</div>
 	</div>
-	<!-- /.row 카테고리 -->
-	
-	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-8">
-			<p style="font-weight: bold; font-size: large;">인기 추천 프로젝트</p>
-		 
-<!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
-<!--             <div class="controls pull-right hidden-xs" align="right"> -->
-<!-- 				<a class="left fa fa-chevron-left btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="prev"> -->
-<!-- 				</a> -->
-<!-- 				<a class="right fa fa-chevron-right btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="next"> -->
-<!-- 				</a> -->
-<!--             </div>/.controls pull-right hidden-xs -->
-            
-        </div>
-        <div class="col-md-2" >
-        </div>
-	</div><!-- /.row -->
-	
-	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<!-- 상품1 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_01.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								모빌리티산업 투자ㅣ대한민국 캠핑 카라반이 세계로 진출합니다.
-								
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-75">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-
-								<a class="btn btn-primary  btn-lg mb30" href="detail/detailMain">펀딩하러가기</a> 
-
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- 상품2 -->
-				<div class="col-md-4" >
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_02.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								강집사 초대형 고양이 화장실 + 멀티박스!! 냥이와 집사를 위한 선택
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-50">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 상품3 -->
-				<div class="col-md-4">
-					<div class="card" style="width: 400px; height: 200px;">
-						<img class="card-img-top" alt="Bootstrap Thumbnail First" src="/resources/images/thumbnail_03.jpg" />
-						<div class="card-block">
-							<h5 class="card-title">
-								스트릿 패션 완성! 환경을 생각한 가벼운 메신져백, [비트백]
-							</h5>
-							
-							<!-- 프로그레스 -->
-							<div class="progress">
-								<div class="progress-bar w-75">
-								</div>
-							</div><!-- /.프로그레스 -->
-							<p>
-								<a class="btn btn-primary  btn-lg mb30" href="#">펀딩하러가기</a> 
-							</p>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-		<div class="col-md-2">
-		</div>
-	</div> <!-- /.리스트01 : 인기프로젝트 슬라이드 묶음 -->
-	
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-		
-	<!-- 리스트02 : 신규 프로젝트 -->
-	<div class="row">
-		<div class="col-md-2">
-			<!-- 여백 -->
-		</div>
-		<div class="col-md-8">
-		
-			<p style="font-weight: bold; font-size: large;">신규 프로젝트</p>
-		 
-<!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
-<!--             <div class="controls pull-right hidden-xs" align="right"> -->
-<!-- 				<a class="left fa fa-chevron-left btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="prev"> -->
-<!-- 				</a> -->
-<!-- 				<a class="right fa fa-chevron-right btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="next"> -->
-<!-- 				</a> -->
-<!--             </div>/.controls pull-right hidden-xs -->
-            
-        </div>
-        <div class="col-md-2" >
-       	 	<!-- 여백 -->
-        </div>
-	</div><!-- /.row -->
-	
-	<div class="row">
-		<div class="col-md-12">
-		<div class="col-md-2">
-		</div>
-		
 		<div class="col-md-8" style="float: left;" id="newList">
-			</div>
+			<br>
+			<br>
 		</div>
 		<div class="col-md-2">
 		</div>
 	</div>
-	
-	</div> <!-- /.리스트02 : 신규 프로젝트 슬라이드 묶음 -->
-</div><!-- /.container -->
+</div>
 
 	
 		<!-- js -->
@@ -408,32 +247,3 @@ ${projectList}
 	<script type="text/javascript" src="/resources/main/js/bootstrap-3.1.1.min.js"></script>
 
 <%@ include file="include/board_footer.jsp" %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
