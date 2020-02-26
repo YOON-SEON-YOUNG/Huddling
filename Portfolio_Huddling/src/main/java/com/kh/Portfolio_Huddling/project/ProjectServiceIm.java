@@ -40,4 +40,16 @@ public class ProjectServiceIm implements ProjectService {
 		projectDao.deadline(basic_enddate);
 	}
 
+	@Override
+	public List<ProjectVo> selectIntroSearch(ProjectVo projectVo) throws Exception {
+		// TODO Auto-generated method stub
+		return projectDao.selectIntroSearch(projectVo);
+	}
+
+	@Override
+	public List<ProjectVo> selectIntroSearchCategory(ProjectVo projectVo) throws Exception {
+		// TODO Auto-generated method stub
+		return projectDao.selectIntroSearchCategory(projectVo);
+	}
+
 }

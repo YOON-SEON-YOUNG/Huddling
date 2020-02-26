@@ -11,4 +11,8 @@ public interface ProjectDao {
 	public List<ProjectVo> category(ProjectVo projectVo)throws Exception;
 	//마감순
 	public void deadline(String basic_enddate)throws Exception;
+	// 전체 검색
+	public List<ProjectVo> selectIntroSearch(ProjectVo projectVo) throws Exception;
+	// 카테고리별 검색
+	public List<ProjectVo> selectIntroSearchCategory(ProjectVo projectVo) throws Exception;
 }
