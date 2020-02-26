@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.project.BoardService;
 import com.kh.Portfolio_Huddling.project.BoardVo;
@@ -123,6 +124,15 @@ public class ProductDetailController {
 	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
 		int price = boardService.totalPrice(project_num);
 		return price;
+	}
+	
+	//창작자 가져오기
+	@RequestMapping(value="/makersInfo/{num}",method = RequestMethod.GET)
+	@ResponseBody
+	public TempMakerMakersDto makersInfo(@PathVariable("num")int project_num) throws Exception{
+		TempMakerMakersDto makersDto = boardService.makersInfo(project_num);
+		return makersDto;
+		
 	}
 	
 }

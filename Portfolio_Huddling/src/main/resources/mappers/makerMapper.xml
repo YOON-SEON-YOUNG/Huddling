@@ -167,4 +167,61 @@
 	where project_num = #{project_num}
 	</select>
 	
+	<select id="chkBasic" resultType="int">
+	select count(*) from tbl_temp_basic
+	where temp_basic_num = #{project_num}
+	and not basic_projectname = ' '
+	and not basic_amount = 0
+	and not basic_representimg = ' '
+	and not basic_category = ' '
+	and not basic_enddate = ' '
+	</select>
+	
+	<select id="chkRequir" resultType="int">
+	select count(*) from tbl_temp_requir
+	where temp_requir_num = #{project_num}
+	and not requir_q2 = ' '
+	and not requir_q3 = ' '
+	</select>
+	
+	<select id="chkStory" resultType="int">
+	select count(*) from tbl_temp_story
+	where TEMP_STORY_NUM = #{project_num}
+	and not STORY_INTROIMG = ' '
+	and not STORY_SUMMARY = ' '
+	and length(story_storyboard) > 1;
+	</select>
+	
+	<select id="chkReword" resultType="int">
+	select count(*) from tbl_temp_reword
+	where temp_project_num = #{project_num}
+	and not TEMP_REWORD_NUM  = 0
+	and not TEMP_REWORD_PRICE = 'NULL'
+	and not TEMP_REWORD_NAME = ' '
+	and not TEMP_REWORD_DESC = ' '
+	and not TEMP_REWORD_OPTION = ' '
+	and not TEMP_REWORD_TRANS = ' '
+	and not TEMP_REWORD_TRANS_PRICE = ' '
+	and not TEMP_REWORD_COUNT = ' '
+	and not TEMP_REWORD_TRANS_MONTH = ' '
+	and not TEMP_REWORD_TRANS_DAYS = ' '
+	</select>
+	
+	<select id="chkMakersInfo" resultType="int">
+	select count(*) from tbl_temp_makerinfo
+	 where TEMP_MAKERINFO_NUM = #{project_num}
+	 and not TEMP_MAKERINFO_NAME = ' '
+	 and not TEMP_MAKERINFO_IMAGE = ' '
+	 and not TEMP_MAKERINFO_TEL = ' '
+	 and not TEMP_MAKERINFO_EMAIL = ' '
+	 and not TEMP_MAKERINFO_REPR = ' '
+	 and not TEMP_MAKERINFO_REPRNAME = ' '
+	 and not TEMP_MAKERINFO_REPREMAIL = ' '
+	</select>
+	
+	<update id="submitProject">
+	update tbl_project set
+	project_state = 1
+ 	where project_num = #{project_num}
+	</update>
 </mapper>

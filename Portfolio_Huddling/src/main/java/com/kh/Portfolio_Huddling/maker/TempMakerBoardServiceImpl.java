@@ -125,4 +125,39 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 		int num = boardDao.makerProjectNum();
 		return num;
 	}
+
+	@Override
+	public int tempMakerChkBasic(int project_num) throws Exception {
+		return boardDao.tempMakerChkBasic(project_num);
+	}
+
+	@Override
+	public int tempMakerChkStory(int project_num) throws Exception {
+		return boardDao.tempMakerChkStory(project_num);
+	}
+
+	@Override
+	public int tempMakerChkRequir(int project_num) throws Exception {
+		return boardDao.tempMakerChkRequir(project_num);
+	}
+
+	@Override
+	public int tempMakerChkMakersInfo(int project_num) throws Exception {
+		return boardDao.tempMakerChkMakersInfo(project_num);
+	}
+
+	@Override
+	public int tempMakerChkReword(int project_num) throws Exception {
+		return boardDao.tempMakerChkReword(project_num);
+	}
+
+	@Override
+	public int submitProject(int project_num) throws Exception {
+		int submit = boardDao.submitProject(project_num);
+		if(submit == 0) {
+			System.out.println("제출 실패...");
+		}
+		System.out.println("제출 성공...");
+		return submit;
+	}
 }

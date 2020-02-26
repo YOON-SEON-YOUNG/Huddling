@@ -149,4 +149,40 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	public int makerProjectNum() throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".getProjectNum");
 	}
+
+
+	@Override
+	public int tempMakerChkBasic(int project_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".chkBasic",project_num);
+	}
+
+
+	@Override
+	public int tempMakerChkStory(int project_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".chkStory",project_num);
+	}
+
+
+	@Override
+	public int tempMakerChkReword(int project_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".chkReword",project_num);
+	}
+
+
+	@Override
+	public int tempMakerChkMakersInfo(int project_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".chkMakersInfo",project_num);
+	}
+
+
+	@Override
+	public int tempMakerChkRequir(int project_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".chkRequir",project_num);
+	}
+
+
+	@Override
+	public int submitProject(int project_num) throws Exception {
+	return sqlSession.update(NAMESPACE + ".submitProject",project_num);
+	}
 }
