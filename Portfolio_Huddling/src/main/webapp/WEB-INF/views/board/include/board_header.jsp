@@ -51,7 +51,7 @@
 	String manager = request.getParameter("manager");
 %>
 <%=manager%>
-<form action="" method="get">
+<form action="/member/sendInquiry" method="get">
 <input type="hidden" name="inquiry" id="inquiry" value="1">
 <input type="hidden" name="project_name" id="project_name" value="project_name">
 <input type="hidden" name="receiver" id="receiver" value="작성자">

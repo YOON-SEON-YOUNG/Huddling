@@ -15,20 +15,24 @@
 </style>
 <script>
 $(document).ready(function() {
-
+	
+	
 	$("#chatList").on("mouseover", ".chatListcss", function() {
 		$(this).css('background-color', '#FAFAFA');
 	});
 	$("#chatList").on("mouseout", ".chatListcss", function() {
-		$(this).css('background-color', 'white');
+		var id = $(this).attr("id");
+		if (sender != id) {
+			$(this).css('background-color', 'white');
+		}
 	});
 	
 	// 인터벌
 // 	var inter;
 // 	var inter2;
 	
-	var sender = "";
-	
+	var sender = "x";
+	var project_name = "x";
 	// 처음 리스트를 불러옴
 	var prevList;
 	var mouseCheck = 0;
@@ -66,9 +70,9 @@ $(document).ready(function() {
 										// 못찾음
 										
 										arrList.push(this.message_receiver);
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' data-project_name='"+this.project_name+"'>"
 										 + this.project_name + " 프로젝트<br>" + this.message_receiver 
-										 + "</div><hr>");
+										 + "</div>");
 									}
 								} else {
 									if ($.inArray(this.message_sender, arrList) == -1) {
@@ -78,23 +82,24 @@ $(document).ready(function() {
 // 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 // 											+ "<div>"+this.message_sender+"</div>"
 // 											+ "</a><br>");
-											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' data-project_name='"+this.project_name+"'>"
 													 + this.project_name + " 프로젝트<br>" + this.message_sender 
-													 + "</div><hr>");
+													 + "</div>");
 										} else {
 // 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 // 											+ "<div>"+this.message_sender+" (!)</div>"
 // 											+ "</a><br>");
-											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' data-project_name='"+this.project_name+"'>"
 													+ this.project_name + " 프로젝트<br>" + this.message_sender 
-													 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div><hr>");
+													 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div>");
 										}
 										
 									}
 								}
 							}); 
-	// 						console.log(arrList);
+							$("#chatList").append("<hr>");
 							prevList = message_date;
+							chatListBackground(sender);
 // 						}
 					}
 				}
@@ -102,14 +107,20 @@ $(document).ready(function() {
 		}, 500);
 	}
 	
-	
 
+	// 채팅리스트 백그라운드 변경
+	function chatListBackground(that) {
+		$("."+that).css("background-color", "#FAFAFA");
+		$("."+that).attr("id", that);
+	}
 	
 	// 채팅 선택
 	$("#chatList").on("click", ".btnChat",function() {
 		console.log("클릭"+$(this).attr("data-message_sender"));
 		sender = $(this).attr("data-message_sender");
+		project_name = $(this).attr("data-project_name");
 		setTimeout(reChatList, 500);
+		
 	});
 	
 	// 채팅 내용 인터벌
@@ -146,7 +157,6 @@ $(document).ready(function() {
 						$("#chat").empty();
 						$("#chat").append(strHtml);
 						$("#chat").scrollTop($("#chat")[0].scrollHeight);
-						
 						prev = message_date;
 					}
 				}
@@ -157,7 +167,9 @@ $(document).ready(function() {
 	// 클릭 메세지 전송
 	$("#send").click(function() {
 		if ( $("#inputText").val() != "") {
-			sendMessage();
+			if ( sender != "x") {
+				sendMessage();
+			}
 		}
 	});
 	
@@ -166,7 +178,9 @@ $(document).ready(function() {
 		if ($("#inputText").val() != null) {
 			if (key.keyCode == 13) {
 				if ( $("#inputText").val() != "") {
-					sendMessage();
+					if ( sender != "x") {
+						sendMessage();
+					}
 				}
 			}
 		}
@@ -180,7 +194,8 @@ $(document).ready(function() {
 		var sData = {
 			"message_sender" :  "${sessionScope.memberVo.member_id}",
 			"message_receiver" : sender,
-			"message_content" : userText
+			"message_content" : userText,
+			"project_name" : project_name
 		};
 		$.post(url, sData, function(rData) {
 			console.log(rData);
@@ -209,9 +224,9 @@ $(document).ready(function() {
 									// 못찾음
 									
 									arrList.push(this.message_receiver);
-									$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+									$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' data-project_name='"+this.project_name+"'>"
 									 + this.project_name + " 프로젝트<br>" + this.message_receiver 
-									 + "</div><hr>");
+									 + "</div>");
 								}
 							} else {
 								if ($.inArray(this.message_sender, arrList) == -1) {
@@ -221,27 +236,40 @@ $(document).ready(function() {
 //											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 //											+ "<div>"+this.message_sender+"</div>"
 //											+ "</a><br>");
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
-												+ this.project_name + " 프로젝트<br>" + this.message_sender 
-												 + "</div><hr>");
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' data-project_name='"+this.project_name+"'>"
+												 + this.project_name + " 프로젝트<br>" + this.message_sender 
+												 + "</div>");
 									} else {
 //											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 //											+ "<div>"+this.message_sender+" (!)</div>"
 //											+ "</a><br>");
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' data-project_name='"+this.project_name+"'>"
 												+ this.project_name + " 프로젝트<br>" + this.message_sender 
-												 + "<span class='badge badge-warring'>!</span></div><hr>");
+												 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div>");
 									}
 									
 								}
 							}
 						}); 
-//	 						console.log(arrList);
+						$("#chatList").append("<hr>");
 						prevList = message_date;
+						chatListBackground(sender);
 //						}
 			}
 		});
 	}
+	
+	// 창작자에게 문의
+	var inquiry = '${inquiry.inquiry}';
+	var receiver = '${inquiry.receiver}';
+	if (inquiry == 1) {
+		sender = receiver;
+		project_name = '${inquiry.project_name}';
+		
+		$("#inputText").val(project_name + " 프로젝트 문의입니다.");
+		sendMessage();
+	}
+	
 });
 </script>
 <title>Insert title here</title>
@@ -253,8 +281,7 @@ $(document).ready(function() {
 	<div class="row" style="height: 500px;">
 <!-- 		문의 목록 -->
 		<div id="page" class="col-md-3" style="height: 100%; text-align: center;">
-			<hr>
-			<div id="chatList" style="overflow: auto;  text-align: center;">
+			<div id="chatList" style="height: 100%; width: 100%; overflow: auto;  text-align: center;">
 			</div>
 		</div>
 <!-- 		// 문의 목록 -->

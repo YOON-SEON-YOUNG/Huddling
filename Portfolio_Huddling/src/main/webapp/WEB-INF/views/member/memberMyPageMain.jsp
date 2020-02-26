@@ -29,11 +29,12 @@
 <script>
 $(document).ready(function(){
 	
+	
 	$("#page").load("myPageSupportControl");
 	var inquiry = '${inquiry.inquiry}';
 	if (inquiry != null && inquiry != "") {
 		if (inquiry == 1) {
-			$("#page").load("myPageQuestionControl");
+			$("#page").load("myPageQuestionControl?inquiry=${inquiry.inquiry}&project_name=${inquiry.project_name}&receiver=${inquiry.receiver}");
 		}
 	}
 	
