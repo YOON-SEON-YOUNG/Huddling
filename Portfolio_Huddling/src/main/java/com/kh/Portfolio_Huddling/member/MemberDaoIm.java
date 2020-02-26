@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerProjectVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Repository
@@ -130,6 +131,11 @@ public class MemberDaoIm implements MemberDao {
 	public void updatePoint(MemberVo memberVo) throws Exception {
 		sqlsession.update(NAMESPACE + ".updatePoint", memberVo);
 		
+	}
+
+	@Override
+	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception {
+		return sqlsession.selectList(NAMESPACE + ".myRegistList", user_id);
 	}
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerProjectVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Service
@@ -29,6 +30,7 @@ public interface MemberService {
 	public MemberProfileVo selectMemberById(String member_id) throws Exception;
 	// 멤버 포인트
 	public void updatePoint(MemberVo memberVo) throws Exception;
-
+	// 내가 올린 프로젝트
+	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception;
 
 }

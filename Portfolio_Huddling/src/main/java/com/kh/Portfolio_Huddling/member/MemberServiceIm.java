@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerProjectVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Service
@@ -116,6 +117,11 @@ public class MemberServiceIm implements MemberService {
 	public void updatePoint(MemberVo memberVo) throws Exception {
 		dao.updatePoint(memberVo);
 		
+	}
+
+	@Override
+	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception {
+		return dao.myRegistList(user_id);
 	}
 
 	

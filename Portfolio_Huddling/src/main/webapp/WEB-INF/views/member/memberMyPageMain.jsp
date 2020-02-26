@@ -47,7 +47,7 @@ $(document).ready(function(){
 	// 내가 등록한 프로젝트
 	$("#item2").click(function(){
 		stopInter();
-		$("#page").load("registPostList");
+		$("#page").load("myRegistList");
 	});
 	$("#item3").click(function(){
 		stopInter();
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	});
 	$("#item7").click(function(){
 		stopInter();
-		$("#page").load("myPageReadListControl");
+		$("#page").load("profileRegister");
 	});
 
 	function buyPoint_click() {

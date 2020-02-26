@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerProjectVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 import com.kh.Portfolio_Huddling.util.UploadFileUtils;
 
@@ -173,12 +174,13 @@ public class MemberController {
 		return "member/include/myPageSupportControl";
 	}
 	
-	@RequestMapping(value = "/myPageReadListControl", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/myPageReadListControl", method = RequestMethod.GET)
 	public String myPageReadListControl() {
 		
 		
 		return "member/include/myPageReadListControl";
-	}
+	}*/
+	
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
 	public String myPageQuestionControl(MemberInquiryDto dto, Model model,HttpSession session) {
 		session.removeAttribute("inquiry");
@@ -291,8 +293,17 @@ public class MemberController {
 			
 		}
 		
-		
-		
+		// 내가 만든 프로젝트 리스트 
+		@RequestMapping(value="/myRegistList", method = RequestMethod.GET)
+		public String myRegistList(HttpSession session, Model model)throws Exception {
+			TempMakerProjectVo projectVo = (TempMakerProjectVo)session.getAttribute("projectVo");
+		    List<TempMakerProjectVo> myRegistList = service.myRegistList(projectVo.getUser_id());
+		    model.addAttribute("myRegistList", myRegistList);
+		    System.out.println(myRegistList);
+			return "member.inclued/myPageReadListControl";
+			
+			
+		}
 		
 		
 		
