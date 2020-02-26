@@ -69,13 +69,15 @@
 		<div class="card-body">
 			<div class="form-group">
 				<label for="inquiryNum"><strong>문의 전화번호</strong></label>
-				<input type="text" class="form-control" id="inquiryNum" name="temp_makerinfo_tel"/>
+				<input type="text" class="form-control" id="inquiryNum" name="temp_makerinfo_tel" value="${makersDto.temp_makerinfo_tel }"/>
+				
 			</div>
 		</div>
 		<div class="card-body">
 			<div class="form-group">
 				<label for="inquiryEmail"><strong>문의 이메일</strong></label>
-				<input type="text" class="form-control" id="inquiryEmail" name="temp_makerinfo_email"/>
+				<input type="text" class="form-control" id="inquiryEmail" name="temp_makerinfo_email" value="${makersDto.temp_makerinfo_email }"/>
+				
 			</div>
 		</div>
 	</div>
@@ -94,13 +96,13 @@
 		<div class="card-body">
 			<div class="form-group">
 				<label for="repName"><strong>대표자 명</strong></label>
-				<input type="text" class="form-control" id="repName" name="temp_makerinfo_reprname"/>
+				<input type="text" class="form-control" id="repName" name="temp_makerinfo_reprname" value ="${makersDto.temp_makerinfo_reprname }"/>
 			</div>
 		</div>
 		<div class="card-body">
 			<div class="form-group">
 				<label for="repEmail"><strong>대표자 이메일</strong></label>
-				<input type="text" class="form-control" id="repEmail" name="temp_makerinfo_repremail"/>
+				<input type="text" class="form-control" id="repEmail" name="temp_makerinfo_repremail" value="${makersDto.temp_makerinfo_repremail }"/>
 			</div>
 		</div>
 	</div>

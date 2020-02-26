@@ -74,6 +74,14 @@ $(document).ready(function() {
 		barProgress.css('width',per + '%')
 	});
 	
+	//창작자 정보 가져오기
+	$.get("/detail/makersInfo/" + num,function(data){
+		console.log(data);
+		$('#creatorName').text(data.temp_makerinfo_name);
+		$('#creatorEmail').text(data.temp_makerinfo_email);
+		$('#creatorPhone').text(data.temp_makerinfo_tel);
+	});
+	
 	$("#tapInfo").click(function(e) {
 		console.log("tapInfo 클릭됨");
  		e.preventDefault();
@@ -210,9 +218,9 @@ $(document).ready(function() {
 						<div id="accordion" class="checkout">
 						<h5>창작자 소개</h5>
 						<br>
-						상상을 따라 모험을 즐기는 그림작가 김경희입니다. 
-						현실과 상상의 경계를 지우는 작업을 좋아하며, 
-						창작물을 통해 여유롭고 유쾌한 시선을 전하고 싶습니다
+						창작자 이름 : <span id="creatorName">김경희</span> <br>
+						창작자 이메일 : <span id="creatorEmail">email.email.com</span> <br> 
+						창작자 전화번호: <span id="creatorPhone">010-000-0000</span> <br>
 						<hr>
 							<button type="button" class="btn btn-outline-secondary"
 								style="width: 392px;" data-creator="">창작자에게 문의하기</button>

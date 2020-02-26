@@ -32,5 +32,12 @@ public interface TempMakerBoardDao {
 	//메이커 정보
 	public void tempMakersInfo(TempMakerMakersDto makersDto) throws Exception;
 	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception;
+	//작성 확인
+	public int tempMakerChkBasic(int project_num) throws Exception;
+	public int tempMakerChkStory(int project_num) throws Exception;
+	public int tempMakerChkReword(int project_num) throws Exception;
+	public int tempMakerChkMakersInfo(int project_num) throws Exception;
+	public int tempMakerChkRequir(int project_num) throws Exception;
+	public int submitProject(int project_num) throws Exception;
 
 }

@@ -33,4 +33,9 @@
 	select basic_amount from tbl_temp_basic
 	where temp_basic_num = #{project_num}
 	</select>
+	
+	<select id="makersInfo" resultType="TempMakerMakersDto">
+	select * from tbl_temp_makerinfo
+	where temp_makerinfo_num = #{project_num}
+	</select>
 </mapper>

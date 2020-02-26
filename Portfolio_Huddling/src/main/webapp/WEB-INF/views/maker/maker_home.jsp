@@ -36,6 +36,66 @@
 				break;
 			}
 		});
+		
+		$.get("/chk/chkBasic/" + num,function(data){
+			console.log("data",data);
+			if(data == 0){
+				$('#basic').text("작성중");
+				$('#basic').attr('class','badge btn-primary');
+			} else if(data == 1){
+				$('#basic').text("작성완료");
+				$('#basic').attr('class','badge btn-success');
+			}
+		});
+		
+		$.get("/chk/chkReword/" + num,function(data){
+			console.log("data",data);
+			if(data == 0){
+				$('#reword').text("작성중")
+				$('#reword').attr('class','badge btn-primary');
+			} else if(data >= 1){
+				$('#reword').text("작성완료")
+				$('#reword').attr('class','badge btn-success');
+			}
+		});
+		
+		$.get("/chk/chkRequir/" + num,function(data){
+			console.log("data",data);
+			if(data == 0){
+				$('#requir').text("작성중")
+				$('#requir').attr('class','badge btn-primary');
+			} else if(data == 1){
+				$('#requir').text("작성완료")
+				$('#requir').attr('class','badge btn-success');
+			}
+		});
+		$.get("/chk/chkStory/" + num,function(data){
+			console.log("data",data);
+			if(data == 0){
+				$('#story').text("작성중")
+				$('#story').attr('class','badge btn-primary');
+			} else if(data == 1){
+				$('#story').text("작성완료")
+				$('#story').attr('class','badge btn-success');
+			}
+		});
+		$.get("/chk/chkMakersInfo/" + num,function(data){
+			console.log("data",data);
+			if(data == 0){
+				$('#makersInfo').text("작성중")
+				$('#makersInfo').attr('class','badge btn-primary');
+			} else if(data == 1){
+				$('#makersInfo').text("작성완료")
+				$('#makersInfo').attr('class','badge btn-success');
+			}
+		});
+		
+		$('#submit').click(function(e){
+			e.preventDefault();
+			console.log('제출중...');
+			var project_num = num;
+			location.href="/maker/submitProject/" + num;
+		})
 	});
 </script>
 
@@ -46,7 +106,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 요건 <span class="badge btn-success">작성 완료</span>
+						기본 요건 <span class="badge btn-success" id="requir">작성 완료</span>
 					</div>
 				</div>
 			</div>
@@ -60,7 +120,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 정보 <span class="badge btn-success">작성 완료</span>
+						기본 정보 <span class="badge btn-success" id='basic'>작성 완료</span>
 					</div>
 				</div>
 			</div>
@@ -74,7 +134,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						스토리 작성 <span class="badge btn-primary">작성 중</span>
+						스토리 작성 <span class="badge btn-primary" id="story">작성 중</span>
 					</div>
 				</div>
 			</div>
@@ -89,7 +149,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						리워드 설계<span class="badge btn-secondary">작성 전</span>
+						리워드 설계<span class="badge btn-secondary" id="reword">작성 전</span>
 					</div>
 				</div>
 			</div>
@@ -103,7 +163,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						메이커 정보 <span class="badge btn-secondary">작성 전</span>
+						메이커 정보 <span class="badge btn-secondary" id="makersInfo">작성 전</span>
 					</div>
 				</div>
 			</div>
@@ -116,7 +176,7 @@
 		<!-- 제출 버튼 -->
 		<div class="row">
 			<div class="col-md=12">
-				<button class="btn btn-success">제출</button>
+				<button class="btn btn-success" id="submit">제출</button>
 			</div>
 		</div>
 	</div>

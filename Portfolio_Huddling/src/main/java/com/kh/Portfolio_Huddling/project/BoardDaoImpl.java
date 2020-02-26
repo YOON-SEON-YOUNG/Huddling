@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 
 @Repository
@@ -45,5 +46,10 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int totalPrice(int project_num) throws Exception {
 		return sqlsession.selectOne(NAMESPACE + ".totalPrice",project_num);
+	}
+
+	@Override
+	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
+		return sqlsession.selectOne(NAMESPACE + ".makersInfo",project_num);
 	}
 }
