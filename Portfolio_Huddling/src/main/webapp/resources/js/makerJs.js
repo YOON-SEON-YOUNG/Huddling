@@ -37,7 +37,7 @@ function rewordAdded(url,num){
 
 function rewordUpdate(url) {
 	var params = $('#formTampData').serializeArray();
-	console.log(params);
+	console.log("params",params);
 	$.post(url, params, function(result) {
 		console.log("result :",result);
 	});

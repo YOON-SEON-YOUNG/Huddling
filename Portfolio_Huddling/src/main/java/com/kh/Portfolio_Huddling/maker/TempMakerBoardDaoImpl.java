@@ -84,7 +84,6 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	@Override
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".rewordInput",rewordDto);
-		
 	}
 
 
