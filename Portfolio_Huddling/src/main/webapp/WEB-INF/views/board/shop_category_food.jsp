@@ -97,58 +97,16 @@ $(document).ready(function(){
 		<div class="col-md-2">
 		</div>
 	</div>
-	<br>
-	<!-- /.row 카테고리 -->
-	<br/>
-	<!-- 리스트01 : 인기 추천 프로젝트 -->
 	<div class="row">
 		<div class="col-md-2">
 		</div>
-		<div class="col-md-4" align="left">
-			<p style="font-weight: bold; font-size: large;">푸드</p>
-		 
-<!--             이미지 넘기기..?,...그..불러올 갯수대로 -->
-<!--             <div class="controls pull-right hidden-xs" align="right"> -->
-<!-- 				<a class="left fa fa-chevron-left btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="prev"> -->
-<!-- 				</a> -->
-<!-- 				<a class="right fa fa-chevron-right btn btn-primary"  -->
-<!-- 					href="#carousel-example-generic" data-slide="next"> -->
-<!-- 				</a> -->
-<!--             </div>/.controls pull-right hidden-xs -->
-            
-        </div>
-        
-  
-        <div class="col-md-4" align="right">
-<!-- 			<div class="dropdown"> -->
-				<div class="wrap-drop">
-					<select class="drop" style="width: 100px; font-size: 15px;">
-				      <option>인기 순위</option>
-				      <option>최신 등록 순위</option>
-				      <option>마감 임박 순위</option>
-				    </select>
-				</div>
-			</div>
-        </div>
-        <div class="col-md-2" >
-        </div>
-	</div><!-- /.row -->
-	
-	<br/>
-		<div class="row">
-		<div class="col-md-12">
-		<div class="col-md-2">
-		</div>
-		
 		<div class="col-md-8" style="float: left;" id="newList">
-			</div>
+			<br>
+			<br>
 		</div>
 		<div class="col-md-2">
 		</div>
 	</div>
-	</div> <!-- /.리스트01 : 인기프로젝트 슬라이드 묶음 -->
-	
-</div><!-- /.container -->
+</div>
 
 <%@ include file="include/board_footer.jsp" %>
