@@ -31,6 +31,7 @@ public interface MemberService {
 	// 멤버 포인트
 	public void updatePoint(MemberVo memberVo) throws Exception;
 	// 내가 올린 프로젝트
-	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception;
+	public List<ProjectVo> myRegistList(String member_id) throws Exception;
 
+	
 }

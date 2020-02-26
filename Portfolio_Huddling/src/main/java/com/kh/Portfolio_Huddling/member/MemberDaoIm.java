@@ -134,8 +134,8 @@ public class MemberDaoIm implements MemberDao {
 	}
 
 	@Override
-	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception {
-		return sqlsession.selectList(NAMESPACE + ".myRegistList", user_id);
+	public List<ProjectVo> myRegistList(String member_id) throws Exception {
+		return sqlsession.selectList(NAMESPACE + ".myRegistList", member_id);
 	}
 
 

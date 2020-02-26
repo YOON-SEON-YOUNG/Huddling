@@ -120,8 +120,8 @@ public class MemberServiceIm implements MemberService {
 	}
 
 	@Override
-	public List<TempMakerProjectVo> myRegistList(String user_id) throws Exception {
-		return dao.myRegistList(user_id);
+	public List<ProjectVo> myRegistList(String member_id) throws Exception {
+		return dao.myRegistList(member_id);
 	}
 
 	

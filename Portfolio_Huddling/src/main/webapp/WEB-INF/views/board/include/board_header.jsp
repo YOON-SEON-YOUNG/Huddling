@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -240,6 +241,9 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 											</div>
 										</li>
 										<div class="dropdown-divid"></div>
+										<p class="text-muted">멤버포인트:
+										<fmt:formatNumber pattern="###,###" value="${memberVo.member_point}"/>원</p>
+										<div class="dropdown-divid"></div>
 										<a class="dropdown-items" href="/member/logout"><i class="fa fa-power-off"></i> Logout</a>
 									</ul>
 									<!-- /.dropdown-user -->
@@ -268,7 +272,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 							<nav>
 								<ul class="nav navbar-nav">
 									<li><a href="/" class="active">Home</a></li>
-
+									<li><a href="/maker/intro">About</a></li>
 									<li><a href="/maker/intro">프로젝트 등록</a></li>
 									<li class="dropdown">
 										<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">카테고리 <b class="caret"></b></a>

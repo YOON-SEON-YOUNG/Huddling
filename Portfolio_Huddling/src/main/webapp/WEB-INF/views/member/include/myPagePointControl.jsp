@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,10 @@
       <a class="nav-link active" data-toggle="tab" href="#home">포인트 충전</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">포인트 내역</a>
+      <a class="nav-link" data-toggle="tab" href="#menu1">포인트 충전 내역</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">포인트 사용 내역</a>
     </li>
   </ul>
 
@@ -42,29 +46,20 @@
       
       <%-- memberVo : ${memberVo}<br> --%>
 
-		<h3>현재 보유한 포인트</h3>
+		
 		<table border="1" align="center">
 			<tr>
 				<td width="200" bgcolor="#CCCCCC">
 					<p align="center">
-						<b>포인트 잔액</b>
-					</p>
-				</td>
-				<td width="200" bgcolor="#CCCCCC">
-					<p align="center">
-						<b>결제 후 잔액</b>
+						<b>현재 포인트 잔액</b>
 					</p>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<p align="center">포인트</p>
+					<p align="center"><fmt:formatNumber pattern="###,###" value="${memberVo.member_point}"/></p>
 				</td>
-				<td>
-					<p align="center">
-						<span id="new_points"></span> 포인트
-					</p>
-				</td>
+				
 			</tr>
 		</table>
 		<br>
@@ -95,7 +90,7 @@
 
 
 							<label>충전아이디</label> 
-							<input type="text" class="form-control" id="member_id" name="member_id" value="${memberVo.member_id}">
+							<input type="text" class="form-control" id="member_id" name="member_id" value="${memberVo.member_id}" readonly/>
 							<label>충전금액</label> 
 							<input type="number" class="form-control" id="member_point" name="member_point">
 							<script>						
@@ -133,6 +128,11 @@
     </div>
     <!-- 탭2 -->
     <div id="menu1" class="container tab-pane fade"><br>
+  		<%@ include file="../../member/pointList.jsp"%> 
+    </div>
+        <!-- 탭2 -->
+    <div id="menu2" class="container tab-pane fade"><br>
+    	<h1>포인트 사용 내역</h1>
       <%--  <%@ include file="../../member/pointList.jsp"%> --%>
     </div>
   </div>

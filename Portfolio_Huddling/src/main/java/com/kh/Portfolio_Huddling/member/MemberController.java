@@ -174,12 +174,6 @@ public class MemberController {
 		return "member/include/myPageSupportControl";
 	}
 	
-/*	@RequestMapping(value = "/myPageReadListControl", method = RequestMethod.GET)
-	public String myPageReadListControl() {
-		
-		
-		return "member/include/myPageReadListControl";
-	}*/
 	
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
 	public String myPageQuestionControl(MemberInquiryDto dto, Model model,HttpSession session) {
@@ -296,11 +290,11 @@ public class MemberController {
 		// 내가 만든 프로젝트 리스트 
 		@RequestMapping(value="/myRegistList", method = RequestMethod.GET)
 		public String myRegistList(HttpSession session, Model model)throws Exception {
-			TempMakerProjectVo projectVo = (TempMakerProjectVo)session.getAttribute("projectVo");
-		    List<TempMakerProjectVo> myRegistList = service.myRegistList(projectVo.getUser_id());
+			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+		    List<ProjectVo> myRegistList = service.myRegistList(memberVo.getMember_id());
 		    model.addAttribute("myRegistList", myRegistList);
 		    System.out.println(myRegistList);
-			return "member.inclued/myPageReadListControl";
+			return "member/include/myPageReadListControl";
 			
 			
 		}
