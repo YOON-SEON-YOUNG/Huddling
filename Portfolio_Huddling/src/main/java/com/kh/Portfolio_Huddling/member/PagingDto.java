@@ -1,137 +1,196 @@
 package com.kh.Portfolio_Huddling.member;
 
+
 public class PagingDto {
 
-	public static final int PAGE_BLOCK = 10;
 
-	private int page = 1;
-	private int startRow = 1;
-	private int endRow = 10;
-	private int startPage = 1;
-	private int endPage = 10;
-	private int totalCount;
-	private boolean hasPrev = true;
-	private boolean hasNext = true;
-	private int perPage = 10;
-	private int totalPage;
-	private String searchType;
-	private String keyword;
 
-	public int getPage() {
-		return page;
-	}
 
-	public void setPage(int page) {
-		this.page = page;
+		private int listSize = 10;                //초기값으로 목록개수를 10으로 셋팅
+		private int rangeSize = 10;            //초기값으로 페이지범위를 10으로 셋팅
+		private int page;
+		private int range;
+		private int listCnt;
+		private int pageCnt;
+		private int startPage;
+		private int startList;
+		private int endPage;
+		private boolean prev;
+		private boolean next;
 
-		startRow = page * perPage - (perPage - 1);
-		endRow = page * perPage;
+		
 
-		startPage = ((page - 1) / PAGE_BLOCK) * PAGE_BLOCK + 1; 
-		endPage = startPage + (PAGE_BLOCK - 1);
-	}
-
-	public int getStartRow() {
-		return startRow;
-	}
-
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
-	}
-
-	public int getEndRow() {
-		return endRow;
-	}
-
-	public void setEndRow(int endRow) {
-		this.endRow = endRow;
-	}
-
-	public int getStartPage() {
-		return startPage;
-	}
-
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
-
-	public int getEndPage() {
-		return endPage;
-	}
-
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
-
-	public int getTotalCount() {
-		return totalCount;
-	}
-
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
-		totalPage = (int) Math.ceil((double) totalCount / perPage); 
-
-		// 페이지 블럭(51~60), 전체 페이수는 51
-		if (endPage > totalPage) {
-			endPage = totalPage;
+		public int getRangeSize() {
+			return rangeSize;
 		}
 
-		if (startPage == 1) {
-			hasPrev = false;
+
+
+		public int getPage() {
+			return page;
+
 		}
 
-		if (endPage == totalPage) {
-			hasNext = false;
+
+
+		public void setPage(int page) {
+			this.page = page;
+
 		}
+
+
+
+		public int getRange() {
+			return range;
+
+		}
+
+
+
+		public void setRange(int range) {
+			this.range = range;
+
+		}
+
+
+
+		public int getStartPage() {
+			return startPage;
+
+		}
+
+
+
+		public void setStartPage(int startPage) {
+			this.startPage = startPage;
+
+		}
+
+
+
+		public int getEndPage() {
+			return endPage;
+
+		}
+
+
+
+		public void setEndPage(int endPage) {
+			this.endPage = endPage;
+
+		}
+
+
+
+		public boolean isPrev() {
+			return prev;
+
+		}
+
+
+
+		public void setPrev(boolean prev) {
+			this.prev = prev;
+
+		}
+
+
+
+		public boolean isNext() {
+			return next;
+
+		}
+
+
+
+		public void setNext(boolean next) {
+			this.next = next;
+
+		}
+
+
+
+		public int getListSize() {
+			return listSize;
+
+		}
+
+
+
+		public void setListSize(int listSize) {
+			this.listSize = listSize;
+
+		}
+
+		
+
+		public int getListCnt() {
+			return listCnt;
+
+		}
+
+
+
+		public void setListCnt(int listCnt) {
+			this.listCnt = listCnt;
+
+		}
+
+		
+
+		public int getStartList() {
+			return startList;
+
+		}
+
+
+
+		public void pageInfo(int page, int range, int listCnt) {
+
+			this.page = page;
+			this.range = range;
+			this.listCnt = listCnt;
+
+			
+
+			//전체 페이지수 
+			this.pageCnt = (int) Math.ceil(listCnt/listSize);
+
+			
+
+			//시작 페이지
+			this.startPage = (range - 1) * rangeSize + 1 ;
+
+			
+
+			//끝 페이지
+			this.endPage = range * rangeSize;
+
+					
+
+			//게시판 시작번호
+			this.startList = (page - 1) * listSize;
+
+			
+
+			//이전 버튼 상태
+			this.prev = range == 1 ? false : true;
+
+			
+
+			//다음 버튼 상태
+
+			this.next = endPage > pageCnt ? false : true;
+			if (this.endPage > this.pageCnt) {
+				this.endPage = this.pageCnt;
+				this.next = false;
+
+			}
+
+		}
+
 	}
 
-	public boolean isHasPrev() {
-		return hasPrev;
-	}
 
-	public void setHasPrev(boolean hasPrev) {
-		this.hasPrev = hasPrev;
-	}
 
-	public boolean isHasNext() {
-		return hasNext;
-	}
 
-	public void setHasNext(boolean hasNext) {
-		this.hasNext = hasNext;
-	}
-
-	public int getPerPage() {
-		return perPage;
-	}
-
-	public void setPerPage(int perPage) {
-		this.perPage = perPage;
-		setPage(page);
-	}
-
-	public String getSearchType() {
-		return searchType;
-	}
-
-	public void setSearchType(String searchType) {
-		this.searchType = searchType;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	@Override
-	public String toString() {
-		return "PagingDto [page=" + page + ", startRow=" + startRow + ", endRow=" + endRow + ", startPage=" + startPage
-				+ ", endPage=" + endPage + ", totalCount=" + totalCount + ", hasPrev=" + hasPrev + ", hasNext="
-				+ hasNext + ", perPage=" + perPage + ", totalPage=" + totalPage + ", searchType=" + searchType
-				+ ", keyword=" + keyword + "]";
-	}
-
-}

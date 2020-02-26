@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 @Repository
 public class MemberDaoIm implements MemberDao {
 
@@ -25,8 +27,7 @@ public class MemberDaoIm implements MemberDao {
 		sqlsession.insert(NAMESPACE + ".insertMember", memberVo);
 		String profile_id = memberVo.getMember_id();
 		sqlsession.insert(NAMESPACE + ".insertMemberProfile", profile_id);
-		String member_id = memberVo.getMember_id();
-		sqlsession.insert(NAMESPACE + ".insertPoint", member_id); 
+		
 	}
 
 	@Override
@@ -123,6 +124,15 @@ public class MemberDaoIm implements MemberDao {
 	public int privacyUpdateName(MemberVo memberVo) throws Exception {
 		return (int)sqlsession.selectOne(NAMESPACE + ".privacyUpdateName",memberVo);
 	}
+
+	// 멤버 포인트 업데이트
+	@Override
+	public void updatePoint(MemberVo memberVo) throws Exception {
+		sqlsession.update(NAMESPACE + ".updatePoint", memberVo);
+		
+	}
+
+
 
 	
 	

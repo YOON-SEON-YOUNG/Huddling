@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div class="container">
 	<!-- 내가후원한 프로젝트 시작  -->
 							<span id="list-item-1">
 								<h4>내가후원한 프로젝트</h4> 
@@ -47,5 +47,6 @@
 									</tbody>
 								</table>
 							</span>
+							</div>
 </body>
 </html>

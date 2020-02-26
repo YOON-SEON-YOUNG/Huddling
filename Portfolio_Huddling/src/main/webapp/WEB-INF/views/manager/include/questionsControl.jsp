@@ -16,14 +16,18 @@ $(document).ready(function() {
 		$(this).css('background-color', '#FAFAFA');
 	});
 	$("#chatList").on("mouseout", ".chatListcss", function() {
-		$(this).css('background-color', 'white');
+		var id = $(this).attr("id");
+		if (sender != id) {
+			$(this).css('background-color', 'white');
+		}
 	});
 	
 	// 인터벌
 // 	var inter;
 // 	var inter2;
 	
-	var sender = "";
+	var sender = "x";
+	
 	
 	// 처음 리스트를 불러옴
 	var prevList;
@@ -60,11 +64,10 @@ $(document).ready(function() {
 									// 배열에서 못찾을 경우 -1 값을 리턴한다
 									if ($.inArray(this.message_receiver, arrList) == -1) {
 										// 못찾음
-										
 										arrList.push(this.message_receiver);
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
 										 + this.message_receiver 
-										 + "</div><hr>");
+										 + "</div>");
 									}
 								} else {
 									if ($.inArray(this.message_sender, arrList) == -1) {
@@ -74,22 +77,23 @@ $(document).ready(function() {
 // 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 // 											+ "<div>"+this.message_sender+"</div>"
 // 											+ "</a><br>");
-											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 													 + this.message_sender 
-													 + "</div><hr>");
+													 + "</div>");
 										} else {
 // 											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 // 											+ "<div>"+this.message_sender+" (!)</div>"
 // 											+ "</a><br>");
-											$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+											$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 													 + this.message_sender 
-													 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div><hr>");
+													 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div>");
 										}
 										
 									}
 								}
 							}); 
-	// 						console.log(arrList);
+							$("#chatList").append("<hr>");
+							chatListBackground(sender);
 							prevList = message_date;
 // 						}
 					}
@@ -98,7 +102,11 @@ $(document).ready(function() {
 		}, 500);
 	}
 	
-	
+	// 채팅리스트 백그라운드 변경
+	function chatListBackground(that) {
+		$("."+that).css("background-color", "#FAFAFA");
+		$("."+that).attr("id", that);
+	}
 
 	
 	// 채팅 선택
@@ -153,7 +161,9 @@ $(document).ready(function() {
 	// 클릭 메세지 전송
 	$("#send").click(function() {
 		if ( $("#inputText").val() != "") {
-			sendMessage();
+			if ( sender != "x") {
+				sendMessage();
+			}
 		}
 	});
 	
@@ -162,7 +172,9 @@ $(document).ready(function() {
 		if ($("#inputText").val() != null) {
 			if (key.keyCode == 13) {
 				if ( $("#inputText").val() != "") {
-					sendMessage();
+					if ( sender != "x") {
+						sendMessage();
+					}
 				}
 			}
 		}
@@ -203,11 +215,10 @@ $(document).ready(function() {
 								// 배열에서 못찾을 경우 -1 값을 리턴한다
 								if ($.inArray(this.message_receiver, arrList) == -1) {
 									// 못찾음
-									
 									arrList.push(this.message_receiver);
-									$("#chatList").append("<div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
+									$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_receiver+"' data-message_sender='"+this.message_receiver+"' >"
 									 + this.message_receiver 
-									 + "</div><hr>");
+									 + "</div>");
 								}
 							} else {
 								if ($.inArray(this.message_sender, arrList) == -1) {
@@ -217,22 +228,23 @@ $(document).ready(function() {
 //											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 //											+ "<div>"+this.message_sender+"</div>"
 //											+ "</a><br>");
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 												 + this.message_sender 
-												 + "</div><hr>");
+												 + "</div>");
 									} else {
 //											$("#chatList").append("<a class='btnChat "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 //											+ "<div>"+this.message_sender+" (!)</div>"
 //											+ "</a><br>");
-										$("#chatList").append("<div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
+										$("#chatList").append("<hr><div class='btnChat chatListcss "+this.message_sender+"' data-message_sender='"+this.message_sender+"' >"
 												 + this.message_sender 
-												 + "<span class='badge badge-warring'>!</span></div><hr>");
+												 + "<span class='badge' style='background-color:#2E64FE;'>new</span></div>");
 									}
 									
 								}
 							}
 						}); 
-//	 						console.log(arrList);
+						$("#chatList").append("<hr>");
+						chatListBackground(sender);
 						prevList = message_date;
 //						}
 			}
@@ -247,8 +259,7 @@ $(document).ready(function() {
 	<div class="row" style="height: 500px;">
 <!-- 		문의 목록 -->
 		<div id="page" class="col-md-3" style="height: 100%; text-align: center;">
-			<hr>
-			<div id="chatList" style="overflow: auto;  text-align: center;">
+			<div id="chatList" style="height: 100%; width: 100%; overflow: auto;  text-align: center;">
 			</div>
 		</div>
 <!-- 		// 문의 목록 -->
@@ -257,6 +268,7 @@ $(document).ready(function() {
 			<table class="table" style="width: 100%; height: 100%; ">
 				<tr style="height: 100%; width: 100%;">
 					<td colspan="2" >
+						
 						<div id="chat" style="height: 100%; width: 100%; overflow: auto;">
 			<!-- 					채팅 내용 -->
 						</div>

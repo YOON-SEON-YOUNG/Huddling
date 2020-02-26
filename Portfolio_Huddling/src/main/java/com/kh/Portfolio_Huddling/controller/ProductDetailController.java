@@ -1,10 +1,13 @@
 package com.kh.Portfolio_Huddling.controller;
 
-import java.util.List;
 
 import javax.inject.Inject;
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +20,17 @@ import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.project.BoardService;
 import com.kh.Portfolio_Huddling.project.BoardVo;
 
+import com.kh.Portfolio_Huddling.member.MemberVo;
+import com.kh.Portfolio_Huddling.member.PaymentVo;
+import com.kh.Portfolio_Huddling.member.PointService;
+
 @Controller
 @RequestMapping("/detail/*")
 public class ProductDetailController {
 	
 	@Inject
 	private BoardService boardService;
+
 	
 	// 펀딩 상세보기 페이지 
 	@RequestMapping(value="/detailMain/{num}", method=RequestMethod.GET)
@@ -66,12 +74,13 @@ public class ProductDetailController {
 		
 	}
 	
-	// 결제 페이지(새창)
-	@RequestMapping(value="/orderPage")
+	// 결제 페이지 포인트 사용(새창)
+	@RequestMapping(value="/orderPage", method = RequestMethod.GET)
 	public String orderPage() {
 		return "detail/orderPage";
 	}
-	
+		
+
 	// 디테일 페이지 데이터 가져오기
 	@RequestMapping(value="/getDetail/{num}", method= RequestMethod.GET)
 	@ResponseBody
@@ -82,7 +91,6 @@ public class ProductDetailController {
 		BoardVo vo = boardService.getDetail(project_num);
 		return vo;
 	}
-	
 	// 총 결제 금액 가져오기
 	@RequestMapping(value="/totalPayment/{num}", method=RequestMethod.GET)
 	@ResponseBody
