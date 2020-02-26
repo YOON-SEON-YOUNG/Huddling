@@ -3,7 +3,7 @@ package com.kh.Portfolio_Huddling.maker;
 public class TempMakerBasicDto {
 	private int temp_basic_num;
 	private String basic_projectName;
-	private String basic_amount;
+	private int basic_amount;
 	private String basic_representImg;
 	private String basic_category;
 	private String basic_endDate;
@@ -20,10 +20,10 @@ public class TempMakerBasicDto {
 	public void setBasic_projectName(String basic_projectName) {
 		this.basic_projectName = basic_projectName;
 	}
-	public String getBasic_amount() {
+	public int getBasic_amount() {
 		return basic_amount;
 	}
-	public void setBasic_amount(String basic_amount) {
+	public void setBasic_amount(int basic_amount) {
 		this.basic_amount = basic_amount;
 	}
 	public String getBasic_representImg() {
@@ -56,5 +56,4 @@ public class TempMakerBasicDto {
 				+ ", basic_amount=" + basic_amount + ", basic_representImg=" + basic_representImg + ", basic_category="
 				+ basic_category + ", basic_endDate=" + basic_endDate + ", basic_searchTag=" + basic_searchTag + "]";
 	}
-	
 }

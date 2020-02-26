@@ -25,4 +25,36 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+	@Override
+	public int totalPayment(int project_num) throws Exception {
+		int payment = boardDao.totalPayment(project_num);
+		if (payment == 0) {
+			return 0;
+		}
+		return payment;
+	}
+
+	@Override
+	public String endDate(int project_num) throws Exception {
+		return boardDao.endDate(project_num);
+	}
+
+	@Override
+	public int totalSponser(int project_num) throws Exception {
+		int sponser = boardDao.totalSponser(project_num);
+		if(sponser == 0) {
+		return 0;
+		}
+		return sponser;
+	}
+
+	@Override
+	public int totalPrice(int project_num) throws Exception {
+		int price = boardDao.totalPrice(project_num);
+		if(price == 0) {
+		return 0;
+		}
+		return price;
+	}
+
 }
