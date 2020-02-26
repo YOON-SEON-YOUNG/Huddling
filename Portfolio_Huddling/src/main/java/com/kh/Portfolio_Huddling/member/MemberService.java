@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 @Service
 public interface MemberService {
 	public void register(MemberVo memberVo) throws Exception;
@@ -25,6 +27,8 @@ public interface MemberService {
 	public void Profile_Register(MemberProfileVo profileVo) throws Exception;
 	// 프로필 조회
 	public MemberProfileVo selectMemberById(String member_id) throws Exception;
-	
+	// 멤버 포인트
+	public void updatePoint(MemberVo memberVo) throws Exception;
+
 
 }

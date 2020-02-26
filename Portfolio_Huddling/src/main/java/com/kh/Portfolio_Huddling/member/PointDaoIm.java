@@ -25,22 +25,16 @@ public class PointDaoIm implements PointDao {
 	@Override
 	public List<PointVo> pointById(String member_id) throws Exception {
 		return sqlsession.selectList(NAMESPACE + ".pointById", member_id);
-	}	
-
-	@Override
-	public int sum_pointById(String member_id) throws Exception {
-		return sqlsession.selectOne(NAMESPACE+ ".sum_pointById", member_id);
 	}
 
 	@Override
-	public int count_pointById(String member_id) throws Exception {
-		return sqlsession.selectOne(NAMESPACE+".count_pointById", member_id);
+	public void use(PaymentVo paymentVo) throws Exception {
+		sqlsession.insert(NAMESPACE + ".use", paymentVo);
+		
 	}
 
-	@Override
-	public int max_moneyCode() throws Exception {
-		return sqlsession.selectOne(NAMESPACE+".max_moneyCode");
-	}
+
+
 
 	
 

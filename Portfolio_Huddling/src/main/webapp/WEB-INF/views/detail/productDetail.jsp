@@ -7,7 +7,6 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 
-s
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -26,21 +25,17 @@ s
         margin-left:-40px;
     }
 </style>
-
 <script>
-jQuery(document).ready(function() {
-    var barProgress = jQuery(".progressbar");
-    // value 값의 숫자를 입력함으로서 내용을 채울 수 있다.      
-    barProgress.eq(0).progressbar({value:75});
-    barProgress.eq(0).find(".ui-progressbar-value").css({"background":"#FFCC66"});
-   
-});
 </script>
 
 
 <script>
 $(document).ready(function() {
+	
 	var num = ${num};
+	$("#page").load("/detail/tapInfo");
+	
+	//디테일 가져오기
 	$.get("/detail/getDetail/" + num,function(data){
 		console.log("data",data);
 		$('#p_category').text(data.project_category);
@@ -49,7 +44,35 @@ $(document).ready(function() {
 		$('#imgs').attr('src','/upload/imgView?fileName=' + data.story_introimg);
 	});
 	
-	$("#page").load("/detail/tapInfo");
+	// 총 금액 구하기
+	$.get("/detail/totalPayment/" + num,function(data){
+		if(data == null)
+		var num = 0;
+		$('#totalPayment').text(num);
+	});
+	
+	// 남은 기한 구하기
+	$.get("/detail/endDate/" + num,function(data){
+		var month = data.substring(data.indexOf("/") - 2,data.indexOf("/"));
+		var days = data.substring(data.lastIndexOf("/") - 2,data.lastIndexOf("/"));
+		var end = endDate(month,days);
+		$('#endDate').text(end);
+	});
+	
+	//스폰서 구하기
+	$.get("/detail/totalSponser/" + num,function(data){
+		$('#totalSponser').text(data);
+	});
+	
+	//백분율 구하기
+	$.get("/detail/totalPrice/" + num,function(data){
+		var num1 = $('#totalPayment').val();
+		var num2 = data;
+		var per = num1 / num2 * 100;
+		$('#per').text(per);
+		var barProgress = $(".progress-bar");
+		barProgress.css('width',per + '%')
+	});
 	
 	$("#tapInfo").click(function(e) {
 		console.log("tapInfo 클릭됨");
@@ -71,6 +94,15 @@ $(document).ready(function() {
 		$("#page").load("/detail/tapReview")
 	});
 	
+	function endDate(month,days){
+		var t = new Date(); // 오늘 날짜 객체를 생성합니다.
+		var nowYear = t.getFullYear(); // 오늘 날짜의 연도 정보를 가져옵니다.
+		var theDate = new Date(nowYear,month,days);
+		var diffDate = theDate-t;
+		var result = Math.ceil( diffDate / (60*1000*60*24));
+		console.log(result);
+		return result;
+	}
 });
 
 </script>
@@ -140,21 +172,22 @@ $(document).ready(function() {
 							<!-- 펀딩 현황 -->
 							<div class="card card-body">
 								<!-- 펀딩 달성률 -->
-								<h1>75%</h1>
-								<div class="progressbar">
-									<div class="progress-label"></div>
+								<h4>달성률</h4>
+								<h1><span id="per"></span>%</h1>
+								<div class="progress">
+ 									 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
 								<!-- 펀딩 달성 금액 -->
 								<h4>모인 금액</h4>
-								<h2>2,363,000원</h2>
+								<h2><span id="totalPayment">0원</span></h2>
 								<br>
 								<!-- 남은 시간 -->
 								<h4>남은 시간</h4>
-								<h2>3일</h2>
+								<h2><span id="endDate">0</span>일</h2>
 								<br>
 								<!--  후원자 -->
 								<h4>후원자</h4>
-								<h2>53명</h2>
+								<h2><span id="totalSponser">0</span>명</h2>
 								<hr>
 								<!--  펀딩 결제 안내 -->
 <!-- 								<p> -->

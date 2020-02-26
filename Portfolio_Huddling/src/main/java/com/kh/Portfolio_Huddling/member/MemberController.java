@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
 import com.kh.Portfolio_Huddling.util.UploadFileUtils;
 
 @Controller
@@ -175,6 +176,7 @@ public class MemberController {
 	@RequestMapping(value = "/myPageReadListControl", method = RequestMethod.GET)
 	public String myPageReadListControl() {
 		
+		
 		return "member/include/myPageReadListControl";
 	}
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
@@ -267,17 +269,20 @@ public class MemberController {
 		
 		// 포인트 충전처리 -> /point/buy -> POST 방식 요청 처리
 		@RequestMapping(value="/buy", method = RequestMethod.POST)
-		public String buyPOST(PointVo pointVo) throws Exception {
+		public String buyPOST(PointVo pointVo, MemberVo memberVo) throws Exception {
 			System.out.println("butPOST() 실행됨");
 			System.out.println("pointVo:" + pointVo);
+			System.out.println("memberVo:" + memberVo);
 			pointService.buy(pointVo);
+			service.updatePoint(memberVo);
 			return "redirect:/";
 				
 		}
 		
 		// 포인트 충전 내역 
 		@RequestMapping(value ="/pointListById", method = RequestMethod.GET)
-		public String pointListById(HttpSession session, Model model) throws Exception {
+		public String pointListById(HttpSession session, Model model)throws Exception {
+						
 			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
 			List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
 			model.addAttribute("pointList", pointList);
@@ -286,7 +291,11 @@ public class MemberController {
 			
 		}
 		
-		// 포인트 업데이트 
+		
+		
+		
+		
+		
 		
 		
 		

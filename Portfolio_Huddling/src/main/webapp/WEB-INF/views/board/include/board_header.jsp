@@ -236,18 +236,9 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 											<div class="u-img"><img src="/member/displayFile?fileName=${profileVo.profile_pic}" alt="user"></div>
 											<div class="u-text">
 												<h4>${memberVo.member_nickname}님</h4>
-												<p class="text-muted">hello@themekita.com</p><a class="btn btn-rounded btn-danger btn-sm" onClick="location.href='/member/mypageMain'">My Page</a></div>
+												<p class="text-muted">${memberVo.member_email}</p><a class="btn btn-rounded btn-danger btn-sm" onClick="location.href='/member/mypageMain'">My Page</a></div>
 											</div>
 										</li>
-										<div class="dropdown-divid"></div>
-										<a class="dropdown-items" href="#"><i class="ti-user"></i> My Profile</a>
-										<br>
-										<a class="dropdown-items" href="#"></i> My Balance</a>
-										<br>
-										<a class="dropdown-items" href="#"><i class="ti-email"></i> Inbox</a>
-										<br>
-										<div class="dropdown-divid"></div>
-										<a class="dropdown-items" href="#"><i class="ti-settings"></i> Account Setting</a>
 										<div class="dropdown-divid"></div>
 										<a class="dropdown-items" href="/member/logout"><i class="fa fa-power-off"></i> Logout</a>
 									</ul>

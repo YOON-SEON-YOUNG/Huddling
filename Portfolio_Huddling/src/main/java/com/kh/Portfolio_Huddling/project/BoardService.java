@@ -8,4 +8,8 @@ public interface BoardService {
 
 	public BoardVo getDetail(int projectNum) throws Exception;
 	public List<TempMakerRewordDto> getReowrd(int projectNum) throws Exception;
+	public int totalPayment(int project_num) throws Exception;
+	public String endDate(int project_num) throws Exception;
+	public int totalSponser(int project_num) throws Exception;
+	public int totalPrice(int project_num) throws Exception;
 }

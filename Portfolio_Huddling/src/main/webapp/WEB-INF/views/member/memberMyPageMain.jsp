@@ -44,9 +44,10 @@ $(document).ready(function(){
 		stopInter();
 		$("#page").load("myPageSupportControl");
 	});
+	// 내가 등록한 프로젝트
 	$("#item2").click(function(){
 		stopInter();
-		$("#page").load("myPageReadListControl");
+		$("#page").load("registPostList");
 	});
 	$("#item3").click(function(){
 		stopInter();
@@ -66,7 +67,7 @@ $(document).ready(function(){
 	});
 	$("#item7").click(function(){
 		stopInter();
-		$("#page").load("profileRegister");
+		$("#page").load("myPageReadListControl");
 	});
 
 	function buyPoint_click() {
@@ -116,77 +117,78 @@ label{
     margin-top: 43px;
 }
 
+.mycenter { text-align: center; }
+
 </style>
 <title>MyPage</title>
 </head>
 <body>
 <%-- profileVo : ${profileVo} --%>
 <!-- 맨위쪽(header) -->
-	<header style="padding:30px;">
-	<nav id="navbar-example2" class="navbar navbar-light bg-light"
-			style="background-color:fuchsia;">
-			<a class="navbar-brand" href="#" style="margin-right:1740px "><strong>마이페이지</a>
-			
-			<ul class="nav nav-pills">
-				<li class="nav-item dropdown">
-				
-					 <!-- 이미지드롭다운 -->
-              <li class="dropdown user user-menu" style="left:1450px">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
-                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
-                  <span class="badge"></span>
-                </a>
-                <!-- //이미지드롭다운 -->
-                <ul class="dropdown-menu">
-                  <!-- 드롭다운되면보여줄 image -->
-                            <li class="user-header">
-		        <div class="profile-header-container">   
-		    		<div class="profile-header-img">
-		                <img class="img-circle" src="/member/displayFile?fileName=${profileVo.profile_pic}" />
-		                <!-- badge -->
-		                <div class="rank-label-container">
-		                    <span class="label label-default rank-label">${profileVo.profile_id}</span>
-		                </div>
-		            </div>
-		        </div> 
-                    <img src=" ${profileVo.profile_pic}" class="img-circle" alt="User Image"/>
-                    <p>
-                      ${memberVo.member_name}님 반갑습니다
-                    </p>
-                    <input type="button" value="프로필 수정" onClick="location.href='/member/profileRegister'">
-                    <input type="button" value="포인트 충전" onClick="location.href='/member/buyPoint'">
-                  </li>
-                  </ul>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div>
-                      <a href="/member/logout">로그아웃</a>
-                    </div>
-                    
-                    <div>
-                      <a href="/member/memberPrivacyUpdate">개인정보수정</a>
-                    </div>
-                  </li>
-					
-					</li>
-				
-			</ul>
-		</nav>
-		<a href="/">홈으로</a>
-	</header>
-	<!-- //header -->
+
+
+
+		
+		
+		<div class="container">
+		<div class="mycenter">
+    <div class="span3 well">
+   
+        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="/member/displayFile?fileName=${profileVo.profile_pic}" name="aboutme" width="140" height="140" class="img-circle"></a>
+        <h3>${memberVo.member_nickname}</h3>
+        <em>click my face for more</em>
+        <a href="/">홈으로</a>
 	
-	<div class="container-fluid">
-	<!-- 왼쪽부분 -->
-		<div class="row">
-			<div class="col-md-12">
-			
-			
-				<div class="row">
-					<!-- 왼쪽 -->
-					<div class="col-md-3" id="myPageMenu">
-						<div id="list-example" class="list-group">
+    </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">More About Joe</h4>
+                    </div>
+                    <div class="mycenter">
+                <div class="modal-body">
+              
+                    <img src="/member/displayFile?fileName=${profileVo.profile_pic}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                    <h3 class="media-heading">${memberVo.member_nickname}<small>${memberVo.member_id}</small></h3>
+                    <!-- <span><strong>Skills: </strong></span>
+                        <span class="label label-warning">HTML5/CSS</span>
+                        <span class="label label-info">Adobe CS 5.5</span>
+                        <span class="label label-info">Microsoft Office</span>
+                        <span class="label label-success">Windows XP, Vista, 7</span>
+                -->
+                    <hr>
+                
+                    <p class="text-left"><strong>intro: </strong><br>
+                        ${profileVo.profile_intro}</p>
+                    <br>
+             
+                </div>
+                </div>
+                <div class="modal-footer">
+    				<a href="/member/logout">
+                    <button type="button" class="btn btn-default">로그아웃</button></a>
+                    <a href="/member/memberPrivacyUpdate">
+                    <button type="button" class="btn btn-default">개인정보 수정</button></a>
+ 
+   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+		
+	
+
+
+<div class="row">
+		<div class="col-md-2">
+		
+		
+			<div id="list-example" class="list-group">
 							<a class="list-group-item list-group-item-action"
 								 id="item1">내가후원한프로젝트</a> 
 								 <a
@@ -195,9 +197,9 @@ label{
 								 <a
 								class="list-group-item list-group-item-action"
 								 id="item3">문의내역</a> 
-<!-- 								 <a -->
-<!-- 								class="list-group-item list-group-item-action" -->
-<!-- 								 id="item4">받은문의내역</a>  -->
+								 <a
+								class="list-group-item list-group-item-action"
+								 id="item4">받은문의내역</a> 
 								 <a
 								class="list-group-item list-group-item-action"
 								id="item5">포인트 충전</a>
@@ -208,23 +210,24 @@ label{
 								class="list-group-item list-group-item-action"
 								id="item7">프로필 설정</a>
 						</div>
+		
+		
+						</div>
+						<div id="page" class="col-md-8">
+						
+						
+							<div data-target="#list-example" data-offset="0"
+											class="scrollspy-example">
+									
+									</div>
+						
+								
+						</div>
+						<div class="col-md-2">
+						</div>
 					</div>
-					<!-- //왼쪽 -->
-					
-					<!-- 오른쪽 -->
-					<div id="page" class="col-md-6">
-					<div data-target="#list-example" data-offset="0"
-							class="scrollspy-example">
-					
-					</div>
-					</div>
-					<!-- //오른쪽 -->
-			<!-- 페이지 -->
-					
-	</div>
-	</div>
-	</div>
-	</div>
+
+
 </body>
 
 </html>

@@ -13,9 +13,7 @@
 </head>
 
 
-<script>
 
-</script>
 
 <style>
 .button{
@@ -96,10 +94,22 @@
 							<hr style="background-color: #00FF00">
 
 
-							<label>충전아이디</label> <input type="text" class="form-control"
-								id="member_id" name="member_id" value="${memberVo.member_id}">
-							<label>충전금액</label> <input type="text" class="form-control"
-								id="member_point" name="member_point">
+							<label>충전아이디</label> 
+							<input type="text" class="form-control" id="member_id" name="member_id" value="${memberVo.member_id}">
+							<label>충전금액</label> 
+							<input type="number" class="form-control" id="member_point" name="member_point">
+							<script>						
+							$("#member_point").change(function() {
+							    var num = $(this).val() - 1;
+							    if(typeof num !== "number" || num < 0) {
+							        alert("포인트 충전 가능한 금액이 아닙니다");
+							        $(this).focus();
+							        return false;
+							    }
+							});
+							</script>							  							
+							
+							
 
 							<!-- 모달 버튼창 -->
 							<div class="modal-footer">
