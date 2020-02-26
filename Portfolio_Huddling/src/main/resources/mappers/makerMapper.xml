@@ -24,8 +24,7 @@
 	</update>
 	<!-- 기본 정보 가져오기 -->
 	<select id="tempSelectBasic" resultType="TempMakerBasicDto">
-		select * from
-		tbl_temp_basic
+		select * from tbl_temp_basic
 		where temp_basic_num = #{temp_basic_num}
 
 	</select>
@@ -33,15 +32,11 @@
 	<!-- 기본 정보 저장 -->
 	<update id="tempUpdateBasic">
 		update tbl_temp_basic set
-		basic_projectName =
-		#{basic_projectName},
+		basic_projectName = #{basic_projectName},
 		basic_amount = #{basic_amount},
 		basic_representImg = #{basic_representImg},
-		basic_category =
-		#{basic_category},
-		basic_endDate = #{basic_endDate},
-		basic_searchTag =
-		#{basic_searchTag}
+		basic_category = #{basic_category},
+		basic_endDate = #{basic_endDate}
 		where temp_basic_num = #{temp_basic_num}
 	</update>
 

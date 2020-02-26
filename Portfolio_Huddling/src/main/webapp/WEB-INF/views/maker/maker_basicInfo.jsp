@@ -52,10 +52,8 @@
     				console.log("substring : " + sub);
     				$("#introImg").val(path);
     				}
-    			});
+    		});
         });
-		
-		
 	});
 </script>
 <form id="formHidden">
@@ -108,12 +106,12 @@
 				<jsp:include page="include/datepicker.jsp"></jsp:include>
 			</div>
 		</div>
-		<div class=card-body>
-			<div class="form-group">
-				<label for="searchTag">검색용 태그</label> <input name="basic_searchTag"
-					class="form-control" id="basic_searchTag" value='${basicDto.basic_searchTag }'/>
-			</div>
-		</div>
+<!-- 		<div class=card-body> -->
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="searchTag">검색용 태그</label> <input name="basic_searchTag" -->
+<%-- 					class="form-control" id="basic_searchTag" value='${basicDto.basic_searchTag }'/> --%>
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 </form>
 	<div class="card-body">
