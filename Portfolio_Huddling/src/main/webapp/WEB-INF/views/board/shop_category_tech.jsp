@@ -37,7 +37,7 @@ $(document).ready(function(){
 		};
 		$.get("/board/projectSearchCategory", sData, function(rData) {
 			$("#newList").empty();
-			var strList = "<br><br>";
+			var strList = "";
 			$.each(rData, function(index) {
 				var pVo = rData[index];
 				var project_num = pVo.project_num;
@@ -67,7 +67,7 @@ $(document).ready(function(){
 	var sData ={"project_category" : "tech"};
 	$.get("/board/categoryRead",sData, function(rData) {
 		console.log(rData);
-		var strList = "";
+		
 		$.each(rData, function(index) {
 			var pVo = rData[index];
 			var project_num = pVo.project_num;
@@ -76,6 +76,7 @@ $(document).ready(function(){
 			var project_story = pVo.project_story;
 			var project_name = pVo.project_name;
 			var project_app = pVo.project_app;
+			var strList = "";
 			strList +="<div class='col-md-4'>";
 			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
 			strList += "style='max-width: 100%; height: auto;'/>";
@@ -89,10 +90,30 @@ $(document).ready(function(){
 			strList +="</div> </div> <p>";
 			strList += "<a class='btn btn-primary  btn-lg mb30' href='detail/detailMain/"+project_num+"'>펀딩하러가기</a>";
 			strList +="</p> </div> </div> </div>";
+			arrProject.push(strList);
 		});
-		$("#newList").append(strList);
+		showProject();
 	});
 
+	// 더보기 처리 상단
+	var arrProject = new Array();
+	var moreShoeNum = 0;
+	
+	function showProject() {
+		for (var i = moreShoeNum; i < (moreShoeNum+6); i++) {
+			$("#newList").append(arrProject[i]);
+		}
+		moreShoeNum = moreShoeNum + 6;
+	}
+	
+	// 스크롤이 최하단일때
+	$(window).scroll(function(){
+		  if($(document).height() <= $(window).scrollTop() + $(window).height()){
+		  	showProject();
+		  }
+	});
+	// 더보기 처리 하단
+	
 });
 </script>
 
@@ -139,13 +160,12 @@ $(document).ready(function(){
 		<div class="col-md-2">
 		</div>
 	</div>
-	
+	<br>
+	<br>
 	<div class="row">
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8" style="float: left;" id="newList">
-			<br>
-			<br>
 		</div>
 		<div class="col-md-2">
 		</div>

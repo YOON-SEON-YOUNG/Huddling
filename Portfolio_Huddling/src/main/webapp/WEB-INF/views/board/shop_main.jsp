@@ -20,6 +20,8 @@
 <script>
 $(document).ready(function(){
 	
+	
+	
 	$("#project_search").click(function() {
 		if ($("#project_search_input").val() != null && $("#project_search_input").val() != "") {
 			console.log("검색 test");
@@ -42,7 +44,7 @@ $(document).ready(function(){
 		};
 		$.get("/board/projectSearch", sData, function(rData) {
 			$("#newList").empty();
-			var strList = "<br><br>";
+			var strList = "";
 			$.each(rData, function(index) {
 				var pVo = rData[index];
 				var project_num = pVo.project_num;
@@ -70,9 +72,9 @@ $(document).ready(function(){
 	}
 	
 	
+	
 	$.get("/board/projectList", function(rData) {
-		console.log(rData);
-		var strList = "";
+		
 		$.each(rData, function(index) {
 			var pVo = rData[index];
 			var project_num = pVo.project_num;
@@ -81,6 +83,7 @@ $(document).ready(function(){
 			var project_story = pVo.project_story;
 			var project_name = pVo.project_name;
 			var project_app = pVo.project_app;
+			var strList = "";
 			strList +="<div class='col-md-4'>";
 			strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
 			strList += "style='max-width: 100%; height: auto;'/>";
@@ -94,10 +97,36 @@ $(document).ready(function(){
 			strList +="</div> </div> <p>";
 			strList += "<a class='btn btn-primary  btn-lg mb30' href='detail/detailMain/"+project_num+"'>펀딩하러가기</a>";
 			strList +="</p> </div> </div> </div>";
+			arrProject.push(strList);
 		});
-		$("#newList").append(strList);
+		showProject();
 	});
 
+	
+	
+	// 더보기 처리 상단
+	var arrProject = new Array();
+	var moreShoeNum = 0;
+	
+	function showProject() {
+		for (var i = moreShoeNum; i < (moreShoeNum+6); i++) {
+			$("#newList").append(arrProject[i]);
+		}
+		moreShoeNum = moreShoeNum + 6;
+	}
+	
+	// 스크롤이 최하단일때
+	$(window).scroll(function(){
+		  if($(document).height() <= $(window).scrollTop() + $(window).height()){
+		  	showProject();
+		  }
+	});
+	// 더보기 처리 하단
+	
+// 	$("#moreShow").click(function() {
+// 		showProject();
+// 	});
+	
 });
 </script>
 </head>
@@ -142,19 +171,18 @@ $(document).ready(function(){
 		<div class="col-md-2">
 		</div>
 	</div>
+	<br>
+	<br>
 	<div class="row">
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8" style="float: left;" id="newList">
-			<br>
-			<br>
 		</div>
 		<div class="col-md-2">
 		</div>
 	</div>
 </div>
-
-	
+<!-- 	<button id="moreShow">더보기</button> -->
 		<!-- js -->
 	<script type="text/javascript" src="/resources/main/js/jquery-2.2.3.min.js"></script>
 	<!-- //js -->
