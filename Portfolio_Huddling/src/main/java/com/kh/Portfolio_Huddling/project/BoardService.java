@@ -2,6 +2,7 @@ package com.kh.Portfolio_Huddling.project;
 
 import java.util.List;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 
 public interface BoardService {
@@ -12,4 +13,5 @@ public interface BoardService {
 	public String endDate(int project_num) throws Exception;
 	public int totalSponser(int project_num) throws Exception;
 	public int totalPrice(int project_num) throws Exception;
+	public TempMakerMakersDto makersInfo(int project_num) throws Exception;
 }

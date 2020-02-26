@@ -212,19 +212,14 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 				</div>
 
 		<!-- 검색 -->
-					<div class="col-xs-4 agileinfo_search">
-					<form action="#" method="post">
+				<div class="col-xs-4 agileinfo_search">
+<!-- 					<form id="projectSearch" action="#" method="post"> -->
 					<!-- 	<input type="image" value="submit" src="/resources/images/search.png" name="submit"> -->
-						<input type="submit" value=" ">
-						<input type="text" name="Search" placeholder="어떤 프로젝트를 찾고 계신가요?" required="">
-					</form>
+						<input id="project_search" type="submit" value=" ">
+						<input type="text"  id="project_search_input" name="Search" placeholder="어떤 프로젝트를 찾고 계신가요?" required>
+<!-- 					</form> -->
 				</div>	
-				
-
-			
 						<!-- 로그인, 회원가입 -->	
-						
-							
 					<ul class="top-right-info_w3ls">
 					<c:choose>
 				<c:when test="${not empty memberVo}">

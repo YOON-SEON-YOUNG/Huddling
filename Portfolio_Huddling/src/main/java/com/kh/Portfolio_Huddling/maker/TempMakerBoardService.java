@@ -26,4 +26,11 @@ public interface TempMakerBoardService {
 	public TempMakerRewordDto tempOutputReword(int rewordNum) throws Exception;
 	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception;
 	public void tempRewordDelete(int rewordNum) throws Exception;
+	
+	public int tempMakerChkBasic(int project_num) throws Exception;
+	public int tempMakerChkStory(int project_num) throws Exception;
+	public int tempMakerChkRequir(int project_num) throws Exception;
+	public int tempMakerChkMakersInfo(int project_num) throws Exception;
+	public int tempMakerChkReword(int project_num) throws Exception;
+	public int submitProject(int project_num) throws Exception;
 }

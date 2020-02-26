@@ -295,4 +295,11 @@ public class MakerBoardController {
 	}
 	
 	
+	@RequestMapping(value="/submitProject/{num}", method = RequestMethod.GET)
+	public String submitProject(@PathVariable("num")int project_num) throws Exception{
+		System.out.println("제출중....");
+		System.out.println("num : " + project_num);
+		makerService.submitProject(project_num);
+		return "redirect: /maker/intro";
+	}
 }

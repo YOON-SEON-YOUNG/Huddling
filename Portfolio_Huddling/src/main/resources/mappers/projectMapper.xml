@@ -7,8 +7,10 @@
 <mapper namespace="com.kh.mappers.projectMapper">
 
 	<select id="selectProjectList" resultType="ProjectVo">
-		select * from tbl_project_intro
-		where project_app = #{project_app}
+		select b.*,a.project_name from tbl_project_intro a,tbl_project b
+		where a.project_app = 0
+		and b.project_state = 1
+		and a.project_num = b.project_num
 	</select>
 
 	<update id="updateProjectApp">
@@ -26,6 +28,21 @@
 	<!-- 프로젝트 신규순 -->
 	<select id="selectIntroList" resultType="ProjectVo">
 	select * from tbl_project_intro order by project_num desc
+	</select>
+	
+	<!-- 전체검색 -->
+	<select id="selectIntroSearch" resultType="ProjectVo">
+		select * from tbl_project_intro
+        where project_name like '%' || #{project_name} || '%'
+        order by project_num desc
+	</select>
+	
+	<!-- 카테고리별 검색 -->
+	<select id="selectIntroSearchCategory" resultType="ProjectVo">
+		select * from tbl_project_intro
+        where project_name like '%' || #{project_name} || '%'
+        and project_category = #{project_category}
+        order by project_num desc
 	</select>
 	
 	<!-- 마감임박순 --> 

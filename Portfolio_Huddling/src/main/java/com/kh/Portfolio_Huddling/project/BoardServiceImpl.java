@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 
 @Service
@@ -55,6 +56,11 @@ public class BoardServiceImpl implements BoardService {
 		return 0;
 		}
 		return price;
+	}
+
+	@Override
+	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
+		return boardDao.makersInfo(project_num);
 	}
 
 }
