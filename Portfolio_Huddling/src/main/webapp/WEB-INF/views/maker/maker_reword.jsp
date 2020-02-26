@@ -169,9 +169,11 @@ $(document).ready(function() {
 									<strong>${rewordList.temp_reword_name }</strong>
 								</p>
 								<p class='card-text'>${rewordList.temp_reword_desc }</p>
+								<c:if test="${rewordList.temp_reword_trans_price ne 0}">
 								<div class='card-body'>
 									배송비 <span style='float: right;'>${rewordList.temp_reword_trans_price }원</span>
 								</div>
+								</c:if>
 								<div class='card-body'>
 									배송 날짜 <span style='float: right;'>${rewordList.temp_reword_trans_month }(${rewordList.temp_reword_trans_days})예정</span>
 								</div>

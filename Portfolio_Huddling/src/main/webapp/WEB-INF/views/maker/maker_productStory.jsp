@@ -50,12 +50,12 @@
         });
     });
 </script>
+	<div class="container-fluid">
 <form id="formTampData" name="formTampData">
 	<input type="hidden" value="${projectNum}" name="temp_story_num" />
 	<c:forEach items="${list }" var="list">
 	<input type="hidden" value="${list.imglist_name }" class="imgName"/>	
 	</c:forEach>
-	<div class="container-fluid">
 		<div class="card">
 			<div class="card-body">
 				<div class="form-group">
@@ -93,3 +93,4 @@
 	</div>
 </div>
 </div>
+<jsp:include page="../board/include/board_footer.jsp"></jsp:include>

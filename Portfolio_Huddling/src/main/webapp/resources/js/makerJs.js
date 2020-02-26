@@ -42,4 +42,6 @@ function rewordUpdate(url) {
 		console.log("result :",result);
 	});
 }
+
+
 	

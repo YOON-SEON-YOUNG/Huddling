@@ -44,6 +44,4 @@ public class ProjectDaoIm implements ProjectDao {
 	public void deadline(String basic_enddate) throws Exception {
 		sqlSession.selectOne(NAMESPACE + ".deadline",basic_enddate);
 	}
-	
-
 }

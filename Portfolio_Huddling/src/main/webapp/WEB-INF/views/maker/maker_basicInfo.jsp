@@ -122,3 +122,4 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="../board/include/board_footer.jsp"></jsp:include>

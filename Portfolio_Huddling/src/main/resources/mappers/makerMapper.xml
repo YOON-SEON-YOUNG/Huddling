@@ -140,8 +140,8 @@
 	
 	<!-- 프로젝트 리스트 가져오기 -->
 	<select id="getMakerList" resultType="ProjectVo">
-	select * from tbl_project
-	where user_id = #{user_id}
+	select * from tbl_project_intro a
+	where a.project_num in (select b.project_num from tbl_project b	where b.user_id = #{user_id})
 	</select>
 	<!-- 프로젝트 번호 가져오기 -->
 	<select id="getProjectNum" resultType="int">
@@ -156,7 +156,6 @@
 	into tbl_temp_makerinfo(temp_makerinfo_num) values(seq_project_num.currval)
 	into tbl_temp_requir(temp_requir_num) values(seq_project_num.currval)
 	into tbl_temp_story(temp_story_num) values(seq_project_num.currval)
-	into tbl_temp_imglist(temp_imglist_num) values(seq_project_num.currval)
 	into tbl_project_intro(project_num) values(seq_project_num.currval)
 	select * from dual
 	</insert>
@@ -169,7 +168,7 @@
 	</update>
 	<!-- 프로젝트 접근 -->
 	<select id="getMakerBoard" resultType="ProjectVo">
-	select * from tbl_project
+	select * from tbl_project_intro
 	where project_num = #{project_num}
 	</select>
 	

@@ -55,8 +55,8 @@
 					<div class="card h-100">
 						<img class="card-img-top" src="http://placehold.it/500x325" alt="">
 						<div class="card-body">
-							<h4 class="card-title">프로젝트 명</h4>
-							<p class="card-text">프로젝트 설명</p>
+							<h4 class="card-title">${projectVo.project_name }</h4>
+							<p class="card-text">${projectVo.project_story }</p>
 						</div>
 						<div class="card-footer">
 							<button class="btn btn-primary makerHome"
@@ -73,13 +73,7 @@
 	<!-- /.container -->
 
 	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2019</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+	<jsp:include page="../board/include/board_footer.jsp"></jsp:include>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
@@ -97,3 +91,4 @@
 		});
 	</script>
 </body>
+<jsp:include page="../board/include/board_footer.jsp"></jsp:include>

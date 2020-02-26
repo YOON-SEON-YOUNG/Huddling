@@ -25,7 +25,8 @@ $(function(){
 	 console.log("프로젝트 번호 : header ? " + num);
 	 $('.a').click(function(e){
 	 var a = $(this).attr('href');
-		 var url = a + num;
+		 var url = a;
+		 console.log(url);
 	 $(this).attr('href',url);
 		 console.log('click'); 
 	 });

@@ -61,7 +61,7 @@ public class ShopController {
 	
 	@RequestMapping(value="/projectList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<ProjectVo> projectLists() throws Exception {
+	public List<ProjectVo> projectLists() throws Exception { 
 		System.out.println("요청 들어옴");
 		List<ProjectVo> projectList = projectService.selectIntroList();
 		System.out.println("ShopController, projectLists, projectList:" + projectList);
