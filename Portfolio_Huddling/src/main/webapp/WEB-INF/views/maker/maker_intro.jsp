@@ -91,4 +91,3 @@
 		});
 	</script>
 </body>
-<jsp:include page="../board/include/board_footer.jsp"></jsp:include>
