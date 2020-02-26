@@ -25,29 +25,48 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/js/chat.js"></script>
 <script>
 $(document).ready(function(){
+	
+	
 	$("#page").load("myPageSupportControl");
+	var inquiry = '${inquiry.inquiry}';
+	if (inquiry != null && inquiry != "") {
+		if (inquiry == 1) {
+			$("#page").load("myPageQuestionControl?inquiry=${inquiry.inquiry}&project_name=${inquiry.project_name}&receiver=${inquiry.receiver}");
+		}
+	}
+	
+	
+	
 	$("#item1").click(function(){
+		stopInter();
 		$("#page").load("myPageSupportControl");
 	});
 	// 내가 등록한 프로젝트
 	$("#item2").click(function(){
+		stopInter();
 		$("#page").load("registPostList");
 	});
 	$("#item3").click(function(){
+		stopInter();
 		$("#page").load("myPageQuestionControl");
 	});
 	$("#item4").click(function(){
+		stopInter();
 		$("#page").load("myPageChaetingControl");
 	});
 	$("#item5").click(function(){
+		stopInter();
 		$("#page").load("buy");
 	});
 	$("#item6").click(function(){
+		stopInter();
 		$("#page").load("pointListById");
 	});
 	$("#item7").click(function(){
+		stopInter();
 		$("#page").load("profileRegister");
 	});
 
@@ -209,79 +228,6 @@ label{
 					</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<%-- 	<header style="padding:30px;">
-	<nav id="navbar-example2" class="navbar navbar-light bg-light"
-			style="background-color:fuchsia;">
-			<a class="navbar-brand" href="#" style="margin-right:1740px "><strong>마이페이지</a>
-			
-			<ul class="nav nav-pills">
-				<li class="nav-item dropdown">
-				
-					 <!-- 이미지드롭다운 -->
-              <li class="dropdown user user-menu" style="left:1450px">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/member/displayFile?fileName=${profileVo.profile_pic}" class="img-circle" width="50" height="50" alt="User Image"/>
-                  <span class="hidden-xs">${memberVo.member_id} (${memberVo.member_nickname})</span>
-                  <span class="badge"></span>
-                </a>
-                <!-- //이미지드롭다운 -->
-                <ul class="dropdown-menu">
-                  <!-- 드롭다운되면보여줄 image -->
-                            <li class="user-header">
-		        <div class="profile-header-container">   
-		    		<div class="profile-header-img">
-		                <img class="img-circle" src="/member/displayFile?fileName=${profileVo.profile_pic}" />
-		                <!-- badge -->
-		                <div class="rank-label-container">
-		                    <span class="label label-default rank-label">${profileVo.profile_id}</span>
-		                </div>
-		            </div>
-		        </div> 
-                    <img src=" ${profileVo.profile_pic}" class="img-circle" alt="User Image"/>
-                    <p>
-                      ${memberVo.member_name}님 반갑습니다
-                    </p>
-                    <input type="button" value="프로필 수정" onClick="location.href='/member/profileRegister'">
-                    <input type="button" value="포인트 충전" onClick="location.href='/member/buyPoint'">
-                  </li>
-                  </ul>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div>
-                      <a href="/member/logout">로그아웃</a>
-                    </div>
-                    
-                    <div>
-                      <a href="/member/memberPrivacyUpdate">개인정보수정</a>
-                    </div>
-                  </li>
-					
-					</li>
-				
-			</ul>
-		</nav>
-		<a href="/">홈으로</a>
-	</header> --%>
-	<!-- //header -->
-	
-	
-	
- 
-	
-
-	
-	
 </body>
 
 </html>

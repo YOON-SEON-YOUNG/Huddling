@@ -61,7 +61,7 @@ public class ShopController {
 	
 	@RequestMapping(value="/projectList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<ProjectVo> projectLists() throws Exception {
+	public List<ProjectVo> projectLists() throws Exception { 
 		System.out.println("요청 들어옴");
 		List<ProjectVo> projectList = projectService.selectIntroList();
 		System.out.println("ShopController, projectLists, projectList:" + projectList);
@@ -77,6 +77,12 @@ public class ShopController {
 		System.out.println(list);
 		return list;
 	}
-	
+	@ResponseBody
+	@RequestMapping(value ="/endData",method = RequestMethod.GET)
+	public String enddata(String basic_enddate)throws Exception{
+		projectService.deadline(basic_enddate);
+		System.out.println("endData:" +  basic_enddate);
+		return null;
+	}
 	
 }

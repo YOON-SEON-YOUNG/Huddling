@@ -5,8 +5,9 @@
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script>
 	$(document).ready(function() {
+		var projectNum = ${projectNum};
 		$.ajax({
-			"url":"/maker/imgLoad/1",
+			"url":"/maker/imgLoad/" + projectNum,
 			"type":"get",
 			"success":function(){
 				console.log('data load success');
@@ -17,7 +18,7 @@
 		$("#projectDesc").text("메이커님의 프로젝트를 소개 해보세요.");
 		$('#btnSave').click(function(e) {
 			e.preventDefault();
-			$.get('/maker/imgCopy/1', function(data){
+			$.get('/maker/imgCopy/' + projectNum, function(data){
 				console.log('이미지 저장하는 중...');
 				});
 			submitContents(this);
@@ -26,24 +27,47 @@
 			e.preventDefault();
 		});
 		
-		
-	});
+		$("#imgInp").on('change', function(){
+            var img = readURL(this);
+            var formData = new FormData();
+    		formData.append("file", img);
+            console.log("imgId : ", img);
+            var url = "/upload/intro_img";
+            $.ajax({
+    			"type" : "post",
+    			"url" : url,
+    			"processData" : false,
+    			"contentType" : false,
+    			"data" : formData,
+    			"success" : function(path){
+    				console.log("path : " + path);
+    				var index = path.lastIndexOf("/");
+    				var sub = path.substring(index + 1);
+    				console.log("substring : " + sub);
+    				$("#introImg").val(path);
+    				}
+    			});
+        });
+    });
 </script>
+	<div class="container-fluid">
 <form id="formTampData" name="formTampData">
-	<input type="hidden" value="1" name="temp_story_num" />
+	<input type="hidden" value="${projectNum}" name="temp_story_num" />
 	<c:forEach items="${list }" var="list">
 	<input type="hidden" value="${list.imglist_name }" class="imgName"/>	
 	</c:forEach>
-	<div class="container-fluid">
 		<div class="card">
 			<div class="card-body">
 				<div class="form-group">
-					<label for="introImg">소개 이미지 등록</label>
-					<div>
-						<input type="hidden" name="story_introImg" value="${storyDto.story_summary}"/>
-						<img src="#"/>
+				<label for="inputGroupFile01">소개 이미지 등록</label>
+				<div class="custom-file">
+			    <input type="file" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
+			    <label class="custom-file-label" for="inputGroupFile01">이미지 파일을 선택하세요</label>
+			  	</div>
+					<div class="form-group">
+					  <img id="blah" src="/upload/imgView?fileName=${storyDto.story_introimg }"/>
+					  <input type="hidden" id = "introImg" value="1" name="story_introimg"/>
 					</div>
-					<button class="btn btn-secondary" id="btnintroImg">등록 하기</button>
 				</div>
 			</div>
 			<div class="card-body">
@@ -57,9 +81,6 @@
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<Label for="consentAd">광고 동의</Label> <a href="#">동의서 보기</a>
-				</div>
-				<div class="form-group">
 					<Label for="storyBoard"></Label>
 					<jsp:include page="include/smartEdit2.jsp"></jsp:include>
 				</div>
@@ -72,3 +93,4 @@
 	</div>
 </div>
 </div>
+<jsp:include page="../board/include/board_footer.jsp"></jsp:include>

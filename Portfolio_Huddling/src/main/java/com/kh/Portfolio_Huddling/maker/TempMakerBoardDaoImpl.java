@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
+import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 @Repository
 public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
@@ -119,5 +120,33 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	}
 
 
+	@Override
+	public List<ProjectVo> makerGetIntroList(String member_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".getMakerList",member_id);
+	}
 
+
+	@Override
+	public void makerGetProject() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void makerUpdateProject() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void makerInsertProject(String member_id) throws Exception {
+		sqlSession.insert(NAMESPACE + ".makerProjectInsert",member_id);
+	}
+
+
+	@Override
+	public int makerProjectNum() throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".getProjectNum");
+	}
 }

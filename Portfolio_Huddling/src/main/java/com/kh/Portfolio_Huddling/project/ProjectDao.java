@@ -9,4 +9,6 @@ public interface ProjectDao {
 	public List<ProjectVo> selectIntroList()throws Exception;
 	//푸드 보기
 	public List<ProjectVo> category(ProjectVo projectVo)throws Exception;
+	//마감순
+	public void deadline(String basic_enddate)throws Exception;
 }

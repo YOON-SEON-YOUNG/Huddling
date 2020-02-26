@@ -4,6 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kh.mappers.boardMapper">
-
-	
+<select id="getDetail" resultType="BoardVo">
+select  * from tbl_project_intro a, tbl_temp_story b
+where a.project_num = b.temp_story_num
+and a.project_num = #{project_num}
+</select>
+<select id="getReword" resultType="TempMakerRewordDto">
+select * from tbl_temp_reword
+where temp_project_num = #{project_num}
+</select>
 </mapper>

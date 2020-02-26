@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 import com.kh.Portfolio_Huddling.util.UploadFileUtils;
@@ -85,14 +86,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
-			
 		MemberVo selectMemberVo = service.loginInfo(memberVo);
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
+		session.setAttribute("member_id", memberVo.getMember_id());
 		session.setAttribute("profileVo", profileVo);
-	
-		
-		
 		return "redirect:/";
 	}
 	
@@ -142,13 +140,21 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping(value = "/sendInquiry", method = RequestMethod.GET)
+	public String rePage(MemberInquiryDto dto, HttpSession session) throws Exception {
+		session.setAttribute("inquiry", dto);
+		return "redirect:/member/mypageMain";
+	}
+	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
-	public String page(HttpSession session, Model model) throws Exception {
+	public String rePage(HttpSession session, Model model) throws Exception {
 		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
 		System.out.println("memberVo :" + memberVo);
 		String member_id = memberVo.getMember_id();
 		MemberProfileVo profileVo = service.selectMemberById(member_id);
 		model.addAttribute("profileVo", profileVo);
+//		MemberInquiryDto inquiry = (MemberInquiryDto) session.getAttribute("inquiry");
+//		model.addAttribute("inquiry", inquiry);
 		return "member/memberMyPageMain";
 	}
 	
@@ -174,8 +180,9 @@ public class MemberController {
 		return "member/include/myPageReadListControl";
 	}*/
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
-	public String myPageQuestionControl() {
-		
+	public String myPageQuestionControl(MemberInquiryDto dto, Model model,HttpSession session) {
+		session.removeAttribute("inquiry");
+		model.addAttribute("inquiry", dto);
 		return "member/include/myPageQuestionControl";
 	}
 	@RequestMapping(value = "/myPageChaetingControl", method = RequestMethod.GET)

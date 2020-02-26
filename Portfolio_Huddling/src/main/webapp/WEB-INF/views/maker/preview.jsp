@@ -6,5 +6,4 @@ $(function(){
 	$('#bread').text('미리보기');
 });
 </script>
-${storyDto.story_storyBoard}
-
+${storyDto.story_storyboard}

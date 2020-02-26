@@ -1,10 +1,24 @@
 package com.kh.Portfolio_Huddling.controller;
 
+
 import javax.inject.Inject;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
+import com.kh.Portfolio_Huddling.project.BoardService;
+import com.kh.Portfolio_Huddling.project.BoardVo;
 
 import com.kh.Portfolio_Huddling.member.MemberVo;
 import com.kh.Portfolio_Huddling.member.PaymentVo;
@@ -15,12 +29,17 @@ import com.kh.Portfolio_Huddling.member.PointService;
 public class ProductDetailController {
 	
 	@Inject
-	private PointService pointService;
-	
+	private BoardService boardService;
+
 	
 	// 펀딩 상세보기 페이지 
-	@RequestMapping(value="/detailMain", method=RequestMethod.GET)
-	public String page() {
+	@RequestMapping(value="/detailMain/{num}", method=RequestMethod.GET)
+	public String page(@PathVariable("num") int project_num,
+			HttpServletRequest request, Model model) throws Exception {
+		HttpSession session = request.getSession();
+		session.setAttribute("project_num", project_num);
+		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
+		model.addAttribute("reword",list);
 		System.out.println("detailMain 실행중");
 		return "detail/productDetail";
 	}
@@ -59,19 +78,18 @@ public class ProductDetailController {
 	@RequestMapping(value="/orderPage", method = RequestMethod.GET)
 	public String orderPage() {
 		return "detail/orderPage";
-		
 	}
-	
-	// 결제 포인트 실행 
-	@RequestMapping(value="/use", method = RequestMethod.POST)
-	public String use(PaymentVo paymentVo) throws Exception {
-		System.out.println("use 실행됨");
-		pointService.use(paymentVo);
-		return "redirect:/";
 		
-		
+
+	// 디테일 페이지 데이터 가져오기
+	@RequestMapping(value="/getDetail/{num}", method= RequestMethod.GET)
+	@ResponseBody
+	public BoardVo getDetail(@PathVariable("num")int project_num,
+			HttpServletRequest request) throws Exception {
+		System.out.println("디테일 데이터 가져옴...");
+		project_num = (int) request.getSession().getAttribute("project_num"); 
+		BoardVo vo = boardService.getDetail(project_num);
+		return vo;
 	}
-	
-	
 
 }

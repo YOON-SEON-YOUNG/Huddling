@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,6 +28,7 @@ import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRequirDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerStoryDto;
+import com.kh.Portfolio_Huddling.project.ProjectVo;
 import com.kh.Portfolio_Huddling.util.FileUploadUtil;
 
 @Controller
@@ -34,17 +36,40 @@ import com.kh.Portfolio_Huddling.util.FileUploadUtil;
 public class MakerBoardController {
 
 	@Inject
-	private TempMakerBoardService tempService;
+	private TempMakerBoardService makerService;
+	
+	@RequestMapping(value = "/intro", method = RequestMethod.GET)
+	public String intro(HttpServletRequest request,
+			Model model) throws Exception{
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("member_id");
+		System.out.println("로그인 아이디 : " + member_id);
+		List<ProjectVo> list = makerService.makerGetIntroList(member_id);
+		model.addAttribute("list",list);
+		return "maker/maker_intro";
+	}
+	
+	@RequestMapping(value = "/createBoard", method = RequestMethod.GET)
+	public String createBoard(String member_id,HttpServletRequest request) throws Exception{
+		HttpSession session = request.getSession();
+		member_id = (String)session.getAttribute("member_id");
+		int num = makerService.makerCreateBoard(member_id);
+		System.out.println("createBoard :" + num);
+		return "redirect: home/" + num;
+	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String board() {
+	@RequestMapping(value = "/home/{num}", method = RequestMethod.GET)
+	public String board(@PathVariable("num")int projectNum, HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		System.out.println("home 실행중...");
+		session.setAttribute("projectNum", projectNum);
+		System.out.println("프로젝트 번호 : "+ projectNum);
 		return "maker/maker_home";
 	}
 
 	@RequestMapping(value = "/requir/{num}", method = RequestMethod.GET)
 	public String requir(Model model, @PathVariable("num")int requirNum) throws Exception {
-		TempMakerRequirDto requirDto = tempService.tempRequirLoad(requirNum);
+		TempMakerRequirDto requirDto = makerService.tempRequirLoad(requirNum);
 		model.addAttribute("requirDto", requirDto);
 		System.out.println("DTO :" + requirDto);
 		System.out.println("requir 실행중...");
@@ -52,8 +77,11 @@ public class MakerBoardController {
 	}
 
 	@RequestMapping(value = "/info/{num}", method = RequestMethod.GET)
-	public String basicInfo(Model model, @PathVariable("num")int basicNum) throws Exception {
-		TempMakerBasicDto basicDto = tempService.tempBasicLoad(basicNum);
+	public String basicInfo(Model model, @PathVariable("num")int basicNum,
+			HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		basicNum = (Integer)session.getAttribute("projectNum");
+		TempMakerBasicDto basicDto = makerService.tempBasicLoad(basicNum);
 		model.addAttribute("basicDto", basicDto);
 		System.out.println("info 실행중...");
 		return "maker/maker_basicInfo";
@@ -61,16 +89,16 @@ public class MakerBoardController {
 
 	@RequestMapping(value = "/story/{num}", method = RequestMethod.GET)
 	public String story(Model model, @PathVariable("num")int storyNum) throws Exception {
-		TempMakerStoryDto storyDto = tempService.tempStoryLoad(storyNum);
+		TempMakerStoryDto storyDto = makerService.tempStoryLoad(storyNum);
 		model.addAttribute("storyDto", storyDto);
 		System.out.println("story 실행중...");
 		return "maker/maker_productStory";
 	}
-
+	
 	@RequestMapping(value = "/reword/{num}", method = RequestMethod.GET)
 	public String reword(Model model, @PathVariable("num")int projectNum) throws Exception {
 		System.out.println("reword 실행중...");
-		List<TempMakerRewordDto> list = tempService.rewordList(projectNum);
+		List<TempMakerRewordDto> list = makerService.rewordList(projectNum);
 		System.out.println("list : " + list);
 		model.addAttribute("list",list);
 		return "maker/maker_reword";
@@ -78,11 +106,12 @@ public class MakerBoardController {
 
 	@RequestMapping(value = "/makerInfo/{num}", method = RequestMethod.GET)
 	public String makerInfo(Model model, @PathVariable("num")int makerInfoNum) throws Exception{
-		TempMakerMakersDto makersDto = tempService.tempLoadMakersInfo(makerInfoNum);
+		TempMakerMakersDto makersDto = makerService.tempLoadMakersInfo(makerInfoNum);
 		System.out.println("makerInfo 실행중...");
 		model.addAttribute("makersDto",makersDto);
 		return "maker/maker_makerInfo";
 	}
+
 
 	@RequestMapping(value = "/tempDataRequir", method = RequestMethod.POST)
 	@ResponseBody
@@ -95,31 +124,29 @@ public class MakerBoardController {
 			mkrDto.setRequir_q4("false");
 		}
 		;
-		tempService.tempRequirUpdate(mkrDto);
+		makerService.tempRequirUpdate(mkrDto);
 		return mkrDto;
 	}
 
 	@RequestMapping(value = "/tempDataBasicInfo", method = RequestMethod.POST)
 	@ResponseBody
 	public TempMakerBasicDto data(TempMakerBasicDto basicDto) throws Exception {
-		tempService.tempBasicUpdate(basicDto);
+		makerService.tempBasicUpdate(basicDto);
 		return basicDto;
 	}
 
-	@RequestMapping(value = "/preview", method = RequestMethod.GET)
-	public String preview(TempMakerStoryDto storyDto, Model model) throws Exception {
-		int tempStoryNum = 1;
-		storyDto = tempService.tempStoryLoad(tempStoryNum);
+	@RequestMapping(value = "/preview/{num}", method = RequestMethod.GET)
+	public String preview(@PathVariable("num")int num, TempMakerStoryDto storyDto, Model model) throws Exception {
+		storyDto = makerService.tempStoryLoad(num);
 		model.addAttribute("storyDto", storyDto);
 		return "maker/preview";
 	}
 
 	@RequestMapping(value = "/tempDataStory", method = RequestMethod.POST)
 	@ResponseBody
-	public TempMakerStoryDto data(HttpServletRequest request, TempMakerStoryDto storyDto) throws Exception {
-		String story_storyBoard = request.getParameter("story_storyBoard");
-		storyDto.setStory_storyBoard(story_storyBoard);
-		tempService.tempStoryUpdate(storyDto);
+	public TempMakerStoryDto data(/*HttpServletRequest request, */TempMakerStoryDto storyDto) throws Exception {
+		System.out.println("storyDto:" + storyDto);
+		makerService.tempStoryUpdate(storyDto);
 		return storyDto;
 	}
 
@@ -148,7 +175,7 @@ public class MakerBoardController {
 			} else {
 				imgDto.setImglist_name(imgName);
 			}
-			tempService.tempInputImgName(imgDto);
+			makerService.tempInputImgName(imgDto);
 			try {
 				// 입력용
 				FileInputStream fileInputStream = new FileInputStream(orgFilePath);
@@ -180,7 +207,7 @@ public class MakerBoardController {
 	@RequestMapping(value = "/imgLoad/{num}", method = RequestMethod.GET)
 	public String outputImg(HttpServletRequest request, @PathVariable("num") int num) throws Exception {
 		System.out.println("서버에서 이미지 가져오는중...");
-		List<TempMakerBoardImgDto> list = tempService.imgNameList(num);
+		List<TempMakerBoardImgDto> list = makerService.imgNameList(num);
 		int count = 0;
 		while (count < list.size()) {
 			String fileName = list.get(count).getImglist_name();
@@ -228,7 +255,7 @@ public class MakerBoardController {
 	public TempMakerRewordDto data(TempMakerRewordDto rewordDto) throws Exception{
 		System.out.println("rewordDto:" + rewordDto);
 	System.out.println("리워드 저장 중...");	
-	tempService.tempInputReword(rewordDto);
+	makerService.tempInputReword(rewordDto);
 	System.out.println("리워드 저장 완료...");
 	return rewordDto;
 	}
@@ -236,7 +263,7 @@ public class MakerBoardController {
 	@RequestMapping(value="/rewordOutput/{num}", method = RequestMethod.GET)
 	@ResponseBody
 	public TempMakerRewordDto data(@PathVariable("num") int rewordNum) throws Exception{
-		TempMakerRewordDto rewordDto = tempService.tempOutputReword(rewordNum);
+		TempMakerRewordDto rewordDto = makerService.tempOutputReword(rewordNum);
 		System.out.println("reword/dto:" + rewordDto);
 		return rewordDto;
 	}
@@ -246,7 +273,7 @@ public class MakerBoardController {
 		System.out.println("update : " + rewordDto);
 		rewordDto.setTemp_reword_num(rewordNum);
 		System.out.println("리워드 수정 중....");
-		tempService.tempRewordUpdate(rewordDto);
+		makerService.tempRewordUpdate(rewordDto);
 		System.out.println("리워드 수정 완료...");
 	}
 	
@@ -254,7 +281,7 @@ public class MakerBoardController {
 	@ResponseBody
 	public void rewordDelete(@PathVariable("num")int rewordNum) throws Exception{
 		System.out.println("삭제 중...");
-		tempService.tempRewordDelete(rewordNum);
+		makerService.tempRewordDelete(rewordNum);
 		System.out.println("삭제 완료...");
 	}
 	
@@ -262,7 +289,7 @@ public class MakerBoardController {
 	@ResponseBody
 	public TempMakerMakersDto data(TempMakerMakersDto makersDto) throws Exception{
 		System.out.println("메이커 정보 저장중...");
-		tempService.tempMakersInfoUpdate(makersDto);
+		makerService.tempMakersInfoUpdate(makersDto);
 		System.out.println("메이커 정보 저장 완료...");
 		return makersDto;
 	}

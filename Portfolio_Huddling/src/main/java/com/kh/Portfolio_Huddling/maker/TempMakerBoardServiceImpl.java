@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kh.Portfolio_Huddling.project.ProjectVo;
+
 @Service
 public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 
@@ -43,7 +45,6 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	@Override
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
 		boardDao.tempSaveStory(storyDto);
-
 	}
 
 	@Override
@@ -110,5 +111,18 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	public void tempRewordDelete(int rewordNum) throws Exception {
 		boardDao.tempRewordDelete(rewordNum);
 		
+	}
+
+	@Override
+	public List<ProjectVo> makerGetIntroList(String member_id) throws Exception {
+		return boardDao.makerGetIntroList(member_id);
+	}
+
+	@Override
+	@Transactional
+	public int makerCreateBoard(String member_id) throws Exception {
+		boardDao.makerInsertProject(member_id);
+		int num = boardDao.makerProjectNum();
+		return num;
 	}
 }

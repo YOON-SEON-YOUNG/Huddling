@@ -4,18 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kh.mappers.maker">
-
+	
+	<!-- 기본 요건 가져오기 -->
 	<select id="tempSelectRequir" resultType="TempMakerRequirDto">
 		select * from
 		tbl_temp_requir
 		where temp_requir_num = #{temp_requir_num}
 	</select>
-
-	<insert id="tempInsertRequir">
-		insert into tbl_temp_requir(temp_requir_num)
-		values(#{temp_requir_num})
-	</insert>
-
+	
+	<!-- 기본 요건 저장 -->
 	<update id="tempUpdateRequir">
 		update tbl_temp_requir set
 		requir_q1 = #{requir_q1},
@@ -25,18 +22,15 @@
 		#{requir_q4}
 		where temp_requir_num = #{temp_requir_num}
 	</update>
-
+	<!-- 기본 정보 가져오기 -->
 	<select id="tempSelectBasic" resultType="TempMakerBasicDto">
 		select * from
 		tbl_temp_basic
 		where temp_basic_num = #{temp_basic_num}
 
 	</select>
-	<insert id="tempInsertBasic">
-		insert into tbl_temp_basic(temp_basic_num)
-		values(#{temp_basic_num})
-	</insert>
-
+	
+	<!-- 기본 정보 저장 -->
 	<update id="tempUpdateBasic">
 		update tbl_temp_basic set
 		basic_projectName =
@@ -51,63 +45,62 @@
 		where temp_basic_num = #{temp_basic_num}
 	</update>
 
-	<insert id="tempInsertStory">
-		insert into tbl_temp_story(temp_story_num)
-		values(#{temp_story_num});
-	</insert>
-
+	<!-- 스토리 작성 가져오기 -->
 	<select id="tempSelectStory" resultType="TempMakerStoryDto">
 		select * from tbl_temp_story
 		where temp_story_num = #{temp_story_num}
-
 	</select>
+	
+	<!-- 스토리 작성 저장 -->
 	<update id="tempUpdateStory">
 		update tbl_temp_story set
-		story_introimg = #{story_introImg},
+		story_introimg = #{story_introimg},
 		story_summary = #{story_summary},
-		story_storyboard = #{story_storyBoard}
+		story_storyboard = #{story_storyboard}
 		where temp_story_num = #{temp_story_num}
 	</update>
 	
+	<!-- se 이미지 저장 -->
 	<insert id="imgInput">
 	insert into tbl_temp_imglist
 	values(#{temp_imglist_num},seq_imglist_num.nextval,#{imglist_name})
 	</insert>
-	
+	<!-- se 이미지 불러오기 -->
 	<select id="imgList" resultType="TempMakerBoardImgDto">
 	select imglist_name from tbl_temp_imglist
 	where temp_imglist_num = #{temp_imglist_num}
 	</select>
-	
+	<!-- se 이미지 확인 -->
 	<select id="imgChk" resultType="int">
 	select count(*) from tbl_temp_imglist
 	where imglist_name = #{imglist_name}
 	</select>
-	
+	<!-- se 이미지 삭제 -->
 	<delete id="imgDel">
 	delete tbl_temp_imglist
 	where imglist_name = #{imglist_name}
 	</delete>
-	
+	<!-- 상품 목록 불러오기 -->
 	<select id='rewordList' resultType="TempMakerRewordDto">
 	select * from tbl_temp_reword
 	where temp_project_num = #{temp_project_num}
 	</select>
-	
+	<!-- 상품 개수 -->
 	<select id="rewordCnt" resultType="int">
 	select count(temp_reword_num) from tbl_temp_reword
 	where temp_reword_num = #{temp_reword_num}
 	</select>
+	<!-- 상품 등록 -->
 	<insert id="rewordInput">
 	insert into tbl_temp_reword
 	values(#{temp_project_num},seq_temp_reword_num.nextval,#{temp_reword_price},#{temp_reword_name},#{temp_reword_desc},#{temp_reword_option},#{temp_reword_trans},#{temp_reword_trans_price},#{temp_reword_count},#{temp_reword_trans_month},#{temp_reword_trans_days})
 	</insert>
-	
+	<!-- 등록한 상품 가져오기 -->
 	<select id="rewordOutput" resultType="TempMakerRewordDto">
 	select * from tbl_temp_reword
 	where temp_reword_num = #{temp_reword_num}
 	</select>
-	
+	<!-- 등록한 상품 수정 -->
 	<update id="rewordUpdate">
 	update tbl_temp_reword set
 	temp_reword_price         = #{temp_reword_price},
@@ -121,11 +114,18 @@
 	temp_reword_trans_days    = #{temp_reword_trans_days}
 	where temp_reword_num = #{temp_reword_num}
 	</update>
-	
+	<!-- 등록한 상품 삭제 -->
 	<delete id="rewordDelete">
 	delete tbl_temp_reword where temp_reword_num = #{temp_reword_num}
 	</delete>
 	
+	<!-- 메이커 정보 가져오기 -->
+	<select id="tempSelectMakersInfo" resultType="TempMakerMakersDto">
+	select * from tbl_temp_makerinfo
+	where temp_makerinfo_num = #{temp_makerinfo_num}
+	</select>
+	
+	<!-- 메이커 정보 저장 -->
 	<update id="tempUpdateMakersInfo">
 	update tbl_temp_makerinfo set
 	temp_makerinfo_name      = #{temp_makerinfo_name},
@@ -138,10 +138,38 @@
 	where temp_makerinfo_num = #{temp_makerinfo_num}
 	</update>
 	
-	<select id="tempSelectMakersInfo" resultType="TempMakerMakersDto">
-	select * from tbl_temp_makerinfo
-	where temp_makerinfo_num = #{temp_makerinfo_num}
+	<!-- 프로젝트 리스트 가져오기 -->
+	<select id="getMakerList" resultType="ProjectVo">
+	select * from tbl_project_intro a
+	where a.project_num in (select b.project_num from tbl_project b	where b.user_id = #{user_id})
 	</select>
-
-
+	<!-- 프로젝트 번호 가져오기 -->
+	<select id="getProjectNum" resultType="int">
+	select seq_project_num.currval from dual
+	</select>
+	
+	<!-- 새 프로젝트 생성 -->
+	<insert id="makerProjectInsert">
+	insert all
+	into tbl_project values(#{member_id},seq_project_num.nextval,0)
+	into tbl_temp_basic(temp_basic_num) values(seq_project_num.currval)
+	into tbl_temp_makerinfo(temp_makerinfo_num) values(seq_project_num.currval)
+	into tbl_temp_requir(temp_requir_num) values(seq_project_num.currval)
+	into tbl_temp_story(temp_story_num) values(seq_project_num.currval)
+	into tbl_project_intro(project_num) values(seq_project_num.currval)
+	select * from dual
+	</insert>
+	
+	<!-- 프로젝트 삭제 -->
+	<update id="makerProjectDelete">
+	select * from tbl_project
+	project_state = #{project_state}
+	where project_num = #{project_num}
+	</update>
+	<!-- 프로젝트 접근 -->
+	<select id="getMakerBoard" resultType="ProjectVo">
+	select * from tbl_project_intro
+	where project_num = #{project_num}
+	</select>
+	
 </mapper>

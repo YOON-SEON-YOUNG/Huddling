@@ -51,7 +51,6 @@ $(document).ready(function(){
 		});
 		$("#newList").append(strList);
 	});
-	
 
 });
 </script>
@@ -125,8 +124,8 @@ $(document).ready(function(){
 				<div class="wrap-drop">
 					<select class="drop" style="width: 100px; font-size: 15px;">
 				      <option>인기 순위</option>
-				      <option>최신 등록 순위</option>
-				      <option>마감 임박 순위</option>
+				      <option id="sttdata">최신 등록 순위</option>
+				      <option id="enddata">마감 임박 순위</option>
 				    </select>
 				</div>
 			</div>

@@ -22,11 +22,13 @@ $(document).ready(function() {
 
 	// 리워드 등록 및 변경
 	$("#btnAddReword").click(function() {
+		var num = ${projectNum};
 		var chk = $(this).attr('data-update');
 		var url ="/maker/rewordInput";
 		if(chk == '0'){
 		console.log('등록 중...');
-		rewordAdded(url);
+		console.log("num : " + num);
+		rewordAdded(url,num);
 		console.log('등록 성공...');
 		$('#btnAddReword').attr('data-update','1');
 		} else if( chk == '1'){
@@ -106,8 +108,8 @@ $(document).ready(function() {
 			selOp.html(strOp);
 		});
 	
-		$('input[name=deliveryRadio]').change(function() {
-			var ra = $('input[name=deliveryRadio]:checked');
+		$('input[name=temp_reword_trans]').change(function() {
+			var ra = $('input[name=temp_reword_trans]:checked');
 			if (ra.val() == 'option1') {
 				$('#deliveryDiv').css('display', 'block');
 			} else {
@@ -167,9 +169,11 @@ $(document).ready(function() {
 									<strong>${rewordList.temp_reword_name }</strong>
 								</p>
 								<p class='card-text'>${rewordList.temp_reword_desc }</p>
+								<c:if test="${rewordList.temp_reword_trans_price ne 0}">
 								<div class='card-body'>
 									배송비 <span style='float: right;'>${rewordList.temp_reword_trans_price }원</span>
 								</div>
+								</c:if>
 								<div class='card-body'>
 									배송 날짜 <span style='float: right;'>${rewordList.temp_reword_trans_month }(${rewordList.temp_reword_trans_days})예정</span>
 								</div>
@@ -208,7 +212,7 @@ $(document).ready(function() {
 			</div>
 			<div class="modal-body">
 				<form id="formTampData">
-					<input type="hidden" name="temp_project_num" value="1" />
+					<input type="hidden" name="temp_project_num" value="${projectNum}" />
 					<table class="table table-borderless">
 						<thead>
 							<tr>
@@ -266,17 +270,13 @@ $(document).ready(function() {
 							</tr>
 							<tr>
 								<td>
-									<div id='deliveryDiv' class="row">
-										<div class='col-md-3'>
-											<label for='delivery'>배송료</label>
-										</div>
-										<div class='col-md-6'>
+									<div id='deliveryDiv' class="row" style="float: left;">
+											<label for='delivery'>배송료 </label>
+											<div class='col-xs-2'>
 											<input id='delivery' type="text"
-												name='temp_reword_trans_price' class="form-control">
-										</div>
-										<div class='col-md-3'>
+												name='temp_reword_trans_price'" class="form-control">
+											</div>
 											<span>원</span>
-										</div>
 									</div>
 								</td>
 							</tr>

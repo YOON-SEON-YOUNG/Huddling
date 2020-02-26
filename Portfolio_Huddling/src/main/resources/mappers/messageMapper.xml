@@ -8,9 +8,9 @@
 
 	<insert id="insertMessage">
 		insert into tbl_message 
-			(message_num, message_content, message_sender, message_receiver, project_num)
+			(message_num, message_content, message_sender, message_receiver, project_name)
 		values
-			(seq_message_num.nextval, #{message_content}, #{message_sender}, #{message_receiver}, #{project_num})
+			(seq_message_num.nextval, #{message_content}, #{message_sender}, #{message_receiver}, #{project_name})
 	</insert>
 
 	<update id="updateMessage">

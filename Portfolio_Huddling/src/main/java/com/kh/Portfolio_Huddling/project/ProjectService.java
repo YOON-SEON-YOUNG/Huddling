@@ -11,4 +11,6 @@ public interface ProjectService {
 	public List<ProjectVo> selectIntroList()throws Exception;
 	//카테고리별보기 
 	public List<ProjectVo> category(ProjectVo projectVo)throws Exception;
+	//마감순으로 보기
+	public void deadline(String basic_enddate)throws Exception;
 }

@@ -15,12 +15,24 @@
  
 var oEditors = [];
 $(function(){
-nhn.husky.EZCreator.createInIFrame({
+	nhn.husky.EZCreator.createInIFrame({
     oAppRef: oEditors,
     elPlaceHolder: "textAreaContent",
     sSkinURI: "<%=request.getContextPath()%>/resources/se2/SmartEditor2Skin.html",
     fCreator: "createSEditor2"
 	});
+	var board = $('#textAreaContent').val().trim();
+		if(board == '' || board == null){
+		$("#textAreaContent").load("/resources/upload/basicBoard.html", function(txt, status) {
+			console.log('기본 텍스트 가져옴...');
+	       if (status == "success") {
+	           console.log("로딩 성공");
+	           $("#textAreaContent").text(txt);
+	       } else if (status == "error") {
+	           console.log("로딩 실패");
+	       }
+		});
+	}
 });
  
 //‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
@@ -45,20 +57,11 @@ function pasteHTML(filepath){
 	var sHTML = "<img data-imgName='"+filepath+"' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
 
-// 	$.ajax({
-// 		"url":'/maker/imgCopy/1',
-// 		'data':filepath,
-// 		'type':'post',
-// 		'success':function(data){
-// 			console.log('success');
-// 			console.log("data",data);
-// 			}
-// 		});
 }
- 
 </script>
 <form id="frm">
-	<textarea style="width: 100%" rows="10" name="story_storyBoard"
-		id="textAreaContent" cols="80">${storyDto.story_storyBoard }</textarea>
+	<textarea style="width: 100%" rows="10" name="story_storyboard"	id="textAreaContent" cols="80">
+	${storyDto.story_storyboard }
+	</textarea>
 </form>
 

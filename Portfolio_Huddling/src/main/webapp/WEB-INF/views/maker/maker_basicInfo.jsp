@@ -33,13 +33,36 @@
 			}
 		});
 		
+		$("#imgInp").on('change', function(){
+            var img = readURL(this);
+            var formData = new FormData();
+    		formData.append("file", img);
+            console.log("imgId : ", img);
+            var url = "/upload/intro_img";
+            $.ajax({
+    			"type" : "post",
+    			"url" : url,
+    			"processData" : false,
+    			"contentType" : false,
+    			"data" : formData,
+    			"success" : function(path){
+    				console.log("path : " + path);
+    				var index = path.lastIndexOf("/");
+    				var sub = path.substring(index + 1);
+    				console.log("substring : " + sub);
+    				$("#introImg").val(path);
+    				}
+    			});
+        });
+		
+		
 	});
 </script>
 <form id="formHidden">
 <input type="hidden" id="checkSelecter" value="">
 </form>
 <form id="formTampData" name="formTampData">
-<input type="hidden" name="temp_basic_num" value="1">
+<input type="hidden" name="temp_basic_num" value="${projectNum }">
 <div class="container-fluid">
 	<div class="card">
 		<div class="card-body">
@@ -56,13 +79,16 @@
 		</div>
 		<div class="card-body">
 			<div class="form-group">
-				<label for="representImg">프로젝트 대표 이미지</label>
-				<input type="hidden" name="basic_representImg" value="${basicDto.basic_representImg }">
-				<div class="form-group">
-				<input type="file" name='imgFile'/>
-<!-- 					<button class="btn btn-primary">등록하기</button> -->
+				<label for="inputGroupFile01">소개 이미지 등록</label>
+				<div class="custom-file">
+			    <input type="file" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
+			    <label class="custom-file-label" for="inputGroupFile01">이미지 파일을 선택하세요</label>
+			  	</div>
+					<div class="form-group">
+					  <img id="blah" src="/upload/imgView?fileName=${basicDto.basic_representImg }"/>
+					  <input type="hidden" id = "introImg" value="1" name="basic_representImg"/>
+					</div>
 				</div>
-			</div>
 		</div>
 		<div class="card-body">
 			<div class="form-group">
@@ -96,3 +122,4 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="../board/include/board_footer.jsp"></jsp:include>

@@ -11,27 +11,28 @@
 		$("#btnBasicInfo").click(function() {
 			console.log("click");
 		});
+		 var num = ${projectNum};
 		$(".btn").click(function() {
 			var btnId = $(this).attr("id");
 			switch (btnId) {
 			case "btnBasicrequir":
-				location.href = "/maker/requir/1"
+				location.href = "/maker/requir/"+ num
 				break;
 			// 기본 정보
 			case "btnBasicInfo":
-				location.href = "/maker/info/1"
+				location.href = "/maker/info/" + num
 				break;
 			// 스토리 작성
 			case "btnStory":
-				location.href = "/maker/story/1"
+				location.href = "/maker/story/" + num
 				break;
 			// 리워드 설계
 			case "btnReword":
-				location.href = "/maker/reword/1"
+				location.href = "/maker/reword/" + num
 				break;
 			// 메이커 정보
 			case "btnMakerInfo":
-				location.href = "/maker/makerInfo/1"
+				location.href = "/maker/makerInfo/" + num
 				break;
 			}
 		});
@@ -97,21 +98,6 @@
 					id="btnReword">작성</button>
 			</div>
 		</div>
-		<!-- 정책 -->
-		<div class="row">
-			<div class="col-md-10">
-				<div class="card">
-					<div class="card-body">
-						정책 <span class="badge btn-secondary">작성 전</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<button type="button" class="btn btn-success btn-block"
-					id="btnPolicy">작성</button>
-			</div>
-		</div>
-
 		<!-- 메이커 정보 -->
 		<div class="row">
 			<div class="col-md-10">
@@ -134,3 +120,4 @@
 			</div>
 		</div>
 	</div>
+	
