@@ -231,4 +231,12 @@
 	where temp_story_num = #{project_num})
 	where project_num = #{project_num}
 	</update>
+	
+	<update id='introcategoryUpdate'>
+	update tbl_project_intro set
+	project_category = (
+	select basic_category from tbl_temp_basic
+	where temp_basic_num = #{project_num})
+	where project_num = #{project_num}
+	</update>
 </mapper>
