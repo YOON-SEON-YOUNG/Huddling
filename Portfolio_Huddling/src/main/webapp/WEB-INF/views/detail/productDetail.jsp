@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page pageEncoding="utf-8" session="false"%>
+<%@ page pageEncoding="utf-8"%>
 <%@ include file="../board/include/board_header.jsp"%>
 <!doctype html>
 <html>
@@ -42,6 +42,7 @@ $(document).ready(function() {
 		p_title = data.project_name;
 		$('#p_category').text(data.project_category);
 		$('#p_title').text(p_title);
+		$('#project_name').val(p_title);
 		$('#product_story').html(data.story_storyboard);
 		$('#imgs').attr('src','/upload/imgView?fileName=' + data.story_introimg);
 	});
@@ -83,6 +84,7 @@ $(document).ready(function() {
 		$('#creatorEmail').text(data.temp_makerinfo_email);
 		$('#creatorPhone').text(data.temp_makerinfo_tel);
 		$('#createId').text(data.user_id);
+		$('#receiver').val(data.user_id);
 	});
 	
 	$("#tapInfo").click(function(e) {
@@ -225,13 +227,15 @@ $(document).ready(function() {
 						창작자 이메일 : <span id="creatorEmail">email.email.com</span> <br> 
 						창작자 전화번호: <span id="creatorPhone">010-000-0000</span> <br>
 						<hr>
-							<form action="/member/sendInquiry" method="get">
-							<input type="hidden" name="inquiry" id="inquiry" value="1">
-							<input type="hidden" name="project_name" id="project_name" value="project_name">
-							<input type="hidden" name="receiver" id="receiver" value="작성자">
-							<button type="submit" class="btn btn-outline-secondary"
-															style="width: 100%;">창작자에게 문의하기</button>
-							</form>
+							<c:if test="${not empty memberVo.member_id && memberVo.member_id != makersDto.user_id}">
+								<form action="/member/sendInquiry" method="get">
+								<input type="hidden" name="inquiry" id="inquiry" value="1">
+								<input type="hidden" name="project_name" id="project_name" value="x">
+								<input type="hidden" name="receiver" id="receiver" value="x">
+								<button type="submit" class="btn btn-outline-secondary"
+												style="width: 100%;">창작자에게 문의하기</button>
+								</form>
+							</c:if>
 						</div>
 						
 					</div>
