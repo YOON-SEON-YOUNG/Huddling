@@ -9,6 +9,7 @@ public class TempMakerMakersDto {
 	private String temp_makerinfo_repr;
 	private String temp_makerinfo_reprname;
 	private String temp_makerinfo_repremail;
+	private String user_id;
 	public int getTemp_makerinfo_num() {
 		return temp_makerinfo_num;
 	}
@@ -57,12 +58,18 @@ public class TempMakerMakersDto {
 	public void setTemp_makerinfo_repremail(String temp_makerinfo_repremail) {
 		this.temp_makerinfo_repremail = temp_makerinfo_repremail;
 	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	@Override
 	public String toString() {
-		return "TempMakerMakersInfoDto [temp_makerinfo_num=" + temp_makerinfo_num + ", temp_makerinfo_name="
+		return "TempMakerMakersDto [temp_makerinfo_num=" + temp_makerinfo_num + ", temp_makerinfo_name="
 				+ temp_makerinfo_name + ", temp_makerinfo_image=" + temp_makerinfo_image + ", temp_makerinfo_tel="
 				+ temp_makerinfo_tel + ", temp_makerinfo_email=" + temp_makerinfo_email + ", temp_makerinfo_repr="
 				+ temp_makerinfo_repr + ", temp_makerinfo_reprname=" + temp_makerinfo_reprname
-				+ ", temp_makerinfo_repremail=" + temp_makerinfo_repremail + "]";
+				+ ", temp_makerinfo_repremail=" + temp_makerinfo_repremail + ", user_id=" + user_id + "]";
 	}
 }

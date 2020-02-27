@@ -106,7 +106,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 요건 <span class="badge btn-success" id="requir">작성 완료</span>
+						기본 요건 <span class="badge btn-success" id="requir"></span>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 정보 <span class="badge btn-success" id='basic'>작성 완료</span>
+						기본 정보 <span class="badge btn-success" id='basic'></span>
 					</div>
 				</div>
 			</div>
@@ -134,7 +134,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						스토리 작성 <span class="badge btn-primary" id="story">작성 중</span>
+						스토리 작성 <span class="badge btn-primary" id="story"></span>
 					</div>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						리워드 설계<span class="badge btn-secondary" id="reword">작성 전</span>
+						리워드 설계<span class="badge btn-secondary" id="reword"></span>
 					</div>
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						메이커 정보 <span class="badge btn-secondary" id="makersInfo">작성 전</span>
+						메이커 정보 <span class="badge btn-secondary" id="makersInfo"></span>
 					</div>
 				</div>
 			</div>

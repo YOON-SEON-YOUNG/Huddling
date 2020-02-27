@@ -30,7 +30,8 @@ function rewordAdded(url,num){
 	console.log("data 확인...",params);
 	$.post(url,params,function(result){
 			console.log('전달 값...',result);
-			$('#wrapper').load('/maker/reword/' + num);
+//			$('#wrapper').load('/maker/reword/' + num);
+			location.reload();
 			console.log('전달 완료...');
 		});
 }

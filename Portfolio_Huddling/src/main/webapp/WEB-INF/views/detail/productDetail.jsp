@@ -82,6 +82,7 @@ $(document).ready(function() {
 		$('#creatorName').text(data.temp_makerinfo_name);
 		$('#creatorEmail').text(data.temp_makerinfo_email);
 		$('#creatorPhone').text(data.temp_makerinfo_tel);
+		$('#createId').text(data.user_id);
 	});
 	
 	$("#tapInfo").click(function(e) {
@@ -220,7 +221,7 @@ $(document).ready(function() {
 						<div id="accordion" class="checkout">
 						<h5>창작자 소개</h5>
 						<br>
-						창작자 이름 : <span id="creatorName">김경희</span> <br>
+						창작자 이름 : <span id="creatorName">김경희</span>|<span id="createId"></span> <br>
 						창작자 이메일 : <span id="creatorEmail">email.email.com</span> <br> 
 						창작자 전화번호: <span id="creatorPhone">010-000-0000</span> <br>
 						<hr>

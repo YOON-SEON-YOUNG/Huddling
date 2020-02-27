@@ -224,4 +224,11 @@
 	project_state = 1
  	where project_num = #{project_num}
 	</update>
+	
+	<update id='introImgUpdate'>
+	update tbl_project_intro set
+	project_image = (select story_introimg from tbl_temp_story
+	where temp_story_num = #{project_num})
+	where project_num = #{project_num}
+	</update>
 </mapper>

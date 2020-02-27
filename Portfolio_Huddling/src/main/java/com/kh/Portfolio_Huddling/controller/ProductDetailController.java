@@ -130,6 +130,7 @@ public class ProductDetailController {
 	@RequestMapping(value="/makersInfo/{num}",method = RequestMethod.GET)
 	@ResponseBody
 	public TempMakerMakersDto makersInfo(@PathVariable("num")int project_num) throws Exception{
+		System.out.println("makersInfo : " + project_num);
 		TempMakerMakersDto makersDto = boardService.makersInfo(project_num);
 		return makersDto;
 		
