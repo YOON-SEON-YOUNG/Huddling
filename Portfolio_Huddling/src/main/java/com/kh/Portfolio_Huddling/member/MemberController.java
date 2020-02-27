@@ -80,7 +80,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
-		
 		return "member/memberLogin";
 	}
 	
