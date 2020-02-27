@@ -73,8 +73,7 @@ $(document).ready(function(){
 				$('#textHelp2').text("이미 사용중인 닉네임입니다.");
 			}
 		});
-			
-		
+					
 	});
 });
 //지도 api

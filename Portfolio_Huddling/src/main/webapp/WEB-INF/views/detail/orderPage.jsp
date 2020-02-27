@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <style>
@@ -14,6 +16,8 @@
 </style>
 
 <body>
+optionList: ${reword}<br>
+memberVo : ${memberVo}<br> 
 
 
 <center><h3>현재 보유한 포인트</h3></center>
@@ -25,8 +29,8 @@
         <td width="200" bgcolor="#CCCCCC"> <p align="center"><b>결제 후 잔액</b></p> </td>
     </tr>
     <tr>
-        <td> <p align="center">포인트</p></td>
-        <td> <p align="center"><span id="new_points"></span> 포인트</p> </td>
+        <td> <p align="center">${memberVo.member_point}</p></td>
+        <td> <p align="center"><span id="new_points"></span>가격</p> </td>
         <td> <p align="center"><span id="new_points"></span> 포인트</p> </td>
     </tr>
 </table>

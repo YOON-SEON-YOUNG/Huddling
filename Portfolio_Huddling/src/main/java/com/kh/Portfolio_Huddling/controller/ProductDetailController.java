@@ -3,7 +3,9 @@ package com.kh.Portfolio_Huddling.controller;
 
 import javax.inject.Inject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,16 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
+import com.kh.Portfolio_Huddling.member.MemberVo;
+import com.kh.Portfolio_Huddling.member.PointService;
+import com.kh.Portfolio_Huddling.member.PointVo;
 import com.kh.Portfolio_Huddling.project.BoardService;
 import com.kh.Portfolio_Huddling.project.BoardVo;
 
-import com.kh.Portfolio_Huddling.member.MemberVo;
-import com.kh.Portfolio_Huddling.member.PaymentVo;
-import com.kh.Portfolio_Huddling.member.PointService;
 
 @Controller
 @RequestMapping("/detail/*")
@@ -31,6 +34,9 @@ public class ProductDetailController {
 	
 	@Inject
 	private BoardService boardService;
+	
+	@Inject
+	private PointService pointService;
 
 	
 	// 펀딩 상세보기 페이지 
@@ -67,18 +73,35 @@ public class ProductDetailController {
 		System.out.println("tapReview 실행중");
 		return "detail/include/tapReview";
 	}
-	
+
 	// 펀딩 리워드 옵션
-	@RequestMapping(value= "/orderOption")
-	public String orderOption() {
-		return "detail/orderOption";
+	@RequestMapping(value= "/detailMain/{num}/reword", method = RequestMethod.GET)
+	public String orderOption(@RequestParam Map<String,Object> param, @PathVariable("num") int project_num,
+			HttpServletRequest request, Model model) throws Exception {
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("project_num", project_num);
+		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
+		model.addAttribute("reword",list);
+		System.out.println("reword 실행중");
+		return "/detail/orderOption";
 		
 	}
-	
 	// 결제 페이지 포인트 사용(새창)
-	@RequestMapping(value="/orderPage", method = RequestMethod.GET)
-	public String orderPage() {
-		return "detail/orderPage";
+	@RequestMapping(value="/detailMain/{num}/payment", method = RequestMethod.GET)
+	public String payment(@PathVariable("num") int project_num,
+			HttpServletRequest request, Model model) throws Exception {
+		System.out.println("요청 들어옴");
+		HttpSession session = request.getSession();
+		session.setAttribute("project_num", project_num);
+		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
+		System.out.println("list:" + list);
+		model.addAttribute("reword",list);
+		System.out.println("payment 실행중");
+		MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+		List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
+		model.addAttribute("pointList", pointList);
+		return "/detail/orderPage";
 	}
 		
 
@@ -92,6 +115,8 @@ public class ProductDetailController {
 		BoardVo vo = boardService.getDetail(project_num);
 		return vo;
 	}
+	
+	
 	// 총 결제 금액 가져오기
 	@RequestMapping(value="/totalPayment/{num}", method=RequestMethod.GET)
 	@ResponseBody
@@ -134,5 +159,9 @@ public class ProductDetailController {
 		return makersDto;
 		
 	}
+	
+	// 포인트 사용하기
+	
+	
 	
 }

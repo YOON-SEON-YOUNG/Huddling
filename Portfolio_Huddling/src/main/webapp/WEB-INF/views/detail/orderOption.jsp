@@ -8,210 +8,455 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<link href="<c:url value="/resources/main/css/bootstrap.min.css"/>" rel="stylesheet"> 
-<!-- Style CSS -->
-<link href="<c:url value="/resources/css/option_style.css"/>" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
 
 
 </head>
+<style>
+/* Global settings */
+ 
+.product-image {
+  float: left;
+  width: 20%;
+}
+ 
+.product-details {
+  float: left;
+  width: 37%;
+}
+ 
+.product-price {
+  float: left;
+  width: 12%;
+}
+ 
+.product-quantity {
+  float: left;
+  width: 10%;
+}
+ 
+.product-removal {
+  float: left;
+  width: 9%;
+}
+ 
+.product-line-price {
+  float: left;
+  width: 12%;
+  text-align: right;
+}
+ 
+/* This is used as the traditional .clearfix class */
+.group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+.group:after,
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
+  content: '';
+  display: table;
+}
+ 
+.group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+  clear: both;
+}
+ 
+.group, .shopping-cart, .column-labels, .product, .totals-item {
+  zoom: 1;
+}
+ 
+/* Apply clearfix in a few places */
+/* Apply dollar signs */
 
-<body onload="init();">
+/* Body/Header stuff */
+body {
+  padding: 0px 30px 30px 20px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+ 
+h1 {
+  font-weight: 100;
+}
+ 
+label {
+  color: #aaa;
+}
+ 
+.shopping-cart {
+  margin-top: -45px;
+}
+ 
+/* Column headers */
+.column-labels label {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+/* .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+  text-indent: -9999px;
+}
+  */
+/* Product entries */
+.product {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+.product .product-image {
+  text-align: center;
+}
+.product .product-image img {
+  width: 100px;
+}
+.product .product-details .product-title {
+  margin-right: 20px;
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+.product .product-details .product-description {
+  margin: 5px 20px 5px 0;
+  line-height: 1.4em;
+}
+.product .product-quantity input {
+  width: 40px;
+}
+.product .remove-product {
+  border: 0;
+  padding: 4px 8px;
+  background-color: #F29661;
+  color: #fff;
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  font-size: 12px;
+  border-radius: 3px;
+}
+.product .remove-product:hover {
+  background-color: #a44;
+}
+ 
+/* Totals section */
+.totals .totals-item {
+  float: right;
+  clear: both;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.totals .totals-item label {
+  float: left;
+  clear: both;
+  width: 79%;
+  text-align: right;
+}
+.totals .totals-item .totals-value {
+  float: right;
+  width: 21%;
+  text-align: right;
+}
+.totals .totals-item-total {
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+ 
+.checkout {
+  float: right;
+  border: 0;
+  margin-top: 20px;
+  padding: 6px 25px;
+  background-color: #4374D9;
+  color: #fff;
+  font-size: 25px;
+  border-radius: 3px;
+}
+ 
+.checkout:hover {
+  background-color: #494;
+}
+ 
+/* Make adjustments for tablet */
+@media screen and (max-width: 650px) {
+  .shopping-cart {
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+ 
+  .column-labels {
+    display: none;
+  }
+ 
+  .product-image {
+    float: right;
+    width: auto;
+  }
+  .product-image img {
+    margin: 0 0 10px 10px;
+  }
+ 
+  .product-details {
+    float: none;
+    margin-bottom: 10px;
+    width: auto;
+  }
+ 
+  .product-price {
+    clear: both;
+    width: 70px;
+  }
+ 
+  .product-quantity {
+    width: 100px;
+  }
+  .product-quantity input {
+    margin-left: 20px;
+  }
+ 
+  .product-quantity:before {
+    content: 'x';
+  }
+ 
+  .product-removal {
+    width: auto;
+  }
+ 
+  .product-line-price {
+    float: right;
+    width: 70px;
+  }
+}
+/* Make more adjustments for phone */
+@media screen and (max-width: 350px) {
+  .product-removal {
+    float: right;
+  }
+ 
+  .product-line-price {
+    float: right;
+    clear: left;
+    width: auto;
+    margin-top: 10px;
+  }
+ 
+
+  .totals .totals-item label {
+    width: 60%;
+  }
+  .totals .totals-item .totals-value {
+    width: 40%;
+  }
+}
+
+</style>
+
 <script>
+$(document).ready(function() {
+	
+	
+	$(".optionCheck").change(function() {
+		var that = $(this);
+		console.log("that", that);
+	}); // $(".optionCheck").change
+    
 
 
+	
+	 
+	/* Set rates + misc */
+	var taxRate = 0.05;
+	var shippingRate = 15.00; 
+	var fadeTime = 300;
+	 
+	 
+	/* Assign actions */
+	$('.product-quantity input').change( function() {
+	  updateQuantity(this);
+	});
+	 
+	$('.product-removal button').click( function() {
+	  removeItem(this);
+	});
+	 
+	 
+	/* Recalculate cart */
+	function recalculateCart()
+	{
+	  var subtotal = 0;
+	   
+	  /* Sum up row totals */
+	  $('.product').each(function () {
+	    subtotal += parseFloat($(this).children('.product-line-price').text());
+	  });
+	   
+	  /* Calculate totals */
+	  var tax = subtotal * taxRate;
+	  var shipping = (subtotal > 0 ? shippingRate : 0);
+	  var total = subtotal + tax + shipping;
+	   
+	  /* Update totals display */
+	  $('.totals-value').fadeOut(fadeTime, function() {
+	    $('#cart-subtotal').html(subtotal.toFixed(0));
+	    $('#cart-tax').html(tax.toFixed(0));
+	    $('#cart-shipping').html(shipping.toFixed(0));
+	    $('#cart-total').html(total.toFixed(0));
+	    if(total == 0){
+	      $('.checkout').fadeOut(fadeTime);
+	    }else{
+	      $('.checkout').fadeIn(fadeTime);
+	    }
+	    $('.totals-value').fadeIn(fadeTime);
+	  });
+	} // function recalculateCart()
+	 
+	 
+	/* Update quantity */
+	function updateQuantity(quantityInput)
+	{
+	  /* Calculate line price */
+	  var productRow = $(quantityInput).parent().parent();
+	  var price = parseFloat(productRow.children('.product-price').text());
+	  var quantity = $(quantityInput).val();
+	  var linePrice = price * quantity;
+	   
+	  /* Update line price display and recalc cart totals */
+	  productRow.children('.product-line-price').each(function () {
+	    $(this).fadeOut(fadeTime, function() {
+	      $(this).text(linePrice.toFixed(0));
+	      recalculateCart();
+	      $(this).fadeIn(fadeTime);
+	    });
+	  });  
+	} // function updateQuantity(
+	 
+	 
+	/* Remove item from cart */
+	function removeItem(removeButton)
+	{
+	  /* Remove row from DOM and recalc cart total */
+	  var productRow = $(removeButton).parent().parent();
+	  productRow.slideUp(fadeTime, function() {
+	    productRow.remove();
+	    recalculateCart();
+	  });
+	} // function removeItem(removeButton)
+	 
+	// 서브밋 클릭하면 체크된 리워드 번호 가져오기 
+ 	
+	
+/* 	$("#optionSubmit").on('click', function(){
+		var saveOption = [];
+		$("input[name=option]:checked").each(function(){
+			saveOption.push($(this).val());
+		});
+		console.log(saveOption);
+	});
 
-var sell_price;
-var amount;
+ */
+	
+	
+}); // $(document).ready(function(){})
+	 
 
-function init () {
-	sell_price = document.form.sell_price.value;
-	amount = document.form.amount.value;
-	document.form.sum.value = sell_price;
-	change();
-}
-
-function add () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	hm.value ++ ;
-
-	sum.value = parseInt(hm.value) * sell_price;
-}
-
-function del () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * sell_price;
-		}
-}
-
-function change () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * sell_price;
-}  
-
-</script>
-
-
-
-<script type="text/javascript">
-
-function CheckBox(frm) {
-	    if (!frm.CheckThis.checked)
-	      frm.CheckThis.focus()
-	  }
-
-//결제완료 창 띄우기
 
 function funding_click() {
-	var url ="../detail/orderPage";
-	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500 height=600")
-};
+	
+	var num = ${num};	
+	var optionArray= [];
+	$("input[name=option]:checked").each(function(){
+		optionArray.push($(this).val());
+	});
+
+	console.log(num);
+	console.log(optionArray);
+ 	var url = "/detail/detailMain/" + num + "/payment";
+ 	window.open(url,"_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500 height=600");
+} 
+
+
 
 </script>
 
+<body>
+<%-- optionList: ${reword} --%>
 
-
-<form name="form" method="get">
 	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
-			
-			
-			<!-- 주문 옵션 -->
-
-			<div class="content">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 col-md-8 col-sm-7 col-xs-12">
-							<div class="box">
-							<!-- 펀딩 상품 타이틀 -->
-								<h4>카테고리</h4>
-								<h2 class="box-title">'어른친구' 만드는 세대공감 보드게임</h2>
-								<hr>			
-								<div class="plan-selection">
-								
-								
-
-								<!-- 옵션 선택(라디오 버튼) -->
-									<div class="plan-data">	
-										
-											<input id="question1" name="CheckThis" type="checkbox"
-											class="with-font" value="50000" onClick="this.form.total.value=CheckChoice(this);">																					
-											<label for="question1">50,000원이상</label>		
-											
-										<p class="plan-text">리워드 내역 : 마인도어 보드게임 1세트 | 예상일 : 2020.02.12 
-										<br> 76명 참여 | 선착순 남은 수량 15개</p>																																			
-										<!-- 옵션 수량 -->	
-										<div class="plan-price2" style="width:300px; bottom:5px">
-										
-											<div class="col-xs-3 col-xs-offset-3">
-												<div class="input-group number-spinner">
-							
-												<input type=hidden name="sell_price" value="50000">
-												<input type="button" value=" - " style="width:30px;" onclick="del();"><br>
-												<input type="text" name="amount" value="1" class="form-control text-center style="width:100px" onchange="change();">
-												<input type="button" value=" + " style="width:30px" onclick="add();"><br>
-												</div>
-											</div>
-										</div>
-								<!-- 옵션에 따른 펀딩 금액 -->			
-										<span class="plan-price">
-										<input type="text" name="sum" size="11" style="width:100px" readonly>원
-										</span>												
-								
-											
-									</div>
-								</div>
-																				
-								<div class="plan-selection">
-							<div class="plan-data">	
-																			
-									<input id="question2" name="fooby[1][]" type="checkbox"
-											class="with-font" value="84000" onClick="this.form.total.value=CheckChoice(this);">	
-											<label for="question2">84,000원 이상</label>
-											
-										<p class="plan-text">리워드 내역 : 마인도어 보드게임 2세트 | 예상일 :
-											2020.02.12</p>
-										<div class="plan-price2" style="width:300px">
-										
-											<div class="col-xs-3 col-xs-offset-3">
-												<div class="input-group number-spinner">
-													
-													<input type="text" class="form-control text-center "value="1" style="width:100px"> 
-													
-												</div>
-											</div>
-										</div>
-								<span class="plan-price">84,000원</span>
-										
-									</div>
-								</div>
-								<div class="plan-selection">
-									<div class="plan-data">
-									<input id="question3" name="fooby[1][]" type="checkbox"
-											class="with-font" value="120000" onClick="this.form.total.value=CheckChoice(this);">	
-											<label for="question3">120,000원 이상</label>
-										<p class="plan-text">리워드 내역 : 마인도어 보드게임 3세트 | 예상일 :
-											2020.02.12</p>
-										<div class="plan-price2" style="width:300px">
-										
-											<div class="col-xs-3 col-xs-offset-3">
-												<div class="input-group number-spinner">
-												
-													<input type="text" class="form-control text-center "value="1" style="width:100px"> 
-											
-												</div>
-											</div>
-										</div>
-										<span class="plan-price">120,000원</span>
-									</div>
-								</div>
-							</div>
-							
-							<!-- 주문 총 가격 -->
-							<div class="widget">
-								<div class="plan-selection">
-									<div class="plan-data">
-										<div class="summary-head">
-											<h5 class="summary-title">Total</h5>
-										</div>
-										
-										<!-- 총 금액 -->
-											<span class="plan-price">
-										<input type=hidden name=hiddentotal value=0>
-											<input type=hidden name=hiddenpriorradio value=0>
-											총 금액은 : <input type=text name=total style="width:100px" readonly> <!-- 입니다 -->
-											</span> 
-								
-								
-							
-										</div>
-										
-									</div>
-								</div>
-							</div>
-							<a href="#" class="btn btn-primary btn-lg mb30" onclick="funding_click()">펀딩 참여하기</a>
-							<input type="button" value="확인" class="btn btn-primary btn-lg mb50" onclick="checkRadio();"/>	
-							
-						</div>
-					</div>
-				</div>
-			</div> <!-- 주문 옵션 끝 -->
-			<div class="col-md-2"></div>
+		<div class="col-md-2">
 		</div>
+		<div class="col-md-8">
+		
+<h1>리워드 옵션</h1>
 
-</form>
+<br>
+<br>
+<br>
+<div class="shopping-cart"> 
+  <div class="column-labels">
+    <label class="product-image">option</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+ 
+ <c:forEach var="rewordDto" items="${reword}" varStatus="stat">
+  <div class="product">
+    <div class="product-image">
+    <input name="option" class="optionCheck" type="checkbox" value="${rewordDto.temp_reword_num}">
+      ${rewordDto.temp_reword_trans}
+    </div>
+    <c:choose>
+	<c:when test="${stat.count eq 1 }">
+	</c:when>
+	<c:otherwise>
+	<div role="tab" id="heading${stat.count}"></div>
+	</c:otherwise>
+	</c:choose>
+    <div class="product-details">
+      <div class="product-title">${rewordDto.temp_reword_name}</div>
+      <p class="product-description">배송비</p><span style="text-align:right;">${rewordDto.temp_reword_trans_price }</span>원
+	<p class="product-description">발송예상일</p> ${rewordDto.temp_reword_trans_month }/${rewordDto.temp_reword_trans_days } 예상
+	
+    </div>
+    <div class="product-price">${rewordDto.temp_reword_price}원</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">${rewordDto.temp_reword_price}원</div>
+  </div>
+  </c:forEach>
+ 
+
+ 
+  <div class="totals">
+    <div class="totals-item">
+      <label>Total</label>
+      <div class="totals-value" id="cart-subtotal">${rewordDto.temp_reword_price}원</div>
+    </div>
+   
+  </div>
+          <button class="checkout" id="optionSubmit" onClick="funding_click()">Checkout</button>
+      
+ 
+</div>
+		
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+
+
+
+
+
+
+
 </body>
 </html>
+
 <%@ include file="../board/include/board_footer.jsp"%>

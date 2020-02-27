@@ -206,11 +206,23 @@ $(document).ready(function() {
 <!-- 								</p> -->
 
 								<!-- 펀딩 참여하기로 이동 -->
-								<a href="../detail/orderOption">
+				
 									<button type="button" class="btn btn-md active btn-primary"
-										id="btnAttend">펀딩 참여하기</button>
-								</a>
+										id="btnAttend" data-projectNum="${projectVo.project_num}">펀딩 참여하기</button>
+										<script>
+											$(function() {
+												$("#btnAttend").each(function() {
+												$(this).click(function(e) {
+												//e.preventDefault();
+												var num = ${num};
+												var url = "/detail/detailMain/" + num +"/reword";
+												location.href=url;
 
+													});
+														});
+												});
+										</script>
+							
 
 							</div>
 						</div>
@@ -243,7 +255,7 @@ $(document).ready(function() {
 						<div role="tab" id="heading${stat.count}">
 						</c:otherwise>
 						</c:choose>
-								<span class="checkout-step-number">${stat.count }</span>
+								<span class="checkout-step-number">${stat.count}</span>
 								<!-- 리워드 타이틀 -->
 								<h4 class="checkout-step-title">
 									<a role="button" data-toggle="collapse"
@@ -265,6 +277,11 @@ $(document).ready(function() {
 									<br> <p>배송비</p><span style="text-align:right;">${rewordDto.temp_reword_trans_price }</span>원
 									<br> <p>발송예상일</p> ${rewordDto.temp_reword_trans_month }/${rewordDto.temp_reword_trans_days } 예상
 									<hr>
+									<a href="/../detail/orderOption">
+									<button type="button" class="btn btn-md active btn-primary"
+										id="btnAttend">프로젝트 참여하기</button>
+									</a>
+									<br>
 									<button type="button" class="btn btn-default btn-circle">
 										<i class="glyphicon glyphicon-ok"></i>
 									</button>
