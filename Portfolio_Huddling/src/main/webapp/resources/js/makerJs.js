@@ -44,5 +44,29 @@ function rewordUpdate(url) {
 	});
 }
 
+function imgInp(){
+	$("#imgInp").on('change', function(){
+        var img = readURL(this);
+        var formData = new FormData();
+		formData.append("file", img);
+        console.log("imgId : ", img);
+        var url = "/upload/intro_img";
+        $.ajax({
+			"type" : "post",
+			"url" : url,
+			"processData" : false,
+			"contentType" : false,
+			"data" : formData,
+			"success" : function(path){
+				console.log("path : " + path);
+				var index = path.lastIndexOf("/");
+				var sub = path.substring(index + 1);
+				console.log("substring : " + sub);
+				$("#introImg").val(path);
+				}
+			});
+    	});
+	}
+
 
 	

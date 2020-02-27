@@ -214,37 +214,36 @@ public class MakerBoardController {
 			String fileName = list.get(count).getImglist_name();
 			System.out.println("가져올 이미지 확인...");
 			if(fileName == null || fileName.equals("")) {
-			// 서버 파일 경로
-			String filePath = "//192.168.0.34/upload/team4/makerUpload/";
-			Calendar cal = Calendar.getInstance();
-
-			// Folder Dir
-			String yearPath = "" + cal.get(Calendar.YEAR);
-			String monthPath = yearPath + File.separator + (cal.get(Calendar.MONTH) + 1);
-			String datePath = monthPath + File.separator + cal.get(Calendar.DATE);
-			String dirPath = filePath + File.separator + datePath;
-
-			// 서버 파일 경로
-			String orgFilePath = dirPath + "/" + fileName;
-			// 로컬 파일 경로
-			String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\"
-					+ fileName;
-
-			// 입력
-			FileInputStream fileInputStream = new FileInputStream(orgFilePath);
-			BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-			// 출력
-			FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
-			BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-
-			int data = 0;
-			while ((data = bufferedInputStream.read()) != -1) {
-				bufferedOutputStream.write(data);
-			}
-			bufferedInputStream.close();
-			bufferedOutputStream.close();
-			} else {
 				System.out.println("가져올 이미지 없음...");
+			} else {
+				String filePath = "//192.168.0.34/upload/team4/makerUpload/";
+				Calendar cal = Calendar.getInstance();
+
+				// Folder Dir
+				String yearPath = "" + cal.get(Calendar.YEAR);
+				String monthPath = yearPath + File.separator + (cal.get(Calendar.MONTH) + 1);
+				String datePath = monthPath + File.separator + cal.get(Calendar.DATE);
+				String dirPath = filePath + File.separator + datePath;
+
+				// 서버 파일 경로
+				String orgFilePath = dirPath + "/" + fileName;
+				// 로컬 파일 경로
+				String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\"
+						+ fileName;
+
+				// 입력
+				FileInputStream fileInputStream = new FileInputStream(orgFilePath);
+				BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+				// 출력
+				FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
+				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+
+				int data = 0;
+				while ((data = bufferedInputStream.read()) != -1) {
+					bufferedOutputStream.write(data);
+				}
+				bufferedInputStream.close();
+				bufferedOutputStream.close();
 			}
 			count += 1;
 		}
