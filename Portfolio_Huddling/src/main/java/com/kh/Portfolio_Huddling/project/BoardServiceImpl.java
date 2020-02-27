@@ -1,6 +1,7 @@
 package com.kh.Portfolio_Huddling.project;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -50,11 +51,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int totalPrice(int project_num) throws Exception {
-		int price = boardDao.totalPrice(project_num);
-		if(price == 0) {
-		return 0;
-		}
+	public Map<Object, Integer> totalPrice(int project_num) throws Exception {
+		Map<Object, Integer> price = boardDao.totalPrice(project_num);
 		return price;
 	}
 

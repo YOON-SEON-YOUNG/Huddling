@@ -56,7 +56,6 @@ function pasteHTML(filepath){
 	var path = "/resources/upload/" + filepath;
 	var sHTML = "<img data-imgName='"+filepath+"' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
-
 }
 </script>
 <form id="frm">

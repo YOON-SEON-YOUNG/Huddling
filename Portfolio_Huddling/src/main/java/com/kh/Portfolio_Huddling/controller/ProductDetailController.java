@@ -3,7 +3,9 @@ package com.kh.Portfolio_Huddling.controller;
 
 import javax.inject.Inject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -124,8 +126,9 @@ public class ProductDetailController {
 	//후원 진행상태 구하기
 	@RequestMapping(value="/totalPrice/{num}",method= RequestMethod.GET)
 	@ResponseBody
-	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
-		int price = boardService.totalPrice(project_num);
+	public Map<Object, Integer> totalPrice(@PathVariable("num")int project_num) throws Exception{
+		Map<Object, Integer> price = boardService.totalPrice(project_num);
+		System.out.println("con :" + price);
 		return price;
 	}
 	

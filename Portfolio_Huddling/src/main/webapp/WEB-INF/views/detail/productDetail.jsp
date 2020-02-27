@@ -49,9 +49,10 @@ $(document).ready(function() {
 	
 	// 총 금액 구하기
 	$.get("/detail/totalPayment/" + num,function(data){
-		if(data == null)
-		var num = 0;
-		$('#totalPayment').text(num);
+		if(data == null){
+		data = 0;
+		}
+		$('#totalPayment').text(data);
 	});
 	
 	// 남은 기한 구하기
@@ -69,7 +70,11 @@ $(document).ready(function() {
 	
 	//백분율 구하기
 	$.get("/detail/totalPrice/" + num,function(data){
-		var num1 = $('#totalPayment').val();
+		var num1 = $('#totalPayment').text();
+		console.log("num1 ", num1);
+		if(num1 == null){
+		num1 = 0;
+		}
 		var num2 = data;
 		var per = num1 / num2 * 100;
 		$('#per').text(per);

@@ -15,7 +15,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("로그인 전처리");
 		HttpSession session = request.getSession();
 		MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
 		if (memberVo != null) {
@@ -27,7 +26,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("로그인 후처리");
 		HttpSession session = request.getSession();
 		ModelMap modelMap = modelAndView.getModelMap();
 		MemberVo memberVo = (MemberVo)modelMap.get("memberVo");

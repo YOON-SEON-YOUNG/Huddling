@@ -29,9 +29,10 @@
 	where temp_basic_num = #{project_num}
 	</select>
 	
-	<select id="totalPrice" resultType="Integer">
-	select basic_amount from tbl_temp_basic
-	where temp_basic_num = #{project_num}
+	<select id="totalPrice" resultType="hashmap">
+	select a.payment_point, b.basic_amount from tbl_payment a, tbl_temp_basic b
+    where b.temp_basic_num = a.project_num
+    and b.temp_basic_num = #{project_num}
 	</select>
 	
 	<select id="makersInfo" resultType="TempMakerMakersDto">

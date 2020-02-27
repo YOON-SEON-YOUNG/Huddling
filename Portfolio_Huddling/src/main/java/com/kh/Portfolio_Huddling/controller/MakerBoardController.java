@@ -218,15 +218,15 @@ public class MakerBoardController {
 			} else {
 				String filePath = "//192.168.0.34/upload/team4/makerUpload/";
 				Calendar cal = Calendar.getInstance();
-
 				// Folder Dir
 				String yearPath = "" + cal.get(Calendar.YEAR);
 				String monthPath = yearPath + File.separator + (cal.get(Calendar.MONTH) + 1);
 				String datePath = monthPath + File.separator + cal.get(Calendar.DATE);
 				String dirPath = filePath + File.separator + datePath;
-
 				// 서버 파일 경로
+				System.out.println("dirPath" + dirPath);
 				String orgFilePath = dirPath + "/" + fileName;
+				System.out.println("orgFilePath : " + orgFilePath);
 				// 로컬 파일 경로
 				String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\"
 						+ fileName;
