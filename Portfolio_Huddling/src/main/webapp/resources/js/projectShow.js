@@ -12,19 +12,20 @@
 			
 function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
 		var strList = "";
-		strList +="<div class='col-md-4'>";
+		strList +="<div style='height:300px;' class='col-md-4'>";
+		strList +="<a href='/detail/detailMain/"+encodeURI(project_num)+"'>";
 		strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
 		strList += "style='max-width: 100%; height: auto;'/>";
 		strList +="<div class='card-block'>";
 		strList +="<h5 class='card-title'>";
-		strList += project_name +"|"+ project_story;
+		strList +="<br>";
+		strList +="<div style='height:20px;'>"+project_name+"</div>";
 		strList +="<br>";
 		strList +="</h5>";
 		strList +="<div class='progress' style='padding: 5px 0px 0px 0px; margin:5px;'>";
 		strList +="<div class='progress-bar w-75'>";
 		strList +="</div> </div> <p>";
-		strList += "<a class='btn btn-primary  btn-lg mb30' href='/detail/detailMain/"+project_num+"'>펀딩하러가기</a>";
-		strList +="</p> </div> </div> </div>";
+		strList +="</p> </div> </div> </a> </div>";
 		arrProject.push(strList);
 }
 
@@ -35,6 +36,9 @@ function arrStrPush(project_num, project_category, project_image, project_story,
 	function showProject() {
 		for (var i = moreShoeNum; i < (moreShoeNum+6); i++) {
 			$("#newList").append(arrProject[i]);
+//			if ( (i % 3) == 0 ) {
+//				$("#newList").append("<hr>");
+//			}
 		}
 		moreShoeNum = moreShoeNum + 6;
 	}
