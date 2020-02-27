@@ -26,9 +26,9 @@
 			
 function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
 		var strList = "";
-		strList +="<div style='height:300px;' class='col-md-4'>";
+		strList +="<div style='height:350px;' class='col-md-4'>";
 		strList +="<a href='/detail/detailMain/"+encodeURI(project_num)+"'>";
-		strList +="<img class='card-img-top' alt='Bootstrap Thumbnail First' src='/resources/images/thumbnail_01.jpg'"; 
+		strList +="<img style='height:250px; width:100%;' class='card-img-top' alt='Bootstrap Thumbnail First' src='/upload/imgView?fileName="+project_image+"'"; 
 		strList += "style='max-width: 100%; height: auto;'/>";
 		strList +="<div class='card-block'>";
 		strList +="<h5 class='card-title'>";
