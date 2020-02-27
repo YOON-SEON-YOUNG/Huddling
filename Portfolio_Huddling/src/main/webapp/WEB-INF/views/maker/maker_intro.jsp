@@ -9,7 +9,7 @@
 <link href="/resources/css/heroic-features.css" rel="stylesheet">
 <style>
 .card-img-top{
- width: 250px;
+ max-width: 100%;
  height: 210px;
 }
 </style>
