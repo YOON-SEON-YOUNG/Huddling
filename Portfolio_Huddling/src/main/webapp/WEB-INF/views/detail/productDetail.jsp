@@ -1,14 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../board/include/board_header.jsp"%>
-<!doctype html>
-<html>
-<head>
+<!-- 헤더 부트스트랩-->
+<link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/font-awesome.css" rel="stylesheet"> 
+<!--  // 헤더 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="/resources/js/projectShow.js"></script>
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/JavaScript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
