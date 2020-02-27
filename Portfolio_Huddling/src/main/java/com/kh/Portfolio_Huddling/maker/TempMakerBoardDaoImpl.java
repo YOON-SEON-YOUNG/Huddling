@@ -192,7 +192,21 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 
 
 	@Override
-	public void tempUplaodCategory(int project_num) throws Exception {
+	public void tempUploadCategory(int project_num) throws Exception {
 		sqlSession.update(NAMESPACE + ".introcategoryUpdate",project_num);
+	}
+
+
+	@Override
+	public void tempUploadTitle(int project_num) throws Exception {
+		sqlSession.update(NAMESPACE + ".introTitleUpdate",project_num);
+		
+	}
+
+
+	@Override
+	public void tempUploadStory(int project_num) throws Exception {
+		sqlSession.update(NAMESPACE + ".introStoryUpdate",project_num);
+		
 	}
 }
