@@ -41,13 +41,16 @@ public class ProductDetailController {
 	
 	// 펀딩 상세보기 페이지 
 	@RequestMapping(value="/detailMain/{num}", method=RequestMethod.GET)
-	public String page(@PathVariable("num") int project_num,
-			HttpServletRequest request, Model model) throws Exception {
-		HttpSession session = request.getSession();
+	public String page(@PathVariable("num") int project_num, Model model, HttpSession session) throws Exception {
 		session.setAttribute("project_num", project_num);
+		MemberVo vo = (MemberVo)session.getAttribute("memberVo");
+		System.out.println("vo:" + vo);
 		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
 		model.addAttribute("reword",list);
 		System.out.println("detailMain 실행중");
+		// 작성자 아이디 자바에 넣기위해 추가
+		TempMakerMakersDto makersDto = boardService.makersInfo(project_num);
+		model.addAttribute("makersDto",makersDto);
 		return "detail/productDetail";
 	}
 	
@@ -109,9 +112,9 @@ public class ProductDetailController {
 	@RequestMapping(value="/getDetail/{num}", method= RequestMethod.GET)
 	@ResponseBody
 	public BoardVo getDetail(@PathVariable("num")int project_num,
-			HttpServletRequest request) throws Exception {
+			HttpSession session) throws Exception {
 		System.out.println("디테일 데이터 가져옴...");
-		project_num = (int) request.getSession().getAttribute("project_num"); 
+//		project_num = (int) session.getAttribute("project_num"); 
 		BoardVo vo = boardService.getDetail(project_num);
 		return vo;
 	}
@@ -146,18 +149,19 @@ public class ProductDetailController {
 	//후원 진행상태 구하기
 	@RequestMapping(value="/totalPrice/{num}",method= RequestMethod.GET)
 	@ResponseBody
-	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
-		int price = boardService.totalPrice(project_num);
+	public Map<Object, Integer> totalPrice(@PathVariable("num")int project_num) throws Exception{
+		Map<Object, Integer> price = boardService.totalPrice(project_num);
+		System.out.println("con :" + price);
 		return price;
 	}
 	
 	//창작자 가져오기
 	@RequestMapping(value="/makersInfo/{num}",method = RequestMethod.GET)
 	@ResponseBody
-	public TempMakerMakersDto makersInfo(@PathVariable("num")int project_num) throws Exception{
+	public TempMakerMakersDto makersInfo(@PathVariable("num")int project_num, HttpSession session) throws Exception{
+		System.out.println("makersInfo : " + project_num);
 		TempMakerMakersDto makersDto = boardService.makersInfo(project_num);
 		return makersDto;
-		
 	}
 	
 	// 포인트 사용하기

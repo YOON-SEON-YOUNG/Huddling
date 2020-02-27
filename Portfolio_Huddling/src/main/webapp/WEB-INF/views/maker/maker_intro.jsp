@@ -7,7 +7,12 @@
 
 <!-- Custom styles for this template -->
 <link href="/resources/css/heroic-features.css" rel="stylesheet">
-
+<style>
+.card-img-top{
+ max-width: 100%;
+ height: 210px;
+}
+</style>
 <script>
 </script>
 
@@ -52,8 +57,7 @@
 			<c:forEach var="projectVo" items="${list }">
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card h-100">
-						<img class="card-img-top" src="/upload/imgView?fileName=${projectVo.project_image }
-						"style='max-width: 100%; height: auto;'>
+						<img class="card-img-top" src="/upload/imgView?fileName=${projectVo.project_image }">
 						<div class="card-body">
 							<h4 class="card-title">${projectVo.project_name }</h4>
 							<p class="card-text">${projectVo.project_story }</p>

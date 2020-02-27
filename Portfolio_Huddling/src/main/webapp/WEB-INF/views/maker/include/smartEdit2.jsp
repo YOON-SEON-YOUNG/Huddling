@@ -23,7 +23,7 @@ $(function(){
 	});
 	var board = $('#textAreaContent').val().trim();
 		if(board == '' || board == null){
-		$("#textAreaContent").load("/resources/upload/basicBoard.html", function(txt, status) {
+		$("#textAreaContent").load("/resources/basicBoard.html", function(txt, status) {
 			console.log('기본 텍스트 가져옴...');
 	       if (status == "success") {
 	           console.log("로딩 성공");
@@ -56,7 +56,6 @@ function pasteHTML(filepath){
 	var path = "/resources/upload/" + filepath;
 	var sHTML = "<img data-imgName='"+filepath+"' src='" + path + "'/>";
     oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
-
 }
 </script>
 <form id="frm">

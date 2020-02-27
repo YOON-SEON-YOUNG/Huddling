@@ -43,34 +43,21 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<!-- 해당사항 만들고 주석 풀고 참고하여 사용하시면됩니다.. -->
-<!-- 	<beans:bean id="sampleInterceptor" -->
-<!-- 				class="com.kh.sample01.interceptor.SampleInterceptor"/> -->
-	
-	
-<!-- 	<beans:bean id="loginInterceptor" -->
-<!-- 				class="com.kh.sample01.interceptor.LoginInterceptor"/> -->
-	
-<!-- 	<beans:bean id="authInterceptor" -->
-<!-- 				class="com.kh.sample01.interceptor.AuthInterceptor"/> -->
-	
-	
+<beans:bean id="loginInterceptor"
+				class="com.kh.Portfolio_Huddling.interceptor.LoginInterceptor"/>
+	<beans:bean id="authinterceptor"
+				class="com.kh.Portfolio_Huddling.interceptor.AuthInterceptor"/>
 	<!-- 인터셉터 -->
-<!-- 	<interceptors> -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/doA"/> -->
-<!-- 			<mapping path="/doB"/> -->
-<!-- 			<beans:ref bean="sampleInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/member/loginPost"/> -->
-<!-- 			<beans:ref bean="loginInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/board/**/*"/> -->
-<!-- 			<exclude-mapping path="/board/listAll"/> -->
-<!-- 			<beans:ref bean="authInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 	</interceptors> -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/maker/**/*"/>
+			<beans:ref bean="authinterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 	

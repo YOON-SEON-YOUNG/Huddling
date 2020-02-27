@@ -4,6 +4,7 @@
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script>
 	$(document).ready(function() {
+				imgInp();
 				$("#projectTitle").text("메이커 정보");
 				var makerBagicInfo = "<span>";
 				makerBagicInfo += "<h4>";
@@ -18,28 +19,6 @@
 					var url= "/maker/tempDataMakersInfo";
 					formsave(url);
 				});
-				
-				$("#imgInp").on('change', function(){
-		            var img = readURL(this);
-		            var formData = new FormData();
-		    		formData.append("file", img);
-		            console.log("imgId : ", img);
-		            var url = "/upload/intro_img";
-		            $.ajax({
-		    			"type" : "post",
-		    			"url" : url,
-		    			"processData" : false,
-		    			"contentType" : false,
-		    			"data" : formData,
-		    			"success" : function(path){
-		    				console.log("path : " + path);
-		    				var index = path.lastIndexOf("/");
-		    				var sub = path.substring(index + 1);
-		    				console.log("substring : " + sub);
-		    				$("#introImg").val(path);
-		    				}
-		    			});
-		        });
 			});
 </script>
 <div class="container-fluid">
@@ -62,7 +41,8 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${makersDto.temp_makerinfo_image }"/>
-					  <input type="hidden" id = "introImg" value="1" name="temp_makerinfo_image"/>
+					  <input type="hidden" id = "introImg"  name='temp_makerinfo_image'
+					  value='<c:if test="${makersDto.temp_makerinfo_image eq ''}"> makerUpload/default.png </c:if>'/>
 					</div>
 				</div>
 		</div>

@@ -16,6 +16,7 @@
 
 <script>
 	$(function() {
+		imgInp();
 // 		$('input[name=tags]').tagify();
 		$("#projectTitle").text("기본 정보");
 		$('#projectDesc').text('기본 정보를 입력하는 곳입니다.')
@@ -32,28 +33,6 @@
 				$(this).prop('selected','selected');
 			}
 		});
-		
-		$("#imgInp").on('change', function(){
-            var img = readURL(this);
-            var formData = new FormData();
-    		formData.append("file", img);
-            console.log("imgId : ", img);
-            var url = "/upload/intro_img";
-            $.ajax({
-    			"type" : "post",
-    			"url" : url,
-    			"processData" : false,
-    			"contentType" : false,
-    			"data" : formData,
-    			"success" : function(path){
-    				console.log("path : " + path);
-    				var index = path.lastIndexOf("/");
-    				var sub = path.substring(index + 1);
-    				console.log("substring : " + sub);
-    				$("#introImg").val(path);
-    				}
-    		});
-        });
 	});
 </script>
 <form id="formHidden">
@@ -84,7 +63,7 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${basicDto.basic_representImg }"/>
-					  <input type="hidden" id = "introImg" value="1" name="basic_representImg"/>
+					  <input type="hidden" id = "introImg" value="<c:if test="${basicDto.basic_representImg eq null || basicDto.basic_representImg eq ''}">makerUpload/default.png</c:if>" name="basic_representImg"/>
 					</div>
 				</div>
 		</div>

@@ -88,7 +88,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<h1>문의</h1>
+	<h1>관리자문의</h1>
 	<hr>
 	<table border="1">
 		<tr>

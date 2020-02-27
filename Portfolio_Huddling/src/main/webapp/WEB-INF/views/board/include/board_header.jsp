@@ -38,6 +38,18 @@
 				$(this).find('.dropdown-menu').stop(true, true).delay(200)
 						.fadeOut(500);
 			});
+	
+$(document).ready(function () {
+	$("#managerInquiry").click(function(e) {
+		e.preventDefault();
+// 		window.open("manager/inquiry", "관리자문의", "width=800, height=700");
+		var popupX = (window.screen.width / 2) - 250;
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+		var popupY= (window.screen.height / 2) - 415;
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+		window.open('manager/inquiry', '관리자문의', 'height=630, width=502, left='+ popupX + ', top='+ popupY);
+	});
+});
 </script>
 
 
@@ -269,22 +281,22 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 									<li><a href="/" class="active">Home</a></li>
 									<li><a href="/maker/intro">About</a></li>
 									<li><a href="/maker/intro">프로젝트 등록</a></li>
-									<li class="dropdown">
-										<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">카테고리 <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="/board/categoryTech">테크/가전</a></li>
-											<li><a href="/board/categoryBeauty">뷰티</a></li>
-											<li><a href="/board/categoryFood">푸드</a></li>
-											<li><a href="/board/categoryCulture">문화</a></li>
-											<li><a href="/board/categoryDonate">기부/후원</a></li>
-											<li class="divider"></li>			
-										</ul>
-									</li>
+<!-- 									<li class="dropdown"> -->
+<!-- 										<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">카테고리 <b class="caret"></b></a> -->
+<!-- 										<ul class="dropdown-menu"> -->
+<!-- 											<li><a href="/board/categoryTech">테크/가전</a></li> -->
+<!-- 											<li><a href="/board/categoryBeauty">뷰티</a></li> -->
+<!-- 											<li><a href="/board/categoryFood">푸드</a></li> -->
+<!-- 											<li><a href="/board/categoryCulture">문화</a></li> -->
+<!-- 											<li><a href="/board/categoryDonate">기부/후원</a></li> -->
+<!-- 											<li class="divider"></li>			 -->
+<!-- 										</ul> -->
+<!-- 									</li> -->
 <!-- 									href="/member/mypageMain" -->
 									<c:choose>
 										<c:when test="${not empty memberVo && memberVo.member_id != 'manager'}">
 											<li><a  href="/member/mypageMain"id="mypage">마이페이지</a></li>
-										<li><a href="/manager/inquiry">관리자에게문의</a></li>
+										<li><a id="managerInquiry" href="">관리자에게문의</a></li>
 										</c:when>
 										
 										<c:when test="${not empty memberVo && memberVo.member_id == 'manager' }">

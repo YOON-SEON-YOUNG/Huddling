@@ -38,6 +38,19 @@
 <script>
   
 $(document).ready(function(){
+	
+	$('#submitReg').click(function(e){
+		e.preventDefault();
+		console.log('click');
+		$('.regChk').each(function(e){
+			var v = $(this).val();
+			if(v == '' || v == null) {
+				console.log('not reg');
+			} else {
+				$('#formReg').submit();
+			}
+		});
+	});
 	$("#member_id").keyup(function(e){
 		console.log("키를누름");
 		var member_id =$("#member_id").val();
@@ -123,7 +136,7 @@ function memberAddress() {
 		
 	<!--                                         작업시작                         -->
 		<div class="col-md-3" style="left:-260px">
-		<form action="/member/register" method="post">
+		<form id="formReg" method="post">
 	<!--                                 아이디                                   -->
   <div class="form-group">
   <div style="text-align:center;">
@@ -131,37 +144,37 @@ function memberAddress() {
   	<a><img src="/resources/images/hudling_logo.jpg"id="image"></img></a><br>
     </div>
     <label for="exampleInputEmail1">아아디</label>
-    <input type="text" class="form-control" id="member_id" aria-describedby="emailHelp" name="member_id" >
+    <input type="text" class="form-control regChk" id="member_id" aria-describedby="emailHelp" name="member_id" >
  	<small id="textHelp1" class="form-text text-muted" >중복확인</small>
   </div>
   
    <!--                                   이름                                     -->
   <div class="form-group">
     <label for="exampleInputEmail1">이름</label>
-    <input type="text" class="form-control" id="member_name" aria-describedby="emailHelp" name="member_name">
+    <input type="text" class="form-control regChk" id="member_name" aria-describedby="emailHelp" name="member_name">
   </div>
   
   <!-- 비밀번호 -->
   <div class="form-group">
     <label for="exampleInputPassword1">비밀번호</label>
-    <input type="password" class="form-control" id="member_pw" name="member_pw">
+    <input type="password" class="form-control regChk" id="member_pw" name="member_pw">
   </div>
   
   <!-- 닉네임 -->
   <div class="form-group">
     <label for="exampleInputEmail1">닉네임</label>
-    <input type="text" class="form-control" id="member_nickname" aria-describedby="emailHelp" name="member_nickname">
+    <input type="text" class="form-control regChk" id="member_nickname" aria-describedby="emailHelp" name="member_nickname">
   	<small id="textHelp2" class="form-text text-muted" id="overLap">중복확인</small>
   </div>
   <!-- 이메일 -->
   <div class="form-group">
     <label for="exampleInputEmail1">이메일</label>
-    <input type="email" class="form-control" id="member_email" aria-describedby="emailHelp" name="member_email">
+    <input type="email" class="form-control regChk" id="member_email" aria-describedby="emailHelp" name="member_email">
   </div>
   <!-- 주소 -->
   <div class="form-group">
     <label for="exampleInputEmail1">주소</label>
-    <input type="text" id="member_address"  name ="member_address"class="form-control" id="member_email" aria-describedby="emailHelp"placeholder="주소">
+    <input type="text" id="member_address"  name ="member_address"class="form-control regChk" id="member_email" aria-describedby="emailHelp"placeholder="주소">
 <input type="button" onclick="memberAddress()" value="주소 검색"><br>
   </div>
   
@@ -169,7 +182,7 @@ function memberAddress() {
   <!-- 전화번호 -->
   <div class="form-group">
     <label for="exampleInputEmail1">전화번호</label>
-    <input type="tel" class="form-control" id="member_call" aria-describedby="emailHelp" name="member_call">
+    <input type="tel" class="form-control regChk" id="member_call" aria-describedby="emailHelp" name="member_call">
   </div>
   
  
@@ -182,7 +195,7 @@ function memberAddress() {
     <label class="form-check-label" for="exampleCheck1" id="dd">이용약관(필수)</label>
   </div>
   
-  <button type="submit" class="btn btn-primary">회원가입</button>
+  <button class="btn btn-primary" id="submitReg">회원가입</button>
 </form>
 
 		</div>

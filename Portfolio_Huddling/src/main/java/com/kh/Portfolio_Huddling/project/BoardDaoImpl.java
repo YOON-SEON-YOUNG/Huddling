@@ -1,6 +1,7 @@
 package com.kh.Portfolio_Huddling.project;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -44,7 +45,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public int totalPrice(int project_num) throws Exception {
+	public Map<Object, Integer> totalPrice(int project_num) throws Exception {
 		return sqlsession.selectOne(NAMESPACE + ".totalPrice",project_num);
 	}
 

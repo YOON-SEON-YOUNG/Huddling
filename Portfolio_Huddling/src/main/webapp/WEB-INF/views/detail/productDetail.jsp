@@ -1,14 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page pageEncoding="utf-8" session="false"%>
+<%@ page pageEncoding="utf-8"%>
 <%@ include file="../board/include/board_header.jsp"%>
-<!doctype html>
-<html>
-<head>
+<!-- 헤더 부트스트랩-->
+<link href="/resources/main/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/resources/main/css/font-awesome.css" rel="stylesheet"> 
+<!--  // 헤더 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="/resources/js/projectShow.js"></script>
+
 <!-- Required meta tags -->
 <meta charset="utf-8">
 
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/JavaScript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -32,23 +40,27 @@
 <script>
 $(document).ready(function() {
 	
+	var p_title = "";
 	var num = ${num};
 	$("#page").load("/detail/tapInfo");
 	
 	//디테일 가져오기
 	$.get("/detail/getDetail/" + num,function(data){
 		console.log("data",data);
+		p_title = data.project_name;
 		$('#p_category').text(data.project_category);
-		$('#p_title').text(data.project_name);
+		$('#p_title').text(p_title);
+		$('#project_name').val(p_title);
 		$('#product_story').html(data.story_storyboard);
 		$('#imgs').attr('src','/upload/imgView?fileName=' + data.story_introimg);
 	});
 	
 	// 총 금액 구하기
 	$.get("/detail/totalPayment/" + num,function(data){
-		if(data == null)
-		var num = 0;
-		$('#totalPayment').text(num);
+		if(data == null){
+		data = 0;
+		}
+		$('#totalPayment').text(data);
 	});
 	
 	// 남은 기한 구하기
@@ -66,7 +78,11 @@ $(document).ready(function() {
 	
 	//백분율 구하기
 	$.get("/detail/totalPrice/" + num,function(data){
-		var num1 = $('#totalPayment').val();
+		var num1 = $('#totalPayment').text();
+		console.log("num1 ", num1);
+		if(num1 == null){
+		num1 = 0;
+		}
 		var num2 = data;
 		var per = num1 / num2 * 100;
 		$('#per').text(per);
@@ -80,6 +96,8 @@ $(document).ready(function() {
 		$('#creatorName').text(data.temp_makerinfo_name);
 		$('#creatorEmail').text(data.temp_makerinfo_email);
 		$('#creatorPhone').text(data.temp_makerinfo_tel);
+		$('#createId').text(data.user_id);
+		$('#receiver').val(data.user_id);
 	});
 	
 	$("#tapInfo").click(function(e) {
@@ -230,13 +248,19 @@ $(document).ready(function() {
 						<div id="accordion" class="checkout">
 						<h5>창작자 소개</h5>
 						<br>
-						창작자 이름 : <span id="creatorName">김경희</span> <br>
+						창작자 이름 : <span id="creatorName">김경희</span>|<span id="createId"></span> <br>
 						창작자 이메일 : <span id="creatorEmail">email.email.com</span> <br> 
 						창작자 전화번호: <span id="creatorPhone">010-000-0000</span> <br>
 						<hr>
-							<button type="button" class="btn btn-outline-secondary"
-								style="width: 392px;" data-creator="">창작자에게 문의하기</button>
-								
+							<c:if test="${not empty memberVo.member_id && memberVo.member_id != makersDto.user_id}">
+								<form action="/member/sendInquiry" method="get">
+								<input type="hidden" name="inquiry" id="inquiry" value="1">
+								<input type="hidden" name="project_name" id="project_name" value="x">
+								<input type="hidden" name="receiver" id="receiver" value="x">
+								<button type="submit" class="btn btn-outline-secondary"
+												style="width: 100%;">창작자에게 문의하기</button>
+								</form>
+							</c:if>
 						</div>
 						
 					</div>

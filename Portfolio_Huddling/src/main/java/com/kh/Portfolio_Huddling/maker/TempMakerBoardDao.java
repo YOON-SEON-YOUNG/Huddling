@@ -19,6 +19,10 @@ public interface TempMakerBoardDao {
 	public void tempSaveBasic(TempMakerBasicDto basicDto) throws Exception;
 	//스토리 작성
 	public TempMakerStoryDto tempLoadStory(int tempStoryNum) throws Exception;
+	public void tempUploadImg(int project_num) throws Exception;
+	public void tempUploadCategory(int project_num) throws Exception;
+	public void tempUploadTitle(int project_num) throws Exception;
+	public void tempUploadStory(int project_num) throws Exception;
 	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception;
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception;
 	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception;

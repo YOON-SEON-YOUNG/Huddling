@@ -5,6 +5,7 @@
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
 <script>
 	$(document).ready(function() {
+		imgInp();
 		var projectNum = ${projectNum};
 		$.ajax({
 			"url":"/maker/imgLoad/" + projectNum,
@@ -26,28 +27,6 @@
 		$('#btnintroImg').click(function(e){
 			e.preventDefault();
 		});
-		
-		$("#imgInp").on('change', function(){
-            var img = readURL(this);
-            var formData = new FormData();
-    		formData.append("file", img);
-            console.log("imgId : ", img);
-            var url = "/upload/intro_img";
-            $.ajax({
-    			"type" : "post",
-    			"url" : url,
-    			"processData" : false,
-    			"contentType" : false,
-    			"data" : formData,
-    			"success" : function(path){
-    				console.log("path : " + path);
-    				var index = path.lastIndexOf("/");
-    				var sub = path.substring(index + 1);
-    				console.log("substring : " + sub);
-    				$("#introImg").val(path);
-    				}
-    			});
-        });
     });
 </script>
 	<div class="container-fluid">
@@ -66,7 +45,7 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${storyDto.story_introimg }"/>
-					  <input type="hidden" id = "introImg" value="1" name="story_introimg"/>
+					  <input type="hidden" id = "introImg" value="<c:if test="${storyDto.story_introimg eq null || storyDto.story_introimg eq ''}">makerUpload/default.png</c:if>${storyDto.story_introimg }" name="story_introimg"/>
 					</div>
 				</div>
 			</div>

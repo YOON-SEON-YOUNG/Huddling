@@ -43,7 +43,13 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 	}
 
 	@Override
+	@Transactional
 	public void tempStoryUpdate(TempMakerStoryDto storyDto) throws Exception {
+		int project_num = storyDto.getTemp_story_num();
+		boardDao.tempUploadImg(project_num);
+		boardDao.tempUploadCategory(project_num);
+		boardDao.tempUploadStory(project_num);
+		boardDao.tempUploadTitle(project_num);
 		boardDao.tempSaveStory(storyDto);
 	}
 

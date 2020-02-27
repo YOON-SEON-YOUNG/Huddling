@@ -145,7 +145,6 @@ public class MakerBoardController {
 	@RequestMapping(value = "/tempDataStory", method = RequestMethod.POST)
 	@ResponseBody
 	public TempMakerStoryDto data(/*HttpServletRequest request, */TempMakerStoryDto storyDto) throws Exception {
-		System.out.println("storyDto:" + storyDto);
 		makerService.tempStoryUpdate(storyDto);
 		return storyDto;
 	}
@@ -159,45 +158,47 @@ public class MakerBoardController {
 		System.out.println("업로드 할 파일 있는지 확인...");
 		//파일 업로드
 		if (imgName == null || imgName.equals("")) {
-			// 복사할 파일 경로
-			String orgFilePath = session.getServletContext().getRealPath("/") + "resources\\upload\\" + imgName; // 경로명
-			String filePath = "//192.168.0.34/upload/team4/makerUpload/";
-			String fileDir = FileUploadUtil.calcPath(filePath);
-
-			// 복사될 파일 경로
-			String copyFilePath = filePath + fileDir + "/" + imgName;
-			TempMakerBoardImgDto imgDto = new TempMakerBoardImgDto();
-			imgDto.setTemp_imglist_num(num);
-
-			// 이미지 이름이 Null값이거나 공백인 경우 처리
-			if (imgName == null || imgName.equals("")) {
-				imgDto.setImglist_name(" ");
-			} else {
-				imgDto.setImglist_name(imgName);
-			}
-			makerService.tempInputImgName(imgDto);
-			try {
-				// 입력용
-				FileInputStream fileInputStream = new FileInputStream(orgFilePath);
-				BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-
-				// 출력용
-				FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
-				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-
-				int data = 0;
-				while ((data = bufferedInputStream.read()) != -1) {
-					bufferedOutputStream.write(data);
-				}
-				bufferedInputStream.close();
-				bufferedOutputStream.close();
-				System.out.println("복사 완료...");
-				session.removeAttribute("filename");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
 			System.out.println("업로드할 파일 없음...");
+		} else {
+		// 복사할 파일 경로
+					String orgFilePath = session.getServletContext().getRealPath("/") + "resources\\upload\\" + imgName; // 경로명
+					System.out.println("orgFilePath" + orgFilePath);
+					String filePath = "//192.168.0.34/upload/team4/makerUpload/";
+					String fileDir = FileUploadUtil.calcPath(filePath);
+
+					// 복사될 파일 경로
+					String copyFilePath = filePath + fileDir + "/" + imgName;
+					TempMakerBoardImgDto imgDto = new TempMakerBoardImgDto();
+					imgDto.setTemp_imglist_num(num);
+
+					// 이미지 이름이 Null값이거나 공백인 경우 처리
+					if (imgName == null || imgName.equals("")) {
+						imgDto.setImglist_name(" ");
+					} else {
+						imgDto.setImglist_name(imgName);
+					}
+					makerService.tempInputImgName(imgDto);
+					try {
+						// 입력용
+						FileInputStream fileInputStream = new FileInputStream(orgFilePath);
+						System.out.println("fis :" + fileInputStream );
+						BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+
+						// 출력용
+						FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
+						BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+
+						int data = 0;
+						while ((data = bufferedInputStream.read()) != -1) {
+							bufferedOutputStream.write(data);
+						}
+						bufferedInputStream.close();
+						bufferedOutputStream.close();
+						System.out.println("복사 완료...");
+						session.removeAttribute("filename");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 		}
 		System.out.println("서버 저장 완료...");
 		return "maker/data";
@@ -213,37 +214,36 @@ public class MakerBoardController {
 			String fileName = list.get(count).getImglist_name();
 			System.out.println("가져올 이미지 확인...");
 			if(fileName == null || fileName.equals("")) {
-			// 서버 파일 경로
-			String filePath = "//192.168.0.34/upload/team4/makerUpload/";
-			Calendar cal = Calendar.getInstance();
-
-			// Folder Dir
-			String yearPath = "" + cal.get(Calendar.YEAR);
-			String monthPath = yearPath + File.separator + (cal.get(Calendar.MONTH) + 1);
-			String datePath = monthPath + File.separator + cal.get(Calendar.DATE);
-			String dirPath = filePath + File.separator + datePath;
-
-			// 서버 파일 경로
-			String orgFilePath = dirPath + "/" + fileName;
-			// 로컬 파일 경로
-			String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\"
-					+ fileName;
-
-			// 입력
-			FileInputStream fileInputStream = new FileInputStream(orgFilePath);
-			BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-			// 출력
-			FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
-			BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-
-			int data = 0;
-			while ((data = bufferedInputStream.read()) != -1) {
-				bufferedOutputStream.write(data);
-			}
-			bufferedInputStream.close();
-			bufferedOutputStream.close();
-			} else {
 				System.out.println("가져올 이미지 없음...");
+			} else {
+				String filePath = "//192.168.0.34/upload/team4/makerUpload/";
+				Calendar cal = Calendar.getInstance();
+				// Folder Dir
+				String yearPath = "" + cal.get(Calendar.YEAR);
+				String monthPath = yearPath + File.separator + (cal.get(Calendar.MONTH) + 1);
+				String datePath = monthPath + File.separator + cal.get(Calendar.DATE);
+				String dirPath = filePath + File.separator + datePath;
+				// 서버 파일 경로
+				System.out.println("dirPath" + dirPath);
+				String orgFilePath = dirPath + "/" + fileName;
+				System.out.println("orgFilePath : " + orgFilePath);
+				// 로컬 파일 경로
+				String copyFilePath = request.getSession().getServletContext().getRealPath("/") + "resources\\upload\\"
+						+ fileName;
+
+				// 입력
+				FileInputStream fileInputStream = new FileInputStream(orgFilePath);
+				BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+				// 출력
+				FileOutputStream fileOutputStream = new FileOutputStream(copyFilePath);
+				BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+
+				int data = 0;
+				while ((data = bufferedInputStream.read()) != -1) {
+					bufferedOutputStream.write(data);
+				}
+				bufferedInputStream.close();
+				bufferedOutputStream.close();
 			}
 			count += 1;
 		}
