@@ -42,13 +42,16 @@ public class MakerBoardUploadController {
 	@RequestMapping(value = "/imgView", method =  RequestMethod.GET)
 	@ResponseBody
 	public byte[] displayFile(@RequestParam("fileName") String fileName) throws Exception {
+		if(fileName == null || fileName.equals("")) {
+		System.out.println("리턴 값 없음...");
+		fileName="makerUpload\\default.png";
+		} 
 		String realPath = uploadPath + File.separator + fileName.replace("/", "\\");
 		System.out.println("realPath:"+ realPath);
 		FileInputStream fileInputStream = new FileInputStream(realPath);
 		byte[] bytes = IOUtils.toByteArray(fileInputStream);
+		System.out.println("bytes :" + bytes);
 		fileInputStream.close();
 		return bytes;
-	}
-	
-	
+		}
 }
