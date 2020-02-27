@@ -52,7 +52,6 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 
 	@Override
 	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception {
-		System.out.println("dao/ : " + storyDto);
 		sqlSession.update(NAMESPACE + ".tempUpdateStory",storyDto);
 	}
 
@@ -183,5 +182,11 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 	@Override
 	public int submitProject(int project_num) throws Exception {
 	return sqlSession.update(NAMESPACE + ".submitProject",project_num);
+	}
+
+
+	@Override
+	public void tempUploadImg(int project_num) throws Exception {
+		sqlSession.update(NAMESPACE + ".introImgUpdate",project_num);
 	}
 }

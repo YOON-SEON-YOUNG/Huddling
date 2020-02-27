@@ -145,7 +145,6 @@ public class MakerBoardController {
 	@RequestMapping(value = "/tempDataStory", method = RequestMethod.POST)
 	@ResponseBody
 	public TempMakerStoryDto data(/*HttpServletRequest request, */TempMakerStoryDto storyDto) throws Exception {
-		System.out.println("storyDto:" + storyDto);
 		makerService.tempStoryUpdate(storyDto);
 		return storyDto;
 	}
@@ -179,6 +178,7 @@ public class MakerBoardController {
 			try {
 				// 입력용
 				FileInputStream fileInputStream = new FileInputStream(orgFilePath);
+				System.out.println("fis :" + fileInputStream );
 				BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
 
 				// 출력용

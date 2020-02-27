@@ -35,7 +35,8 @@
 	</select>
 	
 	<select id="makersInfo" resultType="TempMakerMakersDto">
-	select * from tbl_temp_makerinfo
+	select a.*,b.user_id from tbl_temp_makerinfo a, tbl_project b
 	where temp_makerinfo_num = #{project_num}
+	and temp_makerinfo_num = project_num
 	</select>
 </mapper>
