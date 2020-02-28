@@ -8,11 +8,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+.divFront {
+width: 100%; height: 50px;
+}
+.divLeft {
+float : left; background-color:#F2F2F2; border-radius:10px; padding:10px;
+}
+
+.divRight {
+float : right; background-color:#2E64FE; color:white; border-radius:10px; padding:10px;
+}
+</style>
 <title>Insert title here</title>
 <script>
 $(document).ready(function() {
 	//채팅 불러오기
 	var prev;
+	
 	setInterval(function() {
 		var d = new Date();
 		var url = "/message/inquiryRead";
@@ -28,25 +41,27 @@ $(document).ready(function() {
 					console.log(message_date + " // " + prev);
 					var strHtml = "";
 					$(rData).each(function() {
+						
 						if (this.message_sender == member_id) {
-							strHtml += "<div style='width: 100%; height: 50px;'>" + 
-							"<div style='float : right; background-color:#2E64FE; color:white; border-radius:10px; padding:10px;'>" + this.message_content +"</div>" +
+							strHtml += "<div class='divFront'>" + 
+							"<div class='divRight'>" + this.message_content +"</div>" +
 							"</div>";
 						} else {
 							strHtml += "<div>"+this.message_sender+"</div>" +
-							"<div style='width: 100%; height: 50px;'>" + 
-							"<div style='float : left; background-color:#F2F2F2; border-radius:10px; padding:10px;'>" + this.message_content +"</div><br>" +
+							"<div class='divFront'>" + 
+							"<div class='divLeft'>" + this.message_content +"</div><br>" +
 							"</div>";
 						}
 					});
-					$("#chat").empty();
-					$("#chat").append(strHtml);
+					$("#chat").html(strHtml);
+					$("body").hide().show(0);
 					$("#chat").scrollTop($("#chat")[0].scrollHeight);
 					prev = message_date;
 				}
 			}
 		});
 	}, 500);
+	
 	
 	// 클릭 메세지 전송
 	$("#send").click(function() {
