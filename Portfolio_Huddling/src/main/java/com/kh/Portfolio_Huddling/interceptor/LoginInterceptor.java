@@ -30,7 +30,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		ModelMap modelMap = modelAndView.getModelMap();
 		MemberVo memberVo = (MemberVo)modelMap.get("memberVo");
 		if (memberVo != null) {
-			session.setAttribute("memberVo", memberVo);
+			session.setAttribute("vo", memberVo);
 		}
 	}
 }

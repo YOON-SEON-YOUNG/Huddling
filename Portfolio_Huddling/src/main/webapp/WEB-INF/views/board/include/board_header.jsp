@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>Huddling</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="keywords" content="" />
@@ -216,9 +216,11 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 	<div id="manager" name="manager" style="display:none;" ></div>
 		<!--top-bar-w3-agile-->
 	
-			<div class="top-logo_info_w3layouts">
+			<div  style="height:125px;" class="top-logo_info_w3layouts">
+			
+			
 				<div class="col-md-3 logo">
-					<h1><a class="navbar-brand" href="/"><img src="/resources/images/hudling_logo.jpg" 
+					<h1><a class="navbar-brand" href="/"><img src="/resources/images/hudling_logo2.jpg" 
 					style="width:250px; height:125px;"></a></h1>
 				</div>
 
