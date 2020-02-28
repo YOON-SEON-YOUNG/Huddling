@@ -32,7 +32,6 @@ public class MemberServiceIm implements MemberService {
 
 	@Override
 	public MemberVo loginInfo(MemberVo memberVo) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.loginInfo(memberVo);
 	}
 
