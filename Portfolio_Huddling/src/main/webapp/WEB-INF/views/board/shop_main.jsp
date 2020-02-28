@@ -19,9 +19,6 @@
 <script src="/resources/js/projectShow.js"></script>
 <script>
 $(document).ready(function(){
-	
-	
-	
 	$("#project_search").click(function() {
 		if ($("#project_search_input").val() != null && $("#project_search_input").val() != "") {
 			console.log("검색 test");
@@ -122,6 +119,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+${memberVo};
 <div class="container-fluid">
 	<br>
  	<div class="row">

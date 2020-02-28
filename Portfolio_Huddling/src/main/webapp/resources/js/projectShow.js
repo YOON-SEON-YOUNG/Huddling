@@ -12,14 +12,7 @@
 //백분율 구하기
 	function percent(num){
 	$.get("/detail/totalPrice/" + num,function(data){
-		$(this).each(function(e){
-			e = 0;
-			console.log(e);
-			console.log("data : ", data);
-		});
-//		$('#per').text(per);
-//		var barProgress = $(".progress-bar");
-//		barProgress.css('width',per + '%')
+		console.log("Data : ", data);
 		});
 	}
 
@@ -29,7 +22,12 @@ function arrStrPush(project_num, project_category, project_image, project_story,
 			var strList = "";
 			strList +="<div style='height:350px;' class='col-md-4'>";
 			strList +="<a href='/detail/detailMain/"+encodeURI(project_num)+"'>";
-			strList +="<img style='height:250px; width:100%;' class='card-img-top' alt='Bootstrap Thumbnail First' src='/upload/imgView?fileName="+project_image+"'"; 
+			strList +="<img style='height:250px; width:100%;' class='card-img-top' alt='Bootstrap Thumbnail First' src='/upload/imgView?fileName="
+				if(project_image == null){
+					strList += "default.png"+"'";
+					} else {
+					strList += project_image+"'"; 
+					}
 			strList += "style='max-width: 100%; height: auto;'/>";
 			strList +="<div class='card-block'>";
 			strList +="<h5 class='card-title'>";
@@ -42,7 +40,6 @@ function arrStrPush(project_num, project_category, project_image, project_story,
 			strList +="</div> </div> <p>";
 			strList +="</p> </div> </div> </a> </div>";
 			arrProject.push(strList);
-			percent(project_num);
 		}
 }
 

@@ -64,7 +64,7 @@ public class ShopController {
 	public List<ProjectVo> projectLists(ProjectVo projectVo) throws Exception { 
 		System.out.println("요청 들어옴");
 		List<ProjectVo> projectList = projectService.selectIntroList();
-		System.out.println("ShopController, projectLists, projectList:" + projectList);
+//		System.out.println("ShopController, projectLists, projectList:" + projectList);
 		return projectList;
 		
 	}
