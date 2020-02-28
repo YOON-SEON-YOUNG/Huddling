@@ -44,7 +44,7 @@
     <div id="home" class="container tab-pane active"><br>
       <h3>포인트충전</h3>
       
- memberVo : ${memberVo}<br> 
+ 
 
 		
 		<table border="1" align="center">
