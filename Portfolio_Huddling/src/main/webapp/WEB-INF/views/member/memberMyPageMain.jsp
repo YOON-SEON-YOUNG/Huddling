@@ -34,7 +34,7 @@ $(document).ready(function(){
 	var inquiry = '${inquiry.inquiry}';
 	if (inquiry != null && inquiry != "") {
 		if (inquiry == 1) {
-			$("#page").load("myPageQuestionControl?inquiry=${inquiry.inquiry}&project_name=${inquiry.project_name}&receiver=${inquiry.receiver}");
+			$("#page").load("myPageQuestionControl");
 		}
 	}
 	
@@ -191,15 +191,15 @@ label{
 			<div id="list-example" class="list-group">
 							<a class="list-group-item list-group-item-action"
 								 id="item1">내가후원한프로젝트</a> 
-								 <a
-								class="list-group-item list-group-item-action"
-								 id="item2">내가등록한프로젝트</a> 
+<!-- 								 <a -->
+<!-- 								class="list-group-item list-group-item-action" -->
+<!-- 								 id="item2">내가등록한프로젝트</a>  -->
 								 <a
 								class="list-group-item list-group-item-action"
 								 id="item3">문의내역</a> 
-								 <a
-								class="list-group-item list-group-item-action"
-								 id="item4">받은문의내역</a> 
+<!-- 								 <a -->
+<!-- 								class="list-group-item list-group-item-action" -->
+<!-- 								 id="item4">받은문의내역</a>  -->
 								 <a
 								class="list-group-item list-group-item-action"
 								id="item5">포인트 충전</a>

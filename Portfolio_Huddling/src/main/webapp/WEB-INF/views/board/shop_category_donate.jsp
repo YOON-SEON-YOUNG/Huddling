@@ -94,10 +94,10 @@ $(document).ready(function(){
 				</a> <a href="/board/categoryCulture">
 					<button class="btn btn-secondary  btn-lg mb50" type="button">
 						문화</button>
-				</a> <a href="/board/categoryDonate">
-					<button class="btn btn-primary  btn-lg mb50" type="button">
-						기부/후원</button>
-				</a>
+<!-- 				</a> <a href="/board/categoryDonate"> -->
+<!-- 					<button class="btn btn-primary  btn-lg mb50" type="button"> -->
+<!-- 						기부/후원</button> -->
+<!-- 				</a> -->
 			</div>
 			<div class="col-md-2"></div>
 		</div>
