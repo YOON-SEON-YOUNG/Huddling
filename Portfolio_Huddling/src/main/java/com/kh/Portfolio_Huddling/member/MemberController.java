@@ -142,6 +142,9 @@ public class MemberController {
 	@RequestMapping(value = "/sendInquiry", method = RequestMethod.GET)
 	public String rePage(MemberInquiryDto dto, HttpSession session) throws Exception {
 		session.setAttribute("inquiry", dto);
+		System.out.println("sendinquiry"+ dto.getInquiry());
+		System.out.println("sendinquiry"+ dto.getProject_name());
+		System.out.println("sendinquiry"+ dto.getReceiver());
 		return "redirect:/member/mypageMain";
 	}
 	
@@ -152,8 +155,8 @@ public class MemberController {
 		String member_id = memberVo.getMember_id();
 		MemberProfileVo profileVo = service.selectMemberById(member_id);
 		model.addAttribute("profileVo", profileVo);
-//		MemberInquiryDto inquiry = (MemberInquiryDto) session.getAttribute("inquiry");
-//		model.addAttribute("inquiry", inquiry);
+		MemberInquiryDto inquiry = (MemberInquiryDto) session.getAttribute("inquiry");
+		model.addAttribute("inquiry", inquiry);
 		return "member/memberMyPageMain";
 	}
 	
@@ -179,9 +182,12 @@ public class MemberController {
 		return "member/include/myPageReadListControl";
 	}
 	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
-	public String myPageQuestionControl(MemberInquiryDto dto, Model model,HttpSession session) {
-		session.removeAttribute("inquiry");
-		model.addAttribute("inquiry", dto);
+	public String myPageQuestionControl(Model model,HttpSession session) {
+//		session.removeAttribute("inquiry");
+//		System.out.println("======dtogetInquiry" + dto.getInquiry());
+//		System.out.println("======dtogetProject_name" + dto.getProject_name());
+//		System.out.println("======dtogetReceiver" + dto.getReceiver());
+//		model.addAttribute("inquiry", dto);
 		return "member/include/myPageQuestionControl";
 	}
 	@RequestMapping(value = "/myPageChaetingControl", method = RequestMethod.GET)
