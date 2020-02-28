@@ -44,13 +44,14 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlsession.selectOne(NAMESPACE + ".totalSponser",project_num);
 	}
 
-	@Override
-	public Map<Object, Integer> totalPrice(int project_num) throws Exception {
-		return sqlsession.selectOne(NAMESPACE + ".totalPrice",project_num);
-	}
 
 	@Override
 	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
 		return sqlsession.selectOne(NAMESPACE + ".makersInfo",project_num);
+	}
+
+	@Override
+	public int percent(int project_num) throws Exception {
+		return sqlsession.selectOne(NAMESPACE +  ".percent",project_num);
 	}
 }

@@ -84,8 +84,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String postLogin(HttpSession session, MemberVo memberVo) throws Exception {
+	public String postLogin(HttpSession session, MemberVo memberVo,
+			Model model) throws Exception {
+		System.out.println("loginData : " + memberVo);
 		MemberVo selectMemberVo = service.loginInfo(memberVo);
+		System.out.println("memberData : " + selectMemberVo);
 		session.setAttribute("memberVo", selectMemberVo);
 		MemberProfileVo profileVo =  service.selectMemberById(memberVo.getMember_id());
 		session.setAttribute("member_id", memberVo.getMember_id());
