@@ -125,15 +125,15 @@ public class ProductDetailController {
 	//후원 진행상태 구하기
 	@RequestMapping(value="/totalPrice/{num}",method= RequestMethod.GET)
 	@ResponseBody
-	public Map<Object, Integer> totalPrice(@PathVariable("num")int project_num) throws Exception{
-		Map<Object, Integer> hashMap = new HashMap<>();
-		hashMap = boardService.totalPrice(project_num);
-		if(hashMap == null) {
+	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
+		int percent = boardService.percent(project_num);
+		if(percent == 0) {
 			System.out.println("this is null");
+			return 0;
 		} else {
-		System.out.println("con :" + hashMap);
+		System.out.println("con :" + percent);
+		return percent;
 		}
-		return hashMap;
 	}
 	
 	//창작자 가져오기

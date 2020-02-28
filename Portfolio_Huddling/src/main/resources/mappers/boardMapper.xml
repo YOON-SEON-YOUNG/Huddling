@@ -29,10 +29,19 @@
 	where temp_basic_num = #{project_num}
 	</select>
 	
-	<select id="totalPrice" resultType="hashmap">
-	select a.payment_point, b.basic_amount from tbl_payment a, tbl_temp_basic b
-    where b.temp_basic_num = a.project_num
-    and b.temp_basic_num = #{project_num}
+	<update id="projectPerUpdate">
+	update tbl_project set
+	project_per = ((select sum(test_point) from tbl_test_per
+	group by per_num
+	having per_num = #{project_num}) / (
+	(select basic_amount from tbl_temp_basic
+	where temp_basic_num = #{project_num})) * 100)
+	where project_num = #{project_num}
+	</update>
+	
+	<select id="percent" resultType="int">
+	select project_per from tbl_project
+	where project_num = #{project_num}
 	</select>
 	
 	<select id="makersInfo" resultType="TempMakerMakersDto">

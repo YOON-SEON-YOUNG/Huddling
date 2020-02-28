@@ -51,14 +51,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Map<Object, Integer> totalPrice(int project_num) throws Exception {
-		Map<Object, Integer> price = boardDao.totalPrice(project_num);
-		return price;
+	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
+		return boardDao.makersInfo(project_num);
 	}
 
 	@Override
-	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
-		return boardDao.makersInfo(project_num);
+	public int percent(int project_num) throws Exception {
+		return boardDao.percent(project_num);
 	}
 
 }
