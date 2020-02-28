@@ -91,7 +91,6 @@ public class ProductDetailController {
 	public BoardVo getDetail(@PathVariable("num")int project_num,
 			HttpSession session) throws Exception {
 		System.out.println("디테일 데이터 가져옴...");
-//		project_num = (int) session.getAttribute("project_num"); 
 		BoardVo vo = boardService.getDetail(project_num);
 		return vo;
 	}
@@ -126,10 +125,15 @@ public class ProductDetailController {
 	//후원 진행상태 구하기
 	@RequestMapping(value="/totalPrice/{num}",method= RequestMethod.GET)
 	@ResponseBody
-	public Map<Object, Integer> totalPrice(@PathVariable("num")int project_num) throws Exception{
-		Map<Object, Integer> price = boardService.totalPrice(project_num);
-		System.out.println("con :" + price);
-		return price;
+	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
+		int percent = boardService.percent(project_num);
+		if(percent == 0) {
+			System.out.println("this is null");
+			return 0;
+		} else {
+		System.out.println("con :" + percent);
+		return percent;
+		}
 	}
 	
 	//창작자 가져오기

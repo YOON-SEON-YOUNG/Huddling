@@ -141,7 +141,7 @@ function memberAddress() {
   <div class="form-group">
   <div style="text-align:center;">
   	
-  	<a><img src="/resources/images/hudling_logo.jpg"id="image"></img></a><br>
+  	<a href="/"><img src="/resources/images/hudling_logo2.jpg"id="image"></img></a><br>
     </div>
     <label for="exampleInputEmail1">아아디</label>
     <input type="text" class="form-control regChk" id="member_id" aria-describedby="emailHelp" name="member_id" >

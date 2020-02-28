@@ -21,7 +21,7 @@ import com.kh.Portfolio_Huddling.util.FileUploadUtil;
 
 @Controller
 @RequestMapping("/upload")
-public class MakerBoardUploadController {
+public class BoardUploadController {
 	
 	@Resource
 	private String uploadPath;

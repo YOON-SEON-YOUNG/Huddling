@@ -19,9 +19,6 @@
 <script src="/resources/js/projectShow.js"></script>
 <script>
 $(document).ready(function(){
-	
-	
-	
 	$("#project_search").click(function() {
 		if ($("#project_search_input").val() != null && $("#project_search_input").val() != "") {
 			console.log("검색 test");
@@ -153,11 +150,11 @@ $(document).ready(function(){
 					문화
 				</button>
 			</a>
-			<a href="/board/categoryDonate">
-				<button class="btn btn-secondary  btn-lg mb50" type="button">
-					기부/후원
-				</button>
-			</a>
+<!-- 			<a href="/board/categoryDonate"> -->
+<!-- 				<button class="btn btn-secondary  btn-lg mb50" type="button"> -->
+<!-- 					기부/후원 -->
+<!-- 				</button> -->
+<!-- 			</a> -->
 		</div>
 		<div class="col-md-2">
 		</div>

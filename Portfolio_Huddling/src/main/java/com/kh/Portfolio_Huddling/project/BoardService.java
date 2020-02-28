@@ -13,6 +13,6 @@ public interface BoardService {
 	public int totalPayment(int project_num) throws Exception;
 	public String endDate(int project_num) throws Exception;
 	public int totalSponser(int project_num) throws Exception;
-	public Map<Object, Integer> totalPrice(int project_num) throws Exception;
 	public TempMakerMakersDto makersInfo(int project_num) throws Exception;
+	public int percent(int project_num) throws Exception;
 }

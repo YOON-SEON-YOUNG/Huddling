@@ -13,6 +13,11 @@ $(document).ready(function() {
 			$("#page").load("projectApprovalControl?project_app=1");
 		});
 	});
+	$(".projectView").click(function(e) {
+		e.preventDefault();
+		var href = $(this).attr("href");
+		window.open(href, "미리보기");
+	});
 });
 </script>
 <h2>프로젝트관리(승인)</h2>
@@ -28,9 +33,9 @@ $(document).ready(function() {
 	</tr>
 	<c:forEach items="${projectList}" var="project">
 		<tr>
-			<td>${project.project_num}</td>
-			<td>${project.project_name}</td>
-			<td><input class="btnUnApp" type="button" value="차단" data-project_num="${project.project_num}"/></td>
+			<td style="width: 150px;">${project.project_num}</td>
+			<td><a class="projectView" href="/detail/detailMain/${project.project_num}">${project.project_name}</a></td>
+			<td style="width: 150px;"><input class="btnUnApp" type="button" value="차단" data-project_num="${project.project_num}"/></td>
 		</tr>
 	</c:forEach>
 </table>

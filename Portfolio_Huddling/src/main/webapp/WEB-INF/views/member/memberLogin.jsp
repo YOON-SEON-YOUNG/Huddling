@@ -55,8 +55,8 @@ $(document).ready(function() {
 			<div class="row">
 				<div class="col-md-4">
 				</div>
-				<div class="col-md-4" style="padding:120px;">
-				<a><img src="/resources/images/hudling_logo.jpg"id="image"></img></a><br>
+				<div class="col-md-4" style="padding:120px; text-align: center;">
+				<a href="/"><img src="/resources/images/hudling_logo2.jpg"id="image"></img></a><br>
 				<hr>
 				<form id="form" action="/member/login" method="post">
 				
