@@ -29,9 +29,9 @@ $(document).ready(function() {
 	
 	<c:forEach items="${projectList}" var="project">
 		<tr>
-			<td>${project.project_num}</td>
-			<td>${project.project_name}</td>
-			<td><input class="btnApp" type="button" value="승인" data-project_num="${project.project_num}" /></td>
+			<td style="width: 150px;">${project.project_num}</td>
+			<td><a href="/detail/detailMain?num="+${project.project_num}>${project.project_name}</a></td>
+			<td style="width: 150px;"><input class="btnApp" type="button" value="승인" data-project_num="${project.project_num}" /></td>
 		</tr>
 	</c:forEach>
 	

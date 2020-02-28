@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 				<div id="menu" class="col-md-3">
 					<hr>
-					<a id="userControl" src="">회원관리</a><br><hr><br>				
+					<a id="userControl" src="">회원정보</a><br><hr><br>				
 					<a id="projectAppControl" src="">프로젝트 관리(승인)</a><br><hr><br>					
 					<a id="projectUnAppControl" src="">프로젝트 관리(미승인)</a><br><hr><br>					
 					<a id="questionsControl" src="">문의사항</a>
