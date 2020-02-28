@@ -24,6 +24,9 @@ import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.member.MemberVo;
 import com.kh.Portfolio_Huddling.member.PointService;
 import com.kh.Portfolio_Huddling.member.PointVo;
+import com.kh.Portfolio_Huddling.order.OrderService;
+import com.kh.Portfolio_Huddling.order.RewordCartListDto;
+import com.kh.Portfolio_Huddling.order.RewordCartVo;
 import com.kh.Portfolio_Huddling.project.BoardService;
 import com.kh.Portfolio_Huddling.project.BoardVo;
 
@@ -37,6 +40,9 @@ public class ProductDetailController {
 	
 	@Inject
 	private PointService pointService;
+	
+	@Inject
+	private OrderService orderService;
 
 	
 	// 펀딩 상세보기 페이지 
@@ -77,37 +83,8 @@ public class ProductDetailController {
 		return "detail/include/tapReview";
 	}
 
-	// 펀딩 리워드 옵션
-	@RequestMapping(value= "/detailMain/{num}/reword", method = RequestMethod.GET)
-	public String orderOption(@RequestParam Map<String,Object> param, @PathVariable("num") int project_num,
-			HttpServletRequest request, Model model) throws Exception {
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("project_num", project_num);
-		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
-		model.addAttribute("reword",list);
-		System.out.println("reword 실행중");
-		return "/detail/orderOption";
-		
-	}
-	// 결제 페이지 포인트 사용(새창)
-	@RequestMapping(value="/detailMain/{num}/payment", method = RequestMethod.GET)
-	public String payment(@PathVariable("num") int project_num,
-			HttpServletRequest request, Model model) throws Exception {
-		System.out.println("요청 들어옴");
-		HttpSession session = request.getSession();
-		session.setAttribute("project_num", project_num);
-		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
-		System.out.println("list:" + list);
-		model.addAttribute("reword",list);
-		System.out.println("payment 실행중");
-		MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
-		List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
-		model.addAttribute("pointList", pointList);
-		return "/detail/orderPage";
-	}
-		
-
+	
+	
 	// 디테일 페이지 데이터 가져오기
 	@RequestMapping(value="/getDetail/{num}", method= RequestMethod.GET)
 	@ResponseBody
@@ -164,7 +141,62 @@ public class ProductDetailController {
 		return makersDto;
 	}
 	
-	// 포인트 사용하기
+	// 상품별 리워드 목록
+			@RequestMapping(value="/detailMain/{num}/reword", method = RequestMethod.GET)
+			public String getRewordList(@PathVariable("num") int project_num,
+					HttpServletRequest request, Model model) throws Exception {
+				HttpSession session = request.getSession();
+				session.setAttribute("project_num", project_num);
+				List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
+				model.addAttribute("reword",list);
+				System.out.println("reword 실행중");
+				return "detail/rewordList";
+			}
+	
+	// 리워드 조회 
+			@RequestMapping(value="/detailMain/{num}/option", method = RequestMethod.GET)
+			public String getRewordView(@PathVariable("num") int project_num,
+					@RequestParam("n") int temp_reword_num, Model model) throws Exception {
+				TempMakerRewordDto rewordDto = orderService.rewordView(temp_reword_num);
+				model.addAttribute("rewordDto", rewordDto);
+				System.out.println("리워드 조회 실행중");
+				return "detail/rewordView";
+				
+			}
+		
+		// 리워드 담기 
+			@ResponseBody
+			@RequestMapping(value="/detail/rewordCart", method = RequestMethod.POST)
+			
+			public int addCart(RewordCartVo cart, HttpSession session) throws Exception {
+				int result = 0;
+				System.out.println("cart:" + cart);
+				
+				MemberVo member = (MemberVo) session.getAttribute("memberVo");
+//				
+				if(member != null) {
+					cart.setMember_id(member.getMember_id());
+					orderService.addCart(cart);
+					result = 1;
+				}
+				
+				return result;
+				
+				
+			}
+			
+			// 리워드 담기 리스트 
+			@RequestMapping(value="/detail/cartList", method = RequestMethod.GET)
+			public String getCartList(HttpSession session, Model model) throws Exception {
+					MemberVo member = (MemberVo) session.getAttribute("memberVo");
+					String member_id = member.getMember_id();
+					
+					List<RewordCartListDto> rewordCartList = orderService.cartList(member_id);
+					model.addAttribute("rewordCartList", rewordCartList);
+					return "detail/rewordCartList";
+				
+			}
+			
 	
 	
 	

@@ -251,6 +251,31 @@ label {
 
 <script>
 $(document).ready(function() {
+	var num = ${num};
+	var member_id = $(#member_id).val();
+	var optionArray = [];
+	$("input[name='option']:checked").each(function(i){
+		optionArray.push($(this).val());
+	});
+	
+	var allData = {"member_id": member_id, "optionList":optionArray};
+	
+	$.ajax({
+		url:""
+		type='GET'
+		data:allData
+		success:fuction(data){
+			alert("완료!")
+			window.opner.location.reload();
+			self.close();
+		},
+		error:function(jqXHR, textStatus, errorThrown){
+            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+            self.close();
+        }
+	   });
+}
+	
 	
 	
 	$(".optionCheck").change(function() {

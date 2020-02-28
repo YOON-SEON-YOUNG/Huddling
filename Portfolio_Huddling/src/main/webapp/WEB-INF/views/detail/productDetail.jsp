@@ -235,7 +235,7 @@ $(document).ready(function() {
 												var num = ${num};
 												var url = "/detail/detailMain/" + num +"/reword";
 												location.href=url;
-
+	
 													});
 														});
 												});
