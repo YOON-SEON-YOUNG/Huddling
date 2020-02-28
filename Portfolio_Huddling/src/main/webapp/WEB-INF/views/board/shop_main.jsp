@@ -122,7 +122,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-${memberVo}
 <div class="container-fluid">
 	<br>
  	<div class="row">
