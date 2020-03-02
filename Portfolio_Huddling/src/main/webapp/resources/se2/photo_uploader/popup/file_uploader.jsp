@@ -69,6 +69,8 @@ if(request.getContentLength() > 10*1024*1024 ){
 		fpath = f.path.value;
 		fname = f.filename.value;
 		fcode = fpath + fname;
+		console.log('f',f);
+		console.log('fcode',fcode);
 
 		try {
 			window.opener.pasteHTML(fname);

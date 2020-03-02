@@ -152,7 +152,7 @@
 	into tbl_temp_requir(temp_requir_num) values(seq_project_num.currval)
 	into tbl_temp_story(temp_story_num) values(seq_project_num.currval)
 	into tbl_project_intro(project_num) values(seq_project_num.currval)
-	into tbl_payment(payment_num,project_num) values(SEQ_PAYMENT_NUM.nextval,seq_project_num.currval)
+<!-- 	into tbl_payment(payment_num,project_num) values(SEQ_PAYMENT_NUM.nextval,seq_project_num.currval) -->
 	select * from dual
 	</insert>
 	

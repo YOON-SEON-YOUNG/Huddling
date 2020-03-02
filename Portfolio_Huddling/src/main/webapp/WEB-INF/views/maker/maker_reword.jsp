@@ -41,6 +41,7 @@ $(document).ready(function() {
 		}
 		$('#btnClose').trigger('click');
 	});
+	
 	// 리워드 수정
 	$(".btnRewordUpdate").click(function(){
 		var num = $(this).attr('data-rewordNum');
@@ -62,6 +63,7 @@ $(document).ready(function() {
 			$('#btnModal').trigger('click');
 			});
 		});
+	
 	// 내용 초기화
 	$('#btnClose').click(function(){
 		$('#formTampData').each(function(){
@@ -84,7 +86,7 @@ $(document).ready(function() {
 			});
 		}
 	});
-
+	
 	//선택 옵션에 따른 옵션창 표시
 	$('#selectOption').change(
 		function() {
@@ -107,6 +109,19 @@ $(document).ready(function() {
 			}
 			selOp.html(strOp);
 		});
+	// 미리 보기 항목 추가
+	$(document).on('keydown','#reword_option',function(e){
+		$('#previewOption').empty();
+		var keycode = e.keyCode
+		var lines = $(this).val().split("\n");
+		var index = lines.length;
+		if(keycode == 13){
+			for(var v = 0; v < index; v++){
+			$('#previewOption').append('<option>'+lines[v]+'</option>');
+			}
+			
+		}
+	});
 	
 		$('input[name=temp_reword_trans]').change(function() {
 			var ra = $('input[name=temp_reword_trans]:checked');

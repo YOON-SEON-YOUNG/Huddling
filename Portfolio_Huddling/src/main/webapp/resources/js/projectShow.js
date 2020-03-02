@@ -12,6 +12,9 @@
 //백분율 구하기
 	function percent(num){
 	$.get("/detail/totalPrice/" + num,function(data){
+		if(data == null || typeof data == "undefined"){
+			data = 0;
+		}
 		console.log("perVal : ", data);
 		return data;
 		});
@@ -21,7 +24,7 @@
 function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
 		if (project_app == 1) {
 			var perVal = percent(project_num);
-			if(perVal == null || perVal == "undefined"){
+			if(perVal == null || typeof perVal == "undefined"){
 				perVal = 0;
 			}
 			var strList = "";

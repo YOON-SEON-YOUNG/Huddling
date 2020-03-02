@@ -127,7 +127,7 @@ public class ProductDetailController {
 	@ResponseBody
 	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
 		int percent = boardService.percent(project_num);
-		if(percent == 0) {
+		if(percent < 0) {
 			System.out.println("this is null");
 			return 0;
 		} else {

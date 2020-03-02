@@ -57,7 +57,7 @@ $(document).ready(function() {
 	
 	// 총 금액 구하기
 	$.get("/detail/totalPayment/" + num,function(data){
-		if(data == null){
+		if(data == null || typeof data == "undefined"){
 		data = 0;
 		}
 		$('#totalPayment').text(data);
@@ -73,21 +73,20 @@ $(document).ready(function() {
 	
 	//스폰서 구하기
 	$.get("/detail/totalSponser/" + num,function(data){
+		if(data == null || typeof data == "undefined"){
+			data = 0;
+			}
 		$('#totalSponser').text(data);
 	});
 	
 	//백분율 구하기
 	$.get("/detail/totalPrice/" + num,function(data){
-		var num1 = $('#totalPayment').text();
-		console.log("num1 ", num1);
-		if(num1 == null){
-		num1 = 0;
-		}
-		var num2 = data;
-		var per = num1 / num2 * 100;
-		$('#per').text(per);
+		if(data == null || typeof data == "undefined"){
+			data = 0;
+			}
+		$('#per').text(data);
 		var barProgress = $(".progress-bar");
-		barProgress.css('width',per + '%')
+		barProgress.css('width',data + '%')
 	});
 	
 	//창작자 정보 가져오기
@@ -199,7 +198,7 @@ $(document).ready(function() {
 							<div class="card card-body">
 								<!-- 펀딩 달성률 -->
 								<h4>달성률</h4>
-								<h1><span id="per"></span>%</h1>
+								<h1><span id="per">0</span>%</h1>
 								<div class="progress">
  									 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
