@@ -45,7 +45,8 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${storyDto.story_introimg }"/>
-					  <input type="hidden" id = "introImg" value="<c:if test="${storyDto.story_introimg eq null || storyDto.story_introimg eq ''}">makerUpload/default.png</c:if>${storyDto.story_introimg }" name="story_introimg"/>
+					  <input type="hidden" id = "introImg" 
+					  value="<c:if test="${storyDto.story_introimg eq null || storyDto.story_introimg eq ''}">makerUpload/default.png</c:if>${storyDto.story_introimg }" name="story_introimg"/>
 					</div>
 				</div>
 			</div>

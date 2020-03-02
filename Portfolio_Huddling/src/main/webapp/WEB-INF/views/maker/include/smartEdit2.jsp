@@ -21,6 +21,8 @@ $(function(){
     sSkinURI: "<%=request.getContextPath()%>/resources/se2/SmartEditor2Skin.html",
     fCreator: "createSEditor2"
 	});
+	
+	//가이드 라인 출력
 	var board = $('#textAreaContent').val().trim();
 		if(board == '' || board == null){
 		$("#textAreaContent").load("/resources/basicBoard.html", function(txt, status) {
