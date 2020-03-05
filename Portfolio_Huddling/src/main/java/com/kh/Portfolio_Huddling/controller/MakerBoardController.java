@@ -100,6 +100,10 @@ public class MakerBoardController {
 		List<TempMakerRewordDto> list = makerService.rewordList(projectNum);
 		System.out.println("list : " + list);
 		model.addAttribute("list", list);
+		
+		String date = makerService.tempReowrdEndDate(projectNum);
+		System.out.println("date : " + date);
+		model.addAttribute("endDate",date);
 		return "maker/maker_reword";
 	}
 

@@ -166,4 +166,9 @@ public class TempMakerBoardServiceImpl implements TempMakerBoardService {
 		System.out.println("제출 성공...");
 		return submit;
 	}
+
+	@Override
+	public String tempReowrdEndDate(int rewordNum) throws Exception {
+		return boardDao.tempRewordEndDate(rewordNum);
+	}
 }

@@ -100,9 +100,8 @@ public class ProductDetailController {
 	@RequestMapping(value="/totalPayment/{num}", method=RequestMethod.GET)
 	@ResponseBody
 	public int totalPayment(@PathVariable("num")int project_num) throws Exception{
-		int num = boardService.totalPayment(project_num);
-		System.out.println("num :" + num);
-		return num;
+		int totalVal = boardService.totalPayment(project_num);
+		return totalVal;
 	}
 	
 	//남은 날짜 구하기

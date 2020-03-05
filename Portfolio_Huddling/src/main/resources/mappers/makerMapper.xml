@@ -113,6 +113,11 @@
 	<delete id="rewordDelete">
 	delete tbl_temp_reword where temp_reword_num = #{temp_reword_num}
 	</delete>
+	<!-- 리워드 종료 -->
+	<select id="rewordEndDate" resultType="String">
+	select basic_enddate from tbl_temp_basic
+	where temp_basic_num = #{project_num}
+	</select>
 	
 	<!-- 메이커 정보 가져오기 -->
 	<select id="tempSelectMakersInfo" resultType="TempMakerMakersDto">
@@ -167,7 +172,7 @@
 	select * from tbl_project_intro
 	where project_num = #{project_num}
 	</select>
-	
+	<!-- 작성 상태 확인 -->
 	<select id="chkBasic" resultType="int">
 	select count(*) from tbl_temp_basic
 	where temp_basic_num = #{project_num}
@@ -219,7 +224,8 @@
 	 and not TEMP_MAKERINFO_REPRNAME = ' '
 	 and not TEMP_MAKERINFO_REPREMAIL = ' '
 	</select>
-	
+	<!-- //작성 상태 확인 -->
+	<!-- 프로젝트 제출 -->
 	<update id="submitProject">
 	update tbl_project set
 	project_state = 1

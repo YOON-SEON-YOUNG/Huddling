@@ -209,4 +209,10 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		sqlSession.update(NAMESPACE + ".introStoryUpdate",project_num);
 		
 	}
+
+
+	@Override
+	public String tempRewordEndDate(int rewordNum) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + ".rewordEndDate",rewordNum);
+	}
 }

@@ -67,6 +67,81 @@ function imgInp(){
 			});
     	});
 	}
-
+// 주석 작성
+function helpText(){
+$('.help').prev().each(function(){
+		$(this).keyup(function(){
+		var inputId = $(this).attr('id');
+		var helpTxtField = $(this).next();
+		var helpText = '';
+		var length = $(this).val().length;
+		var maxLength = 0;
+		switch(inputId){
+		//requir
+			case 'q1Desc' :
+			maxLength = 500;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+			case 'q2Desc' :
+			maxLength = 500;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+				
+			case 'q3Desc' :
+			maxLength = 500;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+		//basicInfo
+			case 'projectTitle':
+			maxLength = 40;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+			case 'projectAmount':
+			var amount = $(this).val();
+			if((event.keyCode<48 || event.keyCode>57) && (event.keyCode<96 || event.keyCode>105) && event.keyCode != 8){
+				this.value=this.value.replace(/[^0-9]/g,'');
+	        	helpText ='숫자만 입력 가능 합니다.';
+	        } else if (amount < 500000){
+	        	helpText ='최소 50만원부터 가능 합니다.';
+	        } else if (amount > 1000000000){
+	        	helpText ='최대 10억까지 가능 합니다.';
+	        }
+			break;
+		//story
+			case 'summary':
+			maxLength = 300;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+		//reword
+			case 'price':
+			var price = $('#price').val();
+			if((event.keyCode<48 || event.keyCode>57) && (event.keyCode<96 || event.keyCode>105) && event.keyCode != 8){
+				this.value=this.value.replace(/[^0-9]/g,'');
+	        	helpText ='숫자만 입력 가능 합니다.';
+	        }
+			else if (price < 1000){
+	        	helpText ='1000원 이상만 입력 가능 합니다.'
+	        }
+			break;
+			case 'rewordName':
+			maxLength = 60;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+			case 'rewordDesc':
+			maxLength = 200;
+			var remain = maxLength - length;
+			helpText = remain + '자 남음';
+			break;
+		}
+		helpTxtField.text(helpText);
+		});
+	});
+}
 
 	

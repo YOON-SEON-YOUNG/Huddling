@@ -16,7 +16,6 @@
 
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
-
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/JavaScript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -65,9 +64,13 @@ $(document).ready(function() {
 	
 	// 남은 기한 구하기
 	$.get("/detail/endDate/" + num,function(data){
-		var month = data.substring(data.indexOf("/") - 2,data.indexOf("/"));
-		var days = data.substring(data.lastIndexOf("/") - 2,data.lastIndexOf("/"));
+		console.log(data);
+		var month = data.substring(data.indexOf("/") + 1,data.lastIndexOf("/"));
+		console.log(month);
+		var days = data.substring(data.lastIndexOf("/") + 1);
+		console.log(days);
 		var end = endDate(month,days);
+		console.log(end);
 		$('#endDate').text(end);
 	});
 	

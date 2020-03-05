@@ -33,6 +33,7 @@ public interface TempMakerBoardDao {
 	public TempMakerRewordDto tempOutPutReword(int rewordNum) throws Exception;
 	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception;
 	public void tempRewordDelete(int rewordNum) throws Exception;
+	public String tempRewordEndDate(int rewordNum) throws Exception;
 	//메이커 정보
 	public void tempMakersInfo(TempMakerMakersDto makersDto) throws Exception;
 	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception;

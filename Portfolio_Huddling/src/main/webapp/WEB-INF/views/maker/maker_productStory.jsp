@@ -6,6 +6,7 @@
 <script>
 	$(document).ready(function() {
 		imgInp();
+		helpText();
 		var projectNum = ${projectNum};
 		$.ajax({
 			"url":"/maker/imgLoad/" + projectNum,
@@ -24,9 +25,6 @@
 				});
 			submitContents(this);
 		});
-		$('#btnintroImg').click(function(e){
-			e.preventDefault();
-		});
     });
 </script>
 	<div class="container-fluid">
@@ -39,6 +37,7 @@
 			<div class="card-body">
 				<div class="form-group">
 				<label for="inputGroupFile01">소개 이미지 등록</label>
+				<small class='form-text text-muted'>프로젝트 페이지 상단에 노출될 영상 또는 사진을 올려주세요.</small>
 				<div class="custom-file">
 			    <input type="file" class="custom-file-input" id="imgInp" aria-describedby="inputGroupFileAddon01">
 			    <label class="custom-file-label" for="inputGroupFile01">이미지 파일을 선택하세요</label>
@@ -53,15 +52,19 @@
 			<div class="card-body">
 				<div class="form-group">
 					<label for="summary">프로젝트 요약</label>
+					<small class='form-text text-muted'>프로젝트 페이지 상단 및 지지서명 시 노출됩니다.</small>
 					<div>
 						<textarea class="form-control" rows="3" name="story_summary"
 							id="summary">${storyDto.story_summary}</textarea>
+							<small class='form-text text-muted help'></small>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<div class="form-group">
-					<Label for="storyBoard"></Label>
+					<Label for="storyBoard">프로젝트 스토리</Label>
+					<small class='form-text text-muted'>진정성 있고 매력적인 스토리로 서포터의 마음을 움직여볼까요? <br>
+					아래의 필수 항목에 맞춰 작성해주세요. 필수 항목이 누락될 경우 오픈이 지연될 수 있습니다.</small>
 					<jsp:include page="include/smartEdit2.jsp"></jsp:include>
 				</div>
 			</div>
