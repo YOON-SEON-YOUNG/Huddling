@@ -52,6 +52,7 @@ public class MakerBoardController {
 	public String createBoard(String member_id, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		member_id = (String) session.getAttribute("member_id");
+		System.out.println(member_id);
 		int num = makerService.makerCreateBoard(member_id);
 		System.out.println("createBoard :" + num);
 		return "redirect: home/" + num;

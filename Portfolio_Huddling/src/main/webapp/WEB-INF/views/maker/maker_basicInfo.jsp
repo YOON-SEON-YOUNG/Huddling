@@ -56,7 +56,7 @@
 		<div class="card-body">
 			<div class="form-group">
 				<label for="amount">목표 금액</label>
-				<small class='form-text text-muted help'>최소 50만 원 ~ 최대 1억 원으로 설정하세요</small>
+				<small class='form-text text-muted help'>최소 50만 원 ~ 최대 10억 원으로 설정하세요</small>
 				 <input type="text"	class="form-control" name="basic_amount" value='${basicDto.basic_amount }' id='projectAmount'
 					placeholder="목표 금액 입력"/>
 					<small class='form-text text-danger help'></small>
@@ -94,12 +94,6 @@
 				<jsp:include page="include/datepicker.jsp"></jsp:include>
 			</div>
 		</div>
-<!-- 		<div class=card-body> -->
-<!-- 			<div class="form-group"> -->
-<!-- 				<label for="searchTag">검색용 태그</label> <input name="basic_searchTag" -->
-<%-- 					class="form-control" id="basic_searchTag" value='${basicDto.basic_searchTag }'/> --%>
-<!-- 			</div> -->
-<!-- 		</div> -->
 	</div>
 </form>
 	<div class="card-body">

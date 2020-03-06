@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="include/mainHeader.jsp"></jsp:include>
 <jsp:include page="include/makerHeader.jsp"></jsp:include>
+<style>
+ .row{
+ margin-top: 10px;
+ }
+</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#bread").remove();
@@ -38,7 +43,6 @@
 		});
 		
 		$.get("/chk/chkBasic/" + num,function(data){
-			console.log("data",data);
 			if(data == 0){
 				$('#basic').text("작성중");
 				$('#basic').attr('class','badge btn-primary');
@@ -49,7 +53,6 @@
 		});
 		
 		$.get("/chk/chkReword/" + num,function(data){
-			console.log("data",data);
 			if(data == 0){
 				$('#reword').text("작성중")
 				$('#reword').attr('class','badge btn-primary');
@@ -60,7 +63,6 @@
 		});
 		
 		$.get("/chk/chkRequir/" + num,function(data){
-			console.log("data",data);
 			if(data == 0){
 				$('#requir').text("작성중")
 				$('#requir').attr('class','badge btn-primary');
@@ -70,7 +72,6 @@
 			}
 		});
 		$.get("/chk/chkStory/" + num,function(data){
-			console.log("data",data);
 			if(data == 0){
 				$('#story').text("작성중")
 				$('#story').attr('class','badge btn-primary');
@@ -80,7 +81,6 @@
 			}
 		});
 		$.get("/chk/chkMakersInfo/" + num,function(data){
-			console.log("data",data);
 			if(data == 0){
 				$('#makersInfo').text("작성중")
 				$('#makersInfo').attr('class','badge btn-primary');
@@ -106,7 +106,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 요건 <span class="badge btn-success" id="requir"></span>
+						기본 요건&nbsp;<span class="badge btn-success" id="requir"></span>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						기본 정보 <span class="badge btn-success" id='basic'></span>
+						기본 정보&nbsp;<span class="badge btn-success" id='basic'></span>
 					</div>
 				</div>
 			</div>
@@ -134,7 +134,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						스토리 작성 <span class="badge btn-primary" id="story"></span>
+						스토리 작성&nbsp;<span class="badge btn-primary" id="story"></span>
 					</div>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						리워드 설계<span class="badge btn-secondary" id="reword"></span>
+						리워드 설계&nbsp;<span class="badge btn-secondary" id="reword"></span>
 					</div>
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-body">
-						메이커 정보 <span class="badge btn-secondary" id="makersInfo"></span>
+						메이커 정보&nbsp;<span class="badge btn-secondary" id="makersInfo"></span>
 					</div>
 				</div>
 			</div>
