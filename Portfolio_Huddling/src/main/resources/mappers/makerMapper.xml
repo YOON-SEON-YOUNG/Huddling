@@ -7,19 +7,18 @@
 	
 	<!-- 기본 요건 가져오기 -->
 	<select id="tempSelectRequir" resultType="TempMakerRequirDto">
-		select * from
-		tbl_temp_requir
+		select * from tbl_temp_requir
 		where temp_requir_num = #{temp_requir_num}
 	</select>
 	
 	<!-- 기본 요건 저장 -->
 	<update id="tempUpdateRequir">
 		update tbl_temp_requir set
-		requir_q1 = #{requir_q1},
-		requir_q2 = #{requir_q2},
-		requir_q3 = #{requir_q3},
-		requir_q4 =
-		#{requir_q4}
+		requir_q1_check = #{requir_q1_check},
+		requir_q1_desc = #{requir_q1_desc},
+		requir_q2_desc = #{requir_q2_desc},
+		requir_q3_desc = #{requir_q3_desc},
+		requir_q4_check = #{requir_q4_check}
 		where temp_requir_num = #{temp_requir_num}
 	</update>
 	<!-- 기본 정보 가져오기 -->
@@ -185,8 +184,9 @@
 	<select id="chkRequir" resultType="int">
 	select count(*) from tbl_temp_requir
 	where temp_requir_num = #{project_num}
-	and not requir_q2 = ' '
-	and not requir_q3 = ' '
+	and not requir_q2_desc = ' '
+	and not requir_q3_desc = ' '
+	and requir_q4_check = 'true'
 	</select>
 	
 	<select id="chkStory" resultType="int">

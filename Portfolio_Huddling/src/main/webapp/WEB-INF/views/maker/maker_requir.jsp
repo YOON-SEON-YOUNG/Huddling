@@ -18,12 +18,12 @@
 		});
 		
 		//q1 항목 검사
-		if($("input:radio[name='requir_q1']:radio[value='true']").attr("checked",true)){
+		if($("input:radio[name='requir_q1_check']:radio[value='true']").attr("checked",true)){
 			$('#q1_true').removeClass('d-none');
 			$('#q1_true').addClass('d-block');
 		};
-		$('input[name=requir_q1]').change(function(){
-		var q1 = $('input[name=requir_q1]:checked');
+		$('input[name=requir_q1_check]').change(function(){
+		var q1 = $('input[name=requir_q1_check]:checked');
 		console.log(q1.val());
 		if(q1.val() == 'true'){
 			$('#q1_true').removeClass('d-none');
@@ -35,7 +35,7 @@
 		});
 		
 		//체크 버튼 활성화 
-		var q4 = $('input[name=requir_q4]');
+		var q4 = $('input[name=requir_q4_check]');
 		q4.change(function(){
 		if(q4.is(':checked')){
 			q4.val('true');
@@ -61,23 +61,23 @@
 				중인가요?
 				<div class="card-body">
 					<div>
-						<label> <input type="radio" name="requir_q1"
+						<label> <input type="radio" name="requir_q1_check"
 							class="form-check-input" value="true"
-							<c:if test='${requirDto.requir_q1 eq "true"}'>checked</c:if>
+							<c:if test='${requirDto.requir_q1_check eq "true"}'>checked</c:if>
 							>&nbsp;예, 다른 곳에서 유통한 적이 있습니다. 또는 현재 유통 중입니다.
 						</label>
 						<div class='d-none' id='q1_true'>
 						<small class='form-text text-muted'>리워드가 다른 판매처에서 유통된 적이 있다면 리워드로 제공할 수 없습니다.<br>
 						기존에 유통하던 제품/서비스에 비해 개선된 점이 있다면 아래에 상세하게 작성해주세요.<br></small>
-						<textarea class='form-control' name='requir_q1Desc' id='q1Desc'
+						<textarea class='form-control' name='requir_q1_desc' id='q1Desc'
 						placeholder="ex) 리워드의 개선점을 보완하여 세부기능 OO이 추가되었고, 이전에 판매된 적이 없는 새로운 브라운 컬러로 리워드 프로젝트를 진행하려고 합니다."></textarea>
 						<small class='form-text text-muted help'></small>
 						</div>
 					</div>
 					<div>
-						<label> <input type="radio" name="requir_q1"
+						<label> <input type="radio" name="requir_q1_check"
 							class="form-check-input" value="false"
-							<c:if test='${requirDto.requir_q1 eq "false"}'>checked</c:if>
+							<c:if test='${requirDto.requir_q1_check eq "false"}'>checked</c:if>
 							>&nbsp;아니요. 다른 곳에서 유통한
 							적이 없으며 허들링을 통해 처음 선보이는 제품입니다.
 						</label>
@@ -91,7 +91,7 @@
 				2) 공연, 영화, 전시 등 무형 서비스인 경우, 장소 대관, 촬영 일정 등의 현재 준비 상태 및 앞으로의 계획을 작성해주세요.<br>
 				</small>
 				<div class="card-body">
-					<textarea class="form-control" name='requir_q2' placeholder="내용을 입력해 주세요" id='q2Desc'>${requirDto.requir_q2}</textarea>
+					<textarea class="form-control" name='requir_q2_desc' placeholder="내용을 입력해 주세요" id='q2Desc'>${requirDto.requir_q2_desc}</textarea>
 					<small class='form-text text-muted help'></small>
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 				3) 공연, 영화, 전시 등 무형 서비스의 경우 좌석수, 일 최대 예약 가능 수량 등을 작성해주세요.<br>
 				</small>
 				<div class="card-body">
-					<textarea class="form-control" name='requir_q3' placeholder="내용을 입력해 주세요" id='q3Desc'>${requirDto.requir_q3}</textarea>
+					<textarea class="form-control" name='requir_q3_desc' placeholder="내용을 입력해 주세요" id='q3Desc'>${requirDto.requir_q3_desc}</textarea>
 					<small class='form-text text-muted help'></small>
 				</div>
 			</div>
@@ -121,9 +121,9 @@
 						</div>
 					</div>
 					<label><input type="checkbox" class="form-check-input"
-						name="requir_q4" value="true"
+						name="requir_q4_check" value="true"
 						>수수료 정책을 확인하였습니다</label>	
-						<input type="hidden" value="${requirDto.requir_q4 }" id="requir_q4"/>
+						<input type="hidden" value="${requirDto.requir_q4_check }" id="requir_q4"/>
 				</div>
 			</div>	
 		</div>

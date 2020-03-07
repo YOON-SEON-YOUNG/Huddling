@@ -119,12 +119,12 @@ public class MakerBoardController {
 	@RequestMapping(value = "/tempDataRequir", method = RequestMethod.POST)
 	@ResponseBody
 	public TempMakerRequirDto data(TempMakerRequirDto mkrDto) throws Exception {
-		if (mkrDto.getRequir_q1() == null) {
-			mkrDto.setRequir_q1("false");
+		if (mkrDto.getRequir_q1_check() == null) {
+			mkrDto.setRequir_q1_check("false");
 		}
 		;
-		if (mkrDto.getRequir_q4() == null) {
-			mkrDto.setRequir_q4("false");
+		if (mkrDto.getRequir_q4_check() == null) {
+			mkrDto.setRequir_q4_check("false");
 		}
 		;
 		makerService.tempRequirUpdate(mkrDto);

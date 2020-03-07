@@ -10,6 +10,7 @@
 				//임시 저장
 				$('#btnSave').click(function(){
 					var url= "/maker/tempDataMakersInfo";
+					$('#introImg').val()
 					formsave(url);
 				});
 			});
@@ -41,7 +42,7 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${makersDto.temp_makerinfo_image }"/>
-					  <input type="hidden" id = "introImg"  name='temp_makerinfo_image' value='makerUpload/default.png'/>
+					  <input type="hidden" id = "introImg"  name='temp_makerinfo_image' value='${makersDto.temp_makerinfo_image }'/>
 					</div>
 				</div>
 		</div>
