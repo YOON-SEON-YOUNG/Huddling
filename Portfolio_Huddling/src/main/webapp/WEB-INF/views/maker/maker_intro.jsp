@@ -63,6 +63,18 @@
 							<p class="card-text">${projectVo.project_story }</p>
 						</div>
 						<div class="card-footer">
+							<p class='card-text'><c:choose>
+							<c:when test="${projectVo.project_state eq 1 and projectVo.project_app eq 1}">
+							펀딩 중
+							</c:when>
+							<c:when test="${projectVo.project_state eq 1 and projectVo.project_app eq 0 }">
+							심사중
+							</c:when>
+							<c:otherwise>
+							작성 중
+							</c:otherwise>
+							</c:choose>
+							</p>
 							<button class="btn btn-primary makerHome"
 								data-projectNum="${projectVo.project_num}">메이커 바로 가기</button>
 						</div>

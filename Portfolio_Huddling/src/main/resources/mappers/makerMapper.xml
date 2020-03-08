@@ -139,8 +139,11 @@
 	
 	<!-- 프로젝트 리스트 가져오기 -->
 	<select id="getMakerList" resultType="ProjectVo">
-	select * from tbl_project_intro a
-	where a.project_num in (select b.project_num from tbl_project b	where b.user_id = #{user_id})
+	select a.*, b.project_state from tbl_project_intro a, tbl_project b
+	where a.project_num in 
+	(select project_num from tbl_project
+	where user_id = #{user_id})
+	and a.project_num = b.project_num
 	</select>
 	<!-- 프로젝트 번호 가져오기 -->
 	<select id="getProjectNum" resultType="int">
@@ -259,10 +262,5 @@
 	where temp_story_num = #{project_num})
 	where project_num = #{project_num}
 	</update>
-	
-	<select id="projectState">
-	select project_state from tbl_project
-	where project_num = #{project_num}
-	</select>
 	
 </mapper>

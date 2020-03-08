@@ -45,8 +45,11 @@ $(document).ready(function() {
 	// 남은 기한 구하기
 	$.get("/detail/endDate/" + num,function(data){
 		var month = data.substring(data.indexOf("/") + 1,data.lastIndexOf("/"));
+		console.log(month);
 		var days = data.substring(data.lastIndexOf("/") + 1);
+		console.log(days);
 		var end = endDate(month,days);
+		console.log(end);
 		$('#endDate').text(end);
 	});
 	
@@ -98,10 +101,16 @@ $(document).ready(function() {
 		$("#page").load("/detail/tapReview")
 	});
 	
-	function endDate(month,days){
+	function endDate(EndMonth,EndDays){
 		var t = new Date(); // 오늘 날짜 객체를 생성합니다.
+		console.log('1',t);
 		var nowYear = t.getFullYear(); // 오늘 날짜의 연도 정보를 가져옵니다.
-		var theDate = new Date(nowYear,month,days);
+		if(EndMonth < 10){
+		var theDate = new Date(nowYear,EndMonth-1,EndDays);
+		} else {
+		var theDate = new Date(nowYear,EndMonth,EndDays);
+		}
+		console.log('2',theDate);
 		var diffDate = theDate-t;
 		var result = Math.ceil( diffDate / (60*1000*60*24));
 		console.log(result);

@@ -70,7 +70,8 @@
 						<small class='form-text text-muted'>리워드가 다른 판매처에서 유통된 적이 있다면 리워드로 제공할 수 없습니다.<br>
 						기존에 유통하던 제품/서비스에 비해 개선된 점이 있다면 아래에 상세하게 작성해주세요.<br></small>
 						<textarea class='form-control' name='requir_q1_desc' id='q1Desc'
-						placeholder="ex) 리워드의 개선점을 보완하여 세부기능 OO이 추가되었고, 이전에 판매된 적이 없는 새로운 브라운 컬러로 리워드 프로젝트를 진행하려고 합니다."></textarea>
+						placeholder="ex) 리워드의 개선점을 보완하여 세부기능 OO이 추가되었고, 이전에 판매된 적이 없는 새로운 브라운 컬러로 리워드 프로젝트를 진행하려고 합니다."
+						></textarea>
 						<small class='form-text text-muted help'></small>
 						</div>
 					</div>

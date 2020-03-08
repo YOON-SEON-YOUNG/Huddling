@@ -145,10 +145,12 @@ $(document).ready(function() {
 	var addMonth = date.setMonth(date.getMonth() + i);
 	var trans_date = date.toLocaleDateString('en-US');
 	var trans_year = trans_date.substring(trans_date.lastIndexOf('/') + 1);
-	var trans_month = Number(trans_date.substring(0,trans_date.indexOf('/')));
+	var trans_month = Number(trans_date.substring(0,trans_date.indexOf('/'))) - 1;
 	if( trans_month < 10) {
 		trans_month = '0' + trans_month;
-		console.log(trans_month);
+	} 
+	if(trans_month == '00'){
+		trans_month = '01';
 	}
 	var years = trans_year+'/'+trans_month;
 	var option =  $("<option value="+years+">"+trans_year+'/'+trans_month +"</option>");

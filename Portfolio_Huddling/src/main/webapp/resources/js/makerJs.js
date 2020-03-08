@@ -70,7 +70,7 @@ function imgInp(){
 // 주석 작성
 function helpText(){
 $('.help').prev().each(function(){
-		$(this).keyup(function(){
+		$(this).on('keyup',function(){
 		var inputId = $(this).attr('id');
 		var helpTxtField = $(this).next();
 		var helpText = '';
@@ -82,23 +82,35 @@ $('.help').prev().each(function(){
 			maxLength = 500;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+	        if(remain < 0) {
+        	$(this).val(($(this).val().substring(0, maxLength)));
+		       }
 			break;
 			case 'q2Desc' :
 			maxLength = 500;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 				
 			case 'q3Desc' :
 			maxLength = 500;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 		//basicInfo
 			case 'projectTitle':
 			maxLength = 40;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 			case 'projectAmount':
 			var amount = $(this).val();
@@ -116,6 +128,9 @@ $('.help').prev().each(function(){
 			maxLength = 300;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 		//reword
 			case 'price':
@@ -132,11 +147,17 @@ $('.help').prev().each(function(){
 			maxLength = 60;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 			case 'rewordDesc':
 			maxLength = 200;
 			var remain = maxLength - length;
 			helpText = remain + '자 남음';
+			if(remain < 0) {
+	        	$(this).val(($(this).val().substring(0, maxLength)));
+			       }
 			break;
 		}
 		helpTxtField.text(helpText);

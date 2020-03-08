@@ -24,18 +24,15 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		sqlSession.update(NAMESPACE + ".tempUpdateRequir", makerDto);
 	}
 
-
 	@Override
 	public TempMakerRequirDto tempLoadRequir(int tempRequirNum) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".tempSelectRequir",tempRequirNum);
 	}
 
-
 	@Override
 	public TempMakerBasicDto temLoadBasic(int tempBasicNum) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".tempSelectBasic",tempBasicNum);
 	}
-
 
 	@Override
 	public void tempSaveBasic(TempMakerBasicDto basicDto) throws Exception {
@@ -43,48 +40,40 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		
 	}
 
-
 	@Override
 	public TempMakerStoryDto tempLoadStory(int tempStoryNum) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".tempSelectStory",tempStoryNum);
 	}
-
 
 	@Override
 	public void tempSaveStory(TempMakerStoryDto storyDto) throws Exception {
 		sqlSession.update(NAMESPACE + ".tempUpdateStory",storyDto);
 	}
 
-
 	@Override
 	public List<TempMakerBoardImgDto> tempImgName(int tempListNum) throws Exception {
 		return sqlSession.selectList(NAMESPACE +".imgList",tempListNum);
 	}
-
 
 	@Override
 	public void tempInputImgName(TempMakerBoardImgDto imgDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".imgInput",imgDto);
 	}
 
-
 	@Override
 	public int tempImgChk(String imgName) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".imgChk",imgName);
 	}
-
 
 	@Override
 	public List<TempMakerRewordDto> tempRewordList(int tempRewordNum) throws Exception{
 		return sqlSession.selectList(NAMESPACE + ".rewordList",tempRewordNum);
 	}
 
-
 	@Override
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception {
 		sqlSession.insert(NAMESPACE + ".rewordInput",rewordDto);
 	}
-
 
 	@Override
 	public void tempMakersInfo(TempMakerMakersDto makersDto) throws Exception {
@@ -92,49 +81,30 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		
 	}
 
-
 	@Override
 	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception{
 		
 		return sqlSession.selectOne(NAMESPACE + ".tempSelectMakersInfo",makerInfoNum);
 	}
 
-
 	@Override
 	public TempMakerRewordDto tempOutPutReword(int rewordNum) {
 		return sqlSession.selectOne(NAMESPACE + ".rewordOutput",rewordNum);
 	}
-
 
 	@Override
 	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception {
 		sqlSession.update(NAMESPACE +".rewordUpdate",rewordDto);
 	}
 
-
 	@Override
 	public void tempRewordDelete(int rewordNum) throws Exception {
 		sqlSession.delete(NAMESPACE + ".rewordDelete",rewordNum);
 	}
 
-
 	@Override
 	public List<ProjectVo> makerGetIntroList(String member_id) throws Exception {
 		return sqlSession.selectList(NAMESPACE + ".getMakerList",member_id);
-	}
-
-
-	@Override
-	public void makerGetProject() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void makerUpdateProject() throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -142,48 +112,40 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		sqlSession.insert(NAMESPACE + ".makerProjectInsert",member_id);
 	}
 
-
 	@Override
 	public int makerProjectNum() throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".getProjectNum");
 	}
-
 
 	@Override
 	public int tempMakerChkBasic(int project_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".chkBasic",project_num);
 	}
 
-
 	@Override
 	public int tempMakerChkStory(int project_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".chkStory",project_num);
 	}
-
 
 	@Override
 	public int tempMakerChkReword(int project_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".chkReword",project_num);
 	}
 
-
 	@Override
 	public int tempMakerChkMakersInfo(int project_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".chkMakersInfo",project_num);
 	}
-
 
 	@Override
 	public int tempMakerChkRequir(int project_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + ".chkRequir",project_num);
 	}
 
-
 	@Override
 	public int submitProject(int project_num) throws Exception {
 	return sqlSession.update(NAMESPACE + ".submitProject",project_num);
 	}
-
 
 	@Override
 	public void tempUploadImg(int project_num) throws Exception {
@@ -196,20 +158,17 @@ public class TempMakerBoardDaoImpl implements TempMakerBoardDao {
 		sqlSession.update(NAMESPACE + ".introcategoryUpdate",project_num);
 	}
 
-
 	@Override
 	public void tempUploadTitle(int project_num) throws Exception {
 		sqlSession.update(NAMESPACE + ".introTitleUpdate",project_num);
 		
 	}
 
-
 	@Override
 	public void tempUploadStory(int project_num) throws Exception {
 		sqlSession.update(NAMESPACE + ".introStoryUpdate",project_num);
 		
 	}
-
 
 	@Override
 	public String tempRewordEndDate(int rewordNum) throws Exception {
