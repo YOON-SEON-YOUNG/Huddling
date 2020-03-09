@@ -64,9 +64,12 @@ $(document).ready(function() {
 	
 	// 남은 기한 구하기
 	$.get("/detail/endDate/" + num,function(data){
-		var month = data.substring(data.indexOf("/") - 2,data.indexOf("/"));
-		var days = data.substring(data.lastIndexOf("/") - 2,data.lastIndexOf("/"));
+		var month = data.substring(data.indexOf("/") + 1,data.lastIndexOf("/"));
+		console.log(month);
+		var days = data.substring(data.lastIndexOf("/") + 1);
+		console.log(days);
 		var end = endDate(month,days);
+		console.log(end);
 		$('#endDate').text(end);
 	});
 	
