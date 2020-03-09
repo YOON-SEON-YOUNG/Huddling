@@ -25,9 +25,17 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+<style>
+#image{
+	height:70px;
+	width:200px;
+	right:200px;
+	margin-left:400px; 
+}
+</style>
 <title>Insert title here</title>
 <script>
+
 $(document).ready(function(){
 	$("#btnSubmit").click(function() {
 		if ($("#member_pw").val().trim() == "") {
@@ -194,7 +202,7 @@ $(document).ready(function(){
 		</div>
 		<!-- 작업시작 -->
 		<div class="col-md-6">
-		<a><img src="resources/image/hudling_logo.jpg"></img></a>
+		<a><img src="/resources/images/hudling_logo2.jpg"id="image"></img></a>
 		</div>
 		<!-- 아무것도업음 -->
 		<div class="col-md-3">
