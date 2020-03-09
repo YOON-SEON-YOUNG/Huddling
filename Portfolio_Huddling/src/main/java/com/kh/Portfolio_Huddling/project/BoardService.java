@@ -15,4 +15,5 @@ public interface BoardService {
 	public int totalSponser(int project_num) throws Exception;
 	public TempMakerMakersDto makersInfo(int project_num) throws Exception;
 	public int percent(int project_num) throws Exception;
+	public void endProject(int project_num) throws Exception;
 }

@@ -49,4 +49,16 @@
 	where temp_makerinfo_num = #{project_num}
 	and temp_makerinfo_num = project_num
 	</select>
+	
+	<select id='endDateChk' resultType="int">
+	select trunc(to_date(basic_enddate, 'yyyy-MM-dd') - sysdate) endDate
+	from tbl_temp_basic
+	where temp_basic_num = #{project_num}
+	</select>
+	
+	<update id="stateChange">
+	update tbl_project set
+	project_state = 2
+	where project_num =#{project_num}
+	</update>
 </mapper>

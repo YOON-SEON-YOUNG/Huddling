@@ -61,4 +61,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.percent(project_num);
 	}
 
+	@Override
+	public void endProject(int project_num) throws Exception {
+		boardDao.endProject(project_num);
+	}
+
 }

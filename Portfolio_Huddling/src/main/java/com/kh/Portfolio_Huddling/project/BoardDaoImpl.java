@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerMakersDto;
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
@@ -35,7 +36,13 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
+	@Transactional
 	public String endDate(int project_num) throws Exception {
+		int endDate = sqlsession.selectOne(NAMESPACE + ".endDateChk", project_num);
+		if(endDate < 0) {
+			sqlsession.update(NAMESPACE + ".stateChange",project_num);
+			return "0";
+		}
 		return sqlsession.selectOne(NAMESPACE + ".endDate",project_num);
 	}
 
@@ -43,7 +50,6 @@ public class BoardDaoImpl implements BoardDao {
 	public int totalSponser(int project_num) throws Exception {
 		return sqlsession.selectOne(NAMESPACE + ".totalSponser",project_num);
 	}
-
 
 	@Override
 	public TempMakerMakersDto makersInfo(int project_num) throws Exception {
@@ -53,5 +59,14 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int percent(int project_num) throws Exception {
 		return sqlsession.selectOne(NAMESPACE +  ".percent",project_num);
+	}
+
+	@Override
+	@Transactional
+	public void endProject(int project_num) throws Exception {
+		int date = sqlsession.selectOne(NAMESPACE + ".endDateChk",project_num);
+		if (date < 0) {
+			sqlsession.update(NAMESPACE + ".stateChange",project_num);
+		}
 	}
 }
