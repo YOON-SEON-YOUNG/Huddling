@@ -102,18 +102,17 @@ $(document).ready(function() {
 	});
 	
 	function endDate(EndMonth,EndDays){
-		var t = new Date(); // 오늘 날짜 객체를 생성합니다.
-		console.log('1',t);
-		var nowYear = t.getFullYear(); // 오늘 날짜의 연도 정보를 가져옵니다.
-		if(EndMonth < 10){
+		console.log(EndMonth +':'+ EndDays);
+		// 오늘 날짜 객체 생성
+		var tDay = new Date(); 
+		console.log('toDay : ',tDay);
+		// 오늘 날짜의 연도 정보를 가져옵니다.
+		var nowYear = tDay.getFullYear();
+		console.log('toYear : ',nowYear);
 		var theDate = new Date(nowYear,EndMonth-1,EndDays);
-		} else {
-		var theDate = new Date(nowYear,EndMonth,EndDays);
-		}
 		console.log('2',theDate);
-		var diffDate = theDate-t;
+		var diffDate = theDate-tDay;
 		var result = Math.ceil( diffDate / (60*1000*60*24));
-		console.log(result);
 		return result;
 	}
 });
