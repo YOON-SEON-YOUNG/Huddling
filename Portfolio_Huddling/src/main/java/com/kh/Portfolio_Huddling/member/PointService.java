@@ -13,4 +13,4 @@ public interface PointService {
 	public List<PointVo> pointById(String member_id) throws Exception;
 	// 포인트 사용
 	public void use(PaymentVo paymentVo) throws Exception;
-}
+	}

@@ -195,6 +195,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/myPageQuestionControl", method = RequestMethod.GET)
 	public String myPageQuestionControl(Model model,HttpSession session) {
+		MemberInquiryDto inquiry = (MemberInquiryDto) session.getAttribute("inquiry");
+		model.addAttribute("inquiry", inquiry);
 //		session.removeAttribute("inquiry");
 //		System.out.println("======dtogetInquiry" + dto.getInquiry());
 //		System.out.println("======dtogetProject_name" + dto.getProject_name());
@@ -228,7 +230,12 @@ public class MemberController {
 	// 프로필 등록폼
 
 	@RequestMapping(value = "/member/myPageProfileControl", method = RequestMethod.GET)
-	public String myPageProfileControl() {
+	public String myPageProfileControl(HttpSession session, Model model) throws Exception {
+		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+		System.out.println("memberVo :" + memberVo);
+		String member_id = memberVo.getMember_id();
+		MemberProfileVo profileVo = service.selectMemberById(member_id);
+		model.addAttribute("profileVo", profileVo);
 		System.out.println("profile");
 //		service.selectMemberProfileread(profile_num)
 		return "member/myPageProfileControl";
@@ -276,37 +283,41 @@ public class MemberController {
 		}
 	 
 	 
-		// 포인트 충전폼 -> /member/include/buy -> GET 방식 요청 처리 
-		@RequestMapping(value="/member/myPagePointControl", method = RequestMethod.GET)
-		public String buyGET() throws Exception {
-			System.out.println("buyGET() 실행됨");
-			return "member/myPagePointControl";
-			
-		}
-		
-		// 포인트 충전처리 -> /point/buy -> POST 방식 요청 처리
-		@RequestMapping(value="/buy", method = RequestMethod.POST)
-		public String buyPOST(PointVo pointVo, MemberVo memberVo) throws Exception {
-			System.out.println("butPOST() 실행됨");
-			System.out.println("pointVo:" + pointVo);
-			System.out.println("memberVo:" + memberVo);
-			pointService.buy(pointVo);
-			service.updatePoint(memberVo);
-			return "redirect:/member/myPagePointControl";
+	// 포인트 충전폼 -> /member/include/buy -> GET 방식 요청 처리 
+			@RequestMapping(value="/member/myPagePointControl", method = RequestMethod.GET)
+			public String buyGET(HttpSession session, Model model) throws Exception {
+				System.out.println("buyGET() 실행됨");
+				MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+				System.out.println("memberVo :" + memberVo);
+				String member_id = memberVo.getMember_id();
+				model.addAttribute("member_id", member_id);
+				return "member/myPagePointControl";
 				
-		}
-		
-		// 포인트 충전 내역 
-		@RequestMapping(value ="/member/pointList", method = RequestMethod.GET)
-		public String pointListById(HttpSession session, Model model)throws Exception {
-						
-			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
-			List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
-			model.addAttribute("pointList", pointList);
-			System.out.println(pointList);
-			return "member/pointList";
+			}
 			
-		}
+			// 포인트 충전처리 -> /point/buy -> POST 방식 요청 처리
+			@RequestMapping(value="/member/myPagePointControl", method = RequestMethod.POST)
+			public String buyPOST(PointVo pointVo, MemberVo memberVo) throws Exception {
+				System.out.println("butPOST() 실행됨");
+				System.out.println("pointVo:" + pointVo);
+				System.out.println("memberVo:" + memberVo);
+				pointService.buy(pointVo);
+				service.updatePoint(memberVo);
+				return "redirect:/member/myPagePointControl";
+					
+			}
+			
+			// 포인트 충전 내역 
+			@RequestMapping(value ="/member/pointList", method = RequestMethod.GET)
+			public String pointListById(HttpSession session, Model model)throws Exception {
+							
+				MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
+				List<PointVo> pointList = pointService.pointById(memberVo.getMember_id());
+				model.addAttribute("pointList", pointList);
+				System.out.println(pointList);
+				return "member/pointList";
+				
+			}
 		
 	/*
 	 * // 주문 내역

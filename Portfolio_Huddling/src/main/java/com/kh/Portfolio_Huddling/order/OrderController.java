@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.member.MemberVo;
@@ -56,7 +57,9 @@ public class OrderController {
 	
 	// 주문 상세 목록 - 상태 변경
 	@RequestMapping(value = "/order/myOrderView", method = RequestMethod.POST)
+	@ResponseBody
 	public String delivery(OrderVo order) throws Exception {
+		System.out.println("order:" + order);
 		orderService.delivery(order);
 		
 		List<OrderVo> order2 = orderService.changePoint_sub(order);
@@ -79,8 +82,10 @@ public class OrderController {
 			
 			
 		}
+		System.out.println("success");
 		
-		return "rediret:/order/myOrderView?n=" + order.getOrder_id();
+//		return "rediret:/order/myOrderView?n=" + order.getOrder_id();
+		return "success";
 		
 	}
 

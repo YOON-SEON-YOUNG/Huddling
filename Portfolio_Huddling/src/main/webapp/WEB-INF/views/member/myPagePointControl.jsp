@@ -12,16 +12,15 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-
-
-
-
 <style>
 .button{
     position: relative;
     text-align: center;
 }
 </style>
+<script>   
+
+  </script>
 
 <body>
 
@@ -30,7 +29,7 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">포인트 충전</a>
     </li>
-   <!--  <li class="nav-item">
+ <!--    <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">포인트 내역</a>
     </li> -->
   </ul>
@@ -67,7 +66,7 @@
 				data-target="#exampleModal">충전하기</button>
 		</div>
 
-		<form action="/member/buy" method="post">
+		<form action="/member/myPagePointControl" method="post">
 			<!-- 모달창 -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">

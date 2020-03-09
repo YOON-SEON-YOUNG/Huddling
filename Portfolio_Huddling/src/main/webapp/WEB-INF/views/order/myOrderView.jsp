@@ -32,9 +32,28 @@
  .delivery1_btn,
  .delivery2_btn { font-size:16px; background:#fff; border:1px solid #999; margin-left:10px; }
 </style>
+<script>   
+$(document).ready(function() {
+   $(".delivery2_btn").click(function(){
+	   var order_id = $("#order_id").val();
+	   var delivery = "배송 완료";
+	   var data = {
+			"order_id" : order_id,
+			"delivery" : delivery
+	   };
+	   $.post('/order/myOrderView', data, function(rData) {
+		   console.log(rData);
+		   if (rData.trim() == "success" && $("#delevery_state").text() != "배송 완료") {
+			   alert("배송 완료 처리 되었습니다.");
+			   $("#delevery_state").text("배송 완료");
+		   }
+	   });
+   });
+});   
+  </script>
 <body>
 <br>
-<br>
+<br>	
 <br>
 <br>
 <br>
@@ -55,32 +74,24 @@
     <p><span>주소</span>(${OrderListDto.useraddr1}) ${OrderListDto.useraddr2} ${OrderListDto.useraddr3}</p>
     <p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${OrderListDto.amount}" /> 원</p>
     <p><span>사용한 포인트</span><fmt:formatNumber pattern="###,###,###" value="${OrderListDto.point}" /> 포인트</p>
-    <p><span>상태</span>${OrderListDto.delivery}</p>
-    
- <div class="deliveryChange">
- 	<form role="form" method="post" class="deliveryForm">
- 
-  <input type="hidden" name="order_id" value="${OrderListDto.order_id}" />
-  <input type="hidden" name="delivery" class="delivery" value="" />
-  
-  
-  <button type="button" class="delivery2_btn">배송 완료</button>
-  
-  <script>   
-   $(".delivery2_btn").click(function(){
-	    $(".delivery").val("배송 완료");
-	    run();
-    
-   });
-   
-   function run(){
-    $(".deliveryForm").submit();
-   }
-  
-  </script>
- </form>
-</div>
-   </c:if>
+    <p><span>상태</span><span id="delevery_state">${OrderListDto.delivery}</span></p>
+
+	<div class="deliveryChange">
+<!-- 		<form role="form" method="post" action="/order/myOrderView" -->
+<!-- 			class="deliveryForm"> -->
+
+			<input type="hidden" name="order_id" id="order_id"
+				value="${OrderListDto.order_id}" /> 
+			<input type="hidden" id="delivery"
+				name="delivery" class="delivery" value="" />
+
+
+			<button type="button" class="delivery2_btn">배송 완료</button>
+
+
+<!-- 		</form> -->
+	</div>
+</c:if>
    
   </c:forEach>
  </div>
