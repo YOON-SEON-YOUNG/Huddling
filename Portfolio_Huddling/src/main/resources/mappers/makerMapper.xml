@@ -7,19 +7,18 @@
 	
 	<!-- 기본 요건 가져오기 -->
 	<select id="tempSelectRequir" resultType="TempMakerRequirDto">
-		select * from
-		tbl_temp_requir
+		select * from tbl_temp_requir
 		where temp_requir_num = #{temp_requir_num}
 	</select>
 	
 	<!-- 기본 요건 저장 -->
 	<update id="tempUpdateRequir">
 		update tbl_temp_requir set
-		requir_q1 = #{requir_q1},
-		requir_q2 = #{requir_q2},
-		requir_q3 = #{requir_q3},
-		requir_q4 =
-		#{requir_q4}
+		requir_q1_check = #{requir_q1_check},
+		requir_q1_desc = #{requir_q1_desc},
+		requir_q2_desc = #{requir_q2_desc},
+		requir_q3_desc = #{requir_q3_desc},
+		requir_q4_check = #{requir_q4_check}
 		where temp_requir_num = #{temp_requir_num}
 	</update>
 	<!-- 기본 정보 가져오기 -->
@@ -113,6 +112,11 @@
 	<delete id="rewordDelete">
 	delete tbl_temp_reword where temp_reword_num = #{temp_reword_num}
 	</delete>
+	<!-- 리워드 종료 -->
+	<select id="rewordEndDate" resultType="String">
+	select basic_enddate from tbl_temp_basic
+	where temp_basic_num = #{project_num}
+	</select>
 	
 	<!-- 메이커 정보 가져오기 -->
 	<select id="tempSelectMakersInfo" resultType="TempMakerMakersDto">
@@ -135,8 +139,11 @@
 	
 	<!-- 프로젝트 리스트 가져오기 -->
 	<select id="getMakerList" resultType="ProjectVo">
-	select * from tbl_project_intro a
-	where a.project_num in (select b.project_num from tbl_project b	where b.user_id = #{user_id})
+	select a.*, b.project_state from tbl_project_intro a, tbl_project b
+	where a.project_num in 
+	(select project_num from tbl_project
+	where user_id = #{user_id})
+	and a.project_num = b.project_num
 	</select>
 	<!-- 프로젝트 번호 가져오기 -->
 	<select id="getProjectNum" resultType="int">
@@ -146,13 +153,12 @@
 	<!-- 새 프로젝트 생성 -->
 	<insert id="makerProjectInsert">
 	insert all
-	into tbl_project values(#{member_id},seq_project_num.nextval,0)
+	into tbl_project values(#{member_id},seq_project_num.nextval,0,0)
 	into tbl_temp_basic(temp_basic_num) values(seq_project_num.currval)
 	into tbl_temp_makerinfo(temp_makerinfo_num) values(seq_project_num.currval)
 	into tbl_temp_requir(temp_requir_num) values(seq_project_num.currval)
 	into tbl_temp_story(temp_story_num) values(seq_project_num.currval)
 	into tbl_project_intro(project_num) values(seq_project_num.currval)
-	into tbl_payment(payment_num,project_num) values(SEQ_PAYMENT_NUM.nextval,seq_project_num.currval)
 	select * from dual
 	</insert>
 	
@@ -167,7 +173,7 @@
 	select * from tbl_project_intro
 	where project_num = #{project_num}
 	</select>
-	
+	<!-- 작성 상태 확인 -->
 	<select id="chkBasic" resultType="int">
 	select count(*) from tbl_temp_basic
 	where temp_basic_num = #{project_num}
@@ -181,8 +187,9 @@
 	<select id="chkRequir" resultType="int">
 	select count(*) from tbl_temp_requir
 	where temp_requir_num = #{project_num}
-	and not requir_q2 = ' '
-	and not requir_q3 = ' '
+	and not requir_q2_desc = ' '
+	and not requir_q3_desc = ' '
+	and requir_q4_check = 'true'
 	</select>
 	
 	<select id="chkStory" resultType="int">
@@ -219,7 +226,8 @@
 	 and not TEMP_MAKERINFO_REPRNAME = ' '
 	 and not TEMP_MAKERINFO_REPREMAIL = ' '
 	</select>
-	
+	<!-- //작성 상태 확인 -->
+	<!-- 프로젝트 제출 -->
 	<update id="submitProject">
 	update tbl_project set
 	project_state = 1
@@ -254,10 +262,5 @@
 	where temp_story_num = #{project_num})
 	where project_num = #{project_num}
 	</update>
-	
-	<select id="projectState">
-	select project_state from tbl_project
-	where project_num = #{project_num}
-	</select>
 	
 </mapper>

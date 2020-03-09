@@ -50,9 +50,10 @@ public class BoardUploadController {
 		String realPath = uploadPath + File.separator + fileName.replace("/", "\\");
 		System.out.println("realPath:"+ realPath);
 		FileInputStream fileInputStream = new FileInputStream(realPath);
-		byte[] bytes = IOUtils.toByteArray(fileInputStream);
-		System.out.println("bytes :" + bytes);
-		fileInputStream.close();
-		return bytes;
+		System.out.println("sys" + fileInputStream);
+			byte[] bytes = IOUtils.toByteArray(fileInputStream);
+			System.out.println("bytes :" + bytes);
+			fileInputStream.close();
+			return bytes;
 		}
 }

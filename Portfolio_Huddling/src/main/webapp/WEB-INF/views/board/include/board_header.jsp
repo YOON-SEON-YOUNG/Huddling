@@ -253,7 +253,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 										<p class="text-muted">멤버포인트:
 										<fmt:formatNumber pattern="###,###" value="${memberVo.member_point}"/>원</p>
 										<div class="dropdown-divid"></div>
-										<li><a class="dropdown-items" href="/member/myPagePointControl">내 포인트</a></li>
+										<li><a href="/member/myPagePointControl">내 포인트</a></li>
 										<div class="dropdown-divid"></div>
 										<a class="dropdown-items" href="/member/logout"><i class="fa fa-power-off"></i> Logout</a>
 									</ul>
@@ -283,7 +283,7 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 							<nav>
 								<ul class="nav navbar-nav">
 									<li><a href="/" class="active">Home</a></li>
-									<li><a href="/maker/intro">About</a></li>
+									<li><a href="/board/about">About</a></li>
 									<li><a href="/maker/intro">프로젝트 등록</a></li>
 								
 								<c:choose>

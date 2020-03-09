@@ -10,6 +10,7 @@
 
 //날짜에 해당하는 폴더 계산 -> 2020/1/20
 // String u = "/resources/upload/"; // 이미지가 저장될 주소
+
 String uploadPath = application.getRealPath("/") + "resources\\upload";
 String calcPath = FileUploadUtil.calcPath(uploadPath);
 File f1 = new File(uploadPath);
@@ -71,7 +72,9 @@ if(request.getContentLength() > 10*1024*1024 ){
 		fcode = fpath + fname;
 
 		try {
-			window.opener.pasteHTML(fname);
+		window.opener.pasteHTML(fname);
+		console.log('f',f);
+		console.log('fcode',fcode);
 
 			window.close();
 		} catch (e) {

@@ -33,5 +33,5 @@ public interface MemberService {
 	// 내가 올린 프로젝트
 	public List<ProjectVo> myRegistList(String member_id) throws Exception;
 
-	
+
 }

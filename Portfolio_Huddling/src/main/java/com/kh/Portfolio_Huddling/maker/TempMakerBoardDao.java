@@ -7,8 +7,6 @@ import com.kh.Portfolio_Huddling.project.ProjectVo;
 public interface TempMakerBoardDao {
 	//메이커 홈페이지
 	public List<ProjectVo> makerGetIntroList(String member_id) throws Exception;
-	public void makerGetProject() throws Exception;
-	public void makerUpdateProject() throws Exception;
 	public void makerInsertProject(String member_id) throws Exception;
 	public int makerProjectNum() throws Exception;
 	//기본 요건
@@ -33,6 +31,7 @@ public interface TempMakerBoardDao {
 	public TempMakerRewordDto tempOutPutReword(int rewordNum) throws Exception;
 	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception;
 	public void tempRewordDelete(int rewordNum) throws Exception;
+	public String tempRewordEndDate(int rewordNum) throws Exception;
 	//메이커 정보
 	public void tempMakersInfo(TempMakerMakersDto makersDto) throws Exception;
 	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception;

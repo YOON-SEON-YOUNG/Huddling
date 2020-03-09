@@ -99,4 +99,11 @@ public class ShopController {
 		return projectService.selectIntroSearchCategory(projectVo);
 	}
 	
+	// about
+	@RequestMapping(value="/board/about", method = RequestMethod.GET)
+	public String about() {
+		return "board/about";
+		
+	}
+	
 }

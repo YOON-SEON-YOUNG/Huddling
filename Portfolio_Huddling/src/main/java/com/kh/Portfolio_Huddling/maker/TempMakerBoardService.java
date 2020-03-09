@@ -23,9 +23,11 @@ public interface TempMakerBoardService {
 	public void tempInputReword(TempMakerRewordDto rewordDto) throws Exception;
 	public void tempMakersInfoUpdate(TempMakerMakersDto makersDto) throws Exception;
 	public TempMakerMakersDto tempLoadMakersInfo(int makerInfoNum) throws Exception;
+	
 	public TempMakerRewordDto tempOutputReword(int rewordNum) throws Exception;
 	public void tempRewordUpdate(TempMakerRewordDto rewordDto) throws Exception;
 	public void tempRewordDelete(int rewordNum) throws Exception;
+	public String tempReowrdEndDate(int rewordNum) throws Exception;
 	
 	public int tempMakerChkBasic(int project_num) throws Exception;
 	public int tempMakerChkStory(int project_num) throws Exception;

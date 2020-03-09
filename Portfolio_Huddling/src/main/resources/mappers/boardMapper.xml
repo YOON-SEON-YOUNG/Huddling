@@ -15,13 +15,13 @@
 	</select>
 	
 	<select id="totalPayment" resultType="Integer">
-	select sum(payment_point) from tbl_payment
-	where project_num = #{project_num}
+	select sum(test_point) from tbl_test_per
+	where per_num = #{project_num}
 	</select>
 	
 	<select id="totalSponser" resultType="Integer">
-	select count(payment_num) from tbl_payment
-	where project_num = #{project_num}
+	select count(test_point) from tbl_test_per
+	where per_num = #{project_num}
 	</select>
 	
 	<select id="endDate" resultType="String">
@@ -31,7 +31,7 @@
 	
 	<update id="projectPerUpdate">
 	update tbl_project set
-	project_per = ((select sum(test_point) from tbl_test_per
+	project_per = CEIL((select sum(test_point) from tbl_test_per
 	group by per_num
 	having per_num = #{project_num}) / (
 	(select basic_amount from tbl_temp_basic

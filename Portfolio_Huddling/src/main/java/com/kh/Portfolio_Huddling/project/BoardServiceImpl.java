@@ -29,11 +29,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int totalPayment(int project_num) throws Exception {
+		try {
 		int payment = boardDao.totalPayment(project_num);
-		if (payment == 0) {
-			return 0;
-		}
 		return payment;
+		}catch (Exception e) {
+		return 0;
+		}
 	}
 
 	@Override

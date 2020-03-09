@@ -154,7 +154,7 @@ public class MemberController {
 		System.out.println("sendinquiry"+ dto.getInquiry());
 		System.out.println("sendinquiry"+ dto.getProject_name());
 		System.out.println("sendinquiry"+ dto.getReceiver());
-		return "redirect:/member/mypageMain";
+		return "member/myPageQuestionControl";
 	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)

@@ -30,9 +30,9 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">포인트 충전</a>
     </li>
-    <li class="nav-item">
+   <!--  <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">포인트 내역</a>
-    </li>
+    </li> -->
   </ul>
 
   <!-- Tab panes -->

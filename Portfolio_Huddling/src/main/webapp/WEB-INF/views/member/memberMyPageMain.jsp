@@ -48,6 +48,7 @@ $(document).ready(function(){
 	$("#item2").click(function(){
 		stopInter();
 		$("#page").load("myRegistList");
+		$("#page").load("registPostList");
 	});
 	$("#item3").click(function(){
 		stopInter();

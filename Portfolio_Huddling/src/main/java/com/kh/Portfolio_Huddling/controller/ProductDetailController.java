@@ -50,6 +50,7 @@ public class ProductDetailController {
 	@Inject
 	private OrderService orderService;
 
+
 	
 	// 펀딩 상세보기 페이지 
 	@RequestMapping(value="/detailMain/{num}", method=RequestMethod.GET)
@@ -89,8 +90,8 @@ public class ProductDetailController {
 		return "detail/include/tapReview";
 	}
 
-	
-	
+
+
 	// 디테일 페이지 데이터 가져오기
 	@RequestMapping(value="/getDetail/{num}", method= RequestMethod.GET)
 	@ResponseBody
@@ -106,9 +107,8 @@ public class ProductDetailController {
 	@RequestMapping(value="/totalPayment/{num}", method=RequestMethod.GET)
 	@ResponseBody
 	public int totalPayment(@PathVariable("num")int project_num) throws Exception{
-		int num = boardService.totalPayment(project_num);
-		System.out.println("num :" + num);
-		return num;
+		int totalVal = boardService.totalPayment(project_num);
+		return totalVal;
 	}
 	
 	//남은 날짜 구하기
@@ -133,7 +133,7 @@ public class ProductDetailController {
 	@ResponseBody
 	public int totalPrice(@PathVariable("num")int project_num) throws Exception{
 		int percent = boardService.percent(project_num);
-		if(percent == 0) {
+		if(percent < 0) {
 			System.out.println("this is null");
 			return 0;
 		} else {

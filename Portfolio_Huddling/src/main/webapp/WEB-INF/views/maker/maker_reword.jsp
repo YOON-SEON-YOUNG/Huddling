@@ -7,22 +7,23 @@
 th {
 	text-align: center;
 }
-
+.ma{
+	margin: 0px;
+}
 .col-sm-3 {
 	margin: 5px 0px 0px 0px;
 }
 </style>
 <script>
 $(document).ready(function() {
+	var num = ${projectNum};
 	var selOp = $('#selectedDiv');
 	$("#projectTitle").text("리워드 설계");
 	$("#projectDesc").text("서포터에게 제공할 리워드 내용을 입력하세요.")
 	selOp.css('display', 'none');
-	// 임시 저장된 리워드 내역 가져오기
-
+	helpText();
 	// 리워드 등록 및 변경
 	$("#btnAddReword").click(function() {
-		var num = ${projectNum};
 		var chk = $(this).attr('data-update');
 		var url ="/maker/rewordInput";
 		if(chk == '0'){
@@ -41,6 +42,7 @@ $(document).ready(function() {
 		}
 		$('#btnClose').trigger('click');
 	});
+	
 	// 리워드 수정
 	$(".btnRewordUpdate").click(function(){
 		var num = $(this).attr('data-rewordNum');
@@ -51,7 +53,7 @@ $(document).ready(function() {
 			console.log(result);
 			console.log('chk',chk);
 			$('#btnAddReword').attr('data-update','1');
-			$("#rewordSubject").text("리워드 수정");
+			$("#rewordSubject").html('<strong>리워드 수정</strong>');
 			$('#price').val(result.temp_reword_price);
 			$('#rewordName').val(result.temp_reword_name);
 			$('#rewordDesc').val(result.temp_reword_desc);
@@ -62,11 +64,12 @@ $(document).ready(function() {
 			$('#btnModal').trigger('click');
 			});
 		});
+	
 	// 내용 초기화
 	$('#btnClose').click(function(){
 		$('#formTampData').each(function(){
 			$('#btnAddReword').attr('data-update','0');
-			$("#rewordSubject").text('리워드 추가');
+			$("#rewordSubject").html('<strong>리워드 추가</strong>');
 			this.reset();
 		});
 	});
@@ -84,10 +87,9 @@ $(document).ready(function() {
 			});
 		}
 	});
-
+	
 	//선택 옵션에 따른 옵션창 표시
-	$('#selectOption').change(
-		function() {
+	$('#selectOption').change(function() {
 			var op = $(this).val();
 			var strOp = "";
 			switch (op) {
@@ -107,15 +109,58 @@ $(document).ready(function() {
 			}
 			selOp.html(strOp);
 		});
-	
-		$('input[name=temp_reword_trans]').change(function() {
-			var ra = $('input[name=temp_reword_trans]:checked');
-			if (ra.val() == 'option1') {
-				$('#deliveryDiv').css('display', 'block');
-			} else {
-				$('#deliveryDiv').css('display', 'none');
+	// 미리 보기 항목 추가
+	$(document).on('keydown','#reword_option',function(e){
+		var keycode = e.keyCode
+		var lines = $(this).val().split("\n");
+		var index = lines.length;
+		if(keycode == 13){
+		$('#previewOption').empty();
+			for(var v = 0; v < index; v++){
+			$('#previewOption').append('<option>'+lines[v]+'</option>');
 			}
-		});
+		}
+	});
+	//배송이 필요한 리워드 시, 배송료 항목 추가
+	$('input[name=temp_reword_trans]').change(function() {
+		var ra = $('input[name=temp_reword_trans]:checked');
+		var div = $('#deliveryDiv');
+		if (ra.val() == 'option1') {
+			div.removeClass('d-none');
+			div.addClass('d-block');
+		} else {
+			div.removeClass('d-block');
+			div.addClass('d-none');
+		}
+	});
+
+	//리워드 만료일에 따른 배송 날짜 선택
+	function monthsChange(){
+	$('#trans_month').empty();
+	var endDate = '${endDate}';
+	var endYear = endDate.substring(0,endDate.indexOf('/'));
+	var endMonth = endDate.substring(endYear.length + 1,endDate.lastIndexOf('/'));
+	var date = new Date(endYear,endMonth,1);
+	for(var i = 0; i < 3; i++){
+	var addMonth = date.setMonth(date.getMonth() + i);
+	var trans_date = date.toLocaleDateString('en-US');
+	var trans_year = trans_date.substring(trans_date.lastIndexOf('/') + 1);
+	var trans_month = Number(trans_date.substring(0,trans_date.indexOf('/'))) - 1;
+	if( trans_month < 10) {
+		trans_month = '0' + trans_month;
+	} 
+	if(trans_month == '00'){
+		trans_month = '01';
+	}
+	var years = trans_year+'/'+trans_month;
+	var option =  $("<option value="+years+">"+trans_year+'/'+trans_month +"</option>");
+	$('#trans_month').append(option);
+	var delMonth = date.setMonth(date.getMonth() - i);
+		}
+	console.log($('#trans_month').val());
+	}
+	
+	monthsChange();
 });
 </script>
 <div class="container-fluid rewords">
@@ -204,7 +249,7 @@ $(document).ready(function() {
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="rewordSubject">리워드 추가</h5>
+				<h5 class="modal-title" id="rewordSubject"><strong>리워드 추가</strong></h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -227,7 +272,9 @@ $(document).ready(function() {
 									<div class="row">
 										<div class="col-md-10">
 											<input id='price' name='temp_reword_price' type="text"
-												class="form-control" />
+												class="form-control"
+												placeholder="금액 입력" />
+										<small id="helpTxt" class="form-text text-danger help"></small>
 										</div>
 										<div class="col-md-2">원</div>
 									</div>
@@ -236,12 +283,17 @@ $(document).ready(function() {
 							<tr>
 								<th scope="row"><label for='rewordName'>리워드 명</label></th>
 								<td><input id='rewordName' name='temp_reword_name'
-									type="text" class="form-control" /></td>
+									type="text" class="form-control"
+									placeholder="타이틀 입력 ex) [얼리버드]기본 리워드" />
+									<small id="helpTxt" class="form-text text-muted help"></small>
+								</td>
 							</tr>
 							<tr>
 								<th scope="row"><label for='rewordDesc'>상세 설명</label></th>
-								<td><textarea id='rewordDesc' name='temp_reword_desc'
-										class="form-control" cols="3"></textarea></td>
+								<td><textarea id='rewordDesc' name='temp_reword_desc' class="form-control" cols="3"
+								placeholder="제공하는 리워드가 무엇인지 간략하게 제시해 주세요"></textarea>
+								<small id="helpTxt" class="form-text text-muted help"></small>
+								</td>
 							</tr>
 							<tr>
 								<th scope="row" rowspan="2"><label>옵션 조건</label></th>
@@ -270,14 +322,14 @@ $(document).ready(function() {
 							</tr>
 							<tr>
 								<td>
-									<div id='deliveryDiv' class="row" style="float: left;">
-											<label for='delivery'>배송료 </label>
-											<div class='col-xs-2'>
-											<input id='delivery' type="text"
-												name='temp_reword_trans_price'" class="form-control">
-											</div>
-											<span>원</span>
+								<div class="container">
+									<div id='deliveryDiv' class="row d-block" style="float: left;">
+									<label for='delivery' class='col-sm-3' style="float: left; padding: 0">배송료 </label>
+									<input id='delivery' type="text" name='temp_reword_trans_price' class="form-control col-sm-9"
+									value='0'/>
+									<small>(배송비가 없는 경우, 0원 입력)</small>
 									</div>
+								</div>
 								</td>
 							</tr>
 							<tr>
@@ -296,7 +348,8 @@ $(document).ready(function() {
 									<div class="row">
 										<div class="col-md-10">
 											<input id='limited' type="text" name='temp_reword_count'
-												class="form-control">
+												class="form-control"
+												placeholder="수량 입력">
 										</div>
 										<div class="col-md-2">개</div>
 									</div>
