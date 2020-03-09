@@ -122,16 +122,16 @@ $(document).ready(function() {
 	});
 	
 	function endDate(EndMonth,EndDays){
-		console.log(EndMonth +':'+ EndDays);
+		console.log(EndMonth +'/'+ EndDays);
 		// 오늘 날짜 객체 생성
 		var tDay = new Date(); 
 		console.log('toDay : ',tDay);
-		// 오늘 날짜의 연도 정보를 가져옵니다.
+		// 오늘 날짜의 연도 정보
 		var nowYear = tDay.getFullYear();
 		console.log('toYear : ',nowYear);
-		var theDate = new Date(nowYear,EndMonth-1,EndDays);
-		console.log('2',theDate);
-		var diffDate = theDate-tDay;
+		var endDate = new Date(nowYear,EndMonth,EndDays);
+		console.log('2',endDate);
+		var diffDate = endDate-tDay;
 		var result = Math.ceil( diffDate / (60*1000*60*24));
 		return result;
 	}

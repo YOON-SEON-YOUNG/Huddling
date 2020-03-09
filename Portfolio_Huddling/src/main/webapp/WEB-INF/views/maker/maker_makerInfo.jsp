@@ -42,7 +42,7 @@
 			  	</div>
 					<div class="form-group">
 					  <img id="blah" src="/upload/imgView?fileName=${makersDto.temp_makerinfo_image }"/>
-					  <input type="hidden" id = "introImg"  name='temp_makerinfo_image' value='${makersDto.temp_makerinfo_image }'/>
+					  <input type="hidden" id = "introImg"  name='temp_makerinfo_image' value='<c:if test="${basicDto.basic_representImg eq null || basicDto.basic_representImg eq ''}">makerUpload/default.png</c:if>'/>
 					</div>
 				</div>
 		</div>
