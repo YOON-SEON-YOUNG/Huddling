@@ -155,10 +155,10 @@
 		values (seq_payment_num.nextval, #{project_num}, #{reword_num}, #{payment_point})	
 	</insert>
 	
-	<select id="registPost" resultType="TempMakerProjectVo">
-		select * from tbl_project a, tbl_project_intro b		
-		where a.project_num = b.project_num		
-		and a.user_id = #{user_id};		
+	<!-- 내가 올린 프로젝트 -->
+	<select id="myRegistList" resultType="ProjectVo">
+		select * from tbl_project_intro a
+		where a.project_num in (select b.project_num from tbl_project b	where b.user_id = #{user_id})	
 	</select>
 
 

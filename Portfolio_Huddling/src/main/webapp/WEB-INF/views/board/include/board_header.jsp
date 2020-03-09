@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -245,9 +246,14 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 											<div class="u-img"><img src="/member/displayFile?fileName=${profileVo.profile_pic}" alt="user"></div>
 											<div class="u-text">
 												<h4>${memberVo.member_nickname}님</h4>
-												<p class="text-muted">${memberVo.member_email}</p><a class="btn btn-rounded btn-danger btn-sm" onClick="location.href='/member/mypageMain'">My Page</a></div>
+												<p class="text-muted">${memberVo.member_email}</p><a class="btn btn-rounded btn-danger btn-sm" onClick="location.href='/member/myPageProfileControl'">My Profile</a></div>
 											</div>
 										</li>
+										<div class="dropdown-divid"></div>
+										<p class="text-muted">멤버포인트:
+										<fmt:formatNumber pattern="###,###" value="${memberVo.member_point}"/>원</p>
+										<div class="dropdown-divid"></div>
+										<a class="dropdown-items" href="/member/myPagePointControl">내 포인트</a>
 										<div class="dropdown-divid"></div>
 										<a class="dropdown-items" href="/member/logout"><i class="fa fa-power-off"></i> Logout</a>
 									</ul>
@@ -277,23 +283,25 @@ height:0;margin:.5rem 0;overflow:hidden;border-top:1px solid #e9ecef}
 							<nav>
 								<ul class="nav navbar-nav">
 									<li><a href="/" class="active">Home</a></li>
-
+									<li><a href="/board/about">About</a></li>
 									<li><a href="/maker/intro">프로젝트 등록</a></li>
-<!-- 									<li class="dropdown"> -->
-<!-- 										<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">카테고리 <b class="caret"></b></a> -->
-<!-- 										<ul class="dropdown-menu"> -->
-<!-- 											<li><a href="/board/categoryTech">테크/가전</a></li> -->
-<!-- 											<li><a href="/board/categoryBeauty">뷰티</a></li> -->
-<!-- 											<li><a href="/board/categoryFood">푸드</a></li> -->
-<!-- 											<li><a href="/board/categoryCulture">문화</a></li> -->
-<!-- 											<li><a href="/board/categoryDonate">기부/후원</a></li> -->
-<!-- 											<li class="divider"></li>			 -->
-<!-- 										</ul> -->
-<!-- 									</li> -->
-<!-- 									href="/member/mypageMain" -->
-									<c:choose>
+								
+								<c:choose>
 										<c:when test="${not empty memberVo && memberVo.member_id != 'manager'}">
-											<li><a  href="/member/mypageMain"id="mypage">마이페이지</a></li>
+								<li class="dropdown"> 
+									<a href="services.html" class="dropdown-toggle" data-toggle="dropdown">My Page<b class="caret"></b></a>
+									<ul class="dropdown-menu"> 
+									<li><a href="/detail/rewordCart">My 리워드</a></li>
+									<li><a href="/detail/orderList">내가 후원한 펀딩</a></li>
+									<li><a href="/order/myOrderList">내 프로젝트 관리</a></li>
+									<li><a href="/member/myPageQuestionControl">문의하기</a></li>
+ 											<li class="divider"></li>			 
+ 										</ul> 
+									</li>
+									
+
+									
+											<!-- <li><a  href="/member/mypageMain"id="mypage">마이페이지</a></li> -->
 										<li><a id="managerInquiry" href="">관리자에게문의</a></li>
 										</c:when>
 										

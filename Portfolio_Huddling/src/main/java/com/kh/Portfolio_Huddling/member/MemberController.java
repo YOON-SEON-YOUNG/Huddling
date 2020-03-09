@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.Portfolio_Huddling.order.OrderListDto;
+import com.kh.Portfolio_Huddling.order.OrderService;
+import com.kh.Portfolio_Huddling.order.OrderVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 import com.kh.Portfolio_Huddling.util.UploadFileUtils;
 
@@ -35,6 +38,9 @@ public class MemberController {
 	
 	@Inject
 	private PointService pointService;
+	
+	@Inject
+	private OrderService orderService;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -148,7 +154,7 @@ public class MemberController {
 		System.out.println("sendinquiry"+ dto.getInquiry());
 		System.out.println("sendinquiry"+ dto.getProject_name());
 		System.out.println("sendinquiry"+ dto.getReceiver());
-		return "redirect:/member/mypageMain";
+		return "member/myPageQuestionControl";
 	}
 	
 	@RequestMapping(value = "/mypageMain", method = RequestMethod.GET)
@@ -184,14 +190,17 @@ public class MemberController {
 		
 		return "member/include/myPageReadListControl";
 	}
-	@RequestMapping(value = "/myPageQuestionControl", method = RequestMethod.GET)
+	
+	
+	
+	@RequestMapping(value = "/member/myPageQuestionControl", method = RequestMethod.GET)
 	public String myPageQuestionControl(Model model,HttpSession session) {
 //		session.removeAttribute("inquiry");
 //		System.out.println("======dtogetInquiry" + dto.getInquiry());
 //		System.out.println("======dtogetProject_name" + dto.getProject_name());
 //		System.out.println("======dtogetReceiver" + dto.getReceiver());
 //		model.addAttribute("inquiry", dto);
-		return "member/include/myPageQuestionControl";
+		return "member/myPageQuestionControl";
 	}
 	@RequestMapping(value = "/myPageChaetingControl", method = RequestMethod.GET)
 	public String myPageChaetingControl() {
@@ -218,11 +227,11 @@ public class MemberController {
 	
 	// 프로필 등록폼
 
-	@RequestMapping(value = "/profileRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/myPageProfileControl", method = RequestMethod.GET)
 	public String myPageProfileControl() {
 		System.out.println("profile");
 //		service.selectMemberProfileread(profile_num)
-		return "member/include/myPageProfileControl";
+		return "member/myPageProfileControl";
 	}
 
 	// 프로필 등록
@@ -250,7 +259,7 @@ public class MemberController {
 
 		service.Profile_Register(profileVo);
 		 model.addAttribute("profileVo",profileVo); 
-		return "redirect:/";
+		return "redirect:/member/myPageProfileControl";
 	}
 
 	
@@ -268,10 +277,10 @@ public class MemberController {
 	 
 	 
 		// 포인트 충전폼 -> /member/include/buy -> GET 방식 요청 처리 
-		@RequestMapping(value="/buy", method = RequestMethod.GET)
+		@RequestMapping(value="/member/myPagePointControl", method = RequestMethod.GET)
 		public String buyGET() throws Exception {
 			System.out.println("buyGET() 실행됨");
-			return "member/include/myPagePointControl";
+			return "member/myPagePointControl";
 			
 		}
 		
@@ -283,12 +292,12 @@ public class MemberController {
 			System.out.println("memberVo:" + memberVo);
 			pointService.buy(pointVo);
 			service.updatePoint(memberVo);
-			return "redirect:/";
+			return "redirect:/member/myPagePointControl";
 				
 		}
 		
 		// 포인트 충전 내역 
-		@RequestMapping(value ="/pointListById", method = RequestMethod.GET)
+		@RequestMapping(value ="/member/pointList", method = RequestMethod.GET)
 		public String pointListById(HttpSession session, Model model)throws Exception {
 						
 			MemberVo memberVo = (MemberVo)session.getAttribute("memberVo");
@@ -299,10 +308,15 @@ public class MemberController {
 			
 		}
 		
-		
-		
-		
-		
+	/*
+	 * // 주문 내역
+	 * 
+	 * @RequestMapping(value ="/myPageOrderList", method = RequestMethod.GET) public
+	 * String myPageOrderList() throws Exception{ return
+	 * "member/include/myPageOrderList";
+	 * 
+	 * }
+	 */
 		
 		
 		

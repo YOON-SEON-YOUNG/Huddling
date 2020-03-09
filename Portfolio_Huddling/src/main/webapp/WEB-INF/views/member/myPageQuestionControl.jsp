@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -279,9 +280,13 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-<h2>문의사항</h2>
+<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+		<h2>문의사항</h2>
 <hr>
-<div class="container-fluid">
+		<div class="container-fluid">
 	<div class="row" style="height: 500px;">
 <!-- 		문의 목록 -->
 		<div id="page" class="col-md-3" style="height: 100%; text-align: center;">
@@ -312,5 +317,11 @@ $(document).ready(function() {
 <!-- 		// 채팅 내용 -->
 	</div>
 </div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+
 </body>
 </html>
+<%@ include file="../board/include/board_footer.jsp" %>

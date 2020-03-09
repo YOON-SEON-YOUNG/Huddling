@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,8 +10,7 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 
@@ -29,42 +30,33 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">포인트 충전</a>
     </li>
-    <li class="nav-item">
+   <!--  <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">포인트 내역</a>
-    </li>
+    </li> -->
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
   <!-- 탭1 -->
     <div id="home" class="container tab-pane active"><br>
-      <h3>포인트충전</h3>
+      <h1>포인트충전</h1>
       
       <%-- memberVo : ${memberVo}<br> --%>
 
-		<h3>현재 보유한 포인트</h3>
+		
 		<table border="1" align="center">
 			<tr>
 				<td width="200" bgcolor="#CCCCCC">
 					<p align="center">
-						<b>포인트 잔액</b>
-					</p>
-				</td>
-				<td width="200" bgcolor="#CCCCCC">
-					<p align="center">
-						<b>결제 후 잔액</b>
+						<b>현재 보유 포인트</b>
 					</p>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<p align="center">포인트</p>
+					<p align="center"><fmt:formatNumber pattern="###,###,###" value="${memberVo.member_point}"/></p>
 				</td>
-				<td>
-					<p align="center">
-						<span id="new_points"></span> 포인트
-					</p>
-				</td>
+
 			</tr>
 		</table>
 		<br>
@@ -138,11 +130,6 @@
   </div>
 </div>
 
-
-
-
-
-	
-
 </body>
 </html>
+<%@ include file="../board/include/board_footer.jsp" %>

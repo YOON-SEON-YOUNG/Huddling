@@ -2,6 +2,7 @@ package com.kh.Portfolio_Huddling.member;
 
 import java.util.List;
 
+import com.kh.Portfolio_Huddling.maker.TempMakerProjectVo;
 import com.kh.Portfolio_Huddling.project.ProjectVo;
 
 public interface MemberDao {
@@ -28,6 +29,9 @@ public interface MemberDao {
 	public MemberProfileVo selectMemberProfileread(String member_id) throws Exception;
 	// 멤버 포인트 업데이트
 	public void updatePoint(MemberVo memberVo) throws Exception;
+	// 내가 올린 프로젝트
+	public List<ProjectVo> myRegistList(String member_id) throws Exception;
+	
 	
 
 	

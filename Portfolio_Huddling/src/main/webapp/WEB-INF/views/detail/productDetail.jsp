@@ -8,7 +8,6 @@
 <link href="/resources/main/css/font-awesome.css" rel="stylesheet"> 
 <!--  // 헤더 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="/resources/js/projectShow.js"></script>
 
 <!-- Required meta tags -->
@@ -16,6 +15,7 @@
 
 <!-- Style CSS -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+
 <script type="text/JavaScript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/JavaScript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
 	
 	// 총 금액 구하기
 	$.get("/detail/totalPayment/" + num,function(data){
-		if(data == null || typeof data == "undefined"){
+		if(data == null){
 		data = 0;
 		}
 		$('#totalPayment').text(data);
@@ -64,31 +64,29 @@ $(document).ready(function() {
 	
 	// 남은 기한 구하기
 	$.get("/detail/endDate/" + num,function(data){
-		var month = data.substring(data.indexOf("/") + 1,data.lastIndexOf("/"));
-		console.log(month);
-		var days = data.substring(data.lastIndexOf("/") + 1);
-		console.log(days);
+		var month = data.substring(data.indexOf("/") - 2,data.indexOf("/"));
+		var days = data.substring(data.lastIndexOf("/") - 2,data.lastIndexOf("/"));
 		var end = endDate(month,days);
-		console.log(end);
 		$('#endDate').text(end);
 	});
 	
 	//스폰서 구하기
 	$.get("/detail/totalSponser/" + num,function(data){
-		if(data == null || typeof data == "undefined"){
-			data = 0;
-			}
 		$('#totalSponser').text(data);
 	});
 	
 	//백분율 구하기
 	$.get("/detail/totalPrice/" + num,function(data){
-		if(data == null || typeof data == "undefined"){
-			data = 0;
-			}
-		$('#per').text(data);
+		var num1 = $('#totalPayment').text();
+		console.log("num1 ", num1);
+		if(num1 == null){
+		num1 = 0;
+		}
+		var num2 = data;
+		var per = num1 / num2 * 100;
+		$('#per').text(per);
 		var barProgress = $(".progress-bar");
-		barProgress.css('width',data + '%')
+		barProgress.css('width',per + '%')
 	});
 	
 	//창작자 정보 가져오기
@@ -132,9 +130,7 @@ $(document).ready(function() {
 		var endDate = new Date(nowYear,EndMonth,EndDays);
 		console.log('2',endDate);
 		var diffDate = endDate-tDay;
-		var result = Math.ceil( diffDate / (60*1000*60*24));
-		return result;
-	}
+	};
 });
 
 </script>
@@ -205,7 +201,7 @@ $(document).ready(function() {
 							<div class="card card-body">
 								<!-- 펀딩 달성률 -->
 								<h4>달성률</h4>
-								<h1><span id="per">0</span>%</h1>
+								<h1><span id="per"></span>%</h1>
 								<div class="progress">
  									 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
@@ -230,11 +226,23 @@ $(document).ready(function() {
 <!-- 								</p> -->
 
 								<!-- 펀딩 참여하기로 이동 -->
-								<a href="../detail/orderOption">
+				
 									<button type="button" class="btn btn-md active btn-primary"
-										id="btnAttend">펀딩 참여하기</button>
-								</a>
-
+										id="btnAttend" data-projectNum="${projectVo.project_num}">펀딩 참여하기</button>
+										<script>
+											$(function() {
+												$("#btnAttend").each(function() {
+												$(this).click(function(e) {
+												//e.preventDefault();
+												var num = ${num};
+												var url = "/detail/detailMain/" + num +"/reword";
+												location.href=url;
+	
+													});
+														});
+												});
+										</script>
+							
 
 							</div>
 						</div>
@@ -273,7 +281,7 @@ $(document).ready(function() {
 						<div role="tab" id="heading${stat.count}">
 						</c:otherwise>
 						</c:choose>
-								<span class="checkout-step-number">${stat.count }</span>
+								<span class="checkout-step-number">${stat.count}</span>
 								<!-- 리워드 타이틀 -->
 								<h4 class="checkout-step-title">
 									<a role="button" data-toggle="collapse"
@@ -295,6 +303,7 @@ $(document).ready(function() {
 									<br> <p>배송비</p><span style="text-align:right;">${rewordDto.temp_reword_trans_price }</span>원
 									<br> <p>발송예상일</p> ${rewordDto.temp_reword_trans_month }/${rewordDto.temp_reword_trans_days } 예상
 									<hr>
+									<br>
 									<button type="button" class="btn btn-default btn-circle">
 										<i class="glyphicon glyphicon-ok"></i>
 									</button>

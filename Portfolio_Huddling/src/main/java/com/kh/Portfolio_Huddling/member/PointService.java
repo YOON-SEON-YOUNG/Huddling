@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PointService {
 	
-	//포인트 구매
+	// 포인트 구매
 	public void buy(PointVo pointVo) throws Exception;
 	// 포인트 구매 내역
 	public List<PointVo> pointById(String member_id) throws Exception;
