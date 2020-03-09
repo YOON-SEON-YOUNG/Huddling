@@ -8,7 +8,6 @@
 <link href="/resources/main/css/font-awesome.css" rel="stylesheet"> 
 <!--  // 헤더 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="/resources/js/projectShow.js"></script>
 
 <!-- Required meta tags -->
@@ -226,7 +225,7 @@ $(document).ready(function() {
 								<!-- 펀딩 참여하기로 이동 -->
 				
 									<button type="button" class="btn btn-md active btn-primary"
-										id="btnAttend" data-projectNum="${projectVo.project_num}">펀딩 참여하기</button>
+										id="btnAttend" data-projectNum="${projectVo.project_num}" style="width: 100%;">펀딩 참여하기</button>
 										<script>
 											$(function() {
 												$("#btnAttend").each(function() {
@@ -235,7 +234,7 @@ $(document).ready(function() {
 												var num = ${num};
 												var url = "/detail/detailMain/" + num +"/reword";
 												location.href=url;
-	
+
 													});
 														});
 												});
@@ -253,7 +252,7 @@ $(document).ready(function() {
 						창작자 전화번호: <span id="creatorPhone">010-000-0000</span> <br>
 						<hr>
 							<c:if test="${not empty memberVo.member_id && memberVo.member_id != makersDto.user_id}">
-								<form action="/member/sendInquiry" method="get">
+								<form action="/member/myPageQuestionControl" method="get">
 								<input type="hidden" name="inquiry" id="inquiry" value="1">
 								<input type="hidden" name="project_name" id="project_name" value="x">
 								<input type="hidden" name="receiver" id="receiver" value="x">
@@ -300,12 +299,11 @@ $(document).ready(function() {
 									<hr>
 									<br> <p>배송비</p><span style="text-align:right;">${rewordDto.temp_reword_trans_price }</span>원
 									<br> <p>발송예상일</p> ${rewordDto.temp_reword_trans_month }/${rewordDto.temp_reword_trans_days } 예상
-									<hr>
 									<br>
 									<button type="button" class="btn btn-default btn-circle">
 										<i class="glyphicon glyphicon-ok"></i>
 									</button>
-									&nbsp;36명 참여&nbsp;&nbsp;64개 남음
+									수량:&nbsp;${rewordDto.temp_reword_count}개남음
 								</div>
 							</div>
 						</div>
@@ -322,4 +320,3 @@ $(document).ready(function() {
 </div>
 
 </head>
-<%@ include file="../board/include/board_footer.jsp"%>

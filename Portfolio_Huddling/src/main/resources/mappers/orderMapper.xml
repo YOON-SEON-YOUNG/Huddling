@@ -7,8 +7,8 @@
 
 <!-- 리워드 개별 조회 -->
 <select id="rewordView" resultType="TempMakerRewordDto">
-select temp_reword_num, temp_reword_price, temp_reword_name, temp_reword_option, temp_reword_count,
-	temp_reword_trans_month, temp_reword_trans_days
+select temp_reword_num, temp_reword_price, temp_reword_name, temp_reword_option, temp_reword_count, 
+	temp_reword_desc, temp_reword_trans_month, temp_reword_trans_days
 	 from tbl_temp_reword 
 	 	where temp_reword_num = #{temp_reword_num}
 </select>
@@ -20,15 +20,136 @@ select temp_reword_num, temp_reword_price, temp_reword_name, temp_reword_option,
      values (tbl_reword_cart_seq.nextval, #{member_id}, #{reword_num}, #{cartstock})
 </insert>
 
-<!-- 리워드 담기 리스트  -->
-<select id="rewordCartList" resultType="RewordCartListDto">
-	select 
-	b.member_id, a.temp_project_num, a.temp_reword_name, b.reword_cart_num, b.cartstock, a.temp_reword_price, a.temp_reword_trans_month, 
-	a.temp_reword_trans_days
-	from 
-	tbl_temp_reword a, tbl_reword_cart b 
-	where b.member_id = #{member_id}
-	and a.temp_reword_num = b.reword_num
+<!-- 리워드 카트 리스트 -->
+<select id="cartList" resultType="CartListDto">
+select b.member_id, c.project_image, c.project_name, a.temp_reword_name, a.temp_reword_price, a.temp_reword_option,
+a.temp_reword_desc,b.cartstock, b.reword_cart_num
+from tbl_temp_reword a, tbl_reword_cart b, tbl_project_intro c 
+where b.reword_num = a.temp_reword_num and
+a.temp_project_num = c.project_num and 
+b.member_id = #{member_id}
 </select>
+
+<!-- 리워트 카트 삭제 -->
+<delete id="deleteCart">
+delete tbl_reword_cart
+where reword_cart_num = #{reword_cart_num}
+and member_id = #{member_id}
+</delete>
+
+<!-- 주문 정보 -->
+<insert id="orderInfo">
+	insert into tbl_order(order_id, member_id, order_rec, useraddr1, useraddr2, useraddr3, order_phone, amount, point, order_option)
+	values(#{order_id}, #{member_id}, #{order_rec}, #{useraddr1}, #{useraddr2}, #{useraddr3}, #{order_phone}, #{amount}, #{point}, #{order_option})
+</insert>
+
+<!-- 주문 상세 정보 -->
+<insert id="orderInfo_Details">
+	insert into tbl_order_details(order_details_num, order_id, reword_num, cartstock)
+		select tbl_order_details_seq.nextval, #{order_id}, reword_num, cartstock
+			from tbl_reword_cart
+</insert>
+
+<!-- 카트 비우기 -->
+<delete id="cartAllDelete">
+ delete tbl_reword_cart
+	where member_id = #{member_id}
+</delete>
+
+<!-- 특정 유저의 주문 목록 -->
+<select id ="orderList" resultType="OrderVo">
+select 
+	order_id, member_id, order_rec, useraddr1, useraddr2, useraddr3, order_phone, amount, order_date, delivery
+from tbl_order
+where member_id = #{member_id}
+</select>
+
+<!-- 특정 주문 목록 -->
+<select id="orderView" resultType="OrderListDto">
+select 
+ o.order_id, o.member_id, o.order_rec, o.useraddr1, o.useraddr2, o.useraddr3, o.order_phone, o.amount, o.order_date, o.delivery,
+ d.order_details_num, d.reword_num, d.cartstock,
+ r.temp_reword_name, r.temp_reword_price,
+ p.project_image, p.project_name
+	 from tbl_order o
+	  inner join tbl_order_details d
+	  on o.order_id = d.order_id
+	  inner join tbl_temp_reword r
+	  on r.temp_reword_num = d.reword_num
+	  inner join tbl_project_intro p
+	  on r.temp_project_num = p.project_num
+  where o.member_id = #{member_id}
+  and o.order_id = #{order_id}
+</select>
+
+<!-- 내가 만든 프로젝트 주문 목록 -->
+<select id="myOrderList" resultType="OrderVo">
+select DISTINCT o.order_id, o.member_id, o.useraddr1, o.useraddr2, o.useraddr3, o.order_phone, 
+o.amount, o.order_date, o.delivery, o.order_rec, o.point, o.order_option
+ from tbl_order o
+  inner join tbl_order_details d
+  on o.order_id = d.order_id
+  inner join tbl_temp_reword r
+  on r.temp_reword_num = d.reword_num
+  inner join tbl_project p
+  on r.temp_project_num = p.project_num
+  where p.user_id = #{user_id}
+</select>
+
+<!-- 내가 만든 프로젝트 특성 주문 목록 -->
+<select id="myOrderView" resultType="OrderListDto">
+select 
+ d.cartstock,
+ p.user_id, p.project_num, i.project_image, r.temp_reword_name, r.temp_reword_price, 
+ o.order_id, o.member_id, o.useraddr1, o.useraddr2, o.useraddr3, o.order_phone, o.amount, o.order_date, o.delivery, o.order_rec, o.point, o.order_option
+ from tbl_order o
+  inner join tbl_order_details d
+  on o.order_id = d.order_id
+  inner join tbl_temp_reword r
+  on r.temp_reword_num = d.reword_num
+  inner join tbl_project p
+  on r.temp_project_num = p.project_num
+  inner join tbl_project_intro i
+  on p.project_num = i.project_num
+  where d.order_id = #{order_id}  
+</select>
+
+<!-- 배송 상태 -->
+<update id="delivery">
+update tbl_order
+ set delivery = #{delivery}
+ where order_id = #{order_id}
+</update>
+
+<!-- 리워드 상품 수량 조절 -->
+<update id="changeStock">
+ update tbl_temp_reword
+ 	set temp_reword_count = temp_reword_count - #{temp_reword_count}
+ where temp_reword_num = #{temp_reword_num}	
+</update>
+
+<!-- 상품 수량 조절 보조 -->
+<select id ="changeStock_sub" resultType="OrderDetailVo">
+	select
+	 order_id, reword_num, cartstock
+	from tbl_order_details
+		where order_id = #{order_id}
+</select>
+
+<!-- 사용 포인트 반영 -->
+<update id="changePoint">
+update tbl_member
+ set member_point = member_point - #{member_point}
+ 	where member_id = #{member_id}
+</update>
+
+<!-- 사용 포인트 반영 보조 -->
+<select id = "changePoint_sub" resultType="OrderVo">
+ select
+ 	order_id, member_id, point
+ 	from tbl_order
+ 	where order_id = #{order_id}
+</select> 
+ 
 
 </mapper>

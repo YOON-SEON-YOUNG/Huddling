@@ -1,6 +1,5 @@
 package com.kh.Portfolio_Huddling.order;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,56 +8,85 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.Portfolio_Huddling.maker.TempMakerRewordDto;
 import com.kh.Portfolio_Huddling.member.MemberVo;
-import com.kh.Portfolio_Huddling.project.BoardService;
 
 @Controller
 @RequestMapping("/order/*")
 public class OrderController {
 	
 	@Inject
-	private OrderService service;
+	private OrderService orderService;
 	
-	@Inject
-	private BoardService boardService;
 	
-	// 상품별 리워드 목록
-	@RequestMapping(value="/detailMail/{num}/rewordlist", method = RequestMethod.GET)
-	public String getRewordList(@PathVariable("num") int project_num,
-			HttpServletRequest request, Model model) throws Exception {
+	// 내 프로젝트 주문 목록
+	@RequestMapping(value="/order/myOrderList", method= RequestMethod.GET)
+	public String getMyOrderList(HttpServletRequest request,
+			Model model) throws Exception {
 		HttpSession session = request.getSession();
-		session.setAttribute("project_num", project_num);
-		List<TempMakerRewordDto> list = boardService.getReowrd(project_num);
-		model.addAttribute("reword",list);
-		System.out.println("reword 실행중");
-		return "detail/rewordList";
-	}
+		String member_id = (String)session.getAttribute("member_id");
+		System.out.println("로그인 아이디 : " + member_id);
+		List<OrderVo> mylist = orderService.myOrderList(member_id);
+		model.addAttribute("mylist", mylist);
 	
-	// 리워드 조회
-	public void getRewordview() {
-		
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/detail/cart", method = RequestMethod.POST)
-	public void addCart(
-			RewordCartVo cart, HttpSession session) throws Exception {
-		
-		MemberVo member = (MemberVo)session.getAttribute("member_id");
-		cart.setMember_id(member.getMember_id());
-		System.out.println("addCart실행됨");
-		service.addCart(cart);
-		
-		
+		return "order/myOrderList";
 		
 	}
 	
 	
+	// 내 프로젝트 주문 목록 상세보기
+	@RequestMapping(value="/order/myOrderView", method = RequestMethod.GET)
+	public String getOrderList(
+			@RequestParam("n") String order_id, 
+			Model model) throws Exception {
+	
+		
+		System.out.println("order_id" + order_id);
+		List<OrderListDto> myview = orderService.myOrderView(order_id);
+		model.addAttribute("myview", myview);
+		System.out.println("상세보기 : " + myview);
+		
+		return "order/myOrderView";
+		
+	}
+	
+	// 주문 상세 목록 - 상태 변경
+	@RequestMapping(value = "/order/myOrderView", method = RequestMethod.POST)
+	public String delivery(OrderVo order) throws Exception {
+		orderService.delivery(order);
+		
+		List<OrderVo> order2 = orderService.changePoint_sub(order);
+		MemberVo member2 = new MemberVo();
+		
+		for(OrderVo j : order2) {
+			member2.setMember_id(j.getMember_id());
+			member2.setMember_point(j.getPoint());
+			orderService.changePoint(member2);
+		}
+		
+		
+		List<OrderDetailVo> orderView = orderService.changeStock_sub(order);
+		TempMakerRewordDto reword = new TempMakerRewordDto();
+		
+		for(OrderDetailVo i : orderView) {
+			reword.setTemp_reword_num(i.getReword_num());
+			reword.setTemp_reword_count(i.getCartstock());
+			orderService.changeStock(reword);
+			
+			
+		}
+		
+		return "rediret:/order/myOrderView?n=" + order.getOrder_id();
+		
+	}
+
+		
+
+	
+		
 
 }
