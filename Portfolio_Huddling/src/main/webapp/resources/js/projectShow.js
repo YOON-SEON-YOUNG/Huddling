@@ -19,11 +19,17 @@
 		return data;
 		});
 	}
+	
+	function endProject(num){
+		$.post("/detail/endProject/" + num,function(){
+		});
+	}
 
 			
 function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
 		if (project_app == 1) {
 			var perVal = percent(project_num);
+			endProject(project_num);
 			if(perVal == null || typeof perVal == "undefined"){
 				perVal = 0;
 			}

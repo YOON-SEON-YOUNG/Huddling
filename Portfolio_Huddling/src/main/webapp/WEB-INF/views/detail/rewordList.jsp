@@ -111,7 +111,6 @@
 
 </style>
 <script>
-<script type="text/javascript">
 function winPopup() {
     var popUrl = "/detail/detailMain/${num}/option?n=${rewordDto.temp_reword_num}";
     var popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";

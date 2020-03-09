@@ -102,7 +102,12 @@ public class ProductDetailController {
 		return vo;
 	}
 	
-	
+	// 
+	@RequestMapping(value="/endProject/{num}",method=RequestMethod.POST)
+	@ResponseBody
+	public void endProject(@PathVariable("num")int project_num) throws Exception{
+		boardService.endProject(project_num);
+	}
 	// 총 결제 금액 가져오기
 	@RequestMapping(value="/totalPayment/{num}", method=RequestMethod.GET)
 	@ResponseBody
