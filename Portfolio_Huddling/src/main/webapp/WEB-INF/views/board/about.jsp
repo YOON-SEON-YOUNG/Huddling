@@ -13,6 +13,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
+<br>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8">
+		<img src="/resources/images/huddling_intro.PNG">			
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+	
+
 
 </body>
 </html>
+<%@ include file="include/board_footer.jsp"%>
