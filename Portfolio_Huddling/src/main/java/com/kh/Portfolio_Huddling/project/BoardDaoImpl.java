@@ -58,7 +58,10 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int percent(int project_num) throws Exception {
-		return sqlsession.selectOne(NAMESPACE +  ".percent",project_num);
+		
+		int percent = sqlsession.selectOne(NAMESPACE +  ".percent",project_num);
+		System.out.println("dao, : " + percent);
+		return percent;
 	}
 
 	@Override

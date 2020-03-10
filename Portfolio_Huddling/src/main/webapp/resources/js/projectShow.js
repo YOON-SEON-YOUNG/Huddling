@@ -9,30 +9,36 @@
 //var project_name = pVo.project_name;
 //var project_app = pVo.project_app;
 
-//백분율 구하기
+	//백분율 구하기
+	//잘못됨
 	function percent(num){
-	$.get("/detail/totalPrice/" + num,function(data){
-		if(data == null || typeof data == "undefined"){
-			data = 0;
-		}
-		console.log("perVal : ", data);
-		return data;
+		var perData = 0;
+		$.get("/detail/totalPrice/" + num,function(data){
+			console.log("get : " + data);
+			if(data == null || typeof data == "undefined"){
+			perData = 0;
+			}
+			perData = data;
 		});
+		console.log("perData:" + perData);
+		return perData;
 	}
 	
 	function endProject(num){
-		$.post("/detail/endProject/" + num,function(){
-		});
+		$.post("/detail/endProject/" + num,function(){});
 	}
 
 			
-function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
+	function arrStrPush(project_num, project_category, project_image, project_story, project_name, project_app) {
+		console.log("project_num:" , project_num);
 		if (project_app == 1) {
 			var perVal = percent(project_num);
+			console.log(project_num + " : " , perVal);
 			endProject(project_num);
-			if(perVal == null || typeof perVal == "undefined"){
+			if(perVal == null || typeof perVal == ""){
 				perVal = 0;
 			}
+			console.log(perVal);
 			var strList = "";
 			strList +="<div style='height:350px;' class='col-md-4'>";
 			strList +="<a href='/detail/detailMain/"+encodeURI(project_num)+"'>";

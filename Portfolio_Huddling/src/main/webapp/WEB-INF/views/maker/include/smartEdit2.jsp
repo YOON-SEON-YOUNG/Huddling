@@ -9,7 +9,6 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
 	charset="utf-8"></script>
- 
 <!-- Smart Editor -->
 <script type="text/javascript">
  
