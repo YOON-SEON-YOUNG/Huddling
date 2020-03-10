@@ -296,14 +296,17 @@ public class MemberController {
 			}
 			
 			// 포인트 충전처리 -> /point/buy -> POST 방식 요청 처리
+			@ResponseBody
 			@RequestMapping(value="/member/myPagePointControl", method = RequestMethod.POST)
-			public String buyPOST(PointVo pointVo, MemberVo memberVo) throws Exception {
+			public String buyPOST(PointVo pointVo, MemberVo memberVo, Model model) throws Exception {
 				System.out.println("butPOST() 실행됨");
 				System.out.println("pointVo:" + pointVo);
 				System.out.println("memberVo:" + memberVo);
 				pointService.buy(pointVo);
 				service.updatePoint(memberVo);
-				return "redirect:/member/myPagePointControl";
+				model.addAttribute("memberVo", memberVo);
+				/*return "redirect:/member/myPagePointControl";*/
+				return "success";
 					
 			}
 			

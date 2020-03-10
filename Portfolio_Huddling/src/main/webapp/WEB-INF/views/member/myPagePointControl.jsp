@@ -19,7 +19,23 @@
 }
 </style>
 <script>   
-
+$(document).ready(function() {
+   $("#btnCharge").click(function(){
+	   var member_id = $("#member_id").val();
+	   var member_points = ${memberVo.member_point};
+	   var data = {
+			"member_id" : member_id,
+			"member_point" : member_point
+	   };
+	   $.post('/member/myPagePointControl', data, function(rData) {
+		   console.log(rData);
+		   if (rData.trim() == "success") {
+			   alert("포인트 충전 되었습니다.");
+			   $("#point_state").text("member_points");
+		   }
+	   });
+   });
+});   
   </script>
 
 <body>
@@ -29,9 +45,9 @@
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#home">포인트 충전</a>
     </li>
- <!--    <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">포인트 내역</a>
-    </li> -->
+    </li>
   </ul>
 
   <!-- Tab panes -->
@@ -53,7 +69,8 @@
 			</tr>
 			<tr>
 				<td>
-					<p align="center"><fmt:formatNumber pattern="###,###,###" value="${memberVo.member_point}"/></p>
+					<input type="hidden" class="form-control" id="member_id" name="member_id" value="${memberVo.member_point}">
+					<p id="point_state" align="center"><fmt:formatNumber pattern="###,###,###"  value="${memberVo.member_point}"/></p>
 				</td>
 
 			</tr>
@@ -66,7 +83,7 @@
 				data-target="#exampleModal">충전하기</button>
 		</div>
 
-		<form action="/member/myPagePointControl" method="post">
+	<!-- 	<form action="/member/myPagePointControl" method="post"> -->
 			<!-- 모달창 -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,6 +103,7 @@
 
 
 							<label>충전아이디</label> 
+							
 							<input type="text" class="form-control" id="member_id" name="member_id" value="${memberVo.member_id}">
 							<label>충전금액</label> 
 							<input type="number" class="form-control" id="member_point" name="member_point">
@@ -112,7 +130,8 @@
 					</div>
 				</div>
 			</div>
-		</form> <br> <br> <!-- 결제유의사항!-->
+	<!-- 	</form> -->
+		 <br> <br> <!-- 결제유의사항!-->
 		<div class="charge_info" style="padding-left: 10px;">
 			<ul>
 				<li><span class="bold">[유의사항]</span></li>
