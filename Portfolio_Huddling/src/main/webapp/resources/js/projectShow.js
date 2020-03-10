@@ -11,7 +11,7 @@
 
 	//백분율 구하기
 	//잘못됨
-	function percent(num){
+	function percent(num){	
 		var perData = 0;
 		$.get("/detail/totalPrice/" + num,function(data){
 			console.log("get : " + data);
